@@ -4,7 +4,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0.rc1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+#gem 'sqlite3'
+
+# Use mysql as the database for Active Record
+# for rails 3 ,it should be mysql2
+gem 'mysql2'
+
 
 gem 'bootstrap-sass'
 
