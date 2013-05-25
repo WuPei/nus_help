@@ -2,27 +2,27 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: **myapp_development**
+  #database: nus_help_development
   pool: 5
-  username: **root**
-  password: **supersecretpassword**
-  **socket: /opt/local/var/run/mysql5/mysqld.sock**
+  username: root
+  password: 
+  socket: /tmp/mysql.sock 
 test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: **myapp_test**
+  #database: nus_help_test
   pool: 5
-  username: **root**
-  password: **supersecretpassword**
-  socket: **/opt/local/var/run/mysql5/mysqld.sock**
+  username: root
+  password: 
+  socket: /tmp/mysql.sock 
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: **myapp_production**
+  #database: nus_help_production
   pool: 5
-  username: **root**
-  password: **supersecretpassword**
-  socket: **/opt/local/var/run/mysql5/mysqld.sock**
+  username: root
+  password: 
+  socket: /tmp/mysql.sock 
