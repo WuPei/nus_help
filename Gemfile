@@ -10,8 +10,12 @@ gem 'rails', '4.0.0.rc1'
 # for rails 3 ,it should be mysql2
 gem 'mysql2'
 
+#this must be installed unless the annotation doesn't work
+gem 'protected_attributes'
 
 gem 'bootstrap-sass'
+
+gem 'bcrypt-ruby'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
@@ -38,6 +42,16 @@ gem 'jbuilder', '~> 1.0.1'
 #to simplify and improve upon the default Rails form helpers. 
 #Twitter Bootstrap provides styling for forms.
 gem 'simple_form'
+
+# annotations aren’t needed in production applications.) 
+#We next install it with bundle install:
+#$ bundle install
+#This gives us a command called annotate, which simply adds comments 
+#containing the data model to the model file:
+#$ bundle exec annotate
+group :development do
+	gem 'annotate'
+end
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
