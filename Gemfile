@@ -17,6 +17,13 @@ gem 'bootstrap-sass'
 
 gem 'bcrypt-ruby'
 
+#Allow the user to make sample users with semi-realistic names and email addresses 
+gem 'faker'
+
+#Allow us to paginate the users, so that only the some will show up in one page ( could be change later)
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0.rc1'
 
