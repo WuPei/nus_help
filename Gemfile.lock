@@ -60,7 +60,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.4)
-    multi_json (1.7.3)
+    multi_json (1.7.4)
     mysql2 (0.3.11)
     pg (0.12.2)
     polyglot (0.3.3)
