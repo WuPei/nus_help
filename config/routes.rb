@@ -7,6 +7,8 @@ NusHelp::Application.routes.draw do
   end
   resources :microposts, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
+   resources :relationships, only: [:create, :destroy]
+
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

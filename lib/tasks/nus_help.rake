@@ -22,7 +22,7 @@ def make_users
                  password: password,
                  password_confirmation: password)
   end
-end
+end 
 
 def make_microposts
   users = User.all(limit: 6)
