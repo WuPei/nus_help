@@ -7,16 +7,16 @@ NusHelp::Application.routes.draw do
   end
   resources :microposts, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
-   resources :relationships, only: [:create, :destroy]
+  resources :relationships, only: [:create, :destroy]
 
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-  match '/signup',  to: 'users#new'
-  match '/help',    to: 'static_pages#help'
-  match '/about',   to: 'static_pages#about'
-  match '/contact', to: 'static_pages#contact'
+
+  get '/help',    to: 'static_pages#help'
+  get '/about',   to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
