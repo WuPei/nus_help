@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://rubygems.org' ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.rc1'
@@ -60,11 +60,14 @@ group :development do
 	gem 'annotate'
 end
 
+group :production do
+  #used for heruku,product deployment
+  gem 'pg', '0.15.1'
+end
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
-  #used for heruku,deployment
-  gem 'pg', '0.12.2'
 end
 
 #group :test do
