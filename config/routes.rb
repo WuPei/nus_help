@@ -1,6 +1,10 @@
 NusHelp::Application.routes.draw do
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
   resources :microposts, only: [:create, :destroy]
   resources :sessions, only: [:new, :create, :destroy]
   root to: 'static_pages#home'
@@ -11,7 +15,7 @@ NusHelp::Application.routes.draw do
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
-   
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
