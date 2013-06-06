@@ -1,9 +1,14 @@
 class LikeshipsController < ApplicationController
 	def create
-		@user = User.find(params[:likeship][:liker_id])
-		@micropost=Micropost.find(params[:likeship][:liked_micropost_id])
-		@micropost.like!(@user)
-		redirect_to @user
+		@likeship = Likeship.new(params[:likeship])
+		if @likeship.save
+			redirect_to :back
+		end
 	end
 	 
+	def destroy
+		@likeship = Likeship.find_by(params[:likeship])
+		@likeship.destroy
+		redirect_to :back
+	end
 end
