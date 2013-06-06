@@ -3,7 +3,7 @@
      <%= time_ago_in_words(micropost.created_at) %> ago
   </span>
   <span class="content"><%= micropost.content %>
-    <% unless current_user?(@user) %>
+    
      <div id='like_form'>
       <% if !micropost.like?(current_user) %>
       <% #if the micropost is not liked, otherwise we don't show it %>
@@ -24,7 +24,7 @@
           <% end %> 
       <% end %>
       </div>
-    <% end %> </br>
+    </br>
   </span> </br>
   
   <% if micropost.comments.any? %>

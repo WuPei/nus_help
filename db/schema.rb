@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(version: 20130604164154) do
 
   create_table "microposts", force: true do |t|
     t.string   "content"
+    t.string   "gift"
+    t.string   "module_code"
+    t.string   "deadline"
+    t.boolean  "is_anonymous"
+    t.integer  "status"
     t.integer  "user_id"
     t.integer  "comments_count"
     t.datetime "created_at"

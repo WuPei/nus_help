@@ -1,7 +1,18 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    Deadline:
+    <%= f.text_field :deadline %>
+    Module Code: 
+    <%= f.text_field :module_code %>
+    A little token for the helper: 
+    <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
+    Task Description:
+    <%= f.text_area :content, placeholder: "Describe your task in details to make people help you in a better way..." %>
+  <%= f.check_box :is_anonymous %>
+  <%= f.label :is_anonymous, "Anonymous" %>
   </div>
-  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+  </br>
+
+  <%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
 <% end %>
