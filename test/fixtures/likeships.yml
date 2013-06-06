@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  micopost_id: 1
+  liker_id: 1
+
+two:
+  micopost_id: 1
+  liker_id: 1

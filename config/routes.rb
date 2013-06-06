@@ -5,9 +5,16 @@ NusHelp::Application.routes.draw do
       get :following, :followers
     end
   end
-  resources :microposts, only: [:create, :destroy]
+  
+  resources :microposts, only: [:create, :destroy] do
+    resources :comments
+    member do
+      get :likers
+    end
+  end
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
+  resources :likeships
 
   root to: 'static_pages#home'
   match '/signup',  to: 'users#new',            via: 'get'

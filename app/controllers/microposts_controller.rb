@@ -5,7 +5,6 @@ class MicropostsController < ApplicationController
   #def index
   #end
 
-
   def create
     @micropost = current_user.microposts.build(micropost_params)
     if @micropost.save
@@ -25,7 +24,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :comments_attributes, :user_id)
     end
 
     def correct_user

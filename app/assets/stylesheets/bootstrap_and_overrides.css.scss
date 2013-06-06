@@ -181,6 +181,39 @@ input {
   }
 }
 
+/* commment */
+
+.comments {
+  list-style: none;
+  margin: 5px 0 0 0;
+
+  li {
+    padding: 5px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+}
+
+form > fieldset {
+  border: none;
+  border: solid 1px #CCC;
+  padding: 10px 15px;
+  margin: 15px 0;
+  fieldset {
+    border: none;
+    margin: 0;
+    margin: 10px 0;
+    padding: 0;
+  }
+}
+.commentee {
+  color: $red;
+  float: left;
+}
+
+.commenter {
+  color: $grayLight;
+  float: left;
+}
 /* microposts */
 
 .microposts {
@@ -197,6 +230,7 @@ input {
 }
 .timestamp {
   color: $grayLight;
+  float: right;
 }
 .gravatar {
   float: left;
@@ -209,3 +243,7 @@ aside {
   }
 }
 
+/*like_button */
+.like_button{
+  float: right;
+}

@@ -11,11 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130528150154) do
+ActiveRecord::Schema.define(version: 20130604164154) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "micropost_id"
+    t.integer  "user_id"
+    t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likeships", force: true do |t|
+    t.integer  "liked_micropost_id"
+    t.integer  "liker_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "likeships", ["liked_micropost_id", "liker_id"], name: "index_likeships_on_liked_micropost_id_and_liker_id", unique: true, using: :btree
+  add_index "likeships", ["liked_micropost_id"], name: "index_likeships_on_liked_micropost_id", using: :btree
+  add_index "likeships", ["liker_id"], name: "index_likeships_on_liker_id", using: :btree
 
   create_table "microposts", force: true do |t|
     t.string   "content"
     t.integer  "user_id"
+    t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
