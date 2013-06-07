@@ -24,7 +24,8 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :comments_attributes, :user_id)
+      params.require(:micropost).permit(:content, :user_id, :gift, :module_code, 
+          :deadline, :is_anonymous, :status, :comments_attributes)
     end
 
     def correct_user
