@@ -1,0 +1,7 @@
+<%= form_for(micropost.likeships.find_by(liker_id: current_user), html: { method: :delete } ) do |f|  %>
+  <%= f.hidden_field :liked_micropost_id %>
+  <%= f.hidden_field :liker_id %>
+  <div class= "like_button">
+    <%= f.submit "Unlike" ,class: "btn btn-small " %>
+  </div>
+<% end %>

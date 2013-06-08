@@ -50,6 +50,7 @@ gem 'jbuilder', '~> 1.0.1'
 #Twitter Bootstrap provides styling for forms.
 gem 'simple_form'
 
+
 # annotations aren’t needed in production applications.) 
 #We next install it with bundle install:
 #$ bundle install
@@ -58,6 +59,7 @@ gem 'simple_form'
 #$ bundle exec annotate
 group :development do
 	gem 'annotate'
+	gem 'htmlbeautifier'
 end
 
 group :production do

@@ -1,64 +1,27 @@
 <li>
   <span class="timestamp">
-     <%= time_ago_in_words(micropost.created_at) %> ago
+    <%= time_ago_in_words(micropost.created_at) %>
+    ago
   </span>
   <span class="content"><%= micropost.content %>
-    
-     <div id='like_form'>
+    <!--Provide the like button option -->
+    <div id='like_form'>
       <% if !micropost.like?(current_user) %>
-      <% #if the micropost is not liked, otherwise we don't show it %>
-        <%= form_for (micropost.likeships.build(liked_micropost_id: micropost.id, liker_id: current_user.id) ) do |f|  %>
-          <%= f.hidden_field :liked_micropost_id %>
-          <%= f.hidden_field :liker_id %>
-           <div class= "like_button">
-            <%= f.submit "like" ,class: "btn btn-small " %>
-          </div>
-          <% end %>  
+        <% #if the micropost is not liked, otherwise we don't show it %>
+        <%= render 'microposts/like', :micropost => micropost %>
       <% else %>
-        <%= form_for(micropost.likeships.find_by(liker_id: current_user), html: { method: :delete } ) do |f|  %>
-          <%= f.hidden_field :liked_micropost_id %>
-          <%= f.hidden_field :liker_id %>
-           <div class= "like_button">
-            <%= f.submit "Unlike" ,class: "btn btn-small " %>
-          </div>
-          <% end %> 
+        <%= render 'microposts/unlike', :micropost => micropost %>
       <% end %>
-      </div>
-    </br>
-  </span> </br>
-  
-  <% if micropost.comments.any? %>
-    <%= link_to "Comments( #{micropost.comments.count} )", '#' %> 
-  	<ol class="comments" >
-  		<% micropost.comments.each do |comment| %>
-        <li>
-          <%= gravatar_for (User.find_by_id(comment.user_id)), {size: 30} %>
-          <span class="commenter">  
-            <%= User.find_by_id(comment.user_id).name %> :
-          </span>
-          <%= comment.content %>
-          <span class="timestamp">
-            <p><%= time_ago_in_words(comment.created_at) %> ago</p>
-          </span>
-        </li>
-      <% end %>
-  	</ol>
-  <% end %>
-  <!--Could add new comment -->
+    </div>
   </br>
-  <%= form_for ([micropost, micropost.comments.build]) do |comment_builder| %>
-    <div class="field">
-      <%= comment_builder.text_field :content, placeholder: "Compose new commnet..."%>
-    </div>
-    <div class ="hide">
-    <%= comment_builder.submit "reply", class: "btn btn-small btn-primary" %>
-    </div>
-  <% end %>
-      
-      
-  <% if current_user?(micropost.user) %>
-    <%= link_to "delete", micropost, method: :delete,
+</span>
+<!--show the comments -->
+<%= render 'comments/comment', :micropost => micropost %>
+<!-- Add new comment -->
+<%= render 'comments/comment_form', :micropost => micropost %>
+<% if current_user?(micropost.user) %>
+  <%= link_to "delete", micropost, method: :delete,
                                      data: { confirm: "You sure?" },
                                      title: micropost.content %>
-  <% end %>
+<% end %>
 </li>

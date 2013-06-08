@@ -3,16 +3,15 @@
   <div class="field">
     Deadline:
     <%= f.text_field :deadline %>
-    Module Code: 
+    Module Code:
     <%= f.text_field :module_code %>
-    A little token for the helper: 
+    A little token for the helper:
     <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
     Task Description:
     <%= f.text_area :content, placeholder: "Describe your task in details to make people help you in a better way..." %>
-  <%= f.check_box :is_anonymous %>
-  <%= f.label :is_anonymous, "Anonymous" %>
+    <%= f.check_box :is_anonymous %>
+    <%= f.label :is_anonymous, "Anonymous" %>
   </div>
-  </br>
-
-  <%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
+</br>
+<%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
 <% end %>
