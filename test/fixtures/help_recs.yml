@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  helper_id: 1
+  helper_comment: MyString
+  helpee_comment: MyString
+  is_happy: false
+
+two:
+  helper_id: 1
+  helper_comment: MyString
+  helpee_comment: MyString
+  is_happy: false

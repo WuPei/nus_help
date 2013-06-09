@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  from_uid: 1
+  to_uid: 1
+  content: MyText
+  related_url: MyString
+  status: 1
+
+two:
+  from_uid: 1
+  to_uid: 1
+  content: MyText
+  related_url: MyString
+  status: 1

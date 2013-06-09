@@ -27,7 +27,7 @@ class Micropost < ActiveRecord::Base
   end
 
   def like!(user)
-    likeships.create!(liker_id: user.id)
+    likeships.create!(liker_id: user.id)  
   end
 
   def unlike!(user)

@@ -1,0 +1,2 @@
+class HelpRecsController < ApplicationController
+end

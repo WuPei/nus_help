@@ -11,12 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130604164154) do
+ActiveRecord::Schema.define(version: 20130609063550) do
 
   create_table "comments", force: true do |t|
     t.integer  "micropost_id"
     t.integer  "user_id"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "help_recs", force: true do |t|
+    t.integer  "helper_id"
+    t.string   "helper_comment"
+    t.string   "onwer_comment"
+    t.boolean  "is_happy"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -46,6 +55,31 @@ ActiveRecord::Schema.define(version: 20130604164154) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+
+  create_table "module_followings", force: true do |t|
+    t.integer  "mod_id"
+    t.integer  "mod_follower_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.integer  "from_uid"
+    t.integer  "to_uid"
+    t.text     "content"
+    t.string   "related_url"
+    t.integer  "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nus_modules", force: true do |t|
+    t.string   "name"
+    t.string   "code"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
