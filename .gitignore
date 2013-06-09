@@ -21,4 +21,4 @@ doc/
 .DS_Store
 .idea
 
-/config/environment.rb
+/config/database.yml
