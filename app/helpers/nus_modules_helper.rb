@@ -1,0 +1,2 @@
+module NusModulesHelper
+end

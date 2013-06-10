@@ -2,6 +2,7 @@ class Micropost < ActiveRecord::Base
   attr_accessible :content, :user_id, :gift, :module_code,
     :deadline, :is_anonymous, :status, :comments_attributes
   belongs_to :user
+  belongs_to :nus_module
   has_many :comments, dependent: :destroy
   has_many :likeships, foreign_key: "liked_micropost_id", dependent: :destroy
   has_many :likers, through: :likeships

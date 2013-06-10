@@ -6,6 +6,8 @@ NusHelp::Application.routes.draw do
     end
   end
   
+  resources :nus_modules 
+
   resources :microposts, only: [:create, :destroy] do
     resources :comments
     member do
@@ -17,6 +19,7 @@ NusHelp::Application.routes.draw do
   resources :likeships
 
   root to: 'static_pages#home'
+  match '/createmod', to: 'nus_modules#new', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'

@@ -1,0 +1,16 @@
+<% provide(:title, 'Modules') %>
+<h1>Modules</h1>
+<% if @nus_modules.any? %>
+  <%= link_to "Create a module now!", createmod_path, 
+                                class: "btn btn-large btn-primary" %>
+  </br></br>
+  <%= will_paginate %>
+  <ul class="users">
+    <%= render @nus_modules %>
+  </ul>
+  <%= will_paginate %>
+<% else %>
+  Sorry, there is no modules available now.
+  <%= link_to "Create a module now!", createmod_path, 
+                                class: "btn btn-large btn-primary" %>
+<% end %>
