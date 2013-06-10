@@ -6,7 +6,7 @@
   <span class="content"><%= micropost.content %>
     <!--Provide the like button option -->
     <div id='like_form'>
-      <% if !micropost.like?(current_user) %>
+      <% unless micropost.like?(current_user) %>
         <% #if the micropost is not liked, otherwise we don't show it %>
         <%= render 'microposts/like', :micropost => micropost %>
       <% else %>

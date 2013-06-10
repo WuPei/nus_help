@@ -1,0 +1,2 @@
+module ModuleFollowingsHelper
+end

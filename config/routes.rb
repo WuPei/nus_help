@@ -6,7 +6,11 @@ NusHelp::Application.routes.draw do
     end
   end
   
-  resources :nus_modules 
+  resources :nus_modules do
+    member do
+      get :mod_followers
+    end
+  end
 
   resources :microposts, only: [:create, :destroy] do
     resources :comments
@@ -17,6 +21,7 @@ NusHelp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :likeships
+  resources :module_followings
 
   root to: 'static_pages#home'
   match '/createmod', to: 'nus_modules#new', via: 'get'

@@ -10,9 +10,8 @@ class NusModule < ActiveRecord::Base
   validates :description, presence: true
   accepts_nested_attributes_for :microposts, allow_destroy: false
 
-
-  def follow?(user)
-    module_following.find_by(mod_follower_id: user.id)
+  def following?(user)
+    module_followings.find_by(mod_follower_id: user.id)
   end
 
   def follow!(user)

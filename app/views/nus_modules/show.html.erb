@@ -9,5 +9,9 @@
     </section>
     <p><%= @nus_module.description %></p>
   </aside>
-
+  <div class="span8">
+    <% if signed_in? %>
+      <%= render 'modFollow', :nus_module =>@nus_module %>
+    <% end %>
+  </div>
 </div>
