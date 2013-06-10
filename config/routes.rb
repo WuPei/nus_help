@@ -12,7 +12,7 @@ NusHelp::Application.routes.draw do
     end
   end
 
-  resources :microposts, only: [:create, :destroy] do
+  resources :microposts, only: [:create, :destroy, :show] do
     resources :comments
     member do
       get :likers

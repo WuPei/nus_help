@@ -2,11 +2,12 @@ class MicropostsController < ApplicationController
   before_action :signed_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
-  #def index
-  #end
+  def show
+    @micropost = Micropost.find(params[:id])
+  end
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
+    @micropost = Micropost.new(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
       redirect_to root_url
@@ -24,7 +25,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:content, :user_id, :gift, :module_code,
+      params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_code,
                                         :deadline, :is_anonymous, :status, :comments_attributes)
     end
 

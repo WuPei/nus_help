@@ -1,5 +1,5 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :content, :user_id, :gift, :module_code,
+  attr_accessible :title, :content, :user_id, :gift, :module_code,
     :deadline, :is_anonymous, :status, :comments_attributes
   belongs_to :user
   belongs_to :nus_module
@@ -10,6 +10,7 @@ class Micropost < ActiveRecord::Base
   accepts_nested_attributes_for :comments, allow_destroy: true
 
   default_scope -> { order('created_at DESC') }
+  validates :title, presence: true, length: {maximum: 25}
   validates :user_id, presence: true
   validates :deadline, presence: true
   validates :gift, presence: true

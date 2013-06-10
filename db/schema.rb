@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20130609063550) do
   add_index "likeships", ["liker_id"], name: "index_likeships_on_liker_id", using: :btree
 
   create_table "microposts", force: true do |t|
+    t.string   "title"
     t.string   "content"
     t.string   "gift"
     t.string   "module_code"

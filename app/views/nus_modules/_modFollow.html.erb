@@ -1,15 +1,7 @@
 <div id="follow_form">
   <% unless nus_module.following?(current_user) %>
-    <%= form_for ( nus_module.module_followings.build(mod_id: nus_module.id, mod_follower_id: current_user.id) ) do |f|  %>
-      <%= f.hidden_field :mod_id %>
-      <%= f.hidden_field :mod_follower_id %>
-      <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= render 'followMod', :nus_module => nus_module %>
   <% else %>
-    <%= form_for(nus_module.module_followings.find_by(mod_follower_id: current_user), html: { method: :delete } ) do |f|  %>
-      <%= f.hidden_field :mod_id %>
-      <%= f.hidden_field :mod_follower_id %>
-      <%= f.submit "Unfollow", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= render 'unfollowMod', :nus_module => nus_module %>
   <% end %>
 </div>

@@ -1,16 +1,18 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
     Deadline:
     <%= f.text_field :deadline %>
     Module Code:
     <%= f.text_field :module_code %>
     A little token for the helper:
     <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
+    Title: <%= f.text_field :title, placeholder: "Less than 25 words" %>
     Task Description:
     <%= f.text_area :content, placeholder: "Describe your task in details to make people help you in a better way..." %>
-    <%= f.check_box :is_anonymous %>
-    <%= f.label :is_anonymous, "Anonymous" %>
+    Anonymous <%= f.check_box :is_anonymous %>
+    
   </div>
 </br>
 <%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
