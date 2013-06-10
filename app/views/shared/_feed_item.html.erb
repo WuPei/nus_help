@@ -24,7 +24,6 @@
   <span class="user">
     <%= link_to feed_item.user.name+":", feed_item.user %>
   </span>
-  <%= feed_item.content %>
 </span>
 <% if current_user?(feed_item.user) %>
   <%= link_to "delete", feed_item, method: :delete,

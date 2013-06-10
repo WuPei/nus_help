@@ -1,7 +1,5 @@
 <%= form_for (micropost.likeships.build(liked_micropost_id: micropost.id, liker_id: current_user.id) ) do |f|  %>
   <%= f.hidden_field :liked_micropost_id %>
   <%= f.hidden_field :liker_id %>
-  <div class= "like_button">
-    <%= f.submit "like" ,class: "btn btn-small " %>
-  </div>
+  <%= f.submit "like" , class: "btn btn-small btn-primary" %>
 <% end %>

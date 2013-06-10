@@ -7,5 +7,21 @@
       </h1>
     </section>
     <p><%= @micropost.content %></p>
+    <div id='like_form'>
+      <% unless @micropost.like?(current_user) %>
+        <% #if the micropost is not liked, otherwise we don't show it %>
+        <%= render 'microposts/like', :micropost => @micropost %>
+      <% else %>
+        <%= render 'microposts/unlike', :micropost => @micropost %>
+      <% end %>
+    </div>
   </aside>
+  <div class="span8">
+    <!--show the comments -->
+    <section>
+      <%= render 'comments/comment', :micropost => @micropost %>
+    </section>
+    <!-- Add new comment -->
+    <%= render 'comments/comment_form', :micropost => @micropost %>
+  </div>
 </div>

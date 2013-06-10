@@ -3,6 +3,6 @@ class CommentsController < ApplicationController
     @micropost = Micropost.find(params[:micropost_id])
     @comment = @micropost.comments.create({:content => params[:comment][:content] ,
                                            :user_id => current_user.id})
-    redirect_to @micropost.user
+    redirect_to :back
   end
 end
