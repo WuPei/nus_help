@@ -83,6 +83,8 @@ ActiveRecord::Schema.define(version: 20130611123053) do
     t.datetime "updated_at"
   end
 
+  add_index "nus_modules", ["code"], name: "index_nus_modules_on_code", unique: true, using: :btree
+
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"
     t.integer  "followed_id"
@@ -104,6 +106,7 @@ ActiveRecord::Schema.define(version: 20130611123053) do
     t.string   "account"
   end
 
+  add_index "users", ["account"], name: "index_users_on_account", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
