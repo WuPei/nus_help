@@ -19,9 +19,19 @@ class Micropost < ActiveRecord::Base
   # Returns microposts from the users being followed by the given user.
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships
- 	                        WHERE follower_id = :user_id"
+                          WHERE follower_id = :user_id"
     where("user_id IN (#{followed_user_ids}) OR user_id = :user_id",
           user_id: user.id)
+  end
+
+  def self.from_a_module(nus_module)
+    where("module_code = :module_code", module_code: nus_module.code )
+  end
+
+  def self.from_modules_following(user)
+    following_module_codes = "SELECT mod_code FROM module_followings 
+                              WHERE mod_follower_id = :user_id"
+    where("module_code IN (#{following_module_codes})", user_id: user.id)
   end
 
   def like?(user)
@@ -29,7 +39,7 @@ class Micropost < ActiveRecord::Base
   end
 
   def like!(user)
-    likeships.create!(liker_id: user.id)  
+    likeships.create!(liker_id: user.id)
   end
 
   def unlike!(user)

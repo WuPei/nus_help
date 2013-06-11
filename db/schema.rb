@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20130609063550) do
   create_table "module_followings", force: true do |t|
     t.integer  "mod_id"
     t.integer  "mod_follower_id"
+    t.string   "mod_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

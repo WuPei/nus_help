@@ -5,6 +5,7 @@ class NusModulesController < ApplicationController
 
   def show
     @nus_module = NusModule.find(params[:id])
+    @feed_items = @nus_module.feed.paginate(page: params[:page])
     #@microposts = @nusModules.microposts.paginate(page: params[:page])
   end
 

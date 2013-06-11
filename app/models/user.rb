@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_users, through: :relationships, source: :followed
 
-  
+
   #has_many :reverse_likeships, foreign_key: "liked_micropost_id", class_name: "Likeship", dependent: :destroy
   #has_many :liked_microposts, through: :reverse_likeships, source: :liked_micropost
 
@@ -37,6 +37,10 @@ class User < ActiveRecord::Base
 
   def feed
     Micropost.from_users_followed_by(self)
+  end
+
+  def mod_feed
+    Micropost.from_modules_following(self)
   end
 
   def following?(other_user)

@@ -7,6 +7,7 @@
       </h1>
     </section>
     <p><%= @micropost.content %></p>
+    
     <div id='like_form'>
       <% unless @micropost.like?(current_user) %>
         <% #if the micropost is not liked, otherwise we don't show it %>
