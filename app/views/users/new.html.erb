@@ -3,20 +3,7 @@
 
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.hidden_field :account, :value=>@user.account %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, :value=>@user.name %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email, :value=>@user.email%>
-
-      
-
-      <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <%= render 'user_form' %>
+    
   </div>
 </div>

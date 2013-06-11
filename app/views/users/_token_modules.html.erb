@@ -1,0 +1,8 @@
+<span class="help-block">  Modules I am currently taking</span>
+<%= f.hidden_field :modules, :value=>@modules %>
+<%  @modules.each do |m| %>
+<label class="checkbox inline" id="module_taken">
+  <input type="checkbox" checked>
+     <%= m['code'] %>
+</label>
+<% end %>

@@ -45,8 +45,10 @@ class UsersController < ApplicationController
   end
 
   def create
+    puts "1111111"
     puts user_params
     @user = User.new(user_params)
+    puts @user['modules']
     if @user.save
       flash[:success] = "Welcome to the NUS HELP!"
       sign_in @user
@@ -73,7 +75,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :account, :microposts_attributes)
+      params.require(:user).permit(:name, :email, :account, :microposts_attributes, :modules)
     end
 
     # Before filters

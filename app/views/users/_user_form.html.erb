@@ -1,0 +1,33 @@
+<%= form_for(@user) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.hidden_field :account, :value=>@user.account %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name, :value=>@user.name %>
+
+  <%= f.label :email %>
+  <%= f.text_field :email, :value=>@user.email%>
+
+  <fieldset>
+  	<legend>
+    	Interest Module to Help
+  	</legend>
+  	
+  	<span class="help-block">  Modules I am currently taking</span>
+	<%= f.hidden_field :modules, :value=>@modules %>
+	
+	<%  @modules.each do |m| %>
+		<label class="checkbox inline" id="module_taken">
+		  <input type="checkbox" checked>
+		     <%= m['code'] %>
+		</label>
+	<% end %>
+
+  	<%= render 'can_help_modules' %>      
+  </fieldset>
+
+  <%= render 'alert_preference' %>
+
+  <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+<% end %>

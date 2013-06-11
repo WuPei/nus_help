@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
-  
+
   #??????????????
   def module_follow!(mod)
     module_followings.create!(mod_id: mod.id)
