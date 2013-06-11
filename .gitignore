@@ -20,5 +20,5 @@ doc/
 .project
 .DS_Store
 .idea
-
+Gemfile
 /config/database.yml
