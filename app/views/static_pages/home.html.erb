@@ -24,7 +24,7 @@
       <a href="/signin">NUS HELP!</a>
       Sample application.
     </h2>
-    <%= link_to "Sign up now!", signup_path, 
+    <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", 
                                 class: "btn btn-large btn-primary" %>
   </div>
 <% end %>

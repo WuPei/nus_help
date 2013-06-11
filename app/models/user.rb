@@ -24,16 +24,15 @@ class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
   before_save :create_remember_token
 
-  attr_accessible :name, :email, :password, :password_confirmation , :microposts_attributes
-  has_secure_password
+  attr_accessible :name, :email, :account, :microposts_attributes
 
   before_save { |user| user.email = email.downcase }
+  validates :account, presence: true, uniqueness: { case_sensitive: false }
   validates :name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true
+  
 
   def feed
     Micropost.from_users_followed_by(self)
@@ -54,6 +53,12 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
   end
+
+  #??????????????
+  def module_follow!(mod)
+    module_followings.create!(mod_id: mod.id)
+  end
+
 
   private
 

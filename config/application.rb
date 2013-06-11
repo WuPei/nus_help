@@ -8,6 +8,8 @@ Bundler.require(:default, Rails.env)
 
 module NusHelp
   class Application < Rails::Application
+    API_KEY = "x1oWBE5VN7HEynShRRjLv"
+    HOST_URL = "http://localhost:3000/"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

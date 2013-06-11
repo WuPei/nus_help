@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130609063550) do
+ActiveRecord::Schema.define(version: 20130611123053) do
 
   create_table "comments", force: true do |t|
     t.integer  "micropost_id"
@@ -99,9 +99,9 @@ ActiveRecord::Schema.define(version: 20130609063550) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "password_digest"
     t.string   "remember_token"
-    t.boolean  "admin",           default: false
+    t.boolean  "admin",          default: false
+    t.string   "account"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
