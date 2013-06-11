@@ -1,7 +1,7 @@
 module SessionsHelper
 
   def sign_in(user)
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies[:remember_token] = { :value => user.remember_token, :expires => 365.days.from_now}
     current_user = user
   end
 
@@ -42,5 +42,47 @@ module SessionsHelper
 
   def store_location
     session[:return_to] = request.url
+  end
+
+  def validate_nus(token)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Validate?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    res = http_request(url)
+    return res
+  end
+
+  def http_request(url)
+    uri = URI.parse(url)
+    # res = Net::HTTP.get(url)
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE # You should use VERIFY_PEER in production
+    request = Net::HTTP::Get.new(uri.request_uri)
+    res = http.request(request)
+    return res
+  end
+
+
+  def get_user_name(token)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    res = http_request(url)
+    return res.body[1..-2]
+  end
+
+  def get_user_account(token)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    res = http_request(url)
+    return res.body[1..-2]
+  end
+
+  def get_user_email(token)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserEmail_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    res = http_request(url)
+    return res.body[1..-2]
+  end
+
+  def get_user_module(token)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=x1oWBE5VN7HEynShRRjLv&AuthToken=#{token}&Duration=10&IncludeAllInfo=false";
+    res = http_request(url)
+    return ActiveSupport::JSON.decode(res.body)
   end
 end
