@@ -48,8 +48,8 @@ class UsersController < ApplicationController
     puts "1111111"
     puts user_params
     @user = User.new(user_params)
-    puts @user['modules']
     if @user.save
+      #insert user modules
       flash[:success] = "Welcome to the NUS HELP!"
       sign_in @user
       redirect_to @user# Handle a successful save.
