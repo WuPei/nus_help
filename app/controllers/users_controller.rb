@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @user.account = params['account']
     @user.name = params['name']
     @user.email = params['email']
+    @modules = params['modules']
   end
 
   def destroy

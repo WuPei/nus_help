@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
         for m in modules_info['Results']
           mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
         end
-        redirect_to(signup_url(:name=>name, :email=>email, :account=>account, :module=>mod))
+        redirect_to(signup_url(:name=>name, :email=>email, :account=>account, :modules=>mod))
       end
     else
       redirect_to root_url
