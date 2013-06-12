@@ -22,9 +22,9 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :microposts, allow_destroy: true
   before_save { self.email = email.downcase }
-  before_save :create_remember_token
+  # before_save :create_remember_token
 
-  attr_accessible :name, :email, :account, :microposts_attributes
+  attr_accessible :name, :email, :account, :remember_token,  :microposts_attributes
 
   before_save { |user| user.email = email.downcase }
   validates :account, presence: true, uniqueness: { case_sensitive: false }
@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
-  
+  validates :remember_token, presence: true
 
   def feed
     Micropost.from_users_followed_by(self)
@@ -59,9 +59,9 @@ class User < ActiveRecord::Base
   end
 
 
-  private
+  # private
 
-    def create_remember_token
-      self.remember_token = SecureRandom.urlsafe_base64
-    end
+  #   def create_remember_token
+  #     self.remember_token = SecureRandom.urlsafe_base64
+  #   end
 end

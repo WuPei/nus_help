@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     @user.name = params['name']
     @user.email = params['email']
     @modules = params['modules']
-
+    @user.remember_token = params['remember_token']
   end
 
   def destroy
@@ -47,14 +47,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    puts "1111111"
-    puts user_params
     @user = User.new(user_params)
     if @user.save
-      #insert user modules
       flash[:success] = "Welcome to the NUS HELP!"
       sign_in @user
-      redirect_to @user# Handle a successful save.
+      #redirect to add module
+      redirect_to (signupmod_url(:token=>@user.remember_token, :uid=>@user.id))
+      #redirect_to @user# Handle a successful save.
     else
       render 'new'
     end
@@ -77,7 +76,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :account, :microposts_attributes, :modules)
+      params.require(:user).permit(:name, :email, :account, :microposts_attributes, :remember_token)
     end
 
     # Before filters

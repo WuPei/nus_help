@@ -1,6 +1,7 @@
-<%= form_for(@user) do |f| %>
+<%= form_for @user, :html => { :id => "asdf" } do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <%= f.hidden_field :account, :value=>@user.account %>
+  <%= f.hidden_field :remember_token, :value=>@user.remember_token %>
   <%= f.label :name %>
   <%= f.text_field :name, :value=>@user.name %>
   <%= f.label :email %>
@@ -20,7 +21,12 @@
       </label>
     <% end %>
     <%= render 'can_help_modules' %>
+<% end %>   
   </fieldset>
   <%= render 'alert_preference' %>
   <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
 <% end %>
+
+  <%= link_to "Save", "#", :class => 'button_submit' %>
+  
+

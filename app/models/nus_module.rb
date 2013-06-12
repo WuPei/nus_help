@@ -6,7 +6,7 @@ class NusModule < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
 
   validates :name, presence: true
-  validates :code, presence: true
+  validates :code, presence: true, uniqueness: { case_sensitive: false }
   validates :description, presence: true
   accepts_nested_attributes_for :microposts, allow_destroy: false
 

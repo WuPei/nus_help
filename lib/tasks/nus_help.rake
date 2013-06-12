@@ -7,12 +7,19 @@ namespace :db do
   end
 end
 
+
 def make_users
+  # commonly used global variables
+  passwd  = "foobar"
+  account = "STUB_ACCOUNT"
+
   admin = User.create!(name:     "Example User",
                        email:    "example@railstutorial.org",
                        password: "foobar",
                        password_confirmation: "foobar",
-                       admin: true)
+                       admin: true,
+                       account: account + 0.to_s
+                       )
   99.times do |n|
     name  = Faker::Name.name
     email = "example-#{n+1}@railstutorial.org"
@@ -20,15 +27,23 @@ def make_users
     User.create!(name:     name,
                  email:    email,
                  password: password,
-                 password_confirmation: password)
+                 password_confirmation: password,
+                 account: account + (n + 1).to_s
+                 )
   end
 end 
 
 def make_microposts
   users = User.all(limit: 6)
   50.times do
-    content = Faker::Lorem.sentence(5)
-    users.each { |user| user.microposts.create!(content: content) }
+    users.each { |user|
+
+      user.microposts.create!(content: Faker::Lorem.sentence(5),
+                              title: Faker::Lorem.words,
+                              gift: Faker::Lorem.words(2),
+                              deadline: Faker::Lorem.words(1), # validation on time needed
+                             )
+    }
   end
 end
 
