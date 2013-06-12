@@ -80,9 +80,5 @@ module SessionsHelper
     return res.body[1..-2]
   end
 
-  def get_user_module(token)
-    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=x1oWBE5VN7HEynShRRjLv&AuthToken=#{token}&Duration=10&IncludeAllInfo=false";
-    res = http_request(url)
-    return ActiveSupport::JSON.decode(res.body)
-  end
+  
 end

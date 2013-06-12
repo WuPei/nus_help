@@ -1,0 +1,20 @@
+<%= form_tag :html => { :id => "zxcv" } do |f| %>
+  <fieldset>
+  	<legend>
+    	Interest Module to Help
+  	</legend>
+  	
+  	<span class="help-block">  Modules I am currently taking</span>
+
+	
+	<%  @mod.each do |m| %>
+		<label class="checkbox inline" id="module_taken">
+		  <input type="checkbox" checked>
+		     <%= m['code'] %>
+		</label>
+	<% end %>
+<% end %>
+
+<%= render 'can_help_modules' %>   
+
+<%= link_to "Save", insertModules_url(:uid=>@uid, :module=>@mod) %>
