@@ -4,9 +4,9 @@ class ModuleFollowingsController < ApplicationController
   def new
     @module = get_user_module(params['token'])
     @mod = []
-        for m in @module['Results']
-          @mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
-        end
+    for m in @module['Results']
+      @mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
+    end
     @uid = params['uid']
   end
 
@@ -27,22 +27,24 @@ class ModuleFollowingsController < ApplicationController
     if(params[:module])
       for m in params[:module]
         mod = NusModule.find_by(code: m['code'])
-        params[:modFollow] = {:mod_id=>mod.id, :mod_follower_id=>params[:uid], :mod_code=>m['code']}
-        ModuleFollowing.create!(params[:modFollow])
+        unless mod.nil?
+          params[:modFollow] = {:mod_id=>mod.id, :mod_follower_id=>params[:uid], :mod_code=>m['code']}
+          ModuleFollowing.create!(params[:modFollow])
+        end
       end
     end
     user = User.find_by(id: params[:uid])
     if(user)
-       redirect_back_or user
+      redirect_back_or user
     else
       redirect_to root_url
     end
   end
 
   def get_user_module(token)
-      url = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=x1oWBE5VN7HEynShRRjLv&AuthToken=#{token}&Duration=10&IncludeAllInfo=false";
-      res = http_request(url)
-      return ActiveSupport::JSON.decode(res.body)
-    end
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules?APIKey=x1oWBE5VN7HEynShRRjLv&AuthToken=#{token}&Duration=10&IncludeAllInfo=false";
+    res = http_request(url)
+    return ActiveSupport::JSON.decode(res.body)
+  end
 
 end

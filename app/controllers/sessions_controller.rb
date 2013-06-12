@@ -20,8 +20,9 @@ class SessionsController < ApplicationController
         #store token in database
         name = get_user_name(token)
         email = get_user_email(token)
+
         #puts user_info
-        # mod = []
+        #mod = []
         # for m in modules_info['Results']
         #   mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
         # end

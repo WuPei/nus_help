@@ -101,13 +101,12 @@ ActiveRecord::Schema.define(version: 20130612030939) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text   "remember_token"
+    t.text     "remember_token"
     t.boolean  "admin",          default: false
     t.string   "account"
   end
 
-  add_index "users", ["account"], name: "index_users_on_account", using: :btree
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end
