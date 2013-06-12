@@ -42,6 +42,10 @@ class User < ActiveRecord::Base
     Micropost.from_modules_following(self)
   end
 
+  def findModule(code)
+    NusModule.findModule(code)
+  end
+
   def following?(other_user)
     relationships.find_by(followed_id: other_user.id)
   end
@@ -52,11 +56,6 @@ class User < ActiveRecord::Base
 
   def unfollow!(other_user)
     relationships.find_by(followed_id: other_user.id).destroy
-  end
-
-  #??????????????
-  def module_follow!(mod)
-    module_followings.create!(mod_id: mod.id)
   end
 
 

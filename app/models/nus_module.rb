@@ -14,6 +14,10 @@ class NusModule < ActiveRecord::Base
     Micropost.from_a_module(self)
   end
 
+  def findModule(code)
+    where("module_code = :module_code", module_code: code)
+  end
+  
   def following?(user)
     module_followings.find_by(mod_follower_id: user.id)
   end
