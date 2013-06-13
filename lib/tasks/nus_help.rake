@@ -18,7 +18,8 @@ def make_users
                        password: "foobar",
                        password_confirmation: "foobar",
                        admin: true,
-                       account: account + 0.to_s
+                       account: account + 0.to_s,
+                       remember_token: (account + (0).to_s),
                        )
   99.times do |n|
     name  = Faker::Name.name
@@ -28,7 +29,8 @@ def make_users
                  email:    email,
                  password: password,
                  password_confirmation: password,
-                 account: account + (n + 1).to_s
+                 account: account + (n + 1).to_s,
+                 remember_token: (account + (n + 1).to_s)
                  )
   end
 end 
@@ -42,6 +44,7 @@ def make_microposts
                               title: Faker::Lorem.words,
                               gift: Faker::Lorem.words(2),
                               deadline: Faker::Lorem.words(1), # validation on time needed
+                              module_id: 1,
                              )
     }
   end
@@ -55,3 +58,4 @@ def make_relationships
   followed_users.each { |followed| user.follow!(followed) }
   followers.each      { |follower| follower.follow!(user) }
 end
+
