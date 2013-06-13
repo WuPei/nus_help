@@ -1,12 +1,25 @@
 <% provide(:title, 'Modules') %>
 <h1>Modules</h1>
-<% if @nus_modules.any? %>
-  <ul class="users">
-    <%= render @nus_modules %>
-  </ul>
-  <%= will_paginate %>
+
+<div class="well">
+<% if false %>
+<h4>Modules I'm Following:</h4>
 <% else %>
-  Sorry, there is no modules available now.
-  <%= link_to "Create a module now!", createmod_path, 
-                                class: "btn btn-large btn-primary" %>
+<h4>You're not following any module yet.</h4>
 <% end %>
+<form>
+  <input type='type' class='search-query' placeholder="Add Module to Follow" />
+</form>
+</div>
+
+<% if @nus_modules.any? %>
+  <%= will_paginate %>
+  <div class="users">
+    <%= render @nus_modules %>
+  </div>
+  <%= will_paginate %>
+  <% else %>
+    Sorry, there is no modules available now.
+    <%= link_to "Create a module now!", createmod_path, 
+                                class: "btn btn-large btn-primary" %>
+  <% end %>

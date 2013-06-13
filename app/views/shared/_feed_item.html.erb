@@ -1,6 +1,6 @@
 <li id="<%= feed_item.id %>">
-  <% if feed_item.is_anonymous %>
-    <%= link_to gravatar_for() , "#" %>
+  <% if !feed_item.is_anonymous %>
+    <% #link_to gravatar_for() , "#" %>
   <% else %>
     <%= link_to gravatar_for(feed_item.user, {:size => 60}), feed_item.user %>
   <% end %>
@@ -22,6 +22,7 @@
       Gift:
       <%= feed_item.gift %>
     </span></br>
+      <%= feed_item.is_anonymous %>
   <span class="user">
     <%= link_to feed_item.user.name+":", feed_item.user %>
   </span>

@@ -15,10 +15,10 @@ class User < ActiveRecord::Base
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
   has_many :followed_users, through: :relationships, source: :followed
-
-
-  #has_many :reverse_likeships, foreign_key: "liked_micropost_id", class_name: "Likeship", dependent: :destroy
-  #has_many :liked_microposts, through: :reverse_likeships, source: :liked_micropost
+  has_many :reverse_likeships, foreign_key: "liker_id", class_name: "Likeship", dependent: :destroy
+  has_many :liked_microposts, through: :reverse_likeships
+  has_many :reverse_module_followings, foreign_key: "mod_follower_id", class_name: "ModuleFollowing", dependent: :destroy
+  has_many :mod_id, through: :reverse_module_followings
 
   accepts_nested_attributes_for :microposts, allow_destroy: true
   before_save { self.email = email.downcase }
