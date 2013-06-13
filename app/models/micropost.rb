@@ -1,6 +1,6 @@
 class Micropost < ActiveRecord::Base
-  attr_accessible :title, :content, :user_id, :gift, :module_code,
-    :deadline, :is_anonymous, :status, :comments_attributes
+  attr_accessible :title, :content, :user_id, :gift, :module_id,
+    :deadline, :is_anonymous, :status, :comments_attributes, :module_code
   belongs_to :user
   belongs_to :nus_module
   has_many :comments, dependent: :destroy
@@ -25,13 +25,13 @@ class Micropost < ActiveRecord::Base
   end
 
   def self.from_a_module(nus_module)
-    where("module_code = :module_code", module_code: nus_module.code )
+    where("module_id = :module_id", module_id: nus_module.id )
   end
 
   def self.from_modules_following(user)
-    following_module_codes = "SELECT mod_code FROM module_followings 
+    following_module_ids = "SELECT mod_id FROM module_followings 
                               WHERE mod_follower_id = :user_id"
-    where("module_code IN (#{following_module_codes})", user_id: user.id)
+    where("module_id IN (#{following_module_ids})", user_id: user.id)
   end
 
   def like?(user)

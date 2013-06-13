@@ -10,7 +10,8 @@
   </span>
   <span class="content">
     <span class="module_code">
-      #<%= link_to feed_item.module_code, NusModule.find_by(code: feed_item.module_code) %>#
+      #<%= link_to "#{NusModule.find_by(id: feed_item.module_id).code}" , NusModule.find_by(id: feed_item.module_id) %>#
+
       <%= link_to feed_item.title, feed_item %>
     </span><br/>
     <span class="deadline">

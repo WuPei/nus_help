@@ -5,6 +5,7 @@ class CreateMicroposts < ActiveRecord::Migration
 			t.string :content
 			t.string :gift
 			t.string :module_code
+			t.integer :module_id
 			t.string :deadline
 			t.boolean :is_anonymous
 			t.integer :status

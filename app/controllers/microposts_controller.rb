@@ -7,6 +7,7 @@ class MicropostsController < ApplicationController
   end
 
   def create
+    params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
     @micropost = Micropost.new(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
@@ -25,7 +26,7 @@ class MicropostsController < ApplicationController
   private
 
     def micropost_params
-      params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_code,
+      params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_id, 
                                         :deadline, :is_anonymous, :status, :comments_attributes)
     end
 
