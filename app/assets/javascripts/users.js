@@ -5,5 +5,5 @@
       $('#asdf').submit();
       //$('#zxcv').submit();
     });
-  })()
+  });
 })(jQuery);

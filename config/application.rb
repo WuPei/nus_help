@@ -10,6 +10,9 @@ module NusHelp
   class Application < Rails::Application
     API_KEY = "x1oWBE5VN7HEynShRRjLv"
     HOST_URL = "http://localhost:3000/"
+
+    config.assets.enabled = true
+    config.assets.version = '1.0'
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
