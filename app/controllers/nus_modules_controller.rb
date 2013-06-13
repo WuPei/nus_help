@@ -3,6 +3,11 @@ class NusModulesController < ApplicationController
     @nus_modules = NusModule.paginate(page: params[:page])
   end
 
+  def autoCompJson
+    @nus_modules = NusModule.order(:code).where("code like ?", "%#{params[:term]}%")
+    render json: @nus_modules.map(&:code)
+  end
+
   def show
     @nus_module = NusModule.find(params[:id])
     @feed_items = @nus_module.feed.paginate(page: params[:page])

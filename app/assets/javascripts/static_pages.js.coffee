@@ -4,4 +4,7 @@
 jQuery ->
 	$('#micropost_deadline').datepicker
 		dateFormat: 'yy-mm-dd'
-	
+	$('#micropost_module_code').autocomplete
+		minLength: 3
+		autoFocus: true
+		source: $('#micropost_module_code').data('autocomplete-source')

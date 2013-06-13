@@ -5,7 +5,7 @@
     Deadline:
     <%= f.text_field :deadline %>
     Module Code:
-    <%= f.text_field :module_code %>
+    <%= f.text_field :module_code, data: {autocomplete_source: module_list_url} %>
     <%= f.hidden_field :module_id %>
     A little token for the helper:
     <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
