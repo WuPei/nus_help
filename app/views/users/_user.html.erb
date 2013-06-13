@@ -1,10 +1,15 @@
-<li>
-  <%= gravatar_for user, size: 52 %>
-  <%= link_to user.name, user %> 
-  
-  <% if current_user.admin? && !current_user?(user) %> 
-      | <%= link_to "delete", user, method: :delete,
-                                  data: { confirm: "You sure?" } %>
-  <% end %>
+<div class="span3 well">
+  <div> <%= gravatar_for user, size: 100 %> </div>
+  <div>
+    <%= link_to user.name, user %> 
+    <div> Help Posted: <%= user.microposts.length %> </div>
+    <div> Follers: <%= user.followers.length %> </div>
+    <div> Following: <%= user.followed_users.length %> </div>
+    
+    <% if current_user.admin? && !current_user?(user) %> 
+        | <%= link_to "delete", user, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>
+  </div>
 
-</li>
+</div>
