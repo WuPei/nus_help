@@ -7,5 +7,6 @@ class CreateNusModules < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :nus_modules, :code, unique:true
   end
 end
