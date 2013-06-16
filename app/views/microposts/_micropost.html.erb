@@ -21,7 +21,7 @@
 <%= render 'comments/comment_form', :micropost => micropost %>
 <% if current_user?(micropost.user) %>
   <%= link_to "delete", micropost, method: :delete,
-                                     data: { confirm: "You sure?" },
+                                    data: { confirm: "You sure?" },
                                      title: micropost.content %>
 <% end %>
 </li>
