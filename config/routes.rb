@@ -1,5 +1,7 @@
 NusHelp::Application.routes.draw do
 
+  resources :search
+
   get "activities/index"
   resources :users do
     member do
