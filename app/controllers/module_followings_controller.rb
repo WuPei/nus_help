@@ -13,6 +13,7 @@ class ModuleFollowingsController < ApplicationController
   def create
     @module_following = ModuleFollowing.new(params[:module_following])
     if @module_following.save
+      @module_following.create_activity :create, owner: current_user
       redirect_to :back
     end
   end

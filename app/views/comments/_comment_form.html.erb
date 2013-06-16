@@ -1,5 +1,6 @@
-<%= form_for ([micropost, micropost.comments.build]) do |comment_builder| %>
+<%= form_for ([micropost, micropost.comments.build(user_id: current_user.id)]) do |comment_builder| %>
   <div class="field">
+  	<%= comment_builder.hidden_field :user_id %>
     <%= comment_builder.text_field :content, placeholder: "Compose new commnet..."%>
   </div>
   <div class ="reply">

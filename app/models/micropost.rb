@@ -1,4 +1,7 @@
 class Micropost < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+  
   attr_accessible :title, :content, :user_id, :gift, :module_id,
     :deadline, :is_anonymous, :status, :comments_attributes, :module_code
   belongs_to :user
@@ -10,7 +13,7 @@ class Micropost < ActiveRecord::Base
   accepts_nested_attributes_for :comments, allow_destroy: true
 
   default_scope -> { order('created_at DESC') }
-  validates :title, presence: true, length: {maximum: 25}
+  validates :title, presence: true, length: {maximum: 50}
   validates :user_id, presence: true
   validates :deadline, presence: true
   validates :gift, presence: true
@@ -29,7 +32,7 @@ class Micropost < ActiveRecord::Base
   end
 
   def self.from_modules_following(user)
-    following_module_ids = "SELECT mod_id FROM module_followings 
+    following_module_ids = "SELECT mod_id FROM module_followings
                               WHERE mod_follower_id = :user_id"
     where("module_id IN (#{following_module_ids})", user_id: user.id)
   end
