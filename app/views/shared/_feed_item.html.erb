@@ -1,14 +1,16 @@
 <li id="<%= feed_item.id %>">
-  <% if !feed_item.is_anonymous %>
-    <% #link_to gravatar_for() , "#" %>
-  <% else %>
-    <%= link_to gravatar_for(feed_item.user, {:size => 60}), feed_item.user %>
-  <% end %>
   <span class="timestamp">
     <%= time_ago_in_words(feed_item.created_at) %>
     ago.
   </span>
-  <span class="content">
+
+  <% if !feed_item.is_anonymous %>
+    <span class="content">
+    <%= link_to gravatar_for(feed_item.user, {:size => 40}), feed_item.user %> 
+    <%= link_to feed_item.user.name+":", feed_item.user %><br/>
+  <% else%>
+    <span class="content">
+  <% end %>
     <span class="module_code">
       #<%= link_to "#{NusModule.find_by(id: feed_item.module_id).code}" , NusModule.find_by(id: feed_item.module_id) %>#
 
@@ -17,20 +19,17 @@
     <span class="deadline">
       Deadline:
       <%= feed_item.deadline %>
-    </span>
+    </span><br/>
     <span class="gift">
       Gift:
       <%= feed_item.gift %>
-    </span></br>
-      <%= feed_item.is_anonymous %>
-  <span class="user">
-    <%= link_to feed_item.user.name+":", feed_item.user %>
-  </span>
+    </span><br/>
+      <!--<%= feed_item.is_anonymous %>-->
   <% if current_user?(feed_item.user) %>
   <span id="delete">
   <%= link_to "delete" , feed_item, method: :delete,
                                     title: feed_item.content%>
   </span>                                 
 </span>
-
+</span>
 <% end %>

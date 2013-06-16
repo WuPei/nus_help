@@ -8,6 +8,7 @@
     Module Code:
     <%= f.text_field :module_code, data: {autocomplete_source: module_list_url} %>
     <%= f.hidden_field :module_id %>
+
     A little token for the helper:
     <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
     Title:
@@ -19,5 +20,5 @@
   </div>
 
 </br>
-<%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
+<%= f.submit "Help Me!", class: "btn btn-default btn-primary" %>
 <% end %>

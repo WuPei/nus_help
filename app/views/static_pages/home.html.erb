@@ -7,8 +7,9 @@
       <section>
         <%= render 'shared/stats' %>
       </section>
-      <section>
-        <%= render 'shared/micropost_form' %>
+      <section id='content'>
+      <h4>New Help Post:</h4> 
+      <%= render 'shared/micropost_form' %>
       </section>
     </aside>
     <div class="span8">
@@ -26,5 +27,5 @@
     </h2>
     <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", 
                                 class: "btn btn-large btn-primary" %>
-  </div>
+
 <% end %>

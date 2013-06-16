@@ -1,3 +1,4 @@
+
 class Micropost < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: ->(controller, model) { controller && controller.current_user }
@@ -15,7 +16,10 @@ class Micropost < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   validates :title, presence: true, length: {maximum: 50}
   validates :user_id, presence: true
+  #validates_associated :nus_module
   validates :deadline, presence: true
+  validates_date :deadline
+  #validates :nus_module, :presence => {:message => 'The module no exists in NUS!'}
   validates :gift, presence: true
   validates :content, presence: true, length: { maximum: 200 }
 
