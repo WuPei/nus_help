@@ -2,10 +2,22 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <h1>
-        <%= gravatar_for @user %>
+        <% if @user.photo="0" %>
+          <% if @user.gender == 0 %>
+            <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
+          <% else %>
+            <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+          <% end %> 
+        <% else %>
+          <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
+        <% end %>
+
         <%= @user.name %>
-      </h1>
+        <% if @user.gender == 0 %>
+          <%= image_tag "male_arrow.jpeg", :size => "15x15", :crop => :fill %>
+        <% else %>
+          <%= image_tag "female_arrow.svg", :size => "15x15", :crop => :fill %>
+        <% end %>
     </section>
     <section>
       <%= render 'shared/stats' %>

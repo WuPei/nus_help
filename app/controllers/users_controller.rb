@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :account, :microposts_attributes, :remember_token)
+      params.require(:user).permit(:name, :email, :account, :gender, :photo ,:microposts_attributes, :remember_token)
     end
 
     # Before filters

@@ -44,7 +44,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
-
+gem 'jquery-fileupload-rails'
+gem 'carrierwave'
+gem 'rmagick'
 #Most Rails applications use forms; most Rails developers use a form builder gem 
 #to simplify and improve upon the default Rails form helpers. 
 #Twitter Bootstrap provides styling for forms.

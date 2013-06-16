@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: ->(controller, model) { controller && controller.current_user }
 
-  attr_accessible :name, :email, :account, :remember_token,  :microposts_attributes
-
+  attr_accessible :name, :email, :account, :remember_token, :photo, :microposts_attributes, :gender
+  mount_uploader :photo, ImageUploader
   has_many :comments 
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
   validates :remember_token, presence: true
-
+  validates :gender, presence:true
 
   def feed
     Micropost.from_users_followed_by(self)

@@ -3,6 +3,7 @@
   <aside class="span4">
     <section>
       <%= gravatar_for @user %>
+      <%= @user.photo %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Microposts:</b>

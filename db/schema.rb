@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130614162549) do
+ActiveRecord::Schema.define(version: 20130616073156) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 20130614162549) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "admin",          default: false
+    t.integer  "gender"
+    t.string   "photo",          default: "0"
   end
 
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree
