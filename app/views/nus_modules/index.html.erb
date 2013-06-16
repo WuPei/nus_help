@@ -14,9 +14,7 @@
 
 <% if @nus_modules.any? %>
   <%= will_paginate %>
-  <div class="users">
-    <%= render @nus_modules %>
-  </div>
+  <%= render @nus_modules %>
   <%= will_paginate %>
   <% else %>
     Sorry, there is no modules available now.
