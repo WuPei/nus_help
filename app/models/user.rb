@@ -10,6 +10,12 @@
 #
 
 class User < ActiveRecord::Base
+  include PublicActivity::Model
+  tracked owner: ->(controller, model) { controller && controller.current_user }
+
+  attr_accessible :name, :email, :account, :remember_token,  :microposts_attributes
+
+  has_many :comments 
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent:   :destroy
@@ -18,13 +24,12 @@ class User < ActiveRecord::Base
   has_many :reverse_likeships, foreign_key: "liker_id", class_name: "Likeship", dependent: :destroy
   has_many :liked_microposts, through: :reverse_likeships
   has_many :reverse_module_followings, foreign_key: "mod_follower_id", class_name: "ModuleFollowing", dependent: :destroy
-  has_many :mod_id, through: :reverse_module_followings
+  has_many :mods, through: :reverse_module_followings
 
   accepts_nested_attributes_for :microposts, allow_destroy: true
   before_save { self.email = email.downcase }
   # before_save :create_remember_token
 
-  attr_accessible :name, :email, :account, :remember_token,  :microposts_attributes
 
   before_save { |user| user.email = email.downcase }
   validates :account, presence: true, uniqueness: { case_sensitive: false }
@@ -33,6 +38,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
     uniqueness: { case_sensitive: false }
   validates :remember_token, presence: true
+
 
   def feed
     Micropost.from_users_followed_by(self)

@@ -1,8 +1,9 @@
 NusHelp::Application.routes.draw do
 
+  get "activities/index"
   resources :users do
     member do
-      get :following, :followers
+      get :following, :followers , :followed_mods, :liked_microposts
     end
   end
   
@@ -15,9 +16,10 @@ NusHelp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show] do
     resources :comments
     member do
-      get :likers
+      get :likers 
     end
   end
+  resources :activities
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :likeships

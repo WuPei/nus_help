@@ -18,11 +18,5 @@
 //= require bootstrap
 //= require_tree .
 
-(function($) {
-	$(function(){
-        var pickerOpts = {
-            dateFormat:"d MM yy"
-        };  
-        $("#micropost_deadline").datepicker(pickerOpts);
-    });
-})(jQuery);
+
+

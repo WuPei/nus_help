@@ -12,6 +12,7 @@ class MicropostsController < ApplicationController
     @micropost = Micropost.new(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
+      @micropost.create_activity :create, owner: current_user
       redirect_to root_url
     else
       @feed_items = []
@@ -21,13 +22,15 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
+
     redirect_to root_url
+
   end
 
   private
 
     def micropost_params
-      params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_id, 
+      params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_id,
                                         :deadline, :is_anonymous, :status, :comments_attributes)
     end
 

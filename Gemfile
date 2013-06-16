@@ -50,7 +50,8 @@ gem 'jbuilder', '~> 1.0.1'
 #Twitter Bootstrap provides styling for forms.
 gem 'simple_form'
 
-
+#notification systems
+gem 'public_activity'
 # annotations aren’t needed in production applications.) 
 #We next install it with bundle install:
 #$ bundle install

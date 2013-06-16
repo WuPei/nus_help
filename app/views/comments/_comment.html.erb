@@ -11,8 +11,14 @@
         <%= comment.content %>
         <span class="timestamp">
           <%= time_ago_in_words(comment.created_at) %>
-            ago
+          ago
         </span>
+        <% if current_user.id == comment.user_id %>
+          <span class="comment_delete">
+            <%= link_to "delete", [micropost,comment] , method: :delete,
+                                     title: comment.content %>
+          </span>
+        <% end %>
       </li>
     <% end %>
   </ol>
