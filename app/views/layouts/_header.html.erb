@@ -28,6 +28,10 @@
           <li><%= link_to "Notifications" ,activities_path %></li>
           <% end %>
         </ul>
+        <form class="navbar-form pull-right form-search form-inline" action="/search">
+          <input type="text" class="search-query input-medium" placeholder="Search" name="query"/>
+          <button type="submit" class="btn"><i class="icon-search"></i></button>
+        </form>
       </nav>
     </div>
   </div>

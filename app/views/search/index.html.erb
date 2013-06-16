@@ -1,0 +1,11 @@
+<% provide(:title, 'Search') %>
+<h1>Search Result</h1>
+
+<% if @error %>
+<div class='alert alert-error'> <%= @error %> </div>
+<% elsif @info %>
+<div class='alert alert-success'> Going to display search result for: <%= @info %> </div>
+<% else %>
+<div class='alert alert-error'> Nothing happened </div>
+
+<% end %>
