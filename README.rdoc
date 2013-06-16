@@ -30,7 +30,16 @@ Things you may want to cover:
 
 set up step:
 
-*install apt http://apst.stsci.edu/apt/external/downloads/installers/install.html
+1.install xcode command line tools
+2.install macport
+3. sudo port install ImageMagick
+4. gem install rmagick
+5. bundle install
+6. rails generate validates_timeliness:install
+7. rake db & rails server
 
-*to validate time input: 
-*rails generate validates_timeliness:install
+
+
+
+
+
