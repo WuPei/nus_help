@@ -4,6 +4,7 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
+    @user = User.find(@micropost.user_id)
   end
 
   def create

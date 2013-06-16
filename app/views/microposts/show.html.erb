@@ -1,13 +1,19 @@
 <% provide(:title, @micropost.title) %>
 <div class="row">
-  <aside class="span4">
-    <section>
-      <h1>
-        <%= @micropost.title %>
-      </h1>
-    </section>
-    <p><%= @micropost.content %></p>
-    
+  <div class="span8">
+    <div id="post_info" class="post_info">
+      <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
+      <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
+      <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
+      <p><i class="icon-time"></i><span class="post-time"><%= @micropost.deadline %></span><span class="time-remain">Remains</span></p>
+      <p><i class="icon-question-sign"><span style="color:blue" class="post-status"></i><%= @micropost.status %></span></p>
+    </div>
+    <div id='help_form' class="help_from">
+      <div class="btn-group" style="float:right">
+        <button class="btn" style="background:blue; color:white">Help</button>
+        <button class="btn">Like</button>
+      </div>
+    </div> 
     <div id='like_form'>
       <% unless @micropost.like?(current_user) %>
         <% #if the micropost is not liked, otherwise we don't show it %>
@@ -16,8 +22,7 @@
         <%= render 'microposts/unlike', :micropost => @micropost %>
       <% end %>
     </div>
-  </aside>
-  <div class="span8">
+
     <!--show the comments -->
     <section>
       <%= render 'comments/comment', :micropost => @micropost %>
@@ -25,4 +30,17 @@
     <!-- Add new comment -->
     <%= render 'comments/comment_form', :micropost => @micropost %>
   </div>
+  <aside class="span4">
+    <div id="user" class="user">
+      <%= image_tag "test.jpeg", :class=>"profile-photo" %>
+      <div class="user-info">
+        <p><%= @user.name %></p>
+        <p><%= @user.email %><p>
+      </div>
+    </div>
+    <div id="helpers" class="helpers">
+      
+
+    </div>
+  </aside>
 </div>
