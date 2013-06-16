@@ -7,8 +7,8 @@
   <%= will_paginate %>
   <%= render @nus_modules %>
   <%= will_paginate %>
-  <% else %>
-    Sorry, there is no modules available now.
-    <%= link_to "Create a module now!", createmod_path, 
+<% else %>
+  Sorry, there is no modules available now.
+  <%= link_to "Create a module now!", createmod_path, 
                                 class: "btn btn-large btn-primary" %>
-  <% end %>
+<% end %>
