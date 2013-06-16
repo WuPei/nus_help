@@ -4,11 +4,15 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
-    @user = User.find(@micropost.user_id)
   end
 
   def create
     params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
+    rescue Exception => exc
+     logger.error("Message for the log file #{exc.message}")
+     flash[:notice] = "Invalid module id! You should follow the module first!"
+     redirect_to root_url
+    else
     @micropost = Micropost.new(micropost_params)
     if @micropost.save
       flash[:success] = "Micropost created!"
