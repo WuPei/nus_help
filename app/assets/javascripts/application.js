@@ -18,5 +18,7 @@
 //= require bootstrap
 //= require_tree .
 
-
-
+//= require jquery.ui.tooltip
+$(function(){
+    $(".needToolTip").tooltip();
+});

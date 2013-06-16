@@ -1,16 +1,7 @@
 <% provide(:title, 'Modules') %>
 <h1>Modules</h1>
 
-<div class="well">
-<% if false %>
-<h4>Modules I'm Following:</h4>
-<% else %>
-<h4>You're not following any module yet.</h4>
-<% end %>
-<form>
-  <input type='type' class='search-query' placeholder="Add Module to Follow" />
-</form>
-</div>
+<%= render "user_modules" %>
 
 <% if @nus_modules.any? %>
   <%= will_paginate %>

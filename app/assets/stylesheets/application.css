@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require jquery.ui.datepicker
+ *= require jquery.ui.tooltip
  *= require_tree .
  */
 .content {
@@ -26,4 +27,29 @@
 
 .pagination{
   clear:both
+}
+
+.module-tag{
+  background-color: #77BEE8;
+  color: black;
+  border: 1px solid #e3e3e3;
+  padding: 5px;
+  margin: 5px;
+
+  -webkit-border-radius: 4px; 
+  -moz-border-radius: 4px; 
+  border-radius: 4px; 
+
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+
+.module-tags{
+  margin: 5px;
+  padding: 15px;
+}
+
+.module-tag a{
+  color: black;
 }

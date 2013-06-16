@@ -1,0 +1,20 @@
+
+<% if current_user %>
+<div class="well">
+
+  <% if current_user.mods.any? %>
+    <h4>Modules I'm Following:</h4>
+    <div class="module-tags">
+    <% current_user.mods.each do |m| %>
+    <span class="module-tag needToolTip"> <%= link_to m.code, m ,:title=>m.name%> </span>
+    <% end %>
+    </div>
+  <% else %>
+  <h4>You're not following any module yet.</h4>
+  <% end %>
+
+  <form>
+    <input type='type' class='search-query' placeholder="Add Module to Follow" />
+  </form>
+</div>
+<% end %>
