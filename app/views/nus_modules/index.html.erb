@@ -1,25 +1,30 @@
 <% provide(:title, 'Modules') %>
 <h1>Modules</h1>
-
 <div class="well">
-<% if false %>
-<h4>Modules I'm Following:</h4>
-<% else %>
-<h4>You're not following any module yet.</h4>
-<% end %>
-<form>
-  <input type='type' class='search-query' placeholder="Add Module to Follow" />
-</form>
+  <% if false %>
+    <h4>Modules I'm Following:</h4>
+  <% else %>
+    <h4>You're not following any module yet.</h4>
+  <% end %>
+  <div class="search-query">
+    <%= form_tag nus_modules_path, :method => 'get' do %>
+      <%= text_field_tag :search ,params[:search], data: {autocomplete_source: module_list_url} %>
+      <%= submit_tag "Search", :name => nil  %>
+    <% end %>
+    <%  @searched_modules.each do |f| %>
+    <span class='searched_results'>
+    <%= link_to f.code, f %> </span>  
+    <% end %>
+  </div>
 </div>
-
 <% if @nus_modules.any? %>
   <%= will_paginate %>
   <div class="users">
     <%= render @nus_modules %>
   </div>
   <%= will_paginate %>
-  <% else %>
-    Sorry, there is no modules available now.
-    <%= link_to "Create a module now!", createmod_path, 
+<% else %>
+  Sorry, there is no modules available now.
+  <%= link_to "Create a module now!", createmod_path, 
                                 class: "btn btn-large btn-primary" %>
-  <% end %>
+<% end %>

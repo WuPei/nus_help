@@ -1,5 +1,10 @@
 class NusModulesController < ApplicationController
   def index
+    if params[:search] and params[:search].strip!=""
+      @searched_modules = NusModule.where('code LIKE ? OR name LIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
+    else  
+      @searched_modules = NusModule.find(:all)
+    end 
     @nus_modules = NusModule.paginate(page: params[:page])
   end
 
