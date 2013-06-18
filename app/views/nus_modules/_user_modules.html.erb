@@ -5,7 +5,7 @@
     <h4>Modules I'm Following:</h4>
     <div class="module-tags">
     <% current_user.mods.each do |m| %>
-    <span class="module-tag needToolTip"> <%= link_to m.code, m ,:title=>m.name%> </span>
+    <span class="module-tag needToolTip"> <%= link_to m.code, m ,:title=>m.name%><a class="close needToolTip unfollow" title="Unfollow">x</a></span>
     <% end %>
     </div>
   <% else %>
