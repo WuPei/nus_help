@@ -10,12 +10,20 @@ class ModuleFollowingsController < ApplicationController
     if @module_following.save
       @module_following.create_activity :create, owner: current_user
     end
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
+
 
   def destroy
     @module_following = ModuleFollowing.find_by(params[:module_following])
     @module_following.destroy
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
   end
 
   def insertModules

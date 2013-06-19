@@ -2,13 +2,12 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag  "application", media: "all" %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>    
+    <%= render 'layouts/shim' %>
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
     <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>  
     <div class="container">
@@ -21,4 +20,3 @@
     </div>
   </body>
 </html>
-

@@ -1,5 +1,0 @@
-<%= form_for ( nus_module.module_followings.build(mod_id: nus_module.id, mod_follower_id: current_user.id) ) do |f|  %>
-  <%= f.hidden_field :mod_id %>
-  <%= f.hidden_field :mod_follower_id %>
-  <%= f.submit "Follow", class: "btn btn-large btn-primary" %>
-<% end %>
