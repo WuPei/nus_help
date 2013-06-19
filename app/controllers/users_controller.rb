@@ -52,8 +52,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the NUS HELP!"
       sign_in @user
       #redirect to add module
-      redirect_to (signupmod_url(:token=>@user.remember_token, :uid=>@user.id))
-      #redirect_to @user# Handle a successful save.
+      redirect_to (insertModules_url(:token=>@user.remember_token, :uid=>@user.id))
     else
       render 'new'
     end

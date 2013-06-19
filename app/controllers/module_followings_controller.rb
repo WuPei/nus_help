@@ -2,19 +2,13 @@ class ModuleFollowingsController < ApplicationController
   before_action :signed_in_user
 
   def new
-    @module = get_user_module(params['token'])
-    @mod = []
-    for m in @module['Results']
-      @mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
-    end
-    @uid = params['uid']
+
   end
 
   def create
     @module_following = ModuleFollowing.new(params[:module_following])
     if @module_following.save
       @module_following.create_activity :create, owner: current_user
-      redirect_to :back
     end
   end
 
@@ -25,8 +19,14 @@ class ModuleFollowingsController < ApplicationController
   end
 
   def insertModules
-    if(params[:module])
-      for m in params[:module]
+    @module = get_user_module(params['token'])
+    @mod = []
+    for m in @module['Results']
+      @mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
+    end
+    @uid = params['uid']
+    if @mod
+      for m in @mod
         mod = NusModule.find_by(code: m['code'])
         unless mod.nil?
           params[:modFollow] = {:mod_id=>mod.id, :mod_follower_id=>params[:uid]}
@@ -36,7 +36,7 @@ class ModuleFollowingsController < ApplicationController
     end
     user = User.find_by(id: params[:uid])
     if(user)
-      redirect_back_or user
+      render :new
     else
       redirect_to root_url
     end
