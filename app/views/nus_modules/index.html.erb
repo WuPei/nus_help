@@ -1,5 +1,6 @@
 <% provide(:title, 'Modules') %>
 <h1>Modules</h1>
+
 <div class="well">
   <% if false %>
     <h4>Modules I'm Following:</h4>
@@ -17,6 +18,10 @@
     <% end %>
   </div>
 </div>
+
+
+<%= render "user_modules" %>
+
 <% if @nus_modules.any? %>
   <%= will_paginate %>
   <%= render @nus_modules %>
