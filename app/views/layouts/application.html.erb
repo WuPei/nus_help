@@ -2,13 +2,13 @@
 <html>
   <head>
     <title><%= full_title(yield(:title)) %></title>
-    <%= stylesheet_link_tag    "application", media: "all" %>
+    <%= stylesheet_link_tag  "application", media: "all" %>
     <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>    
+    <%= render 'layouts/shim' %>
   </head>
   <body>
+    <%= javascript_include_tag "application" %>
     <%= render 'layouts/header' %>
-     <%= javascript_include_tag "application" %>
     <div class="container">
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
@@ -19,4 +19,3 @@
     </div>
   </body>
 </html>
-

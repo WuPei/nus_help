@@ -8,7 +8,7 @@
   <% end %>
   <div class="search-query">
     <%= form_tag nus_modules_path, :method => 'get' do %>
-      <%= text_field_tag :search ,params[:search], data: {autocomplete_source: module_list_url} %>
+      <%= text_field_tag :search ,params[:search], data: {autocomplete_source: module_list_url} %>  
       <%= submit_tag "Search", :name => nil  %>
     <% end %>
     <%  @searched_modules.each do |f| %>
