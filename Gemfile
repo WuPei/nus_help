@@ -75,6 +75,9 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+#validate datetime by 
+gem 'validates_timeliness', '~> 3.0'
+
 #group :test do
 #   gem 
 #	gem 'factory_girl_rails'
