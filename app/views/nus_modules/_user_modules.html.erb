@@ -1,0 +1,25 @@
+
+<% if current_user %>
+<div class="well">
+  <% if current_user.mods.any? %>
+    <h4>Modules I'm Following:</h4>
+    <div class="module-tags">
+    <% current_user.mods.each do |m| %>
+    <span class="module-tag needToolTip"> <%= link_to m.code, m ,:title=>m.name%><a class="close needToolTip unfollow" title="Unfollow">x</a></span>
+    <% end %>
+    </div>
+  <% else %>
+  <h4>You're not following any module yet.</h4>
+  <% end %>
+
+  <div class="search-query">
+    <%= form_tag nus_modules_path, :method => 'get' do %>
+      <%= text_field_tag :search ,params[:search], data: {autocomplete_source: module_list_url} %>
+      <%= submit_tag "Search", :name => nil  %>
+    <% end %>
+    <%  @searched_modules.each do |f| %>
+    <span class='searched_results'> <%= link_to f.code, f %> </span>  <% end %>
+  </div>
+
+</div>
+<% end %>

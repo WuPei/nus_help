@@ -20,3 +20,14 @@
 //= require_tree .
 
 
+//= require jquery.ui.tooltip
+function updateUI(){
+  $(".needToolTip").tooltip();
+  $(".unfollow").click(function(evt,ui){
+      // TODO: update DB that module has been unfollowed.
+    $(evt.target).parent().hide(200);
+  });
+}
+$(function(){
+  updateUI();
+});
