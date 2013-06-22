@@ -1,6 +1,6 @@
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
+  <div class="field input-xlarge">
     <%= f.hidden_field :is_anonymous, :value => false %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     Deadline:
@@ -19,5 +19,5 @@
   </div>
 
 </br>
-<%= f.submit "Help Me!", class: "btn btn-large btn-primary" %>
+<%= f.submit "Help Me!", class: "btn btn-large btn-primary"%>
 <% end %>

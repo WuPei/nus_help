@@ -5,7 +5,7 @@ $(function() {
 		var autoOpts = {
 			minLength: 3,
 			autoFocus: true,
-			source: $('#search').data('autocomplete-source'),
+			source: $('#searchm').data('autocomplete-source'),
       select: function(evt,ui){
         // Create a such item
         $closeTag = $("<a></a>"); $closeTag.html("x"); $closeTag.addClass("close needToolTip unfollow"); 
@@ -26,6 +26,6 @@ $(function() {
         updateUI();
       }
 		};
-		$('#search').autocomplete(autoOpts)
+		$('#searchm').autocomplete(autoOpts)
 	});
 });
