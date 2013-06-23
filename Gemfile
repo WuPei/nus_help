@@ -46,7 +46,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-fileupload-rails'
 gem 'carrierwave'
-gem 'rmagick', ' 2.13.1' 
+gem 'mini_magick'
 #Most Rails applications use forms; most Rails developers use a form builder gem 
 #to simplify and improve upon the default Rails form helpers. 
 #Twitter Bootstrap provides styling for forms.

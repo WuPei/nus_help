@@ -18,10 +18,8 @@
 //= require bootstrap
 //= require jquery-fileupload/basic
 //= require_tree .
-
-
 //= require jquery.ui.tooltip
-//= require jquery.ui.autocomplete
+
 function updateUI(){
   $(".needToolTip").tooltip();
   $(".unfollow").click(function(evt,ui){
