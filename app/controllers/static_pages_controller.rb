@@ -1,7 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
     if signed_in?
-      @micropost  = Micropost.new
       feed_user_items = current_user.feed
       feed_mod_items = current_user.mod_feed
       feed_items_join = (feed_user_items + feed_mod_items).uniq

@@ -1,18 +1,21 @@
-<% if current_user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
-  <% if current_user.gender == 0 %>
-    <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
-  <% else %>
-    <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
-  <% end %> 
-<% else %>
-  <%= image_tag current_user.photo, :size => "150x150", :crop => :fill%>
-<% end %>
-<h1>
-  <%= current_user.name %>
-</h1>
-<span>
-  <%= link_to "view my profile", current_user %>
-</span>
-<span>
-  <%= pluralize(current_user.microposts.count, "micropost") %>
-</span>
+<div class="user-info-pad">
+  <div>
+    <a href="<%= user_path(current_user) %>">
+      <% if current_user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+        <% if current_user.gender == 0 %>
+          <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
+        <% else %>
+          <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+        <% end %> 
+      <% else %>
+        <%= image_tag current_user.photo, :size => "150x150", :crop => :fill%>
+      <% end %>
+    </a>
+    <h3>
+      <%= link_to current_user.name, current_user %>
+    </h3>
+  </div>
+  <div>
+    <%= render 'shared/stats' %>
+  </div>
+</div>

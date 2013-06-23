@@ -1,21 +1,7 @@
 <% if signed_in? %>
-  <div class="row">
-    <aside class="span4">
-      <section>
-        <%= render 'shared/user_info' %>
-      </section>
-      <section>
-        <%= render 'shared/stats' %>
-      </section>
-      <section id='content'>
-      <h4>New Help Post:</h4> 
-      <%= render 'shared/micropost_form' %>
-      </section>
-    </aside>
-    <div class="span8">
-      <h3>Micropost Feed</h3>
-      <%= render 'shared/feed' %>
-    </div>
+  <div>
+    <h3>Micropost Feed</h3>
+    <%= render 'shared/feed' %>
   </div>
 <% else %>
   <div class="center hero-unit">
@@ -25,7 +11,6 @@
       <a href="/signin">NUS HELP!</a>
       Sample application.
     </h2>
-    <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", 
-                                class: "btn btn-large btn-primary" %>
-
+    <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", class: "btn btn-large btn-primary" %>
+  </div>
 <% end %>

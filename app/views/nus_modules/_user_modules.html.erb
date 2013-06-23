@@ -13,8 +13,13 @@
 
   <div class="search-query">
     <%= form_tag nus_modules_path, :method => 'get' do %>
-      <%= text_field_tag :search ,params[:search], data: {autocomplete_source: module_list_url} %>
+      
+      <div id="resize_box">   
+     <%= text_field_tag :searchm ,params[:searchm], data: {autocomplete_source: module_list_url}, placeholder: "Filling any modules you want to follow" %>
+    </div>
+      <div id="hide_submit">
       <%= submit_tag "Search", :name => nil  %>
+    </div>
     <% end %>
   </div>
 
