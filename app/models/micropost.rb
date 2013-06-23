@@ -51,6 +51,10 @@ class Micropost < ActiveRecord::Base
     help_recs.create!(helper_id: user.id)
   end
 
+  def unhelp!(user)
+    help_recs.find_by(helper_id: user.id).destroy
+  end
+
   def like?(user)
     likeships.find_by(liker_id: user.id)
   end
