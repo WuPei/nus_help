@@ -5,7 +5,7 @@
       <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
       <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
       <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
-      <p><i class="icon-time"></i><span class="post-time"><%= @micropost.deadline %></span><span class="time-remain">Remains</span></p>
+      <p><i class="icon-time"></i><span class="post-time"><%= @micropost.deadline %></span><span class="time-remain">Remains</span><span><%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
       <p><i class="icon-question-sign"><span style="color:blue" class="post-status"></i><%= @micropost.status %></span></p>
     </div>
     <div id='help_form' class="help_from">
@@ -32,8 +32,18 @@
   </div>
   <aside class="span4">
     <div id="user" class="user">
-      <%= image_tag "test.jpeg", :class=>"profile-photo" %>
       <div class="user-info">
+        <p>
+          <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+            <% if @user.gender == 0 %>
+              <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
+            <% else %>
+              <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+            <% end %> 
+          <% else %>
+            <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
+          <% end %>
+        </p>
         <p><%= @user.name %></p>
         <p><%= @user.email %><p>
       </div>

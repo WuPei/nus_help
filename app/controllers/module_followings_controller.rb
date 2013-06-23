@@ -2,7 +2,7 @@ class ModuleFollowingsController < ApplicationController
   before_action :signed_in_user
 
   def new
-
+    @user = current_user
   end
 
   def create

@@ -2,8 +2,15 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <%= gravatar_for @user %>
-      <%= @user.photo %>
+      <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+        <% if @user.gender == 0 %>
+          <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
+        <% else %>
+          <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+        <% end %> 
+      <% else %>
+        <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
+      <% end %>
       <h1><%= @user.name %></h1>
       <span><%= link_to "view my profile", @user %></span>
       <span><b>Microposts:</b>
@@ -11,13 +18,6 @@
     </section>
     <section>
       <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            <%= link_to gravatar_for(user, size: 30), user %>
-          <% end %>
-        </div>
-      <% end %>
     </section>
   </aside>
   <div class="span8">

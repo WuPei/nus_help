@@ -4,6 +4,17 @@ class MicropostsController < ApplicationController
 
   def show
     @micropost = Micropost.find(params[:id])
+    @user = User.find_by(id: @micropost.user_id)
+    require 'date'
+    @elapsed_unit = "day(s)"
+    @elapsed_seconds = ((@micropost.deadline.to_time - Time.now) ).to_i
+    if @elapsed_seconds < 0
+      @elapsed_seconds = 0
+    elsif @elapsed_seconds > 60*60*24
+      @elapsed_seconds /= 60*60*24
+    else 
+      @elapsed_seconds =0
+    end
   end
 
   def create

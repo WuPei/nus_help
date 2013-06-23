@@ -1,5 +1,15 @@
 <div class="span3 well">
-  <div> <%= gravatar_for user, size: 100 %> </div>
+  <div>
+    <% if user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+      <% if user.gender == 0 %>
+        <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
+      <% else %>
+        <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+      <% end %> 
+    <% else %>
+      <%= image_tag user.photo, :size => "150x150", :crop => :fill%>
+    <% end %>
+  </div>
   <div>
     <%= link_to user.name, user %> 
     <div> Help Posted: <%= user.microposts.length %> </div>
