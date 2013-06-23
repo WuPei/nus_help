@@ -29,6 +29,7 @@ function updateUI(){
     $(evt.target).parent().hide(200);
   });
 }
+<<<<<<< HEAD
 
 $(function(){
   updateUI();

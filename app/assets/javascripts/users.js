@@ -2,8 +2,10 @@
   $(function() {
     $('.button_submit').click(function(e){
       e.preventDefault();
-      $('#asdf').submit();
+      $('#create_user').submit();
     });
-    
+    $('#create_user').submit(function(e){
+    	$('#btn_create_user').attr('disabled', 'disabled');
+    });
   });
 })(jQuery);

@@ -2,7 +2,7 @@
 <div class="row">
   <aside class="span4">
     <section>
-      <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+      <% if @user.photo.to_s == "/uploads/user/photo/#{@user.id}/0".to_s %>
         <% if @user.gender == 0 %>
           <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
         <% else %>

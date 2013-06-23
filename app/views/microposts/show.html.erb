@@ -10,18 +10,25 @@
     </div>
     <div id='help_form' class="help_from">
       <div class="btn-group" style="float:right">
-        <button class="btn" style="background:blue; color:white">Help</button>
-        <button class="btn">Like</button>
+        <div id='help_form'>
+          <% unless @micropost.help?(current_user) %>
+            <% #if the micropost is not liked, otherwise we don't show it %>
+            <%= render 'microposts/help', :micropost => @micropost %>
+          <% else %>
+            <%= render 'microposts/unhelp', :micropost => @micropost %>
+          <% end %>
+        </div>
+        <div id='like_form'>
+          <% unless @micropost.like?(current_user) %>
+            <% #if the micropost is not liked, otherwise we don't show it %>
+            <%= render 'microposts/like', :micropost => @micropost %>
+          <% else %>
+            <%= render 'microposts/unlike', :micropost => @micropost %>
+          <% end %>
+        </div>
       </div>
     </div> 
-    <div id='like_form'>
-      <% unless @micropost.like?(current_user) %>
-        <% #if the micropost is not liked, otherwise we don't show it %>
-        <%= render 'microposts/like', :micropost => @micropost %>
-      <% else %>
-        <%= render 'microposts/unlike', :micropost => @micropost %>
-      <% end %>
-    </div>
+    
 
     <!--show the comments -->
     <section>

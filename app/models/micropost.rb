@@ -10,6 +10,8 @@ class Micropost < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :likeships, foreign_key: "liked_micropost_id", dependent: :destroy
   has_many :likers, through: :likeships
+  has_many :help_recs, foreign_key: "post_id", dependent: :destroy
+  has_many :helpers, through: :help_recs
 
   accepts_nested_attributes_for :comments, allow_destroy: true
 
@@ -39,6 +41,14 @@ class Micropost < ActiveRecord::Base
     following_module_ids = "SELECT mod_id FROM module_followings
                               WHERE mod_follower_id = :user_id"
     where("module_id IN (#{following_module_ids})", user_id: user.id)
+  end
+
+  def help?(user)
+    help_recs.find_by(helper_id: user.id)
+  end
+
+  def help!(user)
+    help_recs.create!(helper_id: user.id)
   end
 
   def like?(user)
