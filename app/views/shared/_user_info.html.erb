@@ -1,7 +1,7 @@
 <div class="user-info-pad">
   <div>
     <a href="<%= user_path(current_user) %>">
-      <% if current_user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+      <% if current_user.photo.to_s == "/uploads/user/photo/#{current_user.id}/0".to_s %>
         <% if current_user.gender == 0 %>
           <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
         <% else %>

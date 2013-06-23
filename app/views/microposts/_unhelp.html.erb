@@ -1,6 +1,7 @@
 <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
   <%= f.hidden_field :helper_id %>
   <%= f.hidden_field :post_id %>
+  <span> <%= micropost.help_recs.find_by(helper_id: current_user).helper_comment %> </span>
   <div class= "like_button">
     <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
   </div>
