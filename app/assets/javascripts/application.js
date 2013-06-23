@@ -32,3 +32,18 @@ $(function(){
 });
 
 
+$(function() { 
+    // Date Picker setup
+  var pickerOpts = {
+    dateFormat: "d MM yy"
+  };
+  $("#micropost_deadline").datepicker(pickerOpts)
+
+ // Auto Complete for the date
+  var autoOpts = {
+    minLength: 3,
+    autoFocus: true,
+    source: $('#micropost_module_code').data('autocomplete-source')		
+  };
+  $('#micropost_module_code').autocomplete(autoOpts)
+});

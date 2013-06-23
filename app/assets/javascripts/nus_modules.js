@@ -1,6 +1,6 @@
 $(function() {
   $tags = $(".module-tags");
-        console.log($tags);
+
 	$(function() {
 		var autoOpts = {
 			minLength: 3,
@@ -16,12 +16,10 @@ $(function() {
         
         $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
         $mTag.appendTo($tags);
-        console.log($tags);
 
         // TODO: callback to update DB that module has been followed
         
         // Clear the box
-        console.log(evt);
         evt.preventDefault(); $(evt.target).val("");
         updateUI();
       }

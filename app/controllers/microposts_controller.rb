@@ -26,7 +26,6 @@ class MicropostsController < ApplicationController
   end
 
   private
-
     def micropost_params
       params.require(:micropost).permit(:title, :content, :user_id, :gift, :module_id,
                                         :deadline, :is_anonymous, :status, :comments_attributes)

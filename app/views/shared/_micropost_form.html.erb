@@ -1,23 +1,33 @@
+<div class="post-task">
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field input-xlarge">
-    <%= f.hidden_field :is_anonymous, :value => false %>
-    <%= f.hidden_field :user_id, :value => current_user.id %>
-    Deadline:
-    <%= f.text_field :deadline %>
-    Module Code:
-    <%= f.text_field :module_code, data: {autocomplete_source: module_list_url} %>
-    <%= f.hidden_field :module_id %>
-    A little token for the helper:
-    <p><%= f.text_field :gift, placeholder: "#Hint A converse wallet" %></p>
     Title:
     <%= f.text_field :title, placeholder: "Less than 25 words" %>
     Task Description:
     <%= f.text_area :content, placeholder: "Describe your task in details to make people help you in a better way..." %>
-    <%= f.check_box :is_anonymous %>
-    Anonymous
+    <%= f.hidden_field :is_anonymous, :value => false %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+    <div>
+      <div class="post-task-cell">
+      Deadline:
+      <%= f.text_field :deadline %>
+      </div>
+      <div class="post-task-cell">
+      Module Code:
+      <%= f.text_field :module_code, data: {autocomplete_source: module_list_url} %>
+      <%= f.hidden_field :module_id %>
+      </div>
+    </div>
+    <div>
+      Thank-you Gift:
+      <%= f.text_field :gift, placeholder: "Gift to the helper" %>
+    <div>
+    <div>
+      <%= f.check_box :is_anonymous %> Anonymous
+    </div>
   </div>
 
-</br>
-<%= f.submit "Help Me!", class: "btn btn-large btn-primary"%>
+  <%= f.submit "Post Help", class: "btn btn-large btn-primary"%>
 <% end %>
+</div>

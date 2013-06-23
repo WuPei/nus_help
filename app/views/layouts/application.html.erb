@@ -9,13 +9,21 @@
   <body>
     <%= javascript_include_tag "application" %>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
-      <%= yield %>
-      <%= render 'layouts/footer' %>
-      <%= debug(params) if Rails.env.development? %>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <% if signed_in? %>
+          <div class="sidebar span3">
+          <%= render 'layouts/sidebar' %>
+          </div>
+        <% end %>
+
+        <div class="content span9">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+          <%= render 'layouts/footer' %>
+          <%= debug(params) if Rails.env.development? %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
