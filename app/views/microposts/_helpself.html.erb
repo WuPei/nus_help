@@ -1,0 +1,9 @@
+<% if micropost.help_recs.any? %>
+  <% micropost.help_recs.each do |h| %>
+    <%= User.find_by(:id => h.helper_id ).name %>
+    :
+    <%= h.helper_comment %> 
+  <% end %>
+<% else %>
+  These is no guys helping you
+<% end %>
