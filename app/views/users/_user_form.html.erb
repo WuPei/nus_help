@@ -1,13 +1,5 @@
-<div class="row">
 	<%= form_for @user, :html => { :id => "create_user" } do |f| %>
 		<%= render 'shared/error_messages', object: f.object %>
-		<div class="span3">
-			  <p>
-			  	<%= f.label :photo %>
-			    <%= f.file_field :photo %>
-			  </p>
-		</div>
-		<div class="span6"> 
 		  <%= f.hidden_field :account, :value=>@user.account %>
 		  <%= f.hidden_field :remember_token, :value=>@user.remember_token %>
 		  <%= f.label :name %>
@@ -19,7 +11,9 @@
 			  <%= f.radio_button :gender, 0 %> Male
 			  <%= f.radio_button :gender, 1 %> Female
 		  </div>
+      <div>
+            <%= f.label :photo %>
+            <%= f.file_field :photo %>
+      </div>
 		  <%= f.submit "Create my account", id:"btn_create_user" ,class: "btn btn-large btn-primary" %>
-		</div>
 	<% end %>
-</div>

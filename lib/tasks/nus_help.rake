@@ -18,6 +18,7 @@ def make_users
                        password: "foobar",
                        password_confirmation: "foobar",
                        admin: true,
+                       gender: 1,
                        account: account + 0.to_s,
                        remember_token: (account + (0).to_s),
                        )
@@ -28,6 +29,7 @@ def make_users
     User.create!(name:     name,
                  email:    email,
                  password: password,
+                 gender: 1,
                  password_confirmation: password,
                  account: account + (n + 1).to_s,
                  remember_token: (account + (n + 1).to_s)
@@ -43,7 +45,7 @@ def make_microposts
       user.microposts.create!(content: Faker::Lorem.sentence(5),
                               title: Faker::Lorem.words,
                               gift: Faker::Lorem.words(2),
-                              deadline: Faker::Lorem.words(1), # validation on time needed
+                              deadline: "03 May 12",
                               module_id: 1,
                              )
     }
