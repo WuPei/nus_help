@@ -1,5 +1,5 @@
 <div class="row">
-	<%= form_for @user, :html => { :id => "asdf" } do |f| %>
+	<%= form_for @user, :html => { :id => "create_user" } do |f| %>
 		<%= render 'shared/error_messages', object: f.object %>
 		<div class="span3">
 			  <p>
@@ -19,7 +19,7 @@
 			  <%= f.radio_button :gender, 0 %> Male
 			  <%= f.radio_button :gender, 1 %> Female
 		  </div>
-		  <%= f.submit "Create my account", class: "btn btn-large btn-primary" %>
+		  <%= f.submit "Create my account", id:"btn_create_user" ,class: "btn btn-large btn-primary" %>
 		</div>
 	<% end %>
 </div>

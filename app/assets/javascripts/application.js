@@ -21,6 +21,7 @@
 
 
 //= require jquery.ui.tooltip
+//= require jquery.ui.autocomplete
 function updateUI(){
   $(".needToolTip").tooltip();
   $(".unfollow").click(function(evt,ui){
@@ -28,15 +29,13 @@ function updateUI(){
     $(evt.target).parent().hide(200);
   });
 }
-$(function(){
-  updateUI();
-  $tags = $(".module-tags");
-        console.log($tags);
-	$(function() {
-		var autoOpts = {
-			minLength: 3,
-			autoFocus: true,
-			source: $('#search').data('autocomplete-source'),
+(function($) {
+  $(function(){
+    updateUI();
+    var autoOpts = {
+            minLength: 3,
+            autoFocus: true,
+            source: $('#searchm').data('autocomplete-source'),
       select: function(evt,ui){
         // Create a such item
         $closeTag = $("<a></a>"); $closeTag.html("x"); $closeTag.addClass("close needToolTip unfollow"); 
@@ -56,7 +55,7 @@ $(function(){
         evt.preventDefault(); $(evt.target).val("");
         updateUI();
       }
-	};
-	$('#search').autocomplete(autoOpts)
+      };
+      $('#searchm').autocomplete(autoOpts)
   });
-});
+})(jQuery);

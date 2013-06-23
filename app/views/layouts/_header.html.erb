@@ -25,13 +25,18 @@
           <% end %>
           <li><%= link_to "Help", help_path %></li>
           <% if signed_in? %>
-          <li><%= link_to "Notifications" ,activities_path %></li>
+            <li><%= link_to "Notifications" ,activities_path %></li>
+          <% end %>
+          <% if signed_in? %>
+          <li><%= form_tag ('/search'), :method => :get, :class=> "navbar-form form-search form-inline" do %>
+              <%= text_field_tag :search,params[:search], :class=>"input-medium search-query" %>
+              <%= button_tag :name=>nil, :type => "submit", :class => "btn" do%>
+                <i class="icon-search "></i>
+              <% end %>
+            </li>
+            <% end %>
           <% end %>
         </ul>
-        <form class="navbar-form pull-right form-search form-inline" action="/search">
-          <input type="text" class="search-query input-medium" placeholder="Search" name="query"/>
-          <button type="submit" class="btn"><i class="icon-search"></i></button>
-        </form>
       </nav>
     </div>
   </div>
