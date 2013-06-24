@@ -21,7 +21,7 @@ class Micropost < ActiveRecord::Base
   #validates_associated :nus_module
   validates :deadline, presence: true
   validates_date :deadline
-  validates :nus_module, :presence => {:message => 'The module no exists in NUS!'}
+  #validates :nus_module, :presence => {:message => 'The module no exists in NUS!'}
   validates :gift, presence: true
   validates :content, presence: true, length: { maximum: 200 }
 
