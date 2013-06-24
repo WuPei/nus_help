@@ -6,7 +6,7 @@
 
   <% if !feed_item.is_anonymous %>
     <span class="content">
-    <%= link_to gravatar_for(feed_item.user, {:size => 40}), feed_item.user %> 
+      <%= link_to gravatar_for(feed_item.user, {:size => 40}), feed_item.user %> 
     <%= link_to feed_item.user.name+":", feed_item.user %><br/>
   <% else%>
     <span class="content">

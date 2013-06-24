@@ -1,5 +1,5 @@
-<li>
-  <span class="timestamp">
+ <li>
+ <span class="timestamp">
     <%= time_ago_in_words(micropost.created_at) %>
     ago
   </span>
@@ -13,7 +13,7 @@
         <%= render 'microposts/unlike', :micropost => micropost %>
       <% end %>
     </div>
-  </br>
+ </br>
 </span>
 <!--show the comments -->
 <%= render 'comments/comment', :micropost => micropost %>
