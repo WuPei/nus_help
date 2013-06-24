@@ -77,7 +77,7 @@ group :doc do
 end
 
 #validate datetime by 
-gem 'validates_timeliness', '~> 3.0'
+gem 'validates_timeliness'
 
 #group :test do
 #   gem 
