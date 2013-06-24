@@ -46,7 +46,9 @@
         </div>
         <div class="tab-pane" id="help">
           <div id='help_form'>
-            <% unless @micropost.help?(current_user) %>
+            <% if @micropost.user_id == current_user.id %>
+              <%= render 'microposts/helpself', :micropost => @micropost %>
+            <% elsif @micropost.help?(current_user) %>
               <% #if the micropost is not liked, otherwise we don't show it %>
               <%= render 'microposts/help', :micropost => @micropost %>
             <% else %>
