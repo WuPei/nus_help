@@ -8,5 +8,14 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+  def unreadNum(activities)
+  	count=0
+  	activities.each do |f|
+  		unless f.status
+  			count+=1
+  		end
+  	end 
+  end
+
 end
 
