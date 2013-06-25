@@ -33,7 +33,10 @@ class MicropostsController < ApplicationController
       @feed_items = []
       render 'static_pages/home'
     end
+  end
 
+  def update
+    
   end
 
   def destroy

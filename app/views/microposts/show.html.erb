@@ -50,9 +50,9 @@
               <%= render 'microposts/helpself', :micropost => @micropost %>
             <% elsif @micropost.help?(current_user) %>
               <% #if the micropost is not liked, otherwise we don't show it %>
-              <%= render 'microposts/help', :micropost => @micropost %>
-            <% else %>
               <%= render 'microposts/unhelp', :micropost => @micropost %>
+            <% else %>
+              <%= render 'microposts/help', :micropost => @micropost %>
             <% end %>
           </div>
         </div>
