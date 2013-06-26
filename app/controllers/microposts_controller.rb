@@ -21,7 +21,7 @@ class MicropostsController < ApplicationController
     params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
     rescue Exception => exc
      logger.error("Message for the log file #{exc.message}")
-     flash[:notice] = "Invalid module id! You should follow the module first!"
+     flash[:error] = "Invalid module id!"
      redirect_to root_url
     else
     @micropost = Micropost.new(micropost_params)
@@ -33,7 +33,10 @@ class MicropostsController < ApplicationController
       @feed_items = []
       render 'static_pages/home'
     end
+  end
 
+  def update
+    
   end
 
   def destroy

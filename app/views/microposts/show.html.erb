@@ -1,6 +1,6 @@
 <% provide(:title, @micropost.title) %>
 <div class="row">
-  <div class="span8">
+  <div class="span7 offset1">
     <div id="post_info" class="post_info">
       <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
       <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
@@ -46,11 +46,13 @@
         </div>
         <div class="tab-pane" id="help">
           <div id='help_form'>
-            <% unless @micropost.help?(current_user) %>
+            <% if @micropost.user_id == current_user.id %>
+              <%= render 'microposts/helpself', :micropost => @micropost %>
+            <% elsif @micropost.help?(current_user) %>
               <% #if the micropost is not liked, otherwise we don't show it %>
-              <%= render 'microposts/help', :micropost => @micropost %>
-            <% else %>
               <%= render 'microposts/unhelp', :micropost => @micropost %>
+            <% else %>
+              <%= render 'microposts/help', :micropost => @micropost %>
             <% end %>
           </div>
         </div>

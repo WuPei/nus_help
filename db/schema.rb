@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
   create_table "help_recs", force: true do |t|
     t.integer  "helper_id"
     t.string   "helper_comment"
-    t.string   "onwer_comment"
+    t.string   "owner_comment"
     t.boolean  "is_happy"
     t.datetime "created_at"
     t.datetime "updated_at"

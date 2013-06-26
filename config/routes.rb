@@ -38,6 +38,8 @@ NusHelp::Application.routes.draw do
   match '/signout', to: 'sessions#destroy',     via: 'delete'
   match '/signupmod', to: 'module_followings#new',  via: 'get'
   match '/insertModules', to: 'module_followings#insertModules',  via: 'get'
+  match '/update_helpRec', to: 'help_recs#update', via: 'post'
+
 
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'

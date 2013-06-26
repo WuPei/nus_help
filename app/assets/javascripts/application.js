@@ -26,6 +26,15 @@ $(function() {
   $('#micropost_module_code').autocomplete(autoOpts)
 });
 
+$(function(){
+  $('#tabs').tab();
+    $('.open_add_thanks').click(function(){
+      var id = $(this).data('id');
+      $('.modal-body #rec_id').val(id);
+    })
+});
+
+
 $(function() {
   $tags = $(".module-tags");
 
