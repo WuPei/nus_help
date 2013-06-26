@@ -11,10 +11,12 @@ module UsersHelper
   def unreadNum(activities)
   	count=0
   	activities.each do |f|
-  		unless f.status
-  			count+=1
+      #the newly created activity's status is true
+  		if f.status  
+  			count+=1 
   		end
   	end 
+    count
   end
 
 end

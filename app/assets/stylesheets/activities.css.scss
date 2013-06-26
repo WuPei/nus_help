@@ -9,6 +9,7 @@
 		font-size: 12px;
 		padding-left: 5px;
 		margin-bottom: 1px;
+		width: 570px;
 }
 }
 
@@ -16,4 +17,12 @@
 	float: middle;
 	margin-top: 1px;
 	margin-bottom: 18px;
+}
+
+.notificationTitle {
+	margin-left: 10px;
+}
+
+.notification {
+	border-bottom: solid 1px #CCC;
 }
