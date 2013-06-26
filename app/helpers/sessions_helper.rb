@@ -16,7 +16,8 @@ module SessionsHelper
   #but on subsequent invocations returns @current_user without hitting the database.
   #as later the @current_user is not false again
   def current_user
-    @current_user ||= User.find_by(remember_token: cookies[:remember_token])
+    @current_user = User.first  # TODO: remote later, testing purpose now
+# @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
 
   def current_user?(user)
