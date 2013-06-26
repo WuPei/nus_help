@@ -1,21 +1,16 @@
 <% provide(:title, @nus_module.name) %>
-<div class="row">
-  <div class="span4 offset1">
-    <section>
-      <h3 id="mod_module_title"> 
-        <%= @nus_module.name %>
-      </h3>
-        <h2 id="mod_followers"><%= @nus_module.mod_followers.count %> Followers</h2>
-        <p>Module code: <%= @nus_module.code %></p>
-    </section>
-    <p><%= @nus_module.description %></p>
-  </div>
-  <div class="span6">
+    <div>
+    <%= render 'moduleInfo',:nus_module => @nus_module %>
+    </div>
+
     <% if signed_in? %>
-      <%= render 'modFollow', :nus_module =>@nus_module %>
+      <div class="mod_follow_form">
+        <% unless @nus_module.following?(current_user) %>
+          <%= render 'followMod', :nus_module => @nus_module %>
+        <% else %>
+          <%= render 'unfollowMod', :nus_module => @nus_module %>
+        <% end %>
+      </div>
+
       <%= render 'shared/feed' %>
     <% end %>
-
-  </div>
-
-</div>

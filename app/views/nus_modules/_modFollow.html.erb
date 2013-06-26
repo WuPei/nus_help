@@ -1,7 +1,0 @@
-<div id="mod_follow_form">
-  <% unless nus_module.following?(current_user) %>
-    <%= render 'followMod', :nus_module => nus_module %>
-  <% else %>
-    <%= render 'unfollowMod', :nus_module => nus_module %>
-  <% end %>
-</div>
