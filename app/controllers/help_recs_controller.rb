@@ -15,4 +15,21 @@ class HelpRecsController < ApplicationController
     redirect_to :back
   end
 
+  def update
+    @helpRec = HelpRec.find(params[:rec_id])
+    if @helpRec.update_attributes(:owner_comment => params[:owner_comment], :is_happy=> params[:is_happy])
+      flash[:success] = "Help updated"
+      post_id = @helpRec.post_id
+      @micropost = Micropost.find_by(:id=>post_id)
+      if @micropost.update_attributes(:status => 2)
+        redirect_to @micropost
+        flash[:success] = "Help updated"
+      else
+        redirect_to :back
+      end
+    else
+      redirect_to :back
+    end
+  end
+
 end

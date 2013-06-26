@@ -1,32 +1,38 @@
 <div class="post-task">
+  <h4>
+    New Micropost:
+  </h4>
+  <hr>
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field input-xlarge">
-    Title:
+    <h6>Title:</h6>
     <%= f.text_field :title, placeholder: "Less than 25 words" %>
-    Task Description:
+    <h6>Task Description:</h6>
     <%= f.text_area :content, placeholder: "Describe your task in details to make people help you in a better way..." %>
     <%= f.hidden_field :is_anonymous, :value => false %>
     <%= f.hidden_field :user_id, :value => current_user.id %>
     <div>
       <div class="post-task-cell">
-      Deadline:
+      <h6>Deadline:</h6>
       <%= f.text_field :deadline %>
       </div>
       <div class="post-task-cell">
-      Module Code:
+      <h6>Module Code:</h6>
       <%= f.text_field :module_code, data: {autocomplete_source: module_list_url} %>
       <%= f.hidden_field :module_id %>
       </div>
     </div>
     <div>
-      Thank-you Gift:
+      <h6>Thank-you Gift:</h6>
       <%= f.text_field :gift, placeholder: "Gift to the helper" %>
     <div>
     <div>
-      <%= f.check_box :is_anonymous %> Anonymous
+      <h6>
+      <%= f.check_box :is_anonymous %> Anonymous</br></br>
+      </h6> 
     </div>
   </div>
-  <%= f.submit "Post Help", class: "btn btn-large btn-primary"%>
+  <%= f.submit "Post Help", class: "btn btn-default btn-primary"%>
 <% end %>
 </div>

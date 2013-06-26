@@ -1,5 +1,5 @@
 <%= form_for(nus_module.module_followings.find_by(mod_follower_id: current_user), html: { method: :delete } ) do |f|  %>
   <%= f.hidden_field :mod_id %>
   <%= f.hidden_field :mod_follower_id %>
-  <%= f.submit "Unfollow", class: "btn btn-large btn-primary" %>
+  <%= f.submit "Unfollow", class: "btn btn-default btn-primary" %>
 <% end %>

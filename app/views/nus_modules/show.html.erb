@@ -1,16 +1,16 @@
 <% provide(:title, @nus_module.name) %>
 <div class="row">
-  <aside class="span4">
+  <div class="span4 offset1">
     <section>
-      <h1>
+      <h3 id="mod_module_title"> 
         <%= @nus_module.name %>
+      </h3>
         <h2 id="mod_followers"><%= @nus_module.mod_followers.count %> Followers</h2>
-        <p><%= @nus_module.code %></p>
-      </h1>
+        <p>Module code: <%= @nus_module.code %></p>
     </section>
     <p><%= @nus_module.description %></p>
-  </aside>
-  <div class="span8">
+  </div>
+  <div class="span6">
     <% if signed_in? %>
       <%= render 'modFollow', :nus_module =>@nus_module %>
       <%= render 'shared/feed' %>
