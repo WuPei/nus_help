@@ -1,9 +1,16 @@
 <% provide(:title, @nus_module.name) %>
-<div class="row">
-  <div class="span8">
+    <div>
+    <%= render 'moduleInfo',:nus_module => @nus_module %>
+    </div>
+
     <% if signed_in? %>
-      <%= render 'modFollow', :nus_module =>@nus_module %>
+      <div class="mod_follow_form">
+        <% unless @nus_module.following?(current_user) %>
+          <%= render 'followMod', :nus_module => @nus_module %>
+        <% else %>
+          <%= render 'unfollowMod', :nus_module => @nus_module %>
+        <% end %>
+      </div>
+
       <%= render 'shared/feed' %>
     <% end %>
-  </div>
-</div>
