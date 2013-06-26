@@ -10,6 +10,7 @@ $(function(){
   updateUI();
 });
 
+
 $(function() {
     // Date Picker setup
   var pickerOpts = {
