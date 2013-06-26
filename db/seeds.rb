@@ -8,28 +8,21 @@
 
 
 def create_nus_module
-  moduleListName = "db/dataset/moduleList.txt"
+  moduleListName = "db/dataset/module.txt"
+  moduleListJson = "db/dataset/moduleInfo.json"
 
-  IO.read(moduleListName).split("\n").each do |line|
-    if(line == nil) then
-      next
-    end
 
-    m = line.split(",")
-    if(m.length < 5) then
-      puts "Ignoreing below, cuz info incomplete"
-      p m
-      next
-    end
-
+  JSON.parse(IO.read(moduleListJson)).each do |k,m|
+    next unless m['code']
     moduleToCreate = NusModule.new
-    moduleToCreate.code =  m[0].gsub("$",",")
-    moduleToCreate.name =  m[1].gsub("$",",")
-    moduleToCreate.description = ("Faculty: " + m[4]).gsub("$",",")
-        # use faculty as description first
+    moduleToCreate.code =  m["code"]
+    moduleToCreate.name =  m["title"]
+    moduleToCreate.description = m["desc"]
+          # use faculty as description first
     moduleToCreate.save
-    puts "Saved Module" + line
+    puts "Saved Module" + m["code"]
   end
+
 end
 
 

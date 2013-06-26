@@ -10,6 +10,9 @@ gem 'rails', '4.0.0.rc1'
 # for rails 3 ,it should be mysql2
 gem 'mysql2'
 
+# For Parsing DB file
+gem 'json'
+
 #this must be installed unless the annotation doesn't work
 gem 'protected_attributes'
 
