@@ -3,11 +3,7 @@
   <ol class="comments" >
     <% micropost.comments.each do |comment| %>
       <li>
-        <%= gravatar_for (User.find_by_id(comment.user_id)), {size: 28} %>
-        <span class="commenter">
-          <%= User.find_by_id(comment.user_id).name %>
-          :
-        </span>
+        <%= render 'shared/user_photo',:size => :small %>
         <%= comment.content %>
         <span class="timestamp">
           <%= time_ago_in_words(comment.created_at) %>
