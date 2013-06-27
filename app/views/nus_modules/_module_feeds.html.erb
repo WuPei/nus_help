@@ -1,0 +1,24 @@
+<% @moduleFeeds= current_user.mod_feed %>
+<div class="moduleFeeds">
+  <% @moduleFeeds.each do |f| %>
+    <% @module = NusModule.find_by(id: f.module_id) %>
+    <div class="module">
+    <%= link_to gravatar_for(f.user,{:size=>52}), f.user %>
+    <div class='countNumber'>
+      <%= link_to f.comments.count,f,{:style=>'color:white'} %>
+    </div>
+    <td>
+      <span class='itemTitle'>
+        <%= link_to f.title, f%>
+      </span>
+      <div class='sep8'></div>
+      <span class='small gray'>
+        <%= link_to @module.code, @module, {:style => 'background-color:#CCC'} %>
+        <span class='mytimestamp'>
+          <%= time_ago_in_words(f.created_at) +" ago"%>
+        </span>
+      </span>
+    </td>
+</div>
+  <% end %>
+</div>

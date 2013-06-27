@@ -1,3 +1,4 @@
+
 function updateUI(){
   $(".needToolTip").tooltip();
   $(".unfollow").click(function(evt,ui){

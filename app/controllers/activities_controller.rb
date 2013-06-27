@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+ 
   def index
   	followed_user_ids = "SELECT followed_id FROM relationships
                           WHERE follower_id = :user_id"
