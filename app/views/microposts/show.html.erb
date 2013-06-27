@@ -5,14 +5,14 @@
       <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
       <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
       <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
-      <p><i class="icon-time"></i><span class="post-time"><%= @micropost.deadline %></span><span class="time-remain">Remains</span><span><%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
+      <p><i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
       <p><i class="icon-question-sign"><span style="color:blue" class="post-status"></i>
         <% if @micropost.status.nil? %>
-          ongoing
+          <span class="post-status">Ongoing</span>
         <% elsif @micropost.status == 1 %>
-          inprocessing
+          <span class="post-status">Processing</span>
         <% elsif @micropost.status == 2 %>
-          ending
+          <span class="post-status">Ending</span>
         <% end %>
       </span></p>
 
