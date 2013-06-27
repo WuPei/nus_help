@@ -18,10 +18,11 @@ class MicropostsController < ApplicationController
   end
 
   def create
+    # TODO: add check for the Deadline -- if it's according to the correct date format
     params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
     rescue Exception => exc
      logger.error("Message for the log file #{exc.message}")
-     flash[:error] = "Invalid module id!"
+     flash[:error] = "Invalid Module Code. Please use the auto-complete to select a correct one.!"
      redirect_to root_url
     else
     @micropost = Micropost.new(micropost_params)
@@ -30,6 +31,7 @@ class MicropostsController < ApplicationController
       @micropost.create_activity :create, owner: current_user
       redirect_to root_url
     else
+      flash[:error] = "Post unsuccessful."
       @feed_items = []
       render 'static_pages/home'
     end

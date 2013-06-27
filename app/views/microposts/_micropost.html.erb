@@ -1,16 +1,15 @@
  <li>
  <span class="timestamp">
-    <%= time_ago_in_words(micropost.created_at) %>
-    ago
+    <%= time_ago_in_words(micropost.created_at) %> ago
   </span>
   <span class="content"><%= micropost.content %>
     <!--Provide the like button option -->
     <div id='like_form'>
-      <% unless micropost.like?(current_user) %>
+      <% if micropost.like?(current_user) %>
+        <%= render 'microposts/unlike', :micropost => micropost %>
+      <% else %>
         <% #if the micropost is not liked, otherwise we don't show it %>
         <%= render 'microposts/like', :micropost => micropost %>
-      <% else %>
-        <%= render 'microposts/unlike', :micropost => micropost %>
       <% end %>
     </div>
  </br>

@@ -1,21 +1,12 @@
 <div class="user-info-pad">
   <div>
-    <a href="<%= user_path(current_user) %>">
-      <% if current_user.photo.to_s == "/uploads/user/photo/#{current_user.id}/0".to_s %>
-        <% if current_user.gender == 0 %>
-          <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
-        <% else %>
-          <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
-        <% end %> 
-      <% else %>
-        <%= image_tag current_user.photo, :size => "150x150", :crop => :fill%>
-      <% end %>
-    </a>
-    <h3>
-      <%= link_to current_user.name, current_user %>
-    </h3>
+    <%= render 'shared/user_photo' %>
   </div>
   <div>
     <%= render 'shared/stats' %>
   </div>
 </div>
+
+<h3>
+  <%= link_to current_user.name, current_user %>
+</h3>
