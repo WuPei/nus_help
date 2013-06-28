@@ -5,24 +5,27 @@
       <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
       <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
       <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
-      <p><i class="icon-time"></i><span class="post-time"><%= @micropost.deadline %></span><span class="time-remain">Remains</span><span><%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
-      <p><i class="icon-question-sign"><span style="color:blue" class="post-status"></i>
-        <% if @micropost.status.nil? %>
-          ongoing
-        <% elsif @micropost.status == 1 %>
-          inprocessing
-        <% elsif @micropost.status == 2 %>
-          ending
-        <% end %>
-      </span></p>
-
-      <div id='like_form'>
-        <% unless @micropost.like?(current_user) %>
-          <% #if the micropost is not liked, otherwise we don't show it %>
-          <%= render 'microposts/like', :micropost => @micropost %>
-        <% else %>
-          <%= render 'microposts/unlike', :micropost => @micropost %>
-        <% end %>
+      <p><i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
+      
+      <div style="color:blue" class="post-status">
+        <div class="status">
+          <i class="icon-question-sign"></i>
+          <% if @micropost.status.nil? %>
+            <span class="post-status">Ongoing</span>
+          <% elsif @micropost.status == 1 %>
+            <span class="post-status">Processing</span>
+          <% elsif @micropost.status == 2 %>
+            <span class="post-status">Ending</span>
+          <% end %>
+        </div>
+        <div id='like_form'>
+          <% unless @micropost.like?(current_user) %>
+            <% #if the micropost is not liked, otherwise we don't show it %>
+            <%= render 'microposts/like', :micropost => @micropost %>
+          <% else %>
+            <%= render 'microposts/unlike', :micropost => @micropost %>
+          <% end %>
+        </div>
       </div>
     </div>
     
@@ -73,7 +76,6 @@
           <% end %>
         </p>
         <p><%= @user.name %></p>
-        <p><%= @user.email %><p>
       </div>
     </div>
     <div id="helpers" class="helpers">
@@ -88,7 +90,7 @@
           <% else %>
             <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
           <% end %>
-          <%= h.name%>
+          <%= link_to h.name, h%>
         </div>
       <% end %>
     </div>
