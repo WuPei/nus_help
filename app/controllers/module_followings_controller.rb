@@ -6,9 +6,11 @@ class ModuleFollowingsController < ApplicationController
   end
 
   def create
-    params[:module_following][:mod_follower_id] = current_user.id
-    mod_code = params[:module_following][:mod_id]
-    params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
+    if(params[:module_following][:mode] == "module")
+      params[:module_following][:mod_follower_id] = current_user.id
+      mod_code = params[:module_following][:mod_id]
+      params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
+    end
     @module_following = ModuleFollowing.new(params[:module_following])   
     respond_to do |format|
       if @module_following.save
@@ -26,10 +28,11 @@ class ModuleFollowingsController < ApplicationController
   end
 
   def destroy
-    params[:module_following][:mod_follower_id] = current_user.id
-    mod_code = params[:module_following][:mod_id]
-    params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
-
+    if(params[:module_following][:mode] == "module")
+      params[:module_following][:mod_follower_id] = current_user.id
+      mod_code = params[:module_following][:mod_id]
+      params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
+    end
     @module_following = ModuleFollowing.find_by(params[:module_following])
     @module_following.destroy
     respond_to do |format|

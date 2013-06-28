@@ -10,6 +10,7 @@ function updateUI(){
       type : "DELETE",
       url : "module_followings#destroy",
       data:JSON.stringify({
+        mode : "module",
         mod_id: $m_code,
       }),
       contentType: 'application/json',
@@ -80,6 +81,7 @@ $(function() {
           url : "module_followings#create",
           data:JSON.stringify({
             mod_id: $mInfo.html(),
+            mode : "module",
           }),
           contentType: 'application/json',
           success : function(response) {
