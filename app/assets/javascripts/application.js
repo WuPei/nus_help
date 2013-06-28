@@ -3,6 +3,25 @@ function updateUI(){
   $(".needToolTip").tooltip();
   $(".unfollow").click(function(evt,ui){
       // TODO: update DB that module has been unfollowed.
+    console.log(evt)
+    $m_code = evt.currentTarget.parentElement.innerText;
+    $m_code = $m_code.substring(0,$m_code.indexOf('\n')-1);
+    $.ajax({
+      type : "DELETE",
+      url : "module_followings#destroy",
+      data:JSON.stringify({
+        mode : "module",
+        mod_id: $m_code,
+      }),
+      contentType: 'application/json',
+      success : function(response) {
+        console.log("success");
+      },
+      error : function(response) {
+        console.log("not");
+      }
+    }); 
+
     $(evt.target).parent().hide(200);
   });
 }
@@ -57,13 +76,28 @@ $(function() {
         $mTag.appendTo($tags);
 
         // TODO: callback to update DB that module has been followed
-        
+        $.ajax({
+          type : "POST",
+          url : "module_followings#create",
+          data:JSON.stringify({
+            mod_id: $mInfo.html(),
+            mode : "module",
+          }),
+          contentType: 'application/json',
+          success : function(response) {
+            console.log("success");
+          },
+          error : function(response) {
+            console.log("not");
+          }
+        }); 
         // Clear the box
         evt.preventDefault(); $(evt.target).val("");
         updateUI();
       }
-    };
+    }
     $('#searchm').autocomplete(autoOpts)
   });
 });
+
 

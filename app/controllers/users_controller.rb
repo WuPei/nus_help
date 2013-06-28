@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    render :layout => "with_sidebar"
   end
 
   def update
@@ -52,7 +53,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to the NUS HELP!"
       sign_in @user
       #redirect to add module
-      redirect_to (insertModules_url(:token=>@user.remember_token, :uid=>@user.id))
+      redirect_to (insertModules_url(:token=>@user.remember_token, :uid=>@user.id, :account=>@user.account))
     else
       render 'new'
     end
