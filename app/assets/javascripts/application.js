@@ -7,8 +7,8 @@ function updateUI(){
     $m_code = evt.currentTarget.parentElement.innerText;
     $m_code = $m_code.substring(0,$m_code.indexOf('\n')-1);
     $.ajax({
-      type : "DELETE",
-      url : "module_followings#destroy",
+      type : "POST",
+      url : "module_followings",
       data:JSON.stringify({
         mode : "module",
         mod_id: $m_code,
@@ -78,7 +78,7 @@ $(function() {
         // TODO: callback to update DB that module has been followed
         $.ajax({
           type : "POST",
-          url : "module_followings#create",
+          url : "module_followings",
           data:JSON.stringify({
             mod_id: $mInfo.html(),
             mode : "module",

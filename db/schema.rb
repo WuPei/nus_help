@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.text     "parameters"
     t.integer  "recipient_id"
     t.string   "recipient_type"
+    t.boolean  "status",         default: true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60,6 +61,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.string   "content"
     t.string   "gift"
     t.string   "module_code"
+    t.integer  "module_id"
     t.string   "deadline"
     t.boolean  "is_anonymous"
     t.integer  "status"
@@ -74,7 +76,6 @@ ActiveRecord::Schema.define(version: 20130623055955) do
   create_table "module_followings", force: true do |t|
     t.integer  "mod_id"
     t.integer  "mod_follower_id"
-    t.string   "mod_code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -113,17 +114,16 @@ ActiveRecord::Schema.define(version: 20130623055955) do
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
+    t.text     "remember_token"
+    t.string   "account"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "remember_token"
     t.boolean  "admin",          default: false
-    t.string   "account"
     t.integer  "gender"
     t.string   "photo",          default: "0"
   end
 
-  add_index "users", ["account"], name: "index_users_on_account", using: :btree
+  add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

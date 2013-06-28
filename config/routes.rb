@@ -5,7 +5,7 @@ NusHelp::Application.routes.draw do
   get "activities/index"
   resources :users do
     member do
-      get :following, :followers , :followed_mods, :liked_microposts
+      get :following, :followers , :mods, :liked_microposts
     end
   end
   
@@ -39,8 +39,10 @@ NusHelp::Application.routes.draw do
   match '/signupmod', to: 'module_followings#new',  via: 'get'
   match '/insertModules', to: 'module_followings#insertModules',  via: 'get'
   match '/update_helpRec', to: 'help_recs#update', via: 'post'
-  match '/module_followings', to: 'module_followings#destroy', via: 'DELETE'
-
+  match '/module_followings', to: 'module_followings#create', via: 'POST'
+  match '/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
+  match '/nus_modules/(:id)/module_followings', to: 'module_followings#create', via: 'POST'
+  match '/nus_modules/(:id)/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
