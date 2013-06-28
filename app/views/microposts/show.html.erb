@@ -76,7 +76,6 @@
           <% end %>
         </p>
         <p><%= @user.name %></p>
-        <p><%= @user.email %><p>
       </div>
     </div>
     <div id="helpers" class="helpers">
@@ -91,7 +90,7 @@
           <% else %>
             <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
           <% end %>
-          <%= h.name%>
+          <%= link_to h.name, h%>
         </div>
       <% end %>
     </div>
