@@ -1,26 +1,27 @@
  <li>
- <span class="timestamp">
-    <%= time_ago_in_words(micropost.created_at) %> ago
-  </span>
-  <span class="content"><%= micropost.content %>
-    <!--Provide the like button option -->
-    <div id='like_form'>
-      <% if micropost.like?(current_user) %>
-        <%= render 'microposts/unlike', :micropost => micropost %>
-      <% else %>
-        <% #if the micropost is not liked, otherwise we don't show it %>
-        <%= render 'microposts/like', :micropost => micropost %>
-      <% end %>
+  <div class="user_post">
+    <% user=User.find_by(:id=>micropost.user_id) %>
+    <div class='countNumber'>
+      <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>
     </div>
- </br>
-</span>
-<!--show the comments -->
-<%= render 'comments/comment', :micropost => micropost %>
-<!-- Add new comment -->
-<%= render 'comments/comment_form', :micropost => micropost %>
-<% if current_user?(micropost.user) %>
-  <%= link_to "delete", micropost, method: :delete,
-                                    data: { confirm: "You sure?" },
-                                     title: micropost.content %>
-<% end %>
+    <td>
+      <span class='itemTitle'>
+        <%= link_to micropost.title, micropost%>
+      </span>
+      <div class='sep8'></div>
+      <div class="post_content">
+        <%= micropost.content%>
+      </div>
+      <div class='sep8'></div>
+      <span class='small gray'>
+        <%= link_to NusModule.find_by(:id=>micropost.module_id).code, NusModule.find_by(:id=>micropost.module_id), {:style => 'background-color:#CCC'} %>
+        <span class='post_gift'>
+          <%= micropost.gift %>
+        </span>
+        <span class='mytimestamp'>
+          <%= time_ago_in_words(micropost.created_at) +" ago"%>
+        </span>
+      </span>
+    </td>
+  </div>
 </li>

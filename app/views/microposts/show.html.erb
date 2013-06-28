@@ -6,23 +6,26 @@
       <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
       <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
       <p><i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
-      <p><i class="icon-question-sign"><span style="color:blue" class="post-status"></i>
-        <% if @micropost.status.nil? %>
-          <span class="post-status">Ongoing</span>
-        <% elsif @micropost.status == 1 %>
-          <span class="post-status">Processing</span>
-        <% elsif @micropost.status == 2 %>
-          <span class="post-status">Ending</span>
-        <% end %>
-      </span></p>
-
-      <div id='like_form'>
-        <% unless @micropost.like?(current_user) %>
-          <% #if the micropost is not liked, otherwise we don't show it %>
-          <%= render 'microposts/like', :micropost => @micropost %>
-        <% else %>
-          <%= render 'microposts/unlike', :micropost => @micropost %>
-        <% end %>
+      
+      <div style="color:blue" class="post-status">
+        <div class="status">
+          <i class="icon-question-sign"></i>
+          <% if @micropost.status.nil? %>
+            <span class="post-status">Ongoing</span>
+          <% elsif @micropost.status == 1 %>
+            <span class="post-status">Processing</span>
+          <% elsif @micropost.status == 2 %>
+            <span class="post-status">Ending</span>
+          <% end %>
+        </div>
+        <div id='like_form'>
+          <% unless @micropost.like?(current_user) %>
+            <% #if the micropost is not liked, otherwise we don't show it %>
+            <%= render 'microposts/like', :micropost => @micropost %>
+          <% else %>
+            <%= render 'microposts/unlike', :micropost => @micropost %>
+          <% end %>
+        </div>
       </div>
     </div>
     
