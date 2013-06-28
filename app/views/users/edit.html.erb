@@ -7,10 +7,10 @@
       <%= render 'shared/error_messages', object: f.object %>
 
       <%= f.label :name %>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, :disabled => true %>
 
       <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :email, :disabled => true%>
 
       <%= f.label :photo %>
       <%= f.file_field :photo %>
