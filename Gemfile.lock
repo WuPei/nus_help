@@ -160,7 +160,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   json
-  mini_magick (~> 3.5.0)
+  mini_magick
   mysql2
   pg (= 0.15.1)
   protected_attributes

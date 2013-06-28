@@ -12,7 +12,6 @@ class ModuleFollowingsController < ApplicationController
       mod_code = params[:module_following][:mod_id]
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
     end
-    @module_following = ModuleFollowing.new(params[:module_following])   
     respond_to do |format|
       if @module_following.save
         format.html { 
@@ -44,6 +43,7 @@ class ModuleFollowingsController < ApplicationController
         status: :deleted,
         location: @module_following
       }
+
     end
   end
 

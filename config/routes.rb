@@ -5,7 +5,7 @@ NusHelp::Application.routes.draw do
   get "activities/index"
   resources :users do
     member do
-      get :following, :followers , :followed_mods, :liked_microposts
+      get :following, :followers , :mods, :liked_microposts
     end
   end
   
@@ -26,6 +26,7 @@ NusHelp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :likeships
   resources :module_followings, only: [:new, :create, :destroy, :insertModules]
+
   resources :search
   resources :help_recs
 

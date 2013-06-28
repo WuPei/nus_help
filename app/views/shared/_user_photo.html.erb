@@ -1,4 +1,4 @@
-<% size = "30x30" if (size and size == :small) else "150x150" %>
+<% size = "30x30" if (size and size == :small) else "180*180" %>
 <% user_render = @user.nil? ? current_user : @user %>
 <a href="<%= user_path(user_render) %>">
   <% if user_render.photo.to_s == "/uploads/user/photo/#{user_render.id}/0".to_s %>
