@@ -2,7 +2,8 @@
     <div>
     <%= render 'moduleInfo',:nus_module => @nus_module %>
     </div>
-
+    <br/>
+    <h1>
     <% if signed_in? %>
       <div class="mod_follow_form">
         <button id="follow" class="btn btn-default btn-primary" data-mid=<%= @nus_module.id %> data-uid=<%= current_user.id %> > 
@@ -13,6 +14,6 @@
         </button>
         <% end %>
       </div>
-
+    </h1>
       <%= render 'shared/feed' %>
     <% end %>

@@ -6,7 +6,15 @@
 
   <% if !feed_item.is_anonymous %>
     <span class="content">
-      <%= link_to gravatar_for(feed_item.user, {:size => 40}), feed_item.user %> 
+       <%if feed_item.user.photo? %>
+           <%= image_tag feed_item.user.photo, :size =>"40x40", :crop => :fill%>
+       <% else %>
+          <% if feed_item.user.gender==0 %>
+          <%= image_tag "man_small.jpeg", :size=>"40X40", :crop =>:fill%>
+          <% else %>
+          <%= image_tag "women_small.jpeg", :size=>"40X40", :crop =>:fit%>
+          <% end %>           
+       <%end %>
     <%= link_to feed_item.user.name+":", feed_item.user %><br/>
   <% else%>
     <span class="content">

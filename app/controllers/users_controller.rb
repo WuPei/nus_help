@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
-
   #show some users in lists
   def index
     @users = User.paginate(page: params[:page])
@@ -13,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+    render :layout => "with_sidebar"
   end
 
   def new
@@ -33,6 +33,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    render :layout => "with_sidebar"
   end
 
   def update
@@ -71,6 +72,8 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+ 
+
 
   private
 

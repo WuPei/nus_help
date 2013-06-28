@@ -1,12 +1,14 @@
+<% user_render = @user || current_user %>
 <div class="user-info-pad">
   <div>
     <%= render 'shared/user_photo' %>
   </div>
+</br>
   <div>
     <%= render 'shared/stats' %>
   </div>
 </div>
 
 <h3>
-  <%= link_to current_user.name, current_user %>
+  <%= link_to user_render.name, user_render %>
 </h3>

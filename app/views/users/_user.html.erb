@@ -1,4 +1,4 @@
-<div class="span3 well">
+<div class="span2 well user-cell">
   <div>
     <% if user.photo.to_s == "/uploads/user/photo/#{user.id}/0".to_s %>
       <% if user.gender == 0 %>
@@ -10,7 +10,7 @@
       <%= image_tag user.photo, :size => "150x150", :crop => :fill%>
     <% end %>
   </div>
-  <div>
+  <div class="user-info">
     <%= link_to user.name, user %> 
     <div> Help Posted: <%= user.microposts.length %> </div>
     <div> Follers: <%= user.followers.length %> </div>
@@ -21,5 +21,4 @@
                                     data: { confirm: "You sure?" } %>
     <% end %>
   </div>
-
 </div>

@@ -2,7 +2,7 @@
   <section>
     <%= render 'shared/user_info' %>
   </section>
-  <section>
-    <%= render 'shared/micropost_form' %>
-  </section>
+  <% if @user.nil? || @user == current_user %>
+    <section> <%= render 'shared/micropost_form' %> </section>
+  <% end %>
 </aside>
