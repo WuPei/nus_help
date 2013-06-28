@@ -1,5 +1,5 @@
 <div class="module-feed">
-<% if @feed_items.any? %>
+<% if @feed_items %>
 
   <ol class="microposts">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
