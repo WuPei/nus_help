@@ -58,6 +58,9 @@ gem 'simple_form'
 
 #notification systems
 gem 'public_activity'
+
+#gem "jcrop-rails"
+
 # annotations aren’t needed in production applications.) 
 #We next install it with bundle install:
 #$ bundle install
