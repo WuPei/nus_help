@@ -28,10 +28,12 @@ class ModuleFollowingsController < ApplicationController
 
   def insertModules
     @module = get_user_module(params['token'])
+    @module_token = get_token_modules(params['token'],params['account'])
     @mod = []
     for m in @module['Results']
       @mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
     end
+
     @uid = params['uid']
     if @mod
       for m in @mod

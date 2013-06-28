@@ -62,6 +62,14 @@ module SessionsHelper
     return res
   end
 
+  def get_token_modules(token,studentID)
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules_Taken?APIKey=x1oWBE5VN7HEynShRRjLv&AuthToken=#{token}&StudentID=#{studentID}";
+    res = http_request(url)
+    print "11111111"
+    print res
+    print "11111111"
+    return res
+  end
 
   def get_user_name(token)
     url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
