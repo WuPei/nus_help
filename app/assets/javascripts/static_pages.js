@@ -2,13 +2,13 @@
 // # All this logic will automatically be available in application.js.
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 $(function() {
-	if $('.pagination').length {
+	if ($('title').html()=="NUS HELP" && $('.pagination').length) {
 		$(window).scroll(function() {
-			var url = $('.pagination.next_page').attr('href');
-			if (url && ($(window).scrollTop() > $(document).height() - $(window).height() - 50)) {
+			var url=$('.pagination').find('li.next_page >a').attr('href');
+			if(url && $(window).scrollTop() > $(document).height() - $(window).height() - 50) {
 				$('.pagination').text("See More Helps...");
 				$.getScript(url);
 			};
 		});
-	}
+	};
 });

@@ -17,7 +17,7 @@ class NusModule < ActiveRecord::Base
   def findModule(code)
     where("module_code = :module_code", module_code: code)
   end
-  
+      
   def following?(user)
     module_followings.find_by(mod_follower_id: user.id)
   end
@@ -27,7 +27,7 @@ class NusModule < ActiveRecord::Base
   end
 
   def unfollow!(user)
-    module_followings.find_by_mod_follower_id(user.id).destroy
+    module_followings.find_by(mod_follower_id: user.id).destroy
   end
 
 end

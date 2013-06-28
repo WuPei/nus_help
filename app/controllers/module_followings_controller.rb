@@ -6,23 +6,20 @@ class ModuleFollowingsController < ApplicationController
   end
 
   def create
-    @module_following = ModuleFollowing.new(params[:module_following])
-    if @module_following.save
-      @module_following.create_activity :create, owner: current_user
-    end
+    nus_module = NusModule.find(params[:module_following][:mod_id])
+    nus_module.follow!(current_user)
     respond_to do |format|
       format.html { redirect_to :back }
       format.js
     end
   end
 
-
   def destroy
-    @module_following = ModuleFollowing.find_by(params[:module_following])
-    @module_following.destroy
+    nus_module = ModuleFollowing.find_by(params[:id]).mod
+    nus_module.unfollow!(current_user)
     respond_to do |format|
-      format.html { redirect_to :back }
       format.js
+      format.html { redirect_to :back }
     end
   end
 
