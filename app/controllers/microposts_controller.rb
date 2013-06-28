@@ -32,7 +32,6 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       flash[:error] = "Post unsuccessful."
-      @feed_items = []
       render 'static_pages/home'
     end
   end
