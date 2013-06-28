@@ -1,12 +1,13 @@
 <% size = "30x30" if (size and size == :small) else "150x150" %>
-<a href="<%= user_path(current_user) %>">
-  <% if current_user.photo.to_s == "/uploads/user/photo/#{current_user.id}/0".to_s %>
-    <% if current_user.gender == 0 %>
+<% user_render = @user.nil? ? current_user : @user %>
+<a href="<%= user_path(user_render) %>">
+  <% if user_render.photo.to_s == "/uploads/user/photo/#{user_render.id}/0".to_s %>
+    <% if user_render.gender == 0 %>
       <%= image_tag "man.jpeg" , :size => size, :crop => :fill%>
     <% else %>
       <%= image_tag "women.jpeg" , :size => size, :crop => :fill%>
     <% end %> 
   <% else %>
-    <%= image_tag current_user.photo, :size => size, :crop => :fill%>
+    <%= image_tag user_render.photo, :size => size, :crop => :fill%>
   <% end %>
 </a>

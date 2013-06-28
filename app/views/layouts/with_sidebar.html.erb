@@ -15,7 +15,11 @@
       <div class="row-fluid">
         <% if signed_in? %>
           <div class="sidebar span3">
-          <%= render 'layouts/sidebar' %>
+          <% if @self_sidebar.nil? %>
+            <%= render 'layouts/sidebar' %>
+          <% else %>
+            <%= render 'layouts/sidebar_other' %>
+          <% end %>
           </div>
         <% end %>
 
