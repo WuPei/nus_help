@@ -7,6 +7,7 @@ class ModuleFollowingsController < ApplicationController
 
   def create
     if(params[:mode] == "module")
+      params[:mode] == ""
       params[:module_following][:mod_follower_id] = current_user.id
       mod_code = params[:module_following][:mod_id]
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
@@ -29,6 +30,7 @@ class ModuleFollowingsController < ApplicationController
 
   def destroy
     if(params[:mode] == "module")
+      params[:mode] == ""
       params[:module_following][:mod_follower_id] = current_user.id
       mod_code = params[:module_following][:mod_id]
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
