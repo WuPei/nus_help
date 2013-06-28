@@ -16,8 +16,7 @@ module SessionsHelper
   #but on subsequent invocations returns @current_user without hitting the database.
   #as later the @current_user is not false again
   def current_user
-    @current_user = User.first  # TODO: remote later, testing purpose now
-# @current_user ||= User.find_by(remember_token: cookies[:remember_token])
+    @current_user ||= User.find_by(remember_token: cookies[:remember_token])
   end
 
   def current_user?(user)
@@ -62,6 +61,7 @@ module SessionsHelper
     return res
   end
 
+  
 
   def get_user_name(token)
     url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";

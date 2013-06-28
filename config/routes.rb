@@ -25,7 +25,8 @@ NusHelp::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
   resources :relationships, only: [:create, :destroy]
   resources :likeships
-  resources :module_followings, only:[:create, :destroy]
+  resources :module_followings, only: [:new, :create, :destroy, :insertModules]
+
   resources :search
   resources :help_recs
 
@@ -39,7 +40,7 @@ NusHelp::Application.routes.draw do
   match '/signupmod', to: 'module_followings#new',  via: 'get'
   match '/insertModules', to: 'module_followings#insertModules',  via: 'get'
   match '/update_helpRec', to: 'help_recs#update', via: 'post'
-
+  match '/module_followings', to: 'module_followings#destroy', via: 'DELETE'
 
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
