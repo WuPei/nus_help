@@ -1,17 +1,21 @@
-<h1>Notification Items
-</h1>
+<div class="notification">
+  <h3 class="notificationTitle">Notifications</h3>
+</div>
 <% @activities.each do |activity| %>
   <% if activity.trackable && activity.owner %>
-    <div class="activity">
-      <div class = "user_image">
-        <%= link_to gravatar_for(activity.owner, {:size =>50 }), activity.owner %>
+    <li>
+      <div class="activity">
+        <div class = "user_avatar">
+          <%= link_to gravatar_for(activity.owner, {:size =>28 }), activity.owner %>
+        </div>
+        <%= link_to activity.owner.name, activity.owner %>
+        <%= render_activity activity %>
+        <span class="timestamp">
+          <%= time_ago_in_words(activity.created_at ) %>
+          ago.
+        </span>
       </div>
-      <%= link_to activity.owner.name, activity.owner %>
-      <%= render_activity activity %>
-      <span class="timestamp">
-        <%= time_ago_in_words(activity.created_at ) %>
-        ago.
-      </span>
-    </div>
+    </li>
   <% end %>
+  <%= link_to "See All",activities_path %>
 <% end %>

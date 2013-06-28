@@ -16,7 +16,7 @@ class Micropost < ActiveRecord::Base
   accepts_nested_attributes_for :comments, allow_destroy: true
 
   default_scope -> { order('created_at DESC') }
-  validates :title, presence: true, length: {maximum: 50}
+  validates :title, presence: true, length: {maximum: 25}
   validates :user_id, presence: true
   #validates_associated :nus_module
   validates :deadline, presence: true
