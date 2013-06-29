@@ -2,7 +2,6 @@ $(function() {
 	$('button#follow').click(function(e){
 		$this = $(this);
 		if($this.html().trim() == 'Follow'){
-			console.log("111");
 			$.ajax({
 	          type : "POST",
 	          url : "module_followings",
@@ -20,7 +19,6 @@ $(function() {
 	          }
 	        }); 
 		}else{
-			console.log("222");
 			var mid = 	$this.data('mid');
 			var url = "/nus_modules/" + mid.toString() + "/module_followings_delete";
 			console.log("url = " + url);
@@ -44,4 +42,4 @@ $(function() {
 		}
 		
 	})
-});
+})

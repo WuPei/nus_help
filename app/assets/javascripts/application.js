@@ -8,7 +8,7 @@ function updateUI(){
     $m_code = $m_code.substring(0,$m_code.indexOf('\n')-1);
     $.ajax({
       type : "POST",
-      url : "module_followings",
+      url : "module_followings_delete",
       data:JSON.stringify({
         mode : "module",
         mod_id: $m_code,
