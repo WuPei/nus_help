@@ -42,7 +42,7 @@
         <div class="tab-pane active" id="commit">
           <!--show the comments -->
           <section>
-            <%= render 'comments/comment', :micropost => @micropost %>
+            <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
           </section>
           <!-- Add new comment -->
           <%= render 'comments/comment_form', :micropost => @micropost %>
