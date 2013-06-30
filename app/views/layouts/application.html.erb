@@ -10,6 +10,12 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <div id="sidebar-static">
+      <div id="sidebar-main">
+        <%= render 'layouts/sidebar' %>
+      </div> 
+      <div id="sidebar-ctrl"> </div> 
+    </div>
     <div class="container-fluid">
       <div class="content">
         <%= render 'layouts/messages' %>
