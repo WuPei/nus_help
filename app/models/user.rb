@@ -12,9 +12,14 @@
 class User < ActiveRecord::Base
   include PublicActivity::Model
   tracked owner: ->(controller, model) { controller && controller.current_user }
-
   attr_accessible :name, :email, :account, :remember_token, :photo, :microposts_attributes, :gender
+
+  # Method for uploader
   mount_uploader :photo, ImageUploader
+  CropSet = :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessor *CropSet
+  def cropping?(u); CropSet.none? {|m| send(m).blank?} end
+
   has_many :comments 
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy

@@ -16,6 +16,4 @@ class ImageUploader < CarrierWave::Uploader::Base
     %w(jpg jpeg gif png)
   end
 
-  process :resize_to_fill => [200, 200]
-
 end

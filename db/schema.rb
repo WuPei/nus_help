@@ -120,7 +120,8 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.datetime "updated_at"
     t.boolean  "admin",          default: false
     t.integer  "gender"
-    t.string   "photo",          default: "0"
+    t.string   "photo"
+    t.string   "photo_small"
   end
 
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree
