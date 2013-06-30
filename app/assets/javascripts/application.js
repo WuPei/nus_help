@@ -7,8 +7,8 @@ function updateUI(){
     $m_code = evt.currentTarget.parentElement.innerText;
     $m_code = $m_code.substring(0,$m_code.indexOf('\n')-1);
     $.ajax({
-      type : "DELETE",
-      url : "module_followings#destroy",
+      type : "POST",
+      url : "module_followings_delete",
       data:JSON.stringify({
         mode : "module",
         mod_id: $m_code,
@@ -78,7 +78,7 @@ $(function() {
         // TODO: callback to update DB that module has been followed
         $.ajax({
           type : "POST",
-          url : "module_followings#create",
+          url : "module_followings",
           data:JSON.stringify({
             mod_id: $mInfo.html(),
             mode : "module",
@@ -101,3 +101,25 @@ $(function() {
 });
 
 
+// Used by the sidebar
+$(function(){
+  $sidebar = $("#sidebar-main");
+  var width = $sidebar.css("width");
+  $sidebar.css("width","0px");
+  $sidebar.attr("isO",0);// default to close
+  $("#sidebar-ctrl").click(function(){
+    if($sidebar.attr("isO") == "1"){
+      // Do sidebar close
+      $sidebar.animate({
+        width:"0px"
+      },1000);
+      $sidebar.attr("isO","0")
+    } else{
+      // Do Sidebar open
+      $sidebar.animate({
+        width: width
+      },1000);
+      $sidebar.attr("isO","1")
+    }
+  });
+});

@@ -9,13 +9,16 @@
   </head>
 
   <body>
-    <%= javascript_include_tag "application" %>
     <%= render 'layouts/header' %>
     <div class="container-fluid">
       <div class="row-fluid">
         <% if signed_in? %>
           <div class="sidebar span3">
-          <%= render 'layouts/sidebar' %>
+          <% if @self_sidebar.nil? %>
+            <%= render 'layouts/sidebar' %>
+          <% else %>
+            <%= render 'layouts/sidebar_other' %>
+          <% end %>
           </div>
         <% end %>
 

@@ -5,10 +5,12 @@
     <br/>
     <% if signed_in? %>
       <div class="mod_follow_form">
-        <% unless @nus_module.following?(current_user) %>
-          <%= render 'followMod', :nus_module => @nus_module %>
-        <% else %>
-          <%= render 'unfollowMod', :nus_module => @nus_module %>
+        <button id="follow" class="btn btn-default btn-primary" data-mid=<%= @nus_module.id %> data-uid=<%= current_user.id %> > 
+          <% unless @nus_module.following?(current_user) %>
+            Follow
+          <% else %>
+            Unfollow
+        </button>
         <% end %>
       </div>
       <%= render 'shared/feed' %>
