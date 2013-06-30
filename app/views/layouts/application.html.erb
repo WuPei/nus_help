@@ -10,12 +10,14 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div id="sidebar-static">
-      <div id="sidebar-main">
-        <%= render 'layouts/sidebar' %>
-      </div> 
-      <div id="sidebar-ctrl"> </div> 
-    </div>
+    <% if signed_in? %>
+      <div id="sidebar-static">
+        <div id="sidebar-main">
+          <%= render 'layouts/sidebar' %>
+        </div> 
+        <div id="sidebar-ctrl"> </div> 
+      </div>
+    <% end %>
     <div class="container-fluid">
       <div class="content">
         <%= render 'layouts/messages' %>
