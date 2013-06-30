@@ -14,8 +14,8 @@
 		float: right;
 		line-height: 12px;
 		font-weight: bold;
-		color: white;
-		background-color: gray;
+		color: grey;
+		background-color: grey;
 		display: inline-block;
 		padding: 2px 10px 2px 10px;
 		-moz-border-radius: 12px;
@@ -49,3 +49,59 @@
 		height: 2px;
 	}
 }
+
+#user_switch
+{
+    margin-bottom:20px;
+}
+
+
+#user_table{
+ background-color: white;
+ border: 1px solid;
+ border-color: #1d9bbf;
+ padding: 5px;
+ margin-bottom: 15px;
+ border-radius: 3px;
+ box-shadow: 8px 8px 8px #888888;
+   
+   #user_photo{
+   display:inline;
+   } 
+
+   #user_info{
+   display:inline-block;
+    #user_name
+    {
+    font-size:16px;
+    color:blue;
+    font-weight:bold;
+    margin-bottom:15px;
+    }
+   }
+
+ .user_stats {
+  overflow: auto;
+  clear: both;
+  font-size:12px;
+  font_color: #717c7f;
+  span {
+    display:inline-block;
+    width: 50px;
+    padding: 0 10px;
+    border-left: 1px solid #91a2a6;
+    &:first-child {
+      padding-left: 0;
+      border: 0;
+    }
+    &:hover {
+      text-decoration: none;
+      color: #6f8085;
+    }
+  }
+  strong {
+    display: block;    
+  }
+}
+}
+

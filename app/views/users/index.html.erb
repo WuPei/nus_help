@@ -1,5 +1,10 @@
 <% provide(:title, 'All users') %>
-<h3>Users</h3>
+<h1> All Users</h1>
+<div class="row">
+<div id="user_switch" class="span2 offset10">
+	<button class="btn btn-primary" type="button">Switch to other users</button>
+</div>
+</div>
 <div>
   <%= render @users %>
 </div>

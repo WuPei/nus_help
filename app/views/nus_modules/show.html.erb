@@ -3,7 +3,6 @@
     <%= render 'moduleInfo',:nus_module => @nus_module %>
     </div>
     <br/>
-    <h1>
     <% if signed_in? %>
       <div class="mod_follow_form">
         <% unless @nus_module.following?(current_user) %>
@@ -12,6 +11,5 @@
           <%= render 'unfollowMod', :nus_module => @nus_module %>
         <% end %>
       </div>
-    </h1>
       <%= render 'shared/feed' %>
     <% end %>
