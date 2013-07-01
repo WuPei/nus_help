@@ -72,9 +72,10 @@ $(function() {
         $mInfo = $("<a></a>"); $mInfo.html(ui.item.value);
         $mTag = $("<span></span>"); $mTag.addClass("module-tag needToolTip");
         $mTag.attr("title","Module Title Stub");
-        
         $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
         $mTag.appendTo($tags);
+        console.log($mInfo);
+        console.log($mTag);
 
         // TODO: callback to update DB that module has been followed
         $.ajax({
