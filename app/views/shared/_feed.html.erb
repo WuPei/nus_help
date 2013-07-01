@@ -1,12 +1,10 @@
-<div class="module-feed">
 <% if @feed_items.any? %>
-
-  <ol class="microposts">
+  <ul class="nav nav-list" id="homehelpFeeds">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
-  </ol>
+  </ul>
   <%= will_paginate  @feed_items%>
-
 <% else %>
-  <em> There's no feed yet. </em>
+  <em>
+    There's no feed yet.
+  </em>
 <% end %>
-</div>

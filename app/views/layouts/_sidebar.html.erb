@@ -1,8 +1,30 @@
-  <aside>
-  <section>
-    <%= render 'shared/user_info' %>
-  </section>
-  <section>
-    <%= render 'shared/micropost_form' %>
-  </section>
-</aside>
+<div class= "rightsidebar">
+  <div class="user-info-pad withborder">
+    <section >
+      <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
+      <%= link_to current_user.name, current_user %>
+      <div class="light">
+        view my profile page
+      </div>
+    </section>
+  </div>
+  <% @user ||= current_user %>
+  <div class="span4 spannode">
+    <%= @user.microposts.count %>
+    helps
+  </div>
+  <div class="span4 spannode">
+    <a href="<%= following_user_path(@user) %>">
+      <%= @user.followed_users.count %>
+      following users
+    </a>
+  </div>
+  <div class="span4 spannode">
+    <a href="<%= followers_user_path(@user) %>">
+      <%= @user.mods.count %>
+      following modules
+    </a>
+  </div>
+</div>
+<div class="user-info-bottom-pad">
+</div>

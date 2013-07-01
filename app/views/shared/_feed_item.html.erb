@@ -1,35 +1,26 @@
 <li id="<%= feed_item.id %>">
-  <span class="timestamp">
-    <%= time_ago_in_words(feed_item.created_at) %>
-    ago.
-  </span>
-
-  <% if !feed_item.is_anonymous %>
-    <span class="content">
-      <%= link_to gravatar_for(feed_item.user, {:size => 40}), feed_item.user %> 
-    <%= link_to feed_item.user.name+":", feed_item.user %><br/>
-  <% else%>
-    <span class="content">
-  <% end %>
-    <span class="module_code">
-      #<%= link_to "#{NusModule.find_by(id: feed_item.module_id).code}" , NusModule.find_by(id: feed_item.module_id) %>#
-
-      <%= link_to feed_item.title, feed_item %>
-    </span><br/>
-    <span class="deadline">
-      Deadline:
-      <%= feed_item.deadline %>
-    </span><br/>
-    <span class="gift">
-      Gift:
-      <%= feed_item.gift %>
-    </span><br/>
-      <!--<%= feed_item.is_anonymous %>-->
-  <% if current_user?(feed_item.user) %>
-  <span id="delete">
-  <%= link_to "delete" , feed_item, method: :delete,
-                                    title: feed_item.content%>
-  </span>                                 
-</span>
-</span>
-<% end %>
+  <div class="help">
+    <div class="helpcontent">
+      <%= link_to gravatar_for(feed_item.user,{:size=>52}), feed_item.user %>
+      <div class='countNumber'>
+        <%= link_to feed_item.comments.count,feed_item,{:style=>'color:white'} %>
+      </div>
+      <td>
+        <span class='itemTitle'>
+          <%= link_to feed_item.title, feed_item%>
+        </span>
+        <div class='sep8'></div>
+        <span class='smallNode gray'>
+          <% @module = NusModule.find_by(id: feed_item.module_id) %>
+          <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
+          <%= " | " %>
+          <%= link_to feed_item.user.name, feed_item, {:style => 'color:gray'} %>
+          <%= " | " %>
+          <span class='mytimestamp'>
+            <%= time_ago_in_words(feed_item.created_at) +" ago"%>
+          </span>
+        </span>
+      </td>
+    </div>
+  </div>
+</li>

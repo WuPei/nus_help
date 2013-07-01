@@ -33,7 +33,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    render :layout => "with_sidebar"
   end
 
   def update

@@ -1,22 +1,20 @@
 <% @user ||= current_user %>
-<div class="stats">
-  <span>
+<span>
   <a href="<%= following_user_path(@user) %>">
     <strong id="following" class="stat">
       <%= @user.followed_users.count %>
     </strong>
-    following
+    following users
   </a>
-  </span>
-  <span>
+</span>
+<span>
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
-      <%= @user.followers.count %>
+      <%= @user.mods.count %>
     </strong>
-    followers
+    following modules
   </a>
-  </span>
-  <span>
-    <%= pluralize(current_user.microposts.count, "micropost") %>
-  </span>
-</div>
+</span>
+<span>
+  <%= pluralize(current_user.microposts.count, "micropost") %>
+</span>

@@ -1,12 +1,9 @@
 <div class="user-info-pad">
-  <div>
-    <%= render 'shared/user_photo' %>
+  <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
+  <h5>
+    <%= link_to current_user.name, current_user %>
+  </h5>
+  <div class="sep15">
   </div>
-  <div>
-    <%= render 'shared/stats' %>
-  </div>
+  <%= render 'shared/stats' %>
 </div>
-
-<h3>
-  <%= link_to current_user.name, current_user %>
-</h3>

@@ -27,8 +27,12 @@
 	margin-top:20px;
 }
 
+.smallNode{
+	font-size: 0.8em;
+}
+
 .itemTitle{
-	font-size: 1.5em;
+	font-size: 1.1em;
 	border-bottom: 1px;
 	border-bottom-color: #CCC;
 }
@@ -38,18 +42,4 @@
 }
 .sep8{
 	height: 8px;
-}
-.moduleFeeds{
-	padding: 10px;
-	border: 5px black;
-	background-color: white;
-	border-radius: 5px;
-	margin: 5px;
-}
-
-.module{
-	margin-bottom: 5px;
-	padding-top: 10px;
-	padding-bottom: 5px;
-	border-bottom: solid 1px gray;
 }

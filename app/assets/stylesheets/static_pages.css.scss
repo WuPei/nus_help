@@ -24,6 +24,32 @@ ul.ui-autocomplete {
   }
 } 
 
-#delete{
-  float:right;
+#homehead{
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+#homehelpFeeds{
+  border: 5px black;
+  li:nth-child(1){
+    border-top: solid 1px #c0c0c0;
+  }
+}
+
+.help{
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #c0c0c0;
+
+}
+
+.rightsidebar{
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
+  border-radius: 5px 5px 5px 5px; 
+}
+
+.sep10{
+  height: 10px;
 }
