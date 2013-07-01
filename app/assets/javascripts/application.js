@@ -53,7 +53,6 @@ $(function(){
     var id = $(this).data('id');
     $('.modal-body #rec_id').val(id);
   })
-  console.log("click setup.");
 });
 
 

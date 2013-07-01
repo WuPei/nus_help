@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.string   "helper_comment"
     t.string   "owner_comment"
     t.string   "feedback_comment"
-    t.string   "phone_number"
+    t.string   "contact_info"
     t.boolean  "online"
     t.boolean  "is_happy"
     t.datetime "created_at"

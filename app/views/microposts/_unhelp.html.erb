@@ -1,40 +1,40 @@
-<%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
-  <%= f.hidden_field :helper_id %>
-  <%= f.hidden_field :post_id %>
-  
-
-  <span> <%= link_to User.find_by(:id => current_user).name, current_user%> </span> : 
+<div class="help-other">
+  Help: 
   <span> <%= micropost.help_recs.find_by(helper_id: current_user).helper_comment %> </span>
   </br>
 
   <% if micropost.status == 1 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
-  	<div class="thanks-from">
+    <div class="thanks-from">
       <span>Thanks from <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> : </span>
-  	  <span> <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %> </span>	
-  	</div>
+      <span> <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %> </span>  
+    </div>
     <div class="feedback">
-    	<a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="open_add_thanks">Feedback</a> 
+      <a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="open_add_thanks">Feedback</a> 
       <%= micropost.help_recs.find_by(helper_id: current_user).feedback_comment %>
     </div>
   <% end %>
-  
-  
-  <div class= "like_button">
-    <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
-  </div>
-<% end %>
 
-<div class="modal fade" id="feedback_modal">
-  <div class="modal-header">
-    <a class="close" data-dismiss="modal">&times;</a>
-    <h3>Feedback</h3>
-  </div>
-  <div class="modal-body">
-    <%= form_tag update_helpRec_url do %>
-      <%= hidden_field_tag :rec_id %>
-      <%= label_tag :feedback_comment %>
-      <%= text_field_tag :feedback_comment %>
-        <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
-    <% end %>
+  <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
+    <%= f.hidden_field :helper_id %>
+    <%= f.hidden_field :post_id %>
+    <div class= "like_button">
+      <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
+    </div>
+  <% end %>
+
+  <div class="modal fade" id="feedback_modal">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">&times;</a>
+      <h3>Feedback</h3>
+    </div>
+    <div class="modal-body">
+      <%= form_tag update_helpRec_url do %>
+        <%= hidden_field_tag :rec_id %>
+        <%= label_tag :feedback_comment %>
+        <%= text_field_tag :feedback_comment %>
+          <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div>
+

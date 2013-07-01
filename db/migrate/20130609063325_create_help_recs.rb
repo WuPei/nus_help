@@ -5,7 +5,7 @@ class CreateHelpRecs < ActiveRecord::Migration
       t.string :helper_comment
       t.string :owner_comment
       t.string :feedback_comment
-      t.string :phone_number
+      t.string :contact_info
       t.boolean :online
       t.boolean :is_happy
 
