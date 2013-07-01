@@ -72,7 +72,9 @@ class ModuleFollowingsController < ApplicationController
         mod = NusModule.find_by(code: m['code'])
         unless mod.nil?
           params[:modFollow] = {:mod_id=>mod.id, :mod_follower_id=>params[:uid]}
-          ModuleFollowing.create!(params[:modFollow])
+          if ModuleFollowing.find_by(params[:modFollow]).nil?
+            ModuleFollowing.create!(params[:modFollow])
+          end  
         end
       end
     end

@@ -70,13 +70,21 @@ $(function() {
         $closeTag = $("<a></a>"); $closeTag.html("x"); $closeTag.addClass("close needToolTip unfollow"); 
         $closeTag.attr("title","Unfollow");
         $mInfo = $("<a></a>"); $mInfo.html(ui.item.value);
-        $mTag = $("<span></span>"); $mTag.addClass("module-tag needToolTip");
-        $mTag.attr("title","Module Title Stub");
-        $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
-        $mTag.appendTo($tags);
-        console.log($mInfo);
-        console.log($mTag);
-
+        
+        var flag = true;
+        var mod_list = $tags[0].children;
+        for (var i=0; i<mod_list.length; i++){
+          var text = mod_list[i].textContent;
+          if ($mInfo.html().trim()+'x' == text.trim())
+               flag = false;
+        }
+        if (flag) {
+          $mTag = $("<span></span>"); $mTag.addClass("module-tag needToolTip");
+          $mTag.attr("title","Module Title Stub");
+          $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
+          $mTag.appendTo($tags);
+        }
+        
         // TODO: callback to update DB that module has been followed
         $.ajax({
           type : "POST",
