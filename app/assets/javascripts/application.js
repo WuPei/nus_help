@@ -49,10 +49,11 @@ $(function() {
 
 $(function(){
   $('#tabs').tab();
-    $('.open_add_thanks').click(function(){
-      var id = $(this).data('id');
-      $('.modal-body #rec_id').val(id);
-    })
+  $('.open_add_thanks').click(function(){
+    var id = $(this).data('id');
+    $('.modal-body #rec_id').val(id);
+  })
+  console.log("click setup.");
 });
 
 

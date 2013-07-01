@@ -4,6 +4,9 @@ class CreateHelpRecs < ActiveRecord::Migration
       t.integer :helper_id
       t.string :helper_comment
       t.string :owner_comment
+      t.string :feedback_comment
+      t.string :phone_number
+      t.boolean :online
       t.boolean :is_happy
 
       t.timestamps

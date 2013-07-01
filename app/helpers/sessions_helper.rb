@@ -45,7 +45,7 @@ module SessionsHelper
   end
 
   def validate_nus(token)
-    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Validate?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/Validate?APIKey=#{NusHelp::Application::API_KEY}&Token=#{token}";
     res = http_request(url)
     return res
   end
@@ -64,19 +64,19 @@ module SessionsHelper
   
 
   def get_user_name(token)
-    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserName_Get?APIKey=#{NusHelp::Application::API_KEY}&Token=#{token}";
     res = http_request(url)
     return res.body[1..-2]
   end
 
   def get_user_account(token)
-    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserID_Get?APIKey=#{NusHelp::Application::API_KEY}&Token=#{token}";
     res = http_request(url)
     return res.body[1..-2]
   end
 
   def get_user_email(token)
-    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserEmail_Get?APIKey=x1oWBE5VN7HEynShRRjLv&Token=#{token}";
+    url = "https://ivle.nus.edu.sg/api/Lapi.svc/UserEmail_Get?APIKey=#{NusHelp::Application::API_KEY}&Token=#{token}";
     res = http_request(url)
     return res.body[1..-2]
   end
