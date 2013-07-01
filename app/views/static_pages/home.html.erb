@@ -3,19 +3,25 @@
     <h4 id="homehead">Help Feeds</h4>
     <%= render 'shared/feed' %>
   <% end %>
-  <% content_for :rightsidebar do %>
+  <% content_for :firstsidebar do %>
     <%= render 'layouts/sidebar' %>
+  <% end %>
+  <% content_for :secondsidebar do %>
+    <%= render 'layouts/secondsidebar' %>
+  <% end %>
+  <% content_for :thirdsidebar do %>
+    <%= render 'layouts/thirdsidebar' %>
   <% end %>
   <%#login page if unsigned_in%>
 <% else %>
   <% content_for :content do %>
-  <div class="center hero-unit">
-    <h1>Welcome to the NUS HELP!</h1>
-    <h2>
-      This is the home page for the
-      <a href="/signin">NUS HELP!</a>
-    </h2>
-    <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", class: "btn btn-large btn-primary" %>
-  </div>
+    <div class="center hero-unit">
+      <h1>Welcome to the NUS HELP!</h1>
+      <h2>
+        This is the home page for the
+        <a href="/signin">NUS HELP!</a>
+      </h2>
+      <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", class: "btn btn-large btn-primary" %>
+    </div>
   <% end %>
 <% end %>

@@ -133,28 +133,7 @@ aside {
 */
 }
 
-.stats {
-  overflow: auto;
-  clear: both;
-  span {
-    display:inline-block;
-    width: 60px;
-    padding: 0 10px;
-    border-left: 1px solid $grayLighter;
-    color: gray;
-    &:first-child {
-      padding-left: 0;
-      border: 0;
-    }
-    &:hover {
-      text-decoration: none;
-      color: $blue;
-    }
-  }
-  strong {
-    display: block;
-  }
-}
+
 
 .user_avatars {
   overflow: auto;

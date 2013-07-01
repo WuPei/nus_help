@@ -1,30 +1,66 @@
-<div class= "rightsidebar">
-  <div class="user-info-pad withborder">
-    <section >
-      <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
-      <%= link_to current_user.name, current_user %>
-      <div class="light">
-        view my profile page
-      </div>
-    </section>
-  </div>
-  <% @user ||= current_user %>
-  <div class="span4 spannode">
-    <%= @user.microposts.count %>
-    helps
-  </div>
-  <div class="span4 spannode">
-    <a href="<%= following_user_path(@user) %>">
-      <%= @user.followed_users.count %>
-      following users
-    </a>
-  </div>
-  <div class="span4 spannode">
-    <a href="<%= followers_user_path(@user) %>">
-      <%= @user.mods.count %>
-      following modules
-    </a>
+<% @user ||= current_user %>
+<div class="user-info-pad withborder">
+  <section >
+    <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
+    <%= link_to current_user.name, current_user %>
+    <div class="light">
+      view my profile page
+    </div>
+  </section>
+</div>
+<div class="user-info-following-container">
+  <div class="row-fluid">
+    <div class="span4" id="span4first">
+      <p class="userinfolabel">
+        FOLLOWING
+      </p>
+    </div>
+    <div class="span4">
+      <a href="<%= following_user_path(@user) %>">
+        <h5><%= @user.followed_users.count %></h5>
+        <strong>
+          USERS
+        </strong>
+      </a>
+    </div>
+    <div class="span4">
+      <a href="#<%# %>">
+        <h5><%= @user.mods.count %></h5>
+        <strong>
+          MODULES
+        </strong>
+      </a>
+    </div>
   </div>
 </div>
-<div class="user-info-bottom-pad">
+
+<div class="user-info-following-container">
+  <div class="row-fluid">
+    <div class="span4" id="span4first">
+      <p class="userinfolabel">
+        GIFT
+      </p>
+    </div>
+    <div class="span4">
+      <a href="<%= following_user_path(@user) %>">
+        <h5><%= @user.microposts.count %></h5>
+        <strong>
+          SEND OUT
+        </strong>
+      </a>
+    </div>
+    <div class="span4">
+      <a href="#<%# %>">
+        <h5><%= @user.mods.count %></h5>
+        <strong>
+          RECEIVED
+        </strong>
+      </a>
+    </div>
+  </div>
 </div>
+<section>
+<div class="sep20 user-info-bottom-pad">
+
+</div>
+</section>

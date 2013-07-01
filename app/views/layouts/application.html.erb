@@ -13,8 +13,16 @@
       <div class ="span7 offset1 content">
         <%= yield :content%>
       </div>
-      <div class ="span3 rightsidebar">
-        <%= yield :rightsidebar%>
+      <div class ="span3">
+        <div class="rightsidebar" id="firstsidebar">
+          <%= yield :firstsidebar%>
+        </div>
+        <div class="rightsidebar" id="secondsidebar">
+          <%= yield :secondsidebar %>
+        </div>
+        <div class="rightsidebar" id="thirdsidebar">
+          <%= yield :thirdsidebar %>
+        </div>
       </div>
       <%= render 'layouts/messages' %>
       <div class ="span7 offset1">

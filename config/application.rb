@@ -9,7 +9,7 @@ Bundler.require(:default, Rails.env)
 module NusHelp
   class Application < Rails::Application
     API_KEY = "x1oWBE5VN7HEynShRRjLv"
-    HOST_URL = "localhost:3000"
+    HOST_URL = "http://localhost:3000/"
 
     config.assets.enabled = true
     config.assets.version = '1.0'
