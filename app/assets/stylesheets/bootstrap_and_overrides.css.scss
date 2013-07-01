@@ -107,9 +107,11 @@ aside {
   }
   width:auto;
 
+/*
   @media(min-height: 800px) and (min-width: 979px){
     position: fixed;
   }
+*/
 }
 
 .stats {
@@ -289,3 +291,25 @@ width: 40%;
   width: 180px;
   height: 100px;;
 }
+
+
+#sidebar-static{
+  position: fixed;
+  left:0px;
+  top: 50px;
+}
+
+#sidebar-ctrl{
+  display: inline-block;
+  width: 10px;
+  height:100px;
+  background-color: #456;
+  cursor: pointer;
+  vertical-align: top;
+}
+
+#sidebar-main{
+  display: inline-block;
+  background-color: #111;
+}
+

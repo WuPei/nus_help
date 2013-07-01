@@ -1,0 +1,32 @@
+<% provide(:title, @nus_module.name) %>
+<<<<<<< HEAD
+    <div>
+    <%= render 'moduleInfo',:nus_module => @nus_module %>
+    </div>
+    <br/>
+    <h1>
+    <% if signed_in? %>
+      <div class="mod_follow_form">
+        <% unless @nus_module.following?(current_user) %>
+          <%= render 'followMod', :nus_module => @nus_module %>
+        <% else %>
+          <%= render 'unfollowMod', :nus_module => @nus_module %>
+        <% end %>
+      </div>
+    </h1>
+      <%= render 'shared/feed' %>
+=======
+<div>
+  <%= render 'moduleInfo',:nus_module => @nus_module %>
+</div>
+<% if signed_in? %>
+  <div id="mod_follow_form">
+    <% unless @nus_module.following?(current_user) %>
+      <%= render 'followMod', :nus_module => @nus_module %>
+    <% else %>
+      <%= render 'unfollowMod', :nus_module => @nus_module %>
+>>>>>>> aa7d0e05c662fad88957649ea5f430bb2097de7c
+    <% end %>
+  </div>
+  <%= render 'shared/feed' %>
+<% end %>

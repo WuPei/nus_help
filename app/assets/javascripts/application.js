@@ -102,3 +102,25 @@ $(function() {
 });
 
 
+// Used by the sidebar
+$(function(){
+  $sidebar = $("#sidebar-main");
+  var width = $sidebar.css("width");
+  $sidebar.css("width","0px");
+  $sidebar.attr("isO",0);// default to close
+  $("#sidebar-ctrl").click(function(){
+    if($sidebar.attr("isO") == "1"){
+      // Do sidebar close
+      $sidebar.animate({
+        width:"0px"
+      },1000);
+      $sidebar.attr("isO","0")
+    } else{
+      // Do Sidebar open
+      $sidebar.animate({
+        width: width
+      },1000);
+      $sidebar.attr("isO","1")
+    }
+  });
+});
