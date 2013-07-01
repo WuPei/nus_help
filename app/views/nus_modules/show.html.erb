@@ -1,17 +1,17 @@
 <% provide(:title, @nus_module.name) %>
-    <div>
-    <%= render 'moduleInfo',:nus_module => @nus_module %>
-    </div>
-    <br/>
-    <% if signed_in? %>
-      <div class="mod_follow_form">
-        <button id="follow" class="btn btn-default btn-primary" data-mid=<%= @nus_module.id %> data-uid=<%= current_user.id %> > 
-          <% unless @nus_module.following?(current_user) %>
-            Follow
-          <% else %>
-            Unfollow
+<% content_for :content do %>
+  <%= render 'moduleInfo',:nus_module => @nus_module %>
+  <br/>
+  <% if signed_in? %>
+    <div class="mod_follow_form">
+      <button id="follow" class="btn btn-default btn-primary" data-mid=<%= @nus_module.id %> data-uid=<%= current_user.id %> >
+        <% unless @nus_module.following?(current_user) %>
+          Follow
+        <% else %>
+          Unfollow
         </button>
-        <% end %>
-      </div>
-      <%= render 'shared/feed' %>
-    <% end %>
+      <% end %>
+    </div>
+    <%= render 'shared/feed' %>
+  <% end %>
+<% end %>

@@ -1,3 +1,4 @@
+<% content_for :content do %>
 <% if @users.any? %>
  <div>
   <ul class="users">
@@ -5,4 +6,5 @@
   </ul>
   <%= will_paginate %>
  </div> 
+<% end %>
 <% end %>

@@ -1,22 +1,18 @@
-<% provide(:title, "Edit user") %> 
-<h1>Update your profile</h1>
-
-<div class="row">
-  <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
-      <%= render 'shared/error_messages', object: f.object %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, :disabled => true %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email, :disabled => true%>
-
-      <%= f.label :photo %>
-      <%= f.file_field :photo %>
-
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
-
+<% provide(:title, "Edit user") %>
+<% content_for :content do %>
+  <h1>Update your profile</h1>
+  <div class="row">
+    <div class="span6 offset3">
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
+        <%= f.label :name %>
+        <%= f.text_field :name, :disabled => true %>
+        <%= f.label :email %>
+        <%= f.text_field :email, :disabled => true%>
+        <%= f.label :photo %>
+        <%= f.file_field :photo %>
+        <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
