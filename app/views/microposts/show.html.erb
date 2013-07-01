@@ -1,13 +1,26 @@
 <% provide(:title, @micropost.title) %>
 <div class="row">
   <div class="span7 offset1">
+    
     <div id="post_info" class="post_info">
-      <p><i class="icon-tasks"></i><span  class="post-title"><%= @micropost.title %></span></p>
-      <p><i class="icon-comment"></i><textarea readonly class="post-content"><%= @micropost.content %></textarea></p>
-      <p><i class="icon-heart"></i><span class="post-gift"><%= @micropost.gift %></span></p>
-      <p><i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span></p>
-      
-      <div style="color:blue" class="post-status">
+      <div class="post-title">
+       <span><%= @micropost.title %></span>
+      </div>
+      <div class="post content">
+       <textarea readonly><%= @micropost.content %></textarea>
+      </div>
+
+      <div class="post-time">
+        <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span>
+      </div>
+
+      <div class="post-row">
+        <div class="post-gift">
+          <i class="icon-heart"></i>
+          <span class="post-gift"><%= @micropost.gift %></span>
+        </div>
+        
+        
         <div class="status">
           <i class="icon-question-sign"></i>
           <% if @micropost.status.nil? %>
@@ -18,6 +31,7 @@
             <span class="post-status">Ending</span>
           <% end %>
         </div>
+
         <div id='like_form'>
           <% unless @micropost.like?(current_user) %>
             <% #if the micropost is not liked, otherwise we don't show it %>
@@ -27,6 +41,7 @@
           <% end %>
         </div>
       </div>
+      
     </div>
     
     <ul id="tabs" class="nav nav-tabs">
@@ -42,7 +57,7 @@
         <div class="tab-pane active" id="commit">
           <!--show the comments -->
           <section>
-            <%= render 'comments/comment', :micropost => @micropost %>
+            <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
           </section>
           <!-- Add new comment -->
           <%= render 'comments/comment_form', :micropost => @micropost %>
@@ -60,38 +75,41 @@
           </div>
         </div>
     </div>
+  
   </div>
-  <div class="span4">
+
+  <div class="span3 post-right-bar">
     <div id="user" class="user">
-      <div class="user-info">
-        <p>
-          <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
-            <% if @user.gender == 0 %>
-              <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
-            <% else %>
-              <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
-            <% end %> 
+      <p>
+        <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
+          <% if @user.gender == 0 %>
+            <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
           <% else %>
-            <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
-          <% end %>
-        </p>
-        <p><%= @user.name %></p>
-      </div>
+            <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
+          <% end %> 
+        <% else %>
+          <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
+        <% end %>
+      </p>
+      <p><%= @user.name %></p>
     </div>
-    <div id="helpers" class="helpers">
+
+    <div class="helpers">
       <% @micropost.helpers.each do |h| %>
-        <div class="helper">
-          <% if h.photo.to_s == "/uploads/user/photo/#{h.id}/0".to_s %>
-            <% if h.gender == 0 %>
-              <%= image_tag "man.jpeg" , :size => "50x50", :crop => :fill%>
+        <oi>
+          <div class="helper">
+            <% if h.photo.to_s == "/uploads/user/photo/#{h.id}/0".to_s %>
+              <% if h.gender == 0 %>
+                <%= image_tag "man.jpeg" , :size => "50x50", :crop => :fill%>
+              <% else %>
+                <%= image_tag "women.jpeg" , :size => "50x50", :crop => :fill%>
+              <% end %> 
             <% else %>
-              <%= image_tag "women.jpeg" , :size => "50x50", :crop => :fill%>
-            <% end %> 
-          <% else %>
-            <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
-          <% end %>
-          <%= link_to h.name, h%>
-        </div>
+              <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
+            <% end %>
+            <%= link_to h.name, h%>
+          </div>
+        </oi>
       <% end %>
     </div>
   </div>

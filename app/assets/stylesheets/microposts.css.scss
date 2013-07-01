@@ -4,66 +4,66 @@
 
 div.post_info{
 	
-	border: 5px solid;
-	border-color: pink;
-	i{
-		margin-left:20px;
-	}
-	span{
-		display: inline-block;
-		vertical-align:text-center;
-		font-size:15px;
-		margin-left:20px;
-		color:black;
-	}
-	span.post-gift{
-		color:red;
-	}
-	span.post-time{
-		width:300px;
-	}
+	border: 2px solid;
+	border-color: black;
+	padding: 20px;
 
-	textarea{
-		display: inline-block;
-		width: 300px;
-		vertical-align:text-center;
-		font-size:15px;
-		margin-left:20px;
-		color:grey;
+	div.post-title{
+		span{
+			font-size: 2em;
+			font-family: Impact;
+		}
 	}
-	div.post-status{
-		display: inline-block;
+	div.post-time{
+		span{
+			margin-left: 5px;
+		}
+	}
+	div.post-row{
+		div{
+			display: inline;
+			color: grey;
+			margin-right: 10px;
+		}
+	}
+}
+
+div.help-self{
+	padiing: 10px;
+
+	div{
+		display: inline;
+	}
+	div.help-content{
+		span{
+			display: block;
+		}
 	}
 }
 
 
+div.post-right-bar{
+	margin-right: auto;
+	div.user{
+		.profile-photo{
+			height: 100%;
+	    	width: 150px;
+	    	float:left;
+		}
+		text-align:center;
+	}
+	div.helper{
+		border: 2px solid;
+		border-color: pink;
+		text-align:center;
+		margin-top: 20px;
+	}
+
+}
 
 div.help_form{
 	button{
 		float: right;
 	}
 	
-}
-
-div.user{
-	.profile-photo{
-		height: 100%;
-    	width: 150px;
-    	float:left;
-	}
-	.user-info{
-
-		p{
-			text-align:center;
-		}	
-	}
-}
-
-div.helpers{
-	div.helper{
-		border: 2px solid;
-		border-color: pink;
-		text-align:center;
-		margin:30px;
-	}
 }

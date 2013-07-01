@@ -1,10 +1,35 @@
-<%= form_for (micropost.help_recs.build(post_id: micropost.id, helper_id: current_user.id) ) do |f|  %>
-  <%= f.hidden_field :post_id %>
-  <%= f.hidden_field :helper_id %>
-  <%= f.label :helper_comment %>
-  <%= f.text_field :helper_comment %>
+<div class="tabbable tabs-left">
+	<ul class="nav nav-tabs">
+		<li class="active"><a href="#tab1" data-toggle="tab"> Online Help </a></li>
+		<li><a href="#tab2" data-toggle="tab"> Offline Help </a></li>
+	</ul>
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<%= form_for (micropost.help_recs.build(post_id: micropost.id, helper_id: current_user.id, online: false) ) do |f|  %>
+			  <%= f.hidden_field :post_id %>
+			  <%= f.hidden_field :helper_id %>
+			  <%= f.label :helper_comment %>
+			  <%= f.text_field :helper_comment %>
 
-  <div class= "like_button">
-    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
-  </div>
-<% end %>
+			  <div class= "like_button">
+			    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
+			  </div>
+			<% end %>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<%= form_for (micropost.help_recs.build(post_id: micropost.id, helper_id: current_user.id, online: true) ) do |f|  %>
+			  <%= f.hidden_field :post_id %>
+			  <%= f.hidden_field :helper_id %>
+			  <%= f.hidden_field :online %>
+			  <%= f.label :helper_comment %>
+			  <%= f.text_field :helper_comment %>
+			  <%= f.label :contact_info %>
+			  <%= f.text_field :contact_info %>
+			  <div class= "like_button">
+			    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+</div>
+

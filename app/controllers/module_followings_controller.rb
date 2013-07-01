@@ -12,9 +12,15 @@ class ModuleFollowingsController < ApplicationController
       mod_code = params[:module_following][:mod_id]
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
     end
-    @module_following = ModuleFollowing.new(params[:module_following])
+
+    if ModuleFollowing.find_by(params[:module_following]).nil?
+      @module_following = ModuleFollowing.new(params[:module_following])
+    else
+      @module_following = nil
+    end  
+
     respond_to do |format|
-      if @module_following.save
+      if @module_following!=nil && @module_following.save
         format.html { 
           @module_following.create_activity :create, owner: current_user
           redirect_to :back 
@@ -66,7 +72,9 @@ class ModuleFollowingsController < ApplicationController
         mod = NusModule.find_by(code: m['code'])
         unless mod.nil?
           params[:modFollow] = {:mod_id=>mod.id, :mod_follower_id=>params[:uid]}
-          ModuleFollowing.create!(params[:modFollow])
+          if ModuleFollowing.find_by(params[:modFollow]).nil?
+            ModuleFollowing.create!(params[:modFollow])
+          end  
         end
       end
     end
