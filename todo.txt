@@ -1,0 +1,5 @@
+1. Module Follow in User Info listing, border based on different gender
+2. Delete the `Users`
+3. Add link to user image
+4. Search by person, show category
+

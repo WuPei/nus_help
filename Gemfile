@@ -43,13 +43,13 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-fileupload-rails'
 gem 'carrierwave'
-gem "mini_magick", "~> 3.5.0"
+gem "mini_magick"
 
 #Most Rails applications use forms; most Rails developers use a form builder gem 
 #to simplify and improve upon the default Rails form helpers. 
@@ -58,6 +58,9 @@ gem 'simple_form'
 
 #notification systems
 gem 'public_activity'
+
+#gem "jcrop-rails"
+
 # annotations aren’t needed in production applications.) 
 #We next install it with bundle install:
 #$ bundle install

@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 <div class="span4">
 <div id="user_table">
   <div id="user_photo">
+=======
+<div class="span2 well user-cell">
+  <div>
+>>>>>>> 08e522f1423978514e09fa7e6ebb45b6ef6ef754
     <% if user.photo.to_s == "/uploads/user/photo/#{user.id}/0".to_s %>
       <% if user.gender == 0 %>
         <%= image_tag "man.jpeg" , :size => "120x120", :crop => :fill%>
@@ -11,6 +16,7 @@
       <%= image_tag user.photo, :size => "120x120", :crop => :fill%>
     <% end %>
   </div>
+<<<<<<< HEAD
   <div id="user_info">
    <div id="user_name"><%= link_to user.name, user %></div>
     <div class="user_stats">
@@ -33,11 +39,23 @@
      following
     </div>
    </span>    
+=======
+  <div class="user-info">
+    <%= link_to user.name, user %> 
+    <div> Help Posted: <%= user.microposts.length %> </div>
+    <div> Follers: <%= user.followers.length %> </div>
+    <div> Following: <%= user.followed_users.length %> </div>
+    
+>>>>>>> 08e522f1423978514e09fa7e6ebb45b6ef6ef754
     <% if current_user.admin? && !current_user?(user) %> 
         | <%= link_to "delete", user, method: :delete,
                                     data: { confirm: "You sure?" } %>
     <% end %>
+<<<<<<< HEAD
   </div> 
  </div>
 </div>
+=======
+  </div>
+>>>>>>> 08e522f1423978514e09fa7e6ebb45b6ef6ef754
 </div>

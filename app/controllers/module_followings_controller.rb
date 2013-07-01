@@ -12,6 +12,7 @@ class ModuleFollowingsController < ApplicationController
       mod_code = params[:module_following][:mod_id]
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
     end
+    @module_following = ModuleFollowing.new(params[:module_following])
     respond_to do |format|
       if @module_following.save
         format.html { 
@@ -35,9 +36,10 @@ class ModuleFollowingsController < ApplicationController
       params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
     end
     @module_following = ModuleFollowing.find_by(params[:module_following])
+    @nus_module = NusModule.find_by(params[:module_following][:mod_id])
     @module_following.destroy
     respond_to do |format|
-      format.html { redirect_to :back }
+      format.html { redirect_to @nus_module }
       format.json{
         render json: @module_following,
         status: :deleted,

@@ -8,20 +8,18 @@
     <%= javascript_include_tag "required" %>
   </head>
   <body>
-    <%= javascript_include_tag "application" %>
     <%= render 'layouts/header' %>
     <div class="row-fluid">
       <div class ="span7 offset1 content">
         <%= yield :content%>
       </div>
-      <div class ="span3 rightsidebar"> 
+      <div class ="span3 rightsidebar">
         <%= yield :rightsidebar%>
       </div>
       <%= render 'layouts/messages' %>
-       <div class ="span7 offset1">
+      <div class ="span7 offset1">
         <%= render 'layouts/footer' %>
       </div>
-      
       <%= debug(params) if !Rails.env.development? %>
     </div>
   </div>

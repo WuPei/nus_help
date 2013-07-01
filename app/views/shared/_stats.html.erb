@@ -2,7 +2,7 @@
 <span>
   <a href="<%= following_user_path(@user) %>">
     <strong id="following" class="stat">
-      <%= @user.followed_users.count %>
+      <%= user_render.followed_users.count %>
     </strong>
     following users
   </a>
@@ -11,6 +11,13 @@
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
       <%= @user.mods.count %>
+    </strong>
+  </a>
+</span>
+<span>
+  <a href="<%= followers_user_path(user_render) %>">
+    <strong id="followers" class="stat">
+      <%= user_render.followers.count %>
     </strong>
     following modules
   </a>
