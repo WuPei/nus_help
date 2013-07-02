@@ -2,8 +2,8 @@
 <% content_for :content do %>
   	<div class="user-show">
 		<%= render 'user_show', :user=>@user if signed_in? %>
-		<%= render 'follow_form' if signed_in? %>
   	</div>
+  	
   	<div class="user-follow">
 		<% if @user.microposts.any? %>
 			<h4 style="margin-left:10px">Microposts (<%= @user.microposts.count %>)</h4>
