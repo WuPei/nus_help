@@ -1,7 +1,7 @@
-<% if micropost.comments.any? %>
-  <%= link_to "Comments( #{micropost.comments.count} )", '#' %>
+<% if @comments.any? %>
+  <%= link_to "Comments( #{@comments.count} )", '#' %>
   <ol class="comments" >
-    <% micropost.comments.each do |comment| %>
+    <% @comments.each do |comment| %>
       <li>
         <%= render 'shared/user_photo',:size => :small %>
         <%= comment.content %>
@@ -18,5 +18,7 @@
       </li>
     <% end %>
   </ol>
-</br>
+  <%= will_paginate @comments %>
+  </br>
+  
 <% end %>

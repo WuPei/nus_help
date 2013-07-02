@@ -7,24 +7,28 @@
     <%= render 'layouts/shim' %>
     <%= javascript_include_tag "required" %>
   </head>
-
   <body>
     <%= render 'layouts/header' %>
-    <% if signed_in? %>
-      <div id="sidebar-static">
-        <div id="sidebar-main">
-          <%= render 'layouts/sidebar' %>
-        </div> 
-        <div id="sidebar-ctrl"> </div> 
+    <div class="row-fluid">
+      <div class ="span7 offset1 content">
+        <%= yield :content%>
       </div>
-    <% end %>
-    <div class="container-fluid">
-      <div class="content">
-        <%= render 'layouts/messages' %>
-        <%= yield %>
+      <div class ="span3">
+        <div class="rightsidebar" id="firstsidebar">
+          <%= yield :firstsidebar%>
+        </div>
+        <div class="rightsidebar" id="secondsidebar">
+          <%= yield :secondsidebar %>
+        </div>
+        <div class="rightsidebar" id="thirdsidebar">
+          <%= yield :thirdsidebar %>
+        </div>
+      </div>
+      <%= render 'layouts/messages' %>
+      <div class ="span7 offset1">
         <%= render 'layouts/footer' %>
-        <%= debug(params) if Rails.env.development? %>
       </div>
+      <%= debug(params) if !Rails.env.development? %>
     </div>
-  </body>
-</html>
+  </div>
+</div>

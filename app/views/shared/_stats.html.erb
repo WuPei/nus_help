@@ -1,22 +1,27 @@
-<% user_render = @user || current_user %>
-<div class="stats">
-  <span>
-  <a href="<%= following_user_path(user_render) %>">
+<% @user ||= current_user %>
+<span>
+  <a href="<%= following_user_path(@user) %>">
     <strong id="following" class="stat">
       <%= user_render.followed_users.count %>
     </strong>
-    following
+    following users
   </a>
-  </span>
-  <span>
+</span>
+<span>
+  <a href="<%= followers_user_path(@user) %>">
+    <strong id="followers" class="stat">
+      <%= @user.mods.count %>
+    </strong>
+  </a>
+</span>
+<span>
   <a href="<%= followers_user_path(user_render) %>">
     <strong id="followers" class="stat">
       <%= user_render.followers.count %>
     </strong>
-    followers
+    following modules
   </a>
-  </span>
-  <span>
-    <%= pluralize(user_render.microposts.count, "micropost") %>
-  </span>
-</div>
+</span>
+<span>
+  <%= pluralize(current_user.microposts.count, "micropost") %>
+</span>

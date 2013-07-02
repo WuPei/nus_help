@@ -1,0 +1,13 @@
+<li id="fat-menu" class="dropdown">
+<% followed_user_ids = "SELECT followed_id FROM relationships
+                          WHERE follower_id = :user_id" %>
+<% @activities = PublicActivity::Activity.order("created_at desc").where("owner_id IN (#{followed_user_ids})", user_id: current_user.id) %>
+<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+  <div class="notificationNumber">
+    <%= unreadNum(@activities) %>
+  </div>
+</a>
+<ul class="dropdown-menu mydropdown-menu"><%= link_to "" ,activities_path %>
+  <%= render :partial=>'activities/dropdownList', :collections => @activities%>
+</ul>
+</li>

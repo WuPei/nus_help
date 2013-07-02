@@ -1,14 +1,26 @@
 <% user_render = @user || current_user %>
 <div class="user-info-pad">
+<<<<<<< HEAD
+  <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
+  <h5>
+    <%= link_to current_user.name, current_user %>
+  </h5>
+  <div class="sep15">
+=======
   <div>
     <%= render 'shared/user_photo' %>
   </div>
 </br>
   <div>
     <%= render 'shared/stats' %>
+>>>>>>> 346b2cc70dae5d1e7c38ab01cca9d2e312e36d7d
   </div>
+  <%= render 'shared/stats' %>
 </div>
+<<<<<<< HEAD
+=======
 
 <h3>
   <%= link_to user_render.name, user_render %>
 </h3>
+>>>>>>> 346b2cc70dae5d1e7c38ab01cca9d2e312e36d7d

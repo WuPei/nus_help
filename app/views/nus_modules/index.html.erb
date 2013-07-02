@@ -1,4 +1,8 @@
 <% provide(:title, 'Modules') %>
-<%= render "user_modules" %>
-
-<%= render "module_feeds" %>
+<%content_for :content do %>
+  <%= render "user_modules" %>
+  <%= render "module_feeds" %>
+<% end %>
+<% content_for :firstsidebar do %>
+  <%= render 'layouts/sidebar' %>
+<% end %>

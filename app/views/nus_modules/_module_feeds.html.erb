@@ -1,17 +1,9 @@
 <% @moduleFeeds= current_user.mod_feed %>
-<div class="moduleFeeds">
+<div class="helpFeeds">
   <% @moduleFeeds.each do |f| %>
     <% @module = NusModule.find_by(id: f.module_id) %>
-    <div class="module">
-       <%if f.user.photo? %>
-           <%= image_tag f.user.photo, :size =>"40x40", :crop => :fill%>
-       <% else %>
-          <% if f.user.gender==0 %>
-          <%= image_tag "man_small.jpeg", :size=>"40X40", :crop =>:fill%>
-          <% else %>
-          <%= image_tag "women_small.jpeg", :size=>"40X40", :crop =>:fit%>
-          <% end %>           
-       <%end %>
+    <div class="help">
+      <%= link_to gravatar_for(f.user,{:size=>52}), f.user %>
       <div class='countNumber'>
         <%= link_to f.comments.count,f,{:style=>'color:white'} %>
       </div>

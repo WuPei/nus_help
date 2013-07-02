@@ -1,14 +1,14 @@
 <% provide(:title, 'All users') %>
-<<<<<<< HEAD
-<h1> All Users</h1>
-<div class="row">
-<div id="user_switch" class="span2 offset10">
-	<button class="btn btn-primary" type="button">Switch to other users</button>
-</div>
-</div>
-=======
->>>>>>> 08e522f1423978514e09fa7e6ebb45b6ef6ef754
-<div>
-  <%= render @users %>
-</div>
-<%= will_paginate @users %>
+<% content_for :content do %>
+  <h1>
+    All Users</h1>
+  <div class="row">
+    <div id="user_switch" class="span2 offset10">
+      <button class="btn btn-primary" type="button">Switch to other users</button>
+    </div>
+  </div>
+  <div>
+    <%= render @users %>
+  </div>
+  <%= will_paginate @users %>
+<% end %>
