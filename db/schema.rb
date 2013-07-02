@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.integer  "module_id"
     t.string   "deadline"
     t.boolean  "is_anonymous"
-    t.integer  "status"
+    t.integer  "status",         default: 0
     t.integer  "user_id"
     t.integer  "comments_count"
     t.datetime "created_at"

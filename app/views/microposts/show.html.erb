@@ -1,4 +1,5 @@
 <% provide(:title, @micropost.title) %>
+<% content_for :content do %>
 <div class="row">
   <div class="span7 offset1">
     
@@ -6,7 +7,7 @@
       <div class="post-title">
        <span><%= @micropost.title %></span>
       </div>
-      <div class="post content">
+      <div class="post-content">
        <textarea readonly><%= @micropost.content %></textarea>
       </div>
 
@@ -114,3 +115,4 @@
     </div>
   </div>
 </div>
+<% end %>

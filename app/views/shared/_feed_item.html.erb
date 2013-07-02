@@ -16,6 +16,8 @@
           <%= " | " %>
           <%= link_to feed_item.user.name, feed_item, {:style => 'color:gray'} %>
           <%= " | " %>
+          <%= link_to feed_item.status, feed_item, {:style => 'color: gray'} %>
+          <%= " | " %>
           <span class='mytimestamp'>
             <%= time_ago_in_words(feed_item.created_at) +" ago"%>
           </span>
