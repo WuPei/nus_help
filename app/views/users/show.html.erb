@@ -1,12 +1,16 @@
 <% provide(:title, @user.name) %>
-
 <% content_for :content do %>
-  <%= render 'follow_form' if signed_in? %>
-  <% if @user.microposts.any? %>
-    <h3>Microposts (<%= @user.microposts.count %>)</h3>
-    <ol class="microposts">
-      <%= render :partial => 'microposts/micropost', :collection => @microposts%>
-    </ol>  
-    <%= will_paginate @microposts %>
-  <% end %>
+  	<div class="user-show">
+		<%= render 'user_show', :user=>@user if signed_in? %>
+  	</div>
+  	
+  	<div class="user-follow">
+		<% if @user.microposts.any? %>
+			<h4 style="margin-left:10px">Microposts (<%= @user.microposts.count %>)</h4>
+			<div class="microposts">
+			<%= render :partial => 'microposts/micropost', :collection => @microposts%>
+		    </div>  
+		    <%= will_paginate @microposts %>
+	    <% end %>
+	</div>
 <% end %>

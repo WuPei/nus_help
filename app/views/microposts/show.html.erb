@@ -1,60 +1,55 @@
 <% provide(:title, @micropost.title) %>
 <% content_for :content do %>
-<div class="row">
-  <div class="span7 offset1">
-    
-    <div id="post_info" class="post_info">
-      <div class="post-title">
-       <span><%= @micropost.title %></span>
-      </div>
-      <div class="post-content">
-       <textarea readonly><%= @micropost.content %></textarea>
-      </div>
-
-      <div class="post-time">
-        <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %> &nbsp Remains &nbsp <%= @elapsed_seconds %> <%=@elapsed_unit%> </span>
-      </div>
-
-      <div class="post-row">
-        <div class="post-gift">
-          <i class="icon-heart"></i>
-          <span class="post-gift"><%= @micropost.gift %></span>
+  <div class="row">
+    <div class="span10 offset1">
+      <div id="post_info" class="post_info">
+        <div class="post-title">
+          <span><%= @micropost.title %></span>
         </div>
-        
-        
-        <div class="status">
-          <i class="icon-question-sign"></i>
-          <% if @micropost.status.nil? %>
-            <span class="post-status">Ongoing</span>
-          <% elsif @micropost.status == 1 %>
-            <span class="post-status">Processing</span>
-          <% elsif @micropost.status == 2 %>
-            <span class="post-status">Ending</span>
-          <% end %>
+        <div class="post content">
+          <textarea readonly><%= @micropost.content %></textarea>
         </div>
-
-        <div id='like_form'>
-          <% unless @micropost.like?(current_user) %>
-            <% #if the micropost is not liked, otherwise we don't show it %>
-            <%= render 'microposts/like', :micropost => @micropost %>
-          <% else %>
-            <%= render 'microposts/unlike', :micropost => @micropost %>
-          <% end %>
+        <div class="post-time">
+          <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %>
+            &nbsp Remains &nbsp
+            <%= @elapsed_seconds %>
+            <%=@elapsed_unit%>
+          </span>
+        </div>
+        <div class="post-row">
+          <div class="post-gift">
+            <i class="icon-heart"></i>
+            <span class="post-gift"><%= @micropost.gift %></span>
+          </div>
+          <div class="status">
+            <i class="icon-question-sign"></i>
+            <% if @micropost.status.nil? %>
+              <span class="post-status">Ongoing</span>
+            <% elsif @micropost.status == 1 %>
+              <span class="post-status">Processing</span>
+            <% elsif @micropost.status == 2 %>
+              <span class="post-status">Ending</span>
+            <% end %>
+          </div>
+          <div id='like_form'>
+            <% unless @micropost.like?(current_user) %>
+              <% #if the micropost is not liked, otherwise we don't show it %>
+              <%= render 'microposts/like', :micropost => @micropost %>
+            <% else %>
+              <%= render 'microposts/unlike', :micropost => @micropost %>
+            <% end %>
+          </div>
         </div>
       </div>
-      
-    </div>
-    
-    <ul id="tabs" class="nav nav-tabs">
-      <li class="active"><a href="#commit" data-toggle="tab">Commit</a></li>
-      <% if @micropost.status == 2 %>
-        <li class="disabled"><a href="#help" data-toggle="tab">Help</a></li>
-      <% else %>
-        <li><a href="#help" data-toggle="tab">Help</a></li>
-      <% end %>
-    </ul>
-
-    <div id="my-tab-content" class="tab-content">
+      <ul id="tabs" class="nav nav-tabs">
+        <li class="active"><a href="#commit" data-toggle="tab">Commit</a></li>
+        <% if @micropost.status == 2 %>
+          <li class="disabled"><a href="#help" data-toggle="tab">Help</a></li>
+        <% else %>
+          <li><a href="#help" data-toggle="tab">Help</a></li>
+        <% end %>
+      </ul>
+      <div id="my-tab-content" class="tab-content">
         <div class="tab-pane active" id="commit">
           <!--show the comments -->
           <section>
@@ -75,11 +70,12 @@
             <% end %>
           </div>
         </div>
+      </div>
     </div>
-  
   </div>
-
-  <div class="span3 post-right-bar">
+<% end %>
+<% content_for :firstsidebar do %>
+  <div class="post-right-bar">
     <div id="user" class="user">
       <p>
         <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
@@ -87,14 +83,17 @@
             <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
           <% else %>
             <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
-          <% end %> 
+          <% end %>
         <% else %>
           <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
         <% end %>
       </p>
       <p><%= @user.name %></p>
     </div>
-
+  </div>
+<%end%>
+<% content_for :secondsidebar do %>
+  <div class="post-right-bar">
     <div class="helpers">
       <% @micropost.helpers.each do |h| %>
         <oi>
@@ -104,7 +103,7 @@
                 <%= image_tag "man.jpeg" , :size => "50x50", :crop => :fill%>
               <% else %>
                 <%= image_tag "women.jpeg" , :size => "50x50", :crop => :fill%>
-              <% end %> 
+              <% end %>
             <% else %>
               <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
             <% end %>
@@ -114,5 +113,4 @@
       <% end %>
     </div>
   </div>
-</div>
 <% end %>
