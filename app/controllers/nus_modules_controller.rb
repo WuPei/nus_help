@@ -1,4 +1,6 @@
 class NusModulesController < ApplicationController
+  before_action :signed_in_user,
+    only: [:show, :index]
   def index
     if params[:search] and params[:search].strip!=""
       @searched_modules = NusModule.where('code LIKE ? OR name LIKE ?', "%#{params[:search]}%","%#{params[:search]}%")
