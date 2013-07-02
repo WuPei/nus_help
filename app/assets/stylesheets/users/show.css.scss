@@ -1,0 +1,113 @@
+.user_post_show{
+	padding: 10px;
+	border: 5px black;
+	background-color: white;
+	border-radius: 5px;
+	margin: 5px;
+
+	.countNumber{
+		float: right;
+		line-height: 12px;
+		font-weight: bold;
+		color: grey;
+		background-color: grey;
+		display: inline-block;
+		padding: 2px 10px 2px 10px;
+		-moz-border-radius: 12px;
+		-webkit-border-radius: 12px;
+		border-radius: 12px;
+		text-decoration: none;
+		margin-right: 50px;
+		margin-top:20px;
+	}
+
+	.itemTitle{
+		font-size: 2.0em;
+		border-bottom: 1px;
+		border-bottom-color: #CCC;
+	}
+
+	.post_content{
+		font-size: 15px;
+		color: gray;
+	}
+	.post_gift{
+		color: gray;
+	}
+
+	.mytimestamp{
+		margin-right: 50px;
+		color: gray;
+		float: right;
+	}
+	.sep8{
+		height: 2px;
+	}
+}
+
+div#user-table-show{
+	background-color: width;
+	border: 1px solid;
+	border-color: #1d9bbf;
+	padding: 5px;
+	margin-bottom: 55px;
+	border-radius: 3px;
+	box-shadow: 0px 8px 8px #888888;
+	width:auto;
+
+
+	div#user_photo{
+		margin-left:10px;
+		margin-right:10px;
+	}
+
+	div{
+		display: inline;
+	}
+
+	div.join-date{
+		span{
+			color:grey;
+		}
+	}
+
+	#info{
+		width:auto;
+		display:inline-block;
+		text-align: center;
+		vertical-align: bottom;
+
+		#user_name
+		{
+			font-size:30px;
+			color:blue;
+			font-weight:bold;
+			margin-bottom:15px;
+			display: inline-block;
+		}
+
+		.user_stats {
+			display: block;
+			overflow: auto;
+			clear: both;
+			font-size:15px;
+			font_color: #717c7f;
+			span {
+				display:inline-block;
+				padding: 0 10px;
+				border-left: 1px solid #91a2a6;
+				&:first-child {
+					padding-left: 0;
+					border: 0;
+				}
+				&:hover {
+					text-decoration: none;
+					color: #6f8085;
+				}
+			}
+			strong {
+				display: block;    
+			}
+		}
+	}
+}

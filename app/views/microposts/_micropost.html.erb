@@ -1,4 +1,4 @@
-<div class="user_post">
+<div class="user_post_show">
   <% user=User.find_by(:id=>micropost.user_id) %>
   <div class='countNumber'>
     <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>

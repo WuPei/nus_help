@@ -1,0 +1,44 @@
+<div id="user-table-show">
+  <div id="user_photo">
+    <% if user.photo.to_s == "/uploads/user/photo/#{user.id}/0".to_s %>
+      <% if user.gender == 0 %>
+        <%= image_tag "man.jpeg" , :size => "105x105", :crop => :fill%>
+      <% else %>
+        <%= image_tag "women.jpeg" , :size => "105x105", :crop => :fill%>
+      <% end %> 
+    <% else %>
+      <%= image_tag user.photo, :size => "105x105", :crop => :fill%>
+    <% end %>
+  </div>
+  <div id="info">
+    <div id="user_name"><%= link_to user.name, user %></div>
+    <div class="user_stats">
+    <span>
+      <strong id="user_help" class="stat">
+       <%= user.microposts.length %> </strong>
+       helps
+     </span>
+     <span>
+      <div class="user_stats">
+        <strong id="follower" class="stat">
+       <%= user.followers.length %> </strong>
+       follower
+      </div>
+     </span>
+     <span>
+       <div class="user_stats">
+        <strong id="following" class="stat">
+       <%= user.followed_users.length %> </strong>
+       following
+      </div>
+     </span>    
+    <% if current_user.admin? && !current_user?(user) %> 
+        | <%= link_to "delete", user, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+    <% end %>
+  </div> 
+  <div class="join-date">
+    <span> Join us at <%= user.created_at%> <span>
+  </div>
+ </div>
+</div>
