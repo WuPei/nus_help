@@ -1,27 +1,26 @@
- <li>
-  <div class="user_post">
-    <% user=User.find_by(:id=>micropost.user_id) %>
-    <div class='countNumber'>
-      <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>
-    </div>
-    <td>
-      <span class='itemTitle'>
-        <%= link_to micropost.title, micropost%>
-      </span>
-      <div class='sep8'></div>
-      <div class="post_content">
-        <%= micropost.content%>
-      </div>
-      <div class='sep8'></div>
-      <span class='small gray'>
-        <%= link_to NusModule.find_by(:id=>micropost.module_id).code, NusModule.find_by(:id=>micropost.module_id), {:style => 'background-color:#CCC'} %>
-        <span class='post_gift'>
-          <%= micropost.gift %>
-        </span>
-        <span class='mytimestamp'>
-          <%= time_ago_in_words(micropost.created_at) +" ago"%>
-        </span>
-      </span>
-    </td>
+<div class="user_post">
+  <% user=User.find_by(:id=>micropost.user_id) %>
+  <div class='countNumber'>
+    <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>
   </div>
-</li>
+  <td>
+    <span class='itemTitle'>
+      <%= link_to micropost.title, micropost%>
+    </span>
+    <div class='sep8'></div>
+    <div class="post_content">
+      <%= micropost.content%>
+    </div>
+    <div class='sep8'></div>
+    <span class='small gray'>
+      <%= link_to NusModule.find_by(:id=>micropost.module_id).code, NusModule.find_by(:id=>micropost.module_id), {:style => 'background-color:#CCC'} %>
+      <span class='post_gift'>
+        <%= micropost.gift %>
+      </span>
+      <span class='mytimestamp'>
+        <%= time_ago_in_words(micropost.created_at) +" ago"%>
+      </span>
+    </span>
+  </td>
+</div>
+
