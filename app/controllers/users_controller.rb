@@ -38,7 +38,25 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.merge!(params["user"]) if params["user"]
+    unless params["user"].nil?
+      u = params["user"]
+      if !u.nil? and !u[:crop_x].blank? and !u[:crop_y].blank?  and !u[:crop_w].blank? and !u[:crop_h].blank?
+        x,y,w,h = u[:crop_x],u[:crop_y],u[:crop_w],u[:crop_h]
+      # Do cropping here -- duplicate image, save a smaller one
+        bigFilePath = @user.photo.file.file
+        img = MiniMagick::Image.open(bigFilePath)
+        img.crop("#{w}x#{h}+#{x}x#{y}")
+        # Save it to temp path
+        basepath = (File.dirname bigFilePath) + "/thumbnails"
+        (Dir.mkdir basepath, 0755) unless Dir.exist? basepath
+        smaFilePath = basepath + "/" + (File.basename bigFilePath)
+        img.resize "180x180"
+        img.write smaFilePath
+        File.chmod(0755,smaFilePath)
+        @user.photo_small = smaFilePath
+      # Create a file in the thumbnails folder, and save the username there
+      end
+    end
 
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
@@ -100,4 +118,5 @@ class UsersController < ApplicationController
     def admin_user
       redirect_to(root_path) unless current_user.admin?
     end
+
 end

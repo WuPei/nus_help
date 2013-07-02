@@ -13,9 +13,14 @@
 
       <% if @user.photo? %>
         <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
-          <%= f.hidden_field attribute, :id => attribute %>
+          <%= f.text_field attribute, :id => attribute %>
         <% end %>
         <%= image_tag @user.photo, :id => "cropbox" %>
+
+        <h4>Preview</h4>
+        <div style="width: 180px; height: 180px; overflow: hidden;">
+            <%= image_tag @user.photo, :id => "preview" %>
+        </div>
       <% end %>
 
       <%= f.label :photo %>
