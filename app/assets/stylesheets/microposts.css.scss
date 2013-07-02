@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 div.post_info{
-	
+	margin-top:30px;
 	border: 2px solid;
 	border-color: black;
 	padding: 20px;
@@ -43,6 +43,8 @@ div.help-self{
 
 
 div.post-right-bar{
+	padding-top:20px;
+	padding-bottom:5px;
 	margin-right: auto;
 	div.user{
 		.profile-photo{
@@ -53,7 +55,7 @@ div.post-right-bar{
 		text-align:center;
 	}
 	div.helper{
-		border: 2px solid;
+		border: 1px solid;
 		border-color: pink;
 		text-align:center;
 		margin-top: 20px;

@@ -2,6 +2,14 @@
   <% content_for :content do %>
     <h4 id="homehead">Help Feeds</h4>
     <%= render 'shared/feed' %>
+     <% if signed_in? %>
+     <!--  <div id="sidebar-static">
+        <div id="sidebar-main">
+          <%= render 'layouts/sidebar' %>
+        </div> 
+        <div id="sidebar-ctrl"> </div> 
+      </div> -->
+    <% end %>
   <% end %>
   <% content_for :firstsidebar do %>
     <%= render 'layouts/sidebar' %>
