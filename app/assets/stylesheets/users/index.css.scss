@@ -1,0 +1,66 @@
+div#user-popular{
+
+	border: 1px solid;
+	border-color: #1d9bbf;
+	padding: 5px;
+	margin-bottom: 10px;
+	border-radius: 3px;
+	box-shadow: 0px 8px 8px #888888;
+	width:auto;
+
+	div{
+		display: inline;
+	}
+
+	div.join-date{
+		span{
+			color:grey;
+		}
+	}
+
+	.info{
+		width:auto;
+		display:inline-block;
+		text-align: center;
+		vertical-align: bottom;
+
+		.user_name
+		{
+			font-size:20px;
+			color:blue;
+			font-weight:bold;
+			margin-bottom:15px;
+			display: inline-block;
+		}
+
+		.user_stats {
+			display: block;
+			overflow: auto;
+			clear: both;
+			font-size:13px;
+			font_color: #717c7f;
+			span {
+				display:inline-block;
+				padding: 0 10px;
+				border-left: 1px solid #91a2a6;
+				&:first-child {
+					padding-left: 0;
+					border: 0;
+				}
+				&:hover {
+					text-decoration: none;
+					color: #6f8085;
+				}
+			}
+			strong {
+				display: block;    
+			}
+		}
+	}
+	.follow{
+		display:inline-block;
+		width:auto;
+		float:right;
+	}
+}
+

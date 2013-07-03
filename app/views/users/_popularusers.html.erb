@@ -1,4 +1,7 @@
 <div class="popularusers">
   <h5>Popular Users</h5>
-  We need implementing the popular topics here
+  <% @popular_users.each do |u| %>
+  	<%=  render 'user_popular', :user=> u  %>
+  <% end %>
+  <%= link_to 'Show more users', url_for(:mode=>"popular" , :controller => :users, :action => :index) %>
 </div>
