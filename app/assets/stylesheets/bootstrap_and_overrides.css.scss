@@ -294,12 +294,35 @@ width: 40%;
   height:100px;
   background-color: #456;
   cursor: pointer;
-  vertical-align: top;
+  vertical-align: middle;
 }
 
 #sidebar-main{
   display: inline-block;
   background-color: #111;
+}
+
+#sidebar-static-right{
+  position: fixed;
+  right:0px;
+  top: 50px;
+}
+
+#sidebar-right-ctrl{
+  display: inline-block;
+  width: 10px;
+  height:100px;
+  background-color: #AAA;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+#sidebar-right-main{
+  display: inline-block;
+  background-color: #111;
+  width: 100px;
+  height: 400px;
+  vertical-align: middle;
 }
 
 #preview{ /* TODO: just a workaround here.. need to cancel max-width instead in future */

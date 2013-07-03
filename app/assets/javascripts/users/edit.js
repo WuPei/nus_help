@@ -1,9 +1,9 @@
 //= require jquery.Jcrop
 
 $(function(){
-  console.log('clicked');
   $img = $("#cropbox");
-  console.log($img);
+  // TODO: in future, remove the require of this file in other pages
+  if($img.length == 0)  return;
 
   var sW = $img.width(),
       sH = $img.height(),
@@ -34,15 +34,12 @@ $(function(){
     var rpH = 180 / aH,  rpW = 180 / aW,
         pH = rpH * nH,   pW = rpW * nW, pX = rpW * aX, pY = rpH * aY;
     var ppW = Math.round(pW);
-    console.log("pH = " + pH + ", ppW = " + ppW);
     prev.css({
       width:  ppW + "px",
       height: Math.round(pH) + "px",
       marginLeft: "-" + Math.round(pX) + 'px',
       marginTop: '-' + Math.round(pY) + 'px'
     });
-    console.log(prev.css("width"));
-    console.log(prev.css("height"));
   }
 
   $img.Jcrop({

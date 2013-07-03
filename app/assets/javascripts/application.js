@@ -112,11 +112,13 @@ $(function() {
 
 // Used by the sidebar
 $(function(){
-  $sidebar = $("#sidebar-main");
+  $sidebar = $("#sidebar-right-main");
   var width = $sidebar.css("width");
   $sidebar.css("width","0px");
   $sidebar.attr("isO",0);// default to close
-  $("#sidebar-ctrl").click(function(){
+  $("#sidebar-right-ctrl").click(function(){
+    console.log($sidebar);
+    console.log("Width = " + width);
     if($sidebar.attr("isO") == "1"){
       // Do sidebar close
       $sidebar.animate({
