@@ -24,4 +24,7 @@
       <%= link_to "Sign up now!", "https://ivle.nus.edu.sg/api/login/?apikey=#{NusHelp::Application::API_KEY}&url=#{NusHelp::Application::HOST_URL}signin", class: "btn btn-large btn-primary" %>
     </div>
   <% end %>
+  <% content_for :firstsidebar do %>
+    <%= image_tag 'ycz.jpg' %>
+  <% end %>
 <% end %>

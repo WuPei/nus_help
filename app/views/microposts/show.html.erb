@@ -96,7 +96,7 @@
         <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
       <% end %>
     </p>
-    <p><%= @user.name %></p>
+    <p><%=link_to @user.name, @user %></p>
   </div>
 </div>
 <%end%>

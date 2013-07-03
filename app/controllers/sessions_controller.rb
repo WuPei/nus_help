@@ -20,12 +20,6 @@ class SessionsController < ApplicationController
         #store token in database
         name = get_user_name(token)
         email = get_user_email(token)
-
-        #puts user_info
-        #mod = []
-        # for m in modules_info['Results']
-        #   mod.push({"code"=>m['CourseCode'], "name"=>m['CourseName']})
-        # end
         redirect_to(signup_url(:name=>name, :email=>email, :account=>account, :remember_token=>token))
       end
     else

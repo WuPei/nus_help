@@ -12,6 +12,14 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.paginate(page: params[:page])
+
+    helps = HelpRec.find_all_by_helper_id(@user.id)
+    @microposts_help = []
+    helps.each do |h|
+      micpost = Micropost.find_by(id: h.post_id)
+      @microposts_help.push(micpost)
+    end
+    @microposts_help = @microposts_help.paginate(page: params[:page])
   end
 
   def new
