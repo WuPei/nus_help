@@ -302,4 +302,6 @@ width: 40%;
   background-color: #111;
 }
 
-
+#preview{ /* TODO: just a workaround here.. need to cancel max-width instead in future */
+  max-width: 100000%;
+}

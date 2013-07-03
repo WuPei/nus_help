@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.integer  "module_id"
     t.string   "deadline"
     t.boolean  "is_anonymous"
-    t.integer  "status"
+    t.integer  "status",         default: 0
     t.integer  "user_id"
     t.integer  "comments_count"
     t.datetime "created_at"
@@ -123,7 +123,8 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.datetime "updated_at"
     t.boolean  "admin",          default: false
     t.integer  "gender"
-    t.string   "photo",          default: "0"
+    t.string   "photo"
+    t.string   "photo_small"
   end
 
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree

@@ -9,6 +9,19 @@
         <%= f.text_field :name, :disabled => true %>
         <%= f.label :email %>
         <%= f.text_field :email, :disabled => true%>
+
+        <% if @user.photo? %>
+          <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+            <%= f.text_field attribute, :id => attribute %>
+          <% end %>
+          <%= image_tag @user.photo, :id => "cropbox" %>
+
+          <h4>Preview</h4>
+          <div style="width: 180px; height: 180px; overflow: hidden;">
+              <%= image_tag @user.photo, :id => "preview" %>
+          </div>
+        <% end %>
+
         <%= f.label :photo %>
         <%= f.file_field :photo %>
         <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>

@@ -28,18 +28,8 @@ Things you may want to cover:
 *<tt>rake doc:app</tt>.
 
 
-set up step:
-
-1.install xcode command line tools
-2.install macport
-3. sudo port install ImageMagick
-4. gem install rmagick
-5. bundle install
-6. rails generate validates_timeliness:install
-7. rake db & rails server
-
-
-
-
-
-
+### set up step:
+1. install ImageMagick, either via macport, or homebrew
+2. in your command line, type `identify` to check if `identify` commend is there. 
+   If not, find the path of your ImageMagick by doing `locate convert`, then add the `bin`
+   folder in that path into your `/etc/paths` (System Path)

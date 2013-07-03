@@ -3,9 +3,6 @@
   <head>
     <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag  "application", media: "all" %>
-    <%= csrf_meta_tags %>
-    <%= render 'layouts/shim' %>
-    <%= javascript_include_tag "required" %>
   </head>
 
   <body>
@@ -30,5 +27,8 @@
         </div>
       </div>
     </div>
+    <%= render 'layouts/shim' %>
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag "required" %>
   </body>
 </html>

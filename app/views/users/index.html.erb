@@ -12,3 +12,10 @@
   </div>
   <%= will_paginate @users %>
 <% end %>
+<% content_for :firstsidebar do %>
+  <%= render 'layouts/sidebar' %>
+<% end %>
+<% content_for :secondsidebar do %>
+  <%= render 'popularusers' %>
+<% end %>
+
