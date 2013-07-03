@@ -1,0 +1,58 @@
+
+#homehelpFeeds{
+  border: 5px black;
+  li:nth-child(1){
+    border-top: solid 1px #c0c0c0;
+  }
+}
+
+.help{
+  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: solid 1px #c0c0c0;
+
+}
+
+.sep10{
+  height: 10px;
+}
+
+.helpcontent{
+	#comment-record{
+		margin-right: 20px;
+	}
+	#helper-strong{
+		color: #870a0a;
+	}
+	#click-strong{
+		color: #8d8383;
+	}
+	.record{
+		text-align: center;
+		float: right;
+		margin-right: 10px;
+		margin-top:10px;	
+		width: 60px;
+	.countNumber{
+		line-height: 12px;
+		font-weight: bold;
+		color: white;
+		background-color: #6ea0b0;
+		display: inline-block;
+		padding: 2px 10px 2px 10px;
+		-moz-border-radius: 12px;
+		-webkit-border-radius: 12px;
+		border-radius: 12px;
+		text-decoration: none;
+		text-align: center;
+	}
+	strong{
+		font-size: 11px;
+		display: block;
+		text-align: right;
+		text-align: center;
+	}	
+
+}
+}
