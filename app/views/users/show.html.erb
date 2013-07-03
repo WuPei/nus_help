@@ -5,12 +5,38 @@
   	</div>
   	
   	<div class="user-follow">
-		<% if @user.microposts.any? %>
-			<h4 style="margin-left:10px">Microposts (<%= @user.microposts.count %>)</h4>
-			<div class="microposts">
-			<%= render :partial => 'microposts/micropost', :collection => @microposts%>
-		    </div>  
-		    <%= will_paginate @microposts %>
-	    <% end %>
+  		<ul class="nav nav-tabs">
+  			<li class="active">
+  				<a href="#tab1" data-toggle="tab">Micropost (<%=@user.microposts.count%>)</a>
+  			</li>
+  			<li>
+  				<a href="#tab2" data-toggle="tab">Helps (<%=@microposts_help.count %>) </a>
+  			</li>
+  		</ul>
+	</div>
+	<div class="tab-content">
+		<div class="tab-pane active" id="tab1">
+			<% if @user.microposts.any? %>
+				<div class="microposts">
+				<%= render :partial => 'microposts/micropost', :collection => @microposts%>
+			    </div>  
+			    <%= will_paginate @microposts %>
+		    <% else %>
+		    	<span class="no-post">There is no post from this user.</span>
+		    <% end %>
+		</div>
+		<div class="tab-pane" id="tab2">
+			<% if @microposts_help.any? %>
+				<div class="microposts">
+					<%= render :partial => 'microposts/micropost', :collection => 
+					@microposts_help%>
+			    </div>  
+				<%= will_paginate @microposts_help %>
+			<% else %>
+				<span class="no-post">There is no help record from this user.</span>
+			<% end %>
+		</div>
 	</div>
 <% end %>
+
+
