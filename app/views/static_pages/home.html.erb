@@ -20,6 +20,10 @@
   <% content_for :thirdsidebar do %>
     <%= render 'thirdsidebar' %>
   <% end %>
+  <% content_for :bumpingsidebar do %>  
+    <%= render 'layouts/fixed_sidebar' %>
+  <% end %>
+  
   <%#login page if unsigned_in%>
 <% else %>
   <% content_for :content do %>
