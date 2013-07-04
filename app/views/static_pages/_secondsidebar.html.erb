@@ -1,0 +1,7 @@
+<div class="populartopics">
+  <h5>Popular Topics</h5>
+
+  <% @microposts.each do |m| %>
+  	<%= render 'popular_topic', :micropost=> m %>
+  <% end %>
+</div>
