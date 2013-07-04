@@ -1,5 +1,5 @@
 class NusModule < ActiveRecord::Base
-  attr_accessible :name, :code, :description, :microposts_attributes
+  attr_accessible :name, :code, :description, :microposts_attributes, :followr_count
 
   has_many :module_followings, foreign_key: "mod_id", dependent: :destroy
   has_many :mod_followers, through: :module_followings
