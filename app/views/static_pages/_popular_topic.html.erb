@@ -1,0 +1,8 @@
+<div class="popular-topic">
+	<div class="photo">
+	<%= link_to gravatar_for(User.find_by(:id => micropost.user_id),{:size=>30}), User.find_by(:id => micropost.user_id) %>
+	</div>
+	<div class="title">
+		<%=link_to micropost.title[0..30]+"...", micropost %>
+	</div>
+</div>

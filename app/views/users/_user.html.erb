@@ -12,8 +12,12 @@
           <%= image_tag user.photo, :size => "105x105", :crop => :fill%>
         <% end %>
       </div>
-      <div id="user_info">
-        <div id="user_name"><%= link_to user.name, user %></div>
+       <div id="user_info">
+        <div id="user_name"><%= link_to user.name, user %> 
+        <div id="user_indexfollow">
+         <%= render 'follow_form' , :local=>{@user => user} if signed_in? %>
+        </div>
+      </div>
         <div class="user_stats">
           <span>
             <strong id="user_help" class="stat">
@@ -38,8 +42,8 @@
               | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
           <% end %>
-        </div> 
+        </div>         
+        </div>
       </div> 
     </div>
   </div>
-</div>

@@ -27,3 +27,32 @@
 .sep8{
 	height: 8px;
 }
+
+#span4_module{
+    margin-left: 3px;
+	margin-right: 5px;
+}
+
+#module_table{
+    background-color: white;
+    border: 1px solid;
+    border-color: #1d9bbf;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right:10px;
+    padding-top:10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 8px #888888;
+    #module_code{
+        font-size:18px;
+        color: blue;
+        font-weight:bold;
+    }
+    #module_name{
+        font-size:15px;
+        color:#999;
+
+    }
+
+}
