@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20130706063223) do
     t.boolean  "is_anonymous"
     t.integer  "status",         default: 0
     t.integer  "user_id"
+    t.integer  "click_count",    default: 0
     t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -82,6 +83,10 @@ ActiveRecord::Schema.define(version: 20130706063223) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "module_followings", ["mod_follower_id"], name: "index_module_followings_on_mod_follower_id", using: :btree
+  add_index "module_followings", ["mod_id", "mod_follower_id"], name: "index_module_followings_on_mod_id_and_mod_follower_id", unique: true, using: :btree
+  add_index "module_followings", ["mod_id"], name: "index_module_followings_on_mod_id", using: :btree
 
   create_table "notifications", force: true do |t|
     t.integer  "from_uid"
@@ -97,11 +102,13 @@ ActiveRecord::Schema.define(version: 20130706063223) do
     t.string   "name"
     t.string   "code"
     t.text     "description"
+    t.integer  "follower_count", default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "nus_modules", ["code"], name: "index_nus_modules_on_code", unique: true, using: :btree
+  add_index "nus_modules", ["follower_count"], name: "index_nus_modules_on_follower_count", using: :btree
 
   create_table "relationships", force: true do |t|
     t.integer  "follower_id"

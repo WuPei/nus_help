@@ -8,6 +8,9 @@ class NusModulesController < ApplicationController
       @searched_modules = NusModule.find(:all)
     end 
     @nus_modules = NusModule.paginate(page: params[:page])
+
+    @popular_mods = NusModule.all.sort{|u,v| v.follower_count <=> u.follower_count }.first 10
+    @moduleFeeds = current_user.mod_feed.paginate(page: params[:page])
   end
 
   def autoCompJson
@@ -24,6 +27,7 @@ class NusModulesController < ApplicationController
   def new
     @nus_module = NusModule.new
   end
+
 
   def create
     @nus_module = NusModule.new(params[:nus_module])

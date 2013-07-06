@@ -238,26 +238,11 @@ form > fieldset {
   margin-right: 10px;
 }
 
-.post-task{
-  padding: 5px;
-  background-color: #EEEEEE;
-}
-.post-task-cell{
-display: inline-block;
-clear: both;
-width: 40%;
-}
-
 /*like_button */
 .like_button{
   float: right;
 }
 
-.mydropdown-menu{
-  width: 400px;
-  height: 250px;
-  overflow-y: scroll;
-}
 
 
 .nav-list{
@@ -282,49 +267,4 @@ width: 40%;
 }
 
 
-#sidebar-static{
-  position: fixed;
-  left:0px;
-  top: 50px;
-}
 
-#sidebar-ctrl{
-  display: inline-block;
-  width: 10px;
-  height:100px;
-  background-color: #456;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-#sidebar-main{
-  display: inline-block;
-  background-color: #111;
-}
-
-#sidebar-static-right{
-  position: fixed;
-  right:0px;
-  top: 50px;
-}
-
-#sidebar-right-ctrl{
-  display: inline-block;
-  width: 10px;
-  height:100px;
-  background-color: #AAA;
-  cursor: pointer;
-  vertical-align: middle;
-}
-
-#sidebar-right-main{
-  display: inline-block;
-  background-color: #111;
-  width: 100px;
-  height: 400px;
-  vertical-align: middle;
-}
-
-#preview{ /* TODO: just a workaround here.. need to cancel max-width instead in future */
-  max-width: 100000%;
-}

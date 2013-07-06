@@ -1,10 +1,8 @@
-<% if @feed_items.any? %>
+<% if @feed_items %>
   <ul class="nav nav-list" id="homehelpFeeds">
     <%= render partial: 'shared/feed_item', collection: @feed_items %>
   </ul>
   <%= will_paginate  @feed_items%>
 <% else %>
-  <em>
-    There's no feed yet.
-  </em>
+  <em>There's no feed yet.</em>
 <% end %>

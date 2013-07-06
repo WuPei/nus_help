@@ -1,8 +1,7 @@
 <div class="post-task">
   <h4>
-    New Micropost:
+    New Help:
   </h4>
-  <hr>
 <%= form_for(@micropost) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field input-xlarge">
@@ -26,10 +25,10 @@
     <div>
       <h6>Thank-you Gift:</h6>
       <%= f.text_field :gift, placeholder: "Gift to the helper" %>
-    <div>
+    </div>
     <div>
       <h6>
-      <%= f.check_box :is_anonymous %> Anonymous</br></br>
+      <%= f.check_box :is_anonymous %> Anonymous
       </h6> 
     </div>
   </div>

@@ -65,7 +65,7 @@ class UserImg < ActiveRecord::Base
     if self.cropped.nil?
       nil
     else
-      "/" + self.cropped_path
+      "/" + self.cropped
     end
   end
 

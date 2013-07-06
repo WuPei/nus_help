@@ -11,22 +11,6 @@
 	margin-left: 25px;
 }
 
-.countNumber{
-	float: right;
-	line-height: 12px;
-	font-weight: bold;
-	color: white;
-	background-color: gray;
-	display: inline-block;
-	padding: 2px 10px 2px 10px;
-	-moz-border-radius: 12px;
-	-webkit-border-radius: 12px;
-	border-radius: 12px;
-	text-decoration: none;
-	margin-right: 50px;
-	margin-top:20px;
-}
-
 .smallNode{
 	font-size: 0.8em;
 }
@@ -43,3 +27,52 @@
 .sep8{
 	height: 8px;
 }
+
+#span4_module{
+    margin-left: 3px;
+	margin-right: 5px;
+}
+
+#module_table{
+    background-color: white;
+    border: 1px solid;
+    border-color: #1d9bbf;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right:10px;
+    padding-top:10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    box-shadow: 8px 8px 8px #888888;
+    #module_code{
+        font-size:18px;
+        color: blue;
+        font-weight:bold;
+    }
+    #module_name{
+        font-size:15px;
+        color:#999;
+
+    }
+
+}
+
+.well{
+    margin-bottom:0px;
+}
+
+.popular-module{
+    padding-left:10px;
+
+    margin-bottom:10px;
+    border-bottom: solid 1px #999; 
+    .mod-code{
+
+    }
+    .mod-name{
+
+    }
+}
+
+
+

@@ -11,6 +11,7 @@ $(function(){
       sW,sH,img,nW,nH,rW,rH;
   
   function get_crop_coord(str){
+    if(!str)  return [0,0,180,180];
     arr = str.split(" ");
     if(typeof arr != "object" || arr.length != 4) return [0,0,180,180];
 

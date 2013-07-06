@@ -2,29 +2,42 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.post_info{
-	margin-top:30px;
-	border: 2px solid;
-	border-color: black;
-	padding: 20px;
+.helpcontent{
+	#comment-record{
+		margin-right: 20px;
+	}
+	#helper-strong{
+		color: #870a0a;
+	}
+	#click-strong{
+		color: #8d8383;
+	}
+	.record{
+		text-align: center;
+		float: right;
+		margin-right: 10px;
+		margin-top:10px;	
+		width: 60px;
+		.countNumber{
+			line-height: 12px;
+			font-weight: bold;
+			color: white;
+			background-color: #6ea0b0;
+			display: inline-block;
+			padding: 2px 10px 2px 10px;
+			-moz-border-radius: 12px;
+			-webkit-border-radius: 12px;
+			border-radius: 12px;
+			text-decoration: none;
+			text-align: center;
+		}
+		strong{
+			font-size: 11px;
+			display: block;
+			text-align: right;
+			text-align: center;
+		}	
 
-	div.post-title{
-		span{
-			font-size: 2em;
-			font-family: Impact;
-		}
-	}
-	div.post-time{
-		span{
-			margin-left: 5px;
-		}
-	}
-	div.post-row{
-		div{
-			display: inline;
-			color: grey;
-			margin-right: 10px;
-		}
 	}
 }
 
@@ -68,4 +81,8 @@ div.help_form{
 		float: right;
 	}
 	
+}
+
+.nav {
+	margin-bottom: 0px;
 }

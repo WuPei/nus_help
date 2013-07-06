@@ -1,0 +1,9 @@
+<div id="user-popular">
+  <%= render 'users/user_photo',{user:user,size:30} %>
+  <div class="user_name">
+    <%= link_to user.name, user %>
+  </div>
+  <div class="follow">
+    <%= render 'follow_form' if signed_in? %>
+  </div>
+</div>

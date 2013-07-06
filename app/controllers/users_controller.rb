@@ -7,7 +7,19 @@ class UsersController < ApplicationController
   #show some users in lists
   def index
     @users = User.paginate(page: params[:page])
+
+    if params[:mode] == "popular"
+      @users = User.all.sort{|u,v| v.followers.count <=> u.followers.count}
+      @users = @users.paginate(page: params[:page])
+    end
+    @popular_users = User.all
+    @popular_users = @popular_users.sort{ |u,v| v.followers.count <=> u.followers.count }.first 10
+
+    @user = User.new 
+
   end
+
+
 
   def show
     @user = User.find(params[:id])
@@ -107,10 +119,8 @@ class UsersController < ApplicationController
     # Before filters
 
     def signed_in_user
-
       unless signed_in?
-        flash[:notice] = "Please sign in."
-        redirect_to signin_url
+        redirect_to root_path
       end
     end
 

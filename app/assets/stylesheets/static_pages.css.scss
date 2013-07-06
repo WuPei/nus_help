@@ -29,23 +29,15 @@ ul.ui-autocomplete {
   padding-top: 5px;
 }
 
-#homehelpFeeds{
-  border: 5px black;
-  li:nth-child(1){
-    border-top: solid 1px #c0c0c0;
+div.popular-topic{
+  padding-left:10px;
+  padding-bottom:15px;
+  margin-bottom:10px;
+  border-bottom: solid 1px #999; 
+  div.photo{
+
   }
-}
+  div.title{
 
-.help{
-  margin-bottom: 5px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border-bottom: solid 1px #c0c0c0;
-
-}
-
-
-
-.sep10{
-  height: 10px;
+  }
 }

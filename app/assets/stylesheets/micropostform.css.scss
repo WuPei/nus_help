@@ -1,0 +1,11 @@
+.post-task{
+  padding: 5px;
+  width: 300px;
+  background-color: #EEEEEE;
+  overflow: y-scroll;
+}
+.post-task-cell{
+display: inline-block;
+clear: both;
+width: 40%;
+}

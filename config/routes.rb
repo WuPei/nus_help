@@ -3,7 +3,7 @@ NusHelp::Application.routes.draw do
   get "activities/index"
   resources :users do
     member do
-      get :following, :followers , :mods, :liked_microposts
+      get :following, :followers , :mods, :liked_microposts, :posts
       patch :json_upload
     end
   end
@@ -17,7 +17,7 @@ NusHelp::Application.routes.draw do
   resources :microposts, only: [:create, :destroy, :show] do
     resources :comments
     member do
-      get :likers 
+      get :likers , :helpers
     end
   end
   resources :activities
@@ -31,6 +31,7 @@ NusHelp::Application.routes.draw do
   root to: 'static_pages#home'
   match '/module_list', to: 'nus_modules#autoCompJson', via: 'get'
 
+  
   match '/createmod', to: 'nus_modules#new', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
@@ -42,6 +43,9 @@ NusHelp::Application.routes.draw do
   match '/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
   match '/nus_modules/(:id)/module_followings', to: 'module_followings#create', via: 'POST'
   match '/nus_modules/(:id)/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
+  match '/post_click', to: 'microposts#addClickCount', via: 'POST'
+  match '/nus_modules/post_click', to: 'microposts#addClickCount', via: 'POST'
+  match '/users/(:id)/post_click',to: 'microposts#addClickCount', via: 'POST'
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'

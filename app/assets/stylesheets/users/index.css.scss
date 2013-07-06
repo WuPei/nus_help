@@ -1,0 +1,25 @@
+div#user-popular{
+  padding-left:10px;
+  padding-bottom:10px;
+  margin-bottom:10px;
+  padding-right:10px;
+  border-bottom: solid 1px #999; 
+  div{
+    display:inline-block;
+    vertical-align:middle;
+  }
+  div.photo{
+    display:inline-block;
+  } 
+  div.name{
+    font-size:5px;
+    display:inline-block;
+  }
+  div.follow{
+    display:inline-block;
+    float:right;
+  }
+
+
+}
+

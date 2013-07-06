@@ -1,0 +1,60 @@
+#sidebar-static{
+  position: fixed;
+  left:0px;
+  top: 50px;
+}
+
+#sidebar-ctrl{
+  display: inline-block;
+  width: 10px;
+  height:100px;
+  background-color: #456;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+#sidebar-main{
+  display: inline-block;
+  background-color: #111;
+}
+
+#sidebar-static-right{
+  position: fixed;
+  right:0px;
+  top: 40px;
+  background-color: transparent;
+}
+
+#sidebar-right-ctrl{
+	right: -4px;
+	position: relative;
+  display: inline-block;
+  width: 20px;
+  height:600px;
+  background-color: #7aabe9;
+  cursor: pointer;
+  vertical-align: middle;
+  text-align: center;
+  -webkit-box-shadow: -4px 0px 5px rgba(190, 190, 190, 0.75);
+	-moz-box-shadow:    -4px 0px 5px rgba(190, 190, 190, 0.75);
+	box-shadow:         -4px 0px 5px rgba(190, 190, 190, 0.75);	
+	#sidebar-arrow{
+		vertical-align: left;
+		margin-top: 250px;
+		width:15px;
+		height: 60px;
+		background-color: #CCC;
+	}
+}
+
+#sidebar-right-main{
+  display: inline-block;
+  height: 600px;
+  background-color: #eeeeee;
+  vertical-align: middle;
+
+}
+
+#preview{ /* TODO: just a workaround here.. need to cancel max-width instead in future */
+  max-width: 100000%;
+}

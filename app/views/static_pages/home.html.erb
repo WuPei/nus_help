@@ -15,11 +15,15 @@
     <%= render 'layouts/sidebar' %>
   <% end %>
   <% content_for :secondsidebar do %>
-    <%= render 'layouts/secondsidebar' %>
+    <%= render 'secondsidebar' %>
   <% end %>
   <% content_for :thirdsidebar do %>
-    <%= render 'layouts/thirdsidebar' %>
+    <%= render 'thirdsidebar' %>
   <% end %>
+  <% content_for :bumpingsidebar do %>  
+    <%= render 'layouts/fixed_sidebar' %>
+  <% end %>
+  
   <%#login page if unsigned_in%>
 <% else %>
   <% content_for :content do %>
