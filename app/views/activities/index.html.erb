@@ -4,8 +4,9 @@
   </div>
   <div class="notification">
   <% @activities.each do |activity| %>
-    <% if activity.trackable && activity.owner %>
+    <% if activity.trackable && activity.owner && activity.recipient %>
       <li>
+        <%= activity.inspect %>
         <div class="activity">
           <div class = "user_avatar">
             <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
