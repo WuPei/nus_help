@@ -1,6 +1,7 @@
 added a comment on
 <% if activity.trackable %>
-<%= link_to activity.trackable.micropost.title, activity.trackable.micropost  %>
+  <strong><%= link_to activity.trackable.micropost.title, activity.trackable.micropost, {:style=>"color:black"}  %>
+  </strong>
 <% else %>
-which has since been removed. 
+  which has since been removed.
 <% end %>

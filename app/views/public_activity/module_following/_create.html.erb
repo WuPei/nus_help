@@ -1,2 +1,2 @@
 followed
-<%= link_to activity.trackable.mod.code, activity.trackable.mod if activity.trackable %>
+<strong><%= link_to activity.trackable.mod.code+ ": #{activity.trackable.mod.name}", activity.trackable.mod, {:style=>"color:black"} if activity.trackable %></strong>

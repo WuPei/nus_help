@@ -1,4 +1,17 @@
 liked
-<%= link_to activity.trackable.liked_micropost.user.name, activity.trackable.liked_micropost.user if activity.trackable %>
+<% if activity.owner == activity.trackable.liked_micropost.user %>
+	<% if activity.owner.gender == 0 #male %>
+		his
+	<% else #female %>
+		her
+	<%end %>
+	own help:
+<% else %>
+<strong>
+<%= link_to activity.trackable.liked_micropost.user.name, activity.trackable.liked_micropost.user, {:style=>"color:black"} if activity.trackable %>
+</strong>
 's help:
-<%= link_to activity.trackable.liked_micropost.title, activity.trackable.liked_micropost if activity.trackable %>
+<% end %>
+<strong>
+<%= link_to activity.trackable.liked_micropost.title, activity.trackable.liked_micropost, {:style=>"color:black"} if activity.trackable %>
+</strong>
