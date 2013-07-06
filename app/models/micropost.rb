@@ -4,7 +4,7 @@ class Micropost < ActiveRecord::Base
   tracked owner: ->(controller, model) { controller && controller.current_user }
   
   attr_accessible :title, :content, :user_id, :gift, :module_id,
-    :deadline, :is_anonymous, :status, :comments_attributes, :module_code
+    :deadline, :is_anonymous, :status, :comments_attributes, :module_code, :click_count
   belongs_to :user
   belongs_to :nus_module
   has_many :comments, dependent: :destroy

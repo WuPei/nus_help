@@ -141,3 +141,29 @@ $(function(){
   }
   $("#sidebar-right-ctrl").click(bumpout);
 });
+
+$(function(){
+  $('.click_count').click(function(){
+    //add 1 for module table click
+    console.log(11111)
+    var url = "post_click"
+    var post_id = $(this).data('id');
+    var uid = $(this).data('uid');
+    
+    console.log(url);
+    $.ajax({
+      type : "POST",
+      url : url,
+      data:JSON.stringify({
+        post_id: post_id,
+      }),
+      contentType: 'application/json',
+      success : function(response) {
+        console.log("success");
+      },
+      error : function(response) {
+        console.log("not");
+      }
+    }); 
+  });
+});

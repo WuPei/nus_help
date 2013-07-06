@@ -28,6 +28,7 @@ class NusModulesController < ApplicationController
     @nus_module = NusModule.new
   end
 
+
   def create
     @nus_module = NusModule.new(params[:nus_module])
     if @nus_module.save

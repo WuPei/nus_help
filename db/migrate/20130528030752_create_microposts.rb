@@ -11,6 +11,7 @@ class CreateMicroposts < ActiveRecord::Migration
 			t.integer :status  , :default=>0
 			t.integer :user_id
 
+			t.integer :click_count, :default => 0
 			t.integer :comments_count
 			t.timestamps
 		end

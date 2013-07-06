@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.boolean  "is_anonymous"
     t.integer  "status",         default: 0
     t.integer  "user_id"
+    t.integer  "click_count",    default: 0
     t.integer  "comments_count"
     t.datetime "created_at"
     t.datetime "updated_at"

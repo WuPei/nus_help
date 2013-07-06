@@ -15,12 +15,12 @@
     </div>
     <div class="record">
       <div class='countNumber'>
-        <%= link_to micropost.help_recs.count,micropost,{:style=>'color:#dadbd8'} %>
+        <%= link_to micropost.click_count,micropost,{:style=>'color:#dadbd8'} %>
       </div>
       <strong id="click-strong">Clicks</strong>
     </div>
     <td>
-      <span class='itemTitle'>
+      <span class='itemTitle click_count' data-id=<%=micropost.id%> data-uid=<%=micropost.user_id%> >
         <%= link_to micropost.title, micropost %>
       </span>
       <div class='sep8'></div>

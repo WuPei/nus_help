@@ -16,12 +16,12 @@
       </div>
       <div class="record">
         <div class='countNumber'>
-          <%= link_to feed_item.help_recs.count,feed_item,{:style=>'color:#dadbd8'} %>
+          <%= link_to feed_item.click_count,feed_item,{:style=>'color:#dadbd8'} %>
         </div>
         <strong id="click-strong">Clicks</strong>
       </div>
       <td>
-        <span class='itemTitle' data-id=<%=feed_item.id%> >
+        <span class='itemTitle click_count' data-id=<%=feed_item.id%> >
           <%= link_to feed_item.title, feed_item %>
         </span>
         <div class='sep8'></div>
