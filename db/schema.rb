@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130623055955) do
+ActiveRecord::Schema.define(version: 20130706063223) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 20130623055955) do
   add_index "relationships", ["follower_id", "followed_id"], name: "index_relationships_on_follower_id_and_followed_id", unique: true, using: :btree
   add_index "relationships", ["follower_id"], name: "index_relationships_on_follower_id", using: :btree
 
+  create_table "user_imgs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "origin"
+    t.string   "cropped"
+    t.integer  "cx"
+    t.integer  "cy"
+    t.integer  "cw"
+    t.integer  "ch"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "name"
     t.string   "email"
@@ -123,8 +135,6 @@ ActiveRecord::Schema.define(version: 20130623055955) do
     t.datetime "updated_at"
     t.boolean  "admin",          default: false
     t.integer  "gender"
-    t.string   "photo"
-    t.string   "photo_small"
   end
 
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree

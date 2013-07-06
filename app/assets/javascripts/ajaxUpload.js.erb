@@ -1,0 +1,107 @@
+//= require jquery-fileupload/basic
+//= require jquery.Jcrop
+
+$(function(){
+  $cropDiv = $("#cropbox-div");
+
+  // TODO: in future, remove the require of this file in other pages
+  if($cropDiv.length == 0)  return;
+
+  var prev = $('#preview'),
+      sW,sH,img,nW,nH,rW,rH;
+  
+  function get_crop_coord(str){
+    arr = str.split(" ");
+    if(typeof arr != "object" || arr.length != 4) return [0,0,180,180];
+
+    arr[0] /= rW; arr[1] /= rH;
+    arr[2] /= rW; arr[3] /= rH;
+    for(var i = 0; i < arr.length; i++){
+      arr[i] = Math.round(arr[i]);
+    }
+    arr[2] += arr[0]; arr[3] += arr[1];
+    
+    console.log(arr);
+    return arr;
+  }
+
+  function update_crop(coords){
+    $("#_user_imgcx").val(coords.x);
+    $("#_user_imgcy").val(coords.y);
+    $("#_user_imgcw").val(coords.w);
+    $("#_user_imgch").val(coords.h);
+
+    var aH = coords.h * rH;
+    var aW = coords.w * rW;
+    var aX = coords.x * rW;
+    var aY = coords.y * rH;
+    $("#_user_imgcx").val(aX);
+    $("#_user_imgcy").val(aY);
+    $("#_user_imgcw").val(aW);
+    $("#_user_imgch").val(aH);
+    
+    // coords.h is the # of pixels on the screen
+    // (aH = coords.h * rH) is the actual # of pixels
+    // This is the pic to be shown in the preview part
+    // Height of preview part is 180px, needs to show that total # of px
+    //    Thus: 180 / aH = pH / nH,  where iH is the height of image in preview
+    //    (idea: (show pixel / actual pixel) is constant)
+    // Thus pH = 180 / aH * nH = (180 / aH) * nH, where (180 / aH) begin the ratio
+    var rpH = 180 / aH,  rpW = 180 / aW,
+        pH = rpH * nH,   pW = rpW * nW, pX = rpW * aX, pY = rpH * aY;
+    var ppW = Math.round(pW);
+    prev.css({
+      width:  ppW + "px",
+      height: Math.round(pH) + "px",
+      marginLeft: "-" + Math.round(pX) + 'px',
+      marginTop: '-' + Math.round(pY) + 'px'
+    });
+  }
+
+  function setImgSrc(src){
+    src = src + "?" + (new Date().getTime())
+    prev.attr("src",src); 
+    // empty the HTML first
+    $cropDiv.html("");
+    // Creat the cropping div
+    $img = $("<img></img>"); $img.attr("src",src);
+    $img.appendTo($cropDiv);
+
+    $img.load(function(){
+      // Update Croping Area
+      sW = $img.width(),sH = $img.height(),
+      img = $img[0],
+      nW = img.naturalWidth,
+      nH = img.naturalHeight,
+      rW = nW / sW, // Width Ratio
+      rH = nH / sH; // Height Ratio
+      
+      $img.Jcrop({
+        onChange: update_crop,
+        setSelect: get_crop_coord($cropSection.attr("data")),
+        aspectRatio: 1,
+        minSize: [180/rW,180/rH]
+      });
+    });
+  }
+
+  // set image source
+  var $cropSection = $("#cropbox-section"),
+      imgSrc = $cropSection.attr("src");
+  if(imgSrc != ""){
+    setImgSrc(imgSrc);
+  }
+
+  var userImgUpload = $('#image_file_ajax_uploader');
+  userImgUpload.fileupload({
+    url: "json_upload",
+    dataType: "json",
+    add: function(e,data){ data.submit(); },
+    done: function(e,data){
+      console.log(data.result);
+      var src = data.result.src;
+      setImgSrc(src);
+    },
+  });
+});
+
