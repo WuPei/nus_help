@@ -1,26 +1,51 @@
-<div class="user_post_show">
-  <% user=User.find_by(:id=>micropost.user_id) %>
-  <div class='countNumber'>
-    <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>
-  </div>
-  <td>
-    <span class='itemTitle'>
-      <%= link_to micropost.title, micropost%>
-    </span>
-    <div class='sep8'></div>
-    <div class="post_content">
-      <%= micropost.content%>
+<div class="help">
+  <div class="helpcontent">
+    <%= link_to gravatar_for(micropost.user,{:size=>52}), micropost.user %>
+    <div class="record" id="comment-record">
+      <div class='countNumber'>
+        <%= link_to micropost.comments.count,micropost,{:style=>'color:white'} %>
+      </div>
+      <strong id="comment-strong">Comments</strong>
     </div>
-    <div class='sep8'></div>
-    <span class='small gray'>
-      <%= link_to NusModule.find_by(:id=>micropost.module_id).code, NusModule.find_by(:id=>micropost.module_id), {:style => 'background-color:#CCC'} %>
-      <span class='post_gift'>
-        <%= micropost.gift %>
+    <div class="record">
+      <div class='countNumber'>
+        <%= link_to micropost.help_recs.count,micropost,{:style=>'color:#870a0a'} %>
+      </div>
+      <strong id="helper-strong">Helpers</strong>
+    </div>
+    <div class="record">
+      <div class='countNumber'>
+        <%= link_to micropost.help_recs.count,micropost,{:style=>'color:#dadbd8'} %>
+      </div>
+      <strong id="click-strong">Clicks</strong>
+    </div>
+    <td>
+      <span class='itemTitle'>
+        <%= link_to micropost.title, micropost %>
       </span>
-      <span class='mytimestamp'>
-        <%= time_ago_in_words(micropost.created_at) +" ago"%>
+      <div class='sep8'></div>
+      <span class='smallNode gray'>
+        <% @module = NusModule.find_by(id: micropost.module_id) %>
+        <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
+        <%= " | " %>
+        <%= link_to micropost.user.name, micropost, {:style => 'color:gray'} %>
+        <%= " | " %>
+        <% case micropost.status %>
+        <% when 0 %>
+        <% @status="Ongoing" %>
+        <% when 1 %>
+        <% @status="Helper Choosed" %>
+        <% when 2 %>
+        <% @status="Gift Given"%>
+        <% else %>
+          <% @status="Status Error"%>
+        <% end %>
+        <%= link_to @status, micropost, {:style => 'color: gray'} %>
+        <%= " | " %>
+        <span class='mytimestamp'>
+          <%= time_ago_in_words(micropost.created_at) +" ago"%>
+        </span>
       </span>
-    </span>
-  </td>
+    </td>
+  </div>
 </div>
-

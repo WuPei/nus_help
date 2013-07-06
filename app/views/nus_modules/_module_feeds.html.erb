@@ -1,29 +1,58 @@
-<% @moduleFeeds= current_user.mod_feed %>
 <div class="helpFeeds">
   <% @moduleFeeds.each do |f| %>
-    <% @module = NusModule.find_by(id: f.module_id) %>
-    <div class="help">
-      <div class="helpcontent">
-        <%= link_to gravatar_for(f.user,{:size=>52}), f.user %>
-        <div class='countNumber'>
-          <%= link_to f.comments.count,f,{:style=>'color:white'} %>
-        </div>
-        <td>
-          <span class='itemTitle'>
-            <%= link_to f.title, f%>
-          </span>
-          <div class='sep8'></div>
-          <span class='small gray'>
-            <%= link_to @module.code, @module, {:style => 'background-color:#CCC'} %>
-            <%= " | " %>
-            <%= link_to f.user.name, f, {:style => 'color:gray'} %>
+    <oi>
+      <div class="help">
+        <div class="helpcontent">
+          <%= link_to gravatar_for(f.user,{:size=>52}), f.user %>
+          <div class="record" id="comment-record">
+            <div class='countNumber'>
+              <%= link_to f.comments.count,f,{:style=>'color:white'} %>
+            </div>
+            <strong id="comment-strong">Comments</strong>
+          </div>
+          <div class="record">
+            <div class='countNumber'>
+              <%= link_to f.help_recs.count,f,{:style=>'color:#870a0a'} %>
+            </div>
+            <strong id="helper-strong">Helpers</strong>
+          </div>
+          <div class="record">
+            <div class='countNumber'>
+              <%= link_to f.help_recs.count,f,{:style=>'color:#dadbd8'} %>
+            </div>
+            <strong id="click-strong">Clicks</strong>
+          </div>
+          <td>
+            <span class='itemTitle'>
+              <%= link_to f.title, f %>
+            </span>
+            <div class='sep8'></div>
+            <span class='smallNode gray'>
+              <% @module = NusModule.find_by(id: f.module_id) %>
+              <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
+              <%= " | " %>
+              <%= link_to f.user.name, f, {:style => 'color:gray'} %>
+              <%= " | " %>
+              <% case f.status %>
+              <% when 0 %>
+              <% @status="Ongoing" %>
+              <% when 1 %>
+              <% @status="Helper Choosed" %>
+              <% when 2 %>
+              <% @status="Gift Given"%>
+            <% else %>
+              <% @status="Status Error"%>
+            <% end %>
+            <%= link_to @status, f, {:style => 'color: gray'} %>
             <%= " | " %>
             <span class='mytimestamp'>
               <%= time_ago_in_words(f.created_at) +" ago"%>
             </span>
           </span>
-        </div>
-      </td>
+        </td>
+      </div>
     </div>
+    </oi>
   <% end %>
+  <%= will_paginate @moduleFeeds %>
 </div>
