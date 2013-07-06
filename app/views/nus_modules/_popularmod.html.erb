@@ -1,4 +1,9 @@
 <div class="popularmods">
   <h5>Popular Modules</h5>
-  We need implementing the popular topics here
+
+  <% @popular_mods.each do |m| %>
+  	<%= render 'popular_mod', :mod => m %>
+  <%end%>
+
+  <%= "See more popular modules..." %>
 </div>

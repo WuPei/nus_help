@@ -21,6 +21,7 @@ class ModuleFollowingsController < ApplicationController
 
     respond_to do |format|
       if @module_following!=nil && @module_following.save
+        NusModule.where(:id=>params[:module_following][:mod_id]).update_all("follower_count = follower_count + 1")
         format.html { 
           @module_following.create_activity :create, owner: current_user
           redirect_to :back 
@@ -45,6 +46,7 @@ class ModuleFollowingsController < ApplicationController
     @nus_module = NusModule.find_by(params[:module_following][:mod_id])
     @module_following.destroy
     respond_to do |format|
+      NusModule.where(:id=>params[:module_following][:mod_id]).update_all("follower_count = follower_count - 1")
       format.html { redirect_to @nus_module }
       format.json{
         render json: @module_following,

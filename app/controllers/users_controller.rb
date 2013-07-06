@@ -122,10 +122,8 @@ class UsersController < ApplicationController
     # Before filters
 
     def signed_in_user
-
       unless signed_in?
-        flash[:notice] = "Please sign in."
-        redirect_to signin_url
+        redirect_to root_path
       end
     end
 

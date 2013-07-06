@@ -33,6 +33,7 @@ NusHelp::Application.routes.draw do
   root to: 'static_pages#home'
   match '/module_list', to: 'nus_modules#autoCompJson', via: 'get'
 
+  
   match '/createmod', to: 'nus_modules#new', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
