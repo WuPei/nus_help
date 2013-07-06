@@ -1,23 +1,26 @@
 <% content_for :content do %>
-<div class="notification">
-  <h3 class="notificationTitle">Notifications</h3>
-</div>
-<% @activities.each do |activity| %>
-  <% if activity.trackable && activity.owner %>
-    <li>
-      <div class="activity">
-        <div class = "user_avatar">
-          <%= link_to gravatar_for(activity.owner, {:size =>28 }), activity.owner %>
+  <div class="notification">
+    <h3 class="notificationTitle">Notifications</h3>
+  </div>
+  <div class="notification">
+  <% @activities.each do |activity| %>
+    <% if activity.trackable && activity.owner %>
+      <li>
+        <div class="activity">
+          <div class = "user_avatar">
+            <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
+          </div>
+          <%= link_to activity.owner.name, activity.owner %>
+          <%= render_activity activity %> 
+          <span class="timestamp">
+            <%= time_ago_in_words(activity.created_at ) %>
+            ago.
+          </span>
         </div>
-        <%= link_to activity.owner.name, activity.owner %>
-        <%= render_activity activity %>
-        <span class="timestamp">
-          <%= time_ago_in_words(activity.created_at ) %>
-          ago.
-        </span>
-      </div>
-    </li>
+      </li>
+    <% end %>
   <% end %>
+  </div>
   <%= link_to "See All",activities_path %>
 <% end %>
-<% end %>
+
