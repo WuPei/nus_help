@@ -5,9 +5,10 @@
     </strong>
   </div>
   <div id="notificationBody" >
+    <% count = 0 %>
     <% @activities.each do |activity| %>
-      <% if activity.trackable && activity.owner %>
-        <div class="activity">
+      <% if activity.status && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
+        <div class="activity click_notification" id="<%= activity.id %>" data-id= <%= activity.id %> >
           <div class = "user_image">
             <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
           </div>
@@ -19,7 +20,15 @@
             </span>
           </div>
         </div>
+      <% else %>
+        <% count= count +1 %>
+      <% end %>
+      <% if count == @activities.count %>
+      <div class="noactivity">
+        <strong>WoW! All the notifications have been read through.</strong>
+      </div>
       <% end %>
     <% end %>
+
   </div>
 </div>

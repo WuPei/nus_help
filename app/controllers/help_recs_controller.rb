@@ -4,7 +4,7 @@ class HelpRecsController < ApplicationController
   def create
     @helpRec = HelpRec.new(params[:help_rec])
     if @helpRec.save
-      @helpRec.create_activity :create, owner: current_user
+      @helpRec.create_activity :create, owner: current_user, recipient: @helpRec.post.user
       redirect_to :back
     end
   end
