@@ -1,0 +1,8 @@
+signed up as helper for 
+<strong><%= link_to activity.owner.name,activity.owner , {:style=>"color:black"} if activity.trackable %>
+</strong>
+'s Help : 
+<strong>
+<%= link_to activity.trackable.post.title, activity.trackable.post, {:style=>"color:black"} if activity.trackable %>
+</strong>
+
