@@ -2,11 +2,10 @@
 #homehelpFeeds{
   border: 5px black;
   li:nth-child(1){
+  	padding-top: 5px;
     border-top: solid 1px #c0c0c0;
   }
 }
-
-
 
 
 .help{
@@ -14,7 +13,12 @@
   padding-top: 5px;
   padding-bottom: 5px;
   border-bottom: solid 1px #c0c0c0;
-
+  .bookmark{
+		float:right;
+		top: -10px;
+		right: 5px;
+		position: relative;
+	}
 }
 
 .sep10{
@@ -38,10 +42,12 @@
 	#click-strong{
 		color: #8d8383;
 	}
+	
 	div.help-feeds{
 		
 		width: 90%;
 		display: inline-block;
+		
 		.record{
 			text-align: center;
 			float: right;

@@ -1,5 +1,15 @@
 <li id="<%= feed_item.id %>">
   <div class="help">
+    <div class="bookmark">
+    <% case feed_item.status %>
+    <% when 0 %>
+      <%= image_tag "bookmark-green.png" , :size=> "15x15"%>
+    <% when 1 %>
+      <%= image_tag "bookmark-blue.png" , :size=> "15x15"%>
+    <% when 2 %>
+      <%= image_tag "bookmark-red.png" , :size=> "15x15"%>
+    <% end %>
+    </div>
     <div class="helpcontent">
       <%= render "users/user_photo",{user:feed_item.user,need_div: true, size:50} %>
       <div class="help-feeds">
@@ -32,7 +42,7 @@
             <%= " | " %>
             <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
             <%= " | " %>
-            <% case feed_item.status %> 
+            <% case feed_item.status %>
             <% when 0 %>
             <% @status="Ongoing" %>
             <% when 1 %>
@@ -47,9 +57,12 @@
           <span class='mytimestamp'>
             <%= time_ago_in_words(feed_item.created_at) +" ago"%>
           </span>
+          <div class="gift">
+            <i class='icon-gift'></i>
+            <%= feed_item.gift %>
+          </div>
         </span>
       </td>
     </div>
   </div>
 </div>
-</li>
