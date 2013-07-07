@@ -41,7 +41,7 @@
 	margin-right: 5px;
 }
 
-#module_table{
+.module_table{
     background-color: white;
     border: 1px solid;
     border-color: #1d9bbf;
@@ -52,15 +52,18 @@
     margin-bottom: 15px;
     border-radius: 5px;
     box-shadow: 8px 8px 8px #888888;
-    #module_code{
+    height: 55px;
+    .module_code{
         font-size:18px;
         color: blue;
         font-weight:bold;
     }
-    #module_name{
+    .module_name{
         font-size:15px;
         color:#999;
-
+        line-height:20px;
+        height:40px;
+        overflow:hidden
     }
 
 }

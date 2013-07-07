@@ -1,0 +1,16 @@
+<% provide(:title, @term) %>
+<% content_for :content do %>
+  <% term_hash = {module:"Module",post:"Micropost",user:"User"} %>
+<div class="container-fluid">
+  <h1 id="search_top">Search <%= term_hash[@term.to_sym] %> Result</h1>
+  <%= render "search/form" %>
+  <% if @result %>
+    <div>
+    <%= render @result %>
+    </div>
+    <%= will_paginate @result %>
+  <% else %>
+    Sorry Your Search don't have any result.
+  <% end %>
+</div>
+<% end %>

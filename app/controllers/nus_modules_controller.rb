@@ -39,7 +39,8 @@ class NusModulesController < ApplicationController
     end
   end
 
-  def module_all
-    @nus_modules = NusModule.paginate(page: params[:page])   
+  def module_all   
+    @nus_modules= NusModule.all.sort{|u,v| v.follower_count <=> u.follower_count } 
+    @nus_modules = @nus_modules.paginate(page: params[:page]) 
   end 
 end

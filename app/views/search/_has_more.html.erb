@@ -1,0 +1,3 @@
+<% if count and count > SearchController::SearchLimit %>
+  <div class="search-more"><a href="<%= "/search/%s?search=%s" % [term, @query] %>">See More(<%= count %>)</a></div>
+<% end %>

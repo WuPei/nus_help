@@ -52,10 +52,13 @@ NusHelp::Application.routes.draw do
   
   match '/notification_click', to: 'activities#updateStatus', via: 'POST'
 
+  match '/feedback_helpRec', to: 'help_recs#feedback', via: 'POST'
+
   get '/help',    to: 'static_pages#help'
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
   get '/privacy', to: 'static_pages#privacy'
 
-  get '/search(/:term)',  to: 'search#show'
+  get '/search',  to: 'search#show'
+  get '/search/:term',  to: 'search#show_term'
 end

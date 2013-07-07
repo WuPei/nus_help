@@ -4,22 +4,23 @@ div#user-popular{
   margin-bottom:10px;
   padding-right:10px;
   border-bottom: solid 1px #999; 
+     vertical-align:middle;
   div{
-    display:inline-block;
     vertical-align:middle;
   }
   div.photo{
     display:inline-block;
   } 
   div.name{
-    font-size:5px;
+    font-size:13px;
     display:inline-block;
+    width:140px; 
+    overflow:hidden;
   }
   div.follow{
     display:inline-block;
+    position:relative;
     float:right;
   }
-
-
 }
 

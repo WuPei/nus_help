@@ -73,24 +73,36 @@ div.post_info{
 
 div.help-self{
 	padiing: 10px;
-
+	
 	div{
 		display: inline;
 	}
+	
+	div.user_photo{
+		display: inline-block;
+	}
+
+	
 	div.help-content{
-		span{
+		display:inline-block;
+
+		div{
 			display: block;
+		}
+		div.help1{
+			width:150%;
 		}
 	}
 }
 
 
+
 div.post-right-bar{
-	padding-top:20px;
+	padding-top:10px;
 	padding-bottom:5px;
 	margin-right: auto;
 	div.user{
-		.profile-photo{
+		.user-photo{
 			height: 100%;
 	    	width: 150px;
 	    	float:left;
