@@ -37,6 +37,19 @@ class HelpRecsController < ApplicationController
   def feedback
     #feedback happy or not
     @helpRec = HelpRec.find(params[:rec_id])
+    if @helpRec.update_attributes(params)
+      flash[:success] = "Help updated"
+      post_id = @helpRec.post_id
+      @micropost = Micropost.find_by(:id=>post_id)
+      if @micropost.update_attributes(:status => 2, :is_happy => true)             
+        redirect_to @micropost
+        flash[:success] = "Help updated"
+      else
+        redirect_to :back
+      end
+    else
+      redirect_to :back
+    end
   end
 
 end
