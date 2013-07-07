@@ -28,7 +28,7 @@
       <div class ="span7 offset1">
         <%= render 'layouts/footer' %>
       </div>
-      <%= debug(params) if Rails.env.development? %>
+      <%= debug(params) if !Rails.env.development? %>
     </div>
     <%= javascript_include_tag "required" %>
   </div>
