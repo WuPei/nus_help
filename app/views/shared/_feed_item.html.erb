@@ -29,7 +29,7 @@
           <% @module = NusModule.find_by(id: feed_item.module_id) %>
           <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
           <%= " | " %>
-          <%= link_to feed_item.user.name, feed_item, {:style => 'color:gray'} %>
+          <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
           <%= " | " %>
           <% case feed_item.status %>
           <% when 0 %>

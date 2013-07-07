@@ -6,6 +6,6 @@
     <%= link_to user.name, user %>
   </div>
   <div class="follow">
-    <%= render 'follow_form' if signed_in? %>
+    <%= render 'follow_form', :user => user %>
   </div>
 </div>
