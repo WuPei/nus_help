@@ -14,11 +14,12 @@ module UsersHelper
     count=0
     activities.each do |f|
       #the newly created activity's status is true
-      if f.status
+      if f.status && f.recipient == current_user
         count+=1
       end
     end 
     count
   end
+
 
 end

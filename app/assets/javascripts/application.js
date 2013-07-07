@@ -167,3 +167,27 @@ $(function(){
     }); 
   });
 });
+
+$(function(){
+  $('.click_notification').click(function(){
+    var url="notification_click"
+    var notification_id =$(this).data('id');
+    console.log(url);
+    console.log(notification_id);
+    $.ajax({
+      type : "POST",
+      url : url,
+      dataType:"json",
+      data: JSON.stringify({
+        activity_id: notification_id
+      }),
+      contentType: 'application/json',
+      success : function(response) {
+        console.log("success");
+      },
+      error : function(response) {
+        console.log("fail");
+      }
+    });
+  });
+});

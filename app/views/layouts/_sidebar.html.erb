@@ -1,7 +1,7 @@
 <% @user ||= current_user %>
 <div class="user-info-pad withborder">
   <section >
-    <%= link_to gravatar_for(current_user,{:size=>50}), current_user %>
+    <%= render "users/user_photo", {user:current_user,size:50,need_div:false} %>
     <%= link_to current_user.name, current_user %>
     <div class="light">
       view my profile page

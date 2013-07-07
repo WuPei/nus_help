@@ -6,16 +6,21 @@ class UsersController < ApplicationController
 
   #show some users in lists
   def index
-    @users = User.paginate(page: params[:page])
-
-    if params[:mode] == "popular"
-      @users = User.all.sort{|u,v| v.followers.count <=> u.followers.count}
-      @users = @users.paginate(page: params[:page])
-    end
     @popular_users = User.all
+    @popular_users = @popular_users - current_user.followed_users
     @popular_users = @popular_users.sort{ |u,v| v.followers.count <=> u.followers.count }.first 10
 
-    @user = User.new 
+
+    @users = User.all - @popular_users
+    @users = @users.paginate(page: params[:page])
+    
+    if params[:mode] == "popular"
+      @users = User.all - @popular_users
+      @users = @users.sort{|u,v| v.followers.count <=> u.followers.count}
+      @users = @users.paginate(page: params[:page])
+    end
+    
+
 
   end
 
@@ -54,35 +59,34 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def json_upload
+    @user = User.find(params[:id])
+    # save this img
+    render json: {:sts => 1, :msg => "Invalid User"} and return if current_user != @user or params[:image_file_ajax_uploader].nil?
+
+    # Handle Image Upload from here on
+    @user.user_img = UserImg.new if @user.user_img.nil?
+    @user.user_img.save_upload(params[:image_file_ajax_uploader])
+    render json: {:sts => 0, :src => @user.user_img.origin_name}
+  end
+
   def update
     @user = User.find(params[:id])
-    unless params["user"].nil?
-      u = params["user"]
-      if !u.nil? and !u[:crop_x].blank? and !u[:crop_y].blank?  and !u[:crop_w].blank? and !u[:crop_h].blank?
-        x,y,w,h = u[:crop_x],u[:crop_y],u[:crop_w],u[:crop_h]
+    unless params["user_img"].nil?
+      u = params["user_img"]
+      
+      if UserImg::cropFields?(u)
       # Do cropping here -- duplicate image, save a smaller one
-        bigFilePath = @user.photo.file.file
-        img = MiniMagick::Image.open(bigFilePath)
-        img.crop("#{w}x#{h}+#{x}x#{y}")
-        # Save it to temp path
-        basepath = (File.dirname bigFilePath) + "/thumbnails"
-        (Dir.mkdir basepath, 0755) unless Dir.exist? basepath
-        smaFilePath = basepath + "/" + (File.basename bigFilePath)
-        img.resize "180x180"
-        img.write smaFilePath
-        File.chmod(0755,smaFilePath)
-        @user.photo_small = smaFilePath
+        @user.user_img.save_croping(u)
       # Create a file in the thumbnails folder, and save the username there
       end
     end
-
-    if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      sign_in @user
-      redirect_to edit_user_path @user # TODO: further editing needed here.
-    else
-      render 'edit'
+    
+    # Save This Image
+    if params["user"] then
     end
+    flash[:success] = "Update Succeeded."
+    render 'edit'
   end
 
   def create
@@ -110,8 +114,6 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
- 
-
 
   private
 

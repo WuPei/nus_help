@@ -1,0 +1,5 @@
+<% size = 100 if size.nil?; need_div = true if need_div.nil?; %>
+<% if need_div %> <div class="user_photo"> <% end %>
+  <%= image_tag user.cropped_img_url , :size => "%dx%d" % [size,size], :crop => :fill%>
+<% if need_div %> </div> <% end %>
+

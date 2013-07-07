@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment = @micropost.comments.create({:content => params[:comment][:content] ,
                                            :user_id => current_user.id})
     if @comment.save
-      @comment.create_activity :create, owner: current_user
+      @comment.create_activity :create, owner: current_user, recipient: @micropost.user
       redirect_to :back
     else
       redirect_to :back

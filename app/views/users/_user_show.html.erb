@@ -1,16 +1,4 @@
 <div id="user-table-show">
-	<div id="user_photo">
-		<% if user.photo.to_s == "/uploads/user/photo/#{user.id}/0".to_s %>
-			<% if user.gender == 0 %>
-				<%= image_tag "man.jpeg" , :size => "105x105", :crop => :fill%>
-			<% else %>
-				<%= image_tag "women.jpeg" , :size => "105x105", :crop => :fill%>
-			<% end %> 
-		<% else %>
-			<%= image_tag user.photo, :size => "105x105", :crop => :fill%>
-		<% end %>
-	</div>
-
  	<div id="info">
     	<div id="user_name"><%= link_to user.name, user %></div>
     	<div class="user_stats">

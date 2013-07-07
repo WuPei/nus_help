@@ -1,13 +1,21 @@
 <div class="notification">
-  <div id="notificationTitle">
+  <div class="notificationTitle">
     <h5>Notifications</h5>
     <strong><%= link_to "See All",activities_path, {:style => 'color: gray'} %>
     </strong>
   </div>
-  <div id="notificationBody" >
+  <div id="notificationBodyList" >
+    <% count = 0 %>
+    <% if @activities.empty? %>
+      <div class="noactivity">
+        <strong>You don't have any notifications yet, try to help someone :)</strong>
+        <hr>Have a look on the 
+        <p><%= link_to "Popular Topics", :root %></p>
+      </div>
+    <% else %>
     <% @activities.each do |activity| %>
-      <% if activity.trackable && activity.owner %>
-        <div class="activity">
+      <% if activity.status && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
+        <div class="activity click_notification" id="<%= activity.id %>" data-id= <%= activity.id %> >
           <div class = "user_image">
             <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
           </div>
@@ -19,7 +27,17 @@
             </span>
           </div>
         </div>
+      <% else %>
+        <% count= count +1 %>
       <% end %>
+      <% if count == @activities.count %>
+      <div class="noactivity">
+        <strong>WoW! All the notifications have been read through.</strong>
+        <hr>Have a look on the 
+        <p><%= link_to "Past Notifications", activities_path %></p>
+      </div>
+      <% end %>
+    <% end %>
     <% end %>
   </div>
 </div>
