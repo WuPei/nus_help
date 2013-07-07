@@ -1,5 +1,6 @@
 NusHelp::Application.routes.draw do
 
+  get "nus_modules/module_all"
   get "activities/index"
   resources :users do
     member do
@@ -41,6 +42,7 @@ NusHelp::Application.routes.draw do
   match '/update_helpRec', to: 'help_recs#update', via: 'post'
   match '/module_followings', to: 'module_followings#create', via: 'POST'
   match '/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
+  match '/nus_modules/module_all', to: 'nus_modules#module_all', via: 'get'
   match '/nus_modules/(:id)/module_followings', to: 'module_followings#create', via: 'POST'
   match '/nus_modules/(:id)/module_followings_delete', to: 'module_followings#destroy', via: 'POST'
   
