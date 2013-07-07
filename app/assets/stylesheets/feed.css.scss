@@ -6,6 +6,9 @@
   }
 }
 
+
+
+
 .help{
   margin-bottom: 5px;
   padding-top: 5px;
@@ -19,6 +22,13 @@
 }
 
 .helpcontent{
+
+	div.user_photo{
+		display:inline-block;
+		vertical-align:top;
+	}
+
+	
 	#comment-record{
 		margin-right: 20px;
 	}
@@ -28,31 +38,35 @@
 	#click-strong{
 		color: #8d8383;
 	}
-	.record{
-		text-align: center;
-		float: right;
-		margin-right: 10px;
-		margin-top:10px;	
-		width: 60px;
-		.countNumber{
-			line-height: 12px;
-			font-weight: bold;
-			color: white;
-			background-color: #6ea0b0;
-			display: inline-block;
-			padding: 2px 10px 2px 10px;
-			-moz-border-radius: 12px;
-			-webkit-border-radius: 12px;
-			border-radius: 12px;
-			text-decoration: none;
+	div.help-feeds{
+		
+		width: 90%;
+		display: inline-block;
+		.record{
 			text-align: center;
+			float: right;
+			margin-right: 10px;
+			margin-top:10px;	
+			width: 60px;
+			.countNumber{
+				line-height: 12px;
+				font-weight: bold;
+				color: white;
+				background-color: #6ea0b0;
+				display: inline-block;
+				padding: 2px 10px 2px 10px;
+				-moz-border-radius: 12px;
+				-webkit-border-radius: 12px;
+				border-radius: 12px;
+				text-decoration: none;
+				text-align: center;
+			}
+			strong{
+				font-size: 11px;
+				display: block;
+				text-align: right;
+				text-align: center;
+			}	
 		}
-		strong{
-			font-size: 11px;
-			display: block;
-			text-align: right;
-			text-align: center;
-		}	
-
 	}
 }
