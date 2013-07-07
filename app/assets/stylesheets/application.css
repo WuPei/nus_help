@@ -11,6 +11,7 @@
  *= require_self
  *= require jquery.ui.datepicker
  *= require jquery.ui.tooltip
+ *= require jquery.fileupload-ui
  *= require_tree .
  */
 .content {

@@ -6,6 +6,13 @@
   </div>
   <div id="notificationBodyList" >
     <% count = 0 %>
+    <% if @activities.empty? %>
+      <div class="noactivity">
+        <strong>You don't have any notifications yet, try to help someone :)</strong>
+        <hr>Have a look on the 
+        <p><%= link_to "Popular Topics", :root %></p>
+      </div>
+    <% else %>
     <% @activities.each do |activity| %>
       <% if activity.status && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
         <div class="activity click_notification" id="<%= activity.id %>" data-id= <%= activity.id %> >
@@ -31,6 +38,6 @@
       </div>
       <% end %>
     <% end %>
-
+    <% end %>
   </div>
 </div>

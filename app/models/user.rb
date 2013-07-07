@@ -11,16 +11,13 @@
 
 class User < ActiveRecord::Base
   include PublicActivity::Model
-  tracked owner: ->(controller, model) { controller && controller.current_user }
-  attr_accessible :name, :email, :account, :remember_token, :photo, :microposts_attributes, :gender
+  tracked :skip_defaults => true
 
-  # Method for uploader
-  mount_uploader :photo, ImageUploader
-  CropSet = :crop_x, :crop_y, :crop_w, :crop_h
-  attr_accessor *CropSet
-  def cropping?; CropSet.none? {|m| send(m).blank?} end
+  #tracked owner: ->(controller, model) { controller && controller.current_user }
+  attr_accessible :name, :email, :account, :remember_token, :microposts_attributes, :gender
 
-  has_many :comments 
+  has_one :user_img
+  has_many :comments
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :reverse_relationships, foreign_key: "followed_id", class_name:  "Relationship", dependent:   :destroy
@@ -69,6 +66,17 @@ class User < ActiveRecord::Base
     relationships.find_by(followed_id: other_user.id).destroy
   end
 
+  def gender_text
+    self.gender == 0 ? "male" : "female"
+  end
+
+  def cropped_img_url
+    if self.user_img.nil? or self.user_img.cropped_url.nil?
+      UserImg::DefaultCroppedUrl
+    else
+      self.user_img.cropped_url
+    end
+  end
 
   # private
 

@@ -1,7 +1,5 @@
 <div id="user-popular">
-	<div class="user_photo">
-    <%= link_to (gravatar_for((user),{:size=>30})), user %>
-	</div>
+  <%= render 'users/user_photo',{user:user,size:30} %>
   <div class="user_name">
     <%= link_to user.name, user %>
   </div>

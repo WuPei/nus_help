@@ -3,7 +3,14 @@
     <div class="notificationTitle">
       <h4>Notifications</h4>
     </div>
+    <% if @activities.empty? %>
+    <div class="noactivity">
+        <strong>You don't have any notifications yet, try to help someone :)</strong>
+        <hr>Have a look on the 
+        <p><%= link_to "Popular Topics", :root %></p>
+      </div>
     <div id="notificationBody">
+      <% else %>
       <% @activities.each do |activity| %>
         <% if activity.trackable && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
           <div class="activity">
@@ -19,6 +26,7 @@
               </span>
             </div>
           </div>
+        <% end %>
         <% end %>
       <% end %>
     </div>

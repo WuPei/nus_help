@@ -1,18 +1,8 @@
 <div class="span6" id="span6_user">
   <div id="user_table">
     <div class="clearfix">
-      <div id="user_photo">
-        <% if user.photo.to_s == "/uploads/user/photo/#{user.id}/0".to_s %>
-          <% if user.gender == 0 %>
-            <%= image_tag "man.jpeg" , :size => "105x105", :crop => :fill%>
-          <% else %>
-            <%= image_tag "women.jpeg" , :size => "105x105", :crop => :fill%>
-          <% end %> 
-        <% else %>
-          <%= image_tag user.photo, :size => "105x105", :crop => :fill%>
-        <% end %>
-      </div>
-       <div id="user_info">
+      <%= render 'users/user_photo',{user:user,size:105,need_div:false}%>
+      <div id="user_info">
         <div id="user_name"><%= link_to user.name, user %> 
         <div id="user_indexfollow">
          <%= render 'follow_form' , :usercopy => user if signed_in? %>

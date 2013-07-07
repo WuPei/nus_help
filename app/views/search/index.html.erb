@@ -1,5 +1,17 @@
 <% provide(:title, 'Search') %>
 <% content_for :content do %>
+<% if true %>
+  <h2>Search Here</h2>
+  <form class="form-search ">
+    <div class="center"> 
+      <div> <input type="text" class="input-large search-query"></input> </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Module</button>
+        <button type="submit" class="btn btn-primary">User</button>
+      </div>
+    </div>
+  </form>
+<% else %>
 <h1 id="search_top">Search Result</h1>
 <div class="text-align: center" >
   <%= form_tag ('/search'), :method => :get, :class=> "form-search form-inline" do %>
@@ -9,7 +21,6 @@
     <% end %>
   <% end %>
 </div>
-
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span3">
@@ -56,4 +67,5 @@
     </div><!--/span-->
   </div><!--/row-->
 </div><!--/.fluid-container-->
+<% end %>
 <% end %>
