@@ -59,5 +59,6 @@ NusHelp::Application.routes.draw do
   get '/contact', to: 'static_pages#contact'
   get '/privacy', to: 'static_pages#privacy'
 
-  get '/search(/:term)',  to: 'search#show'
+  get '/search',  to: 'search#show'
+  get '/search/:term',  to: 'search#show_term'
 end

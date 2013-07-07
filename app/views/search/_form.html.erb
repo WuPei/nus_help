@@ -1,0 +1,7 @@
+<% searchq = if @query.nil? then "" else @query end %>
+<div class="text-align: center" >
+<%= form_tag ('/search'), :method => :get, :class=> "form-search form-inline" do %>
+  <%= text_field_tag :search ,searchq, :class=>"input-xxlarge search-query" %>
+  <%= button_tag :name=>nil, :type => "submit", :class => "btn" do%> <i class="icon-search"></i><% end %>
+<% end %>
+</div>
