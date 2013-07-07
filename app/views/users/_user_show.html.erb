@@ -1,38 +1,39 @@
 <div id="user-table-show">
  	<div id="info">
-      <div id="user_photo">
-        <%= render "users/user_photo", {user:user,size:105,need_div:false} %>
-    	</div>
-      <div id="user_name"><%= link_to user.name, user %></div>
-    	<div class="user_stats">
-    		<span>
-      			<strong id="user_help" class="stat">
-       			<%= user.microposts.length %> </strong>
-       			helps
-     		</span>
-     		<span>
-      			<div class="user_stats">
-        			<strong id="follower" class="stat">
-       				<%= user.followers.length %> </strong>
-       				follower
-      			</div>
-     		</span>
-     		<span>
-       			<div class="user_stats">
-        			<strong id="following" class="stat">
-       				<%= user.followed_users.length %> </strong>
-       				following
-      			</div>
-     		</span>    
-    		<% if current_user.admin? && !current_user?(user) %> 
-        		| <%= link_to "delete", user, method: :delete,
-                                    data: { confirm: "You sure?" } %>
-    		<% end %>
-  		</div> 
-  		<div class="join-date">
-    		<span> Join us at <%= user.created_at%> <span>
- 		 </div>
 
+      <%= render "users/user_photo", {user:user,size:105,need_div:false} %>
+    	<div class="user-data">
+        <div id="user_name"><%= link_to user.name, user %></div>
+      	<div class="user_stats">
+      		<span>
+        			<strong id="user_help" class="stat">
+         			<%= user.microposts.length %> </strong>
+         			helps
+       		</span>
+       		<span>
+        			<div class="user_stats">
+          			<strong id="follower" class="stat">
+         				<%= user.followers.length %> </strong>
+         				follower
+        			</div>
+       		</span>
+       		<span>
+         			<div class="user_stats">
+          			<strong id="following" class="stat">
+         				<%= user.followed_users.length %> </strong>
+         				following
+        			</div>
+       		</span>    
+      		<% if current_user.admin? && !current_user?(user) %> 
+          		| <%= link_to "delete", user, method: :delete,
+                                      data: { confirm: "You sure?" } %>
+      		<% end %>
+    		</div> 
+    		<div class="join-date">
+      		<span> Join us at <%= user.created_at%> <span>
+   		 </div>
+     </div>
+     
  	</div>
  	<div id="follow">
  		<%= render 'follow_form', :user=>user if signed_in? %>

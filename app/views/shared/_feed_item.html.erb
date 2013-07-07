@@ -1,53 +1,55 @@
 <li id="<%= feed_item.id %>">
   <div class="help">
     <div class="helpcontent">
-      <%= render "users/user_photo",{user:feed_item.user,need_div: false, size:52} %>
-      <div class="record" id="comment-record">
-        <div class='countNumber'>
-          <%= link_to feed_item.comments.count,feed_item,{:style=>'color:white'} %>
+      <%= render "users/user_photo",{user:feed_item.user,need_div: true, size:50} %>
+      <div class="help-feeds">
+        <div class="record" id="comment-record">
+          <div class='countNumber'>
+            <%= link_to feed_item.comments.count,feed_item,{:style=>'color:white'} %>
+          </div>
+          <strong id="comment-strong">Comments</strong>
         </div>
-        <strong id="comment-strong">Comments</strong>
-      </div>
-      <div class="record">
-        <div class='countNumber'>
-          <%= link_to feed_item.help_recs.count,feed_item,{:style=>'color:#870a0a'} %>
+        <div class="record">
+          <div class='countNumber'>
+            <%= link_to feed_item.help_recs.count,feed_item,{:style=>'color:#870a0a'} %>
+          </div>
+          <strong id="helper-strong">Helpers</strong>
         </div>
-        <strong id="helper-strong">Helpers</strong>
-      </div>
-      <div class="record">
-        <div class='countNumber'>
-          <%= link_to feed_item.click_count,feed_item,{:style=>'color:#dadbd8'} %>
+        <div class="record">
+          <div class='countNumber'>
+            <%= link_to feed_item.click_count,feed_item,{:style=>'color:#dadbd8'} %>
+          </div>
+          <strong id="click-strong">Clicks</strong>
         </div>
-        <strong id="click-strong">Clicks</strong>
-      </div>
-      <td>
-        <span class='itemTitle click_count' data-id=<%=feed_item.id%> >
-          <%= link_to feed_item.title, feed_item %>
-        </span>
-        <div class='sep8'></div>
-        <span class='smallNode gray'>
-          <% @module = NusModule.find_by(id: feed_item.module_id) %>
-          <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
+        <td>
+          <span class='itemTitle click_count' data-id=<%=feed_item.id%> >
+            <%= link_to feed_item.title, feed_item %>
+          </span>
+          <div class='sep8'></div>
+          <span class='smallNode gray'>
+            <% @module = NusModule.find_by(id: feed_item.module_id) %>
+            <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
+            <%= " | " %>
+            <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
+            <%= " | " %>
+            <% case feed_item.status %> 
+            <% when 0 %>
+            <% @status="Ongoing" %>
+            <% when 1 %>
+            <% @status="Helper Choosed" %>
+            <% when 2 %>
+            <% @status="Gift Given"%>
+          <% else %>
+            <% @status="Status Error"%>
+          <% end %>
+          <%= link_to @status, feed_item, {:style => 'color: gray'} %>
           <%= " | " %>
-          <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
-          <%= " | " %>
-          <% case feed_item.status %> 
-          <% when 0 %>
-          <% @status="Ongoing" %>
-          <% when 1 %>
-          <% @status="Helper Choosed" %>
-          <% when 2 %>
-          <% @status="Gift Given"%>
-        <% else %>
-          <% @status="Status Error"%>
-        <% end %>
-        <%= link_to @status, feed_item, {:style => 'color: gray'} %>
-        <%= " | " %>
-        <span class='mytimestamp'>
-          <%= time_ago_in_words(feed_item.created_at) +" ago"%>
+          <span class='mytimestamp'>
+            <%= time_ago_in_words(feed_item.created_at) +" ago"%>
+          </span>
         </span>
-      </span>
-    </td>
+      </td>
+    </div>
   </div>
 </div>
 </li>
