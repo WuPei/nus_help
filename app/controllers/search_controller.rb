@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
-  SearchLimit = 20
+  SearchLimit = 18
 
   def show
     @query = params[:search]
@@ -35,7 +35,6 @@ class SearchController < ApplicationController
     return if @query.nil? or @query == "" 
     if @term == "module"
       if @query =~ /\w{2,3}\d{0,4}/
-        NusModule.paginate({page:params[:page], per_page: SearchLimit})
         @result = NusModule.where('code LIKE ?', "%#{@query}%")
       else
         @result = NusModule.where('code LIKE ? OR name LIKE ? ',
@@ -49,6 +48,8 @@ class SearchController < ApplicationController
     else
       @result = nil
     end
+
+    @result = @result.paginate(page:params[:page], per_page: SearchLimit) unless @result.nil?
   end
 
 end

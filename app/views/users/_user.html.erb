@@ -6,31 +6,27 @@
     </div>
       <div class="user_info">
         <div id="user_name"><%= link_to user.name, user %> 
-        <div id="user_indexfollow">
-         <%= render 'follow_form' , :user => user if signed_in? %>
+          <div id="user_indexfollow"> <%= render 'users/follow_form' , :user => user if signed_in? %> </div>
         </div>
-      </div>
+
         <div class="user_stats">
           <span>
             <strong id="user_help" class="stat">
-            <%= user.microposts.length %> </strong>
-            helps
+            <%= user.microposts.length %> </strong> helps
           </span>
           <span>
             <div class="user_stats">
-              <strong id="follower" class="stat">
-              <%= user.followers.length %> </strong>
+              <strong id="follower" class="stat"> <%= user.followers.length %> </strong>
               follower
             </div>
           </span>
           <span>
             <div class="user_stats">
-              <strong id="following" class="stat">
-              <%= user.followed_users.length %> </strong>
+              <strong id="following" class="stat"><%= user.followed_users.length %></strong>
               following
             </div>
           </span>    
-          <% if current_user.admin? && !current_user?(user) %> 
+          <% if current_user.admin? && !current_user?(user) %>
               | <%= link_to "delete", user, method: :delete,
                                   data: { confirm: "You sure?" } %>
           <% end %>

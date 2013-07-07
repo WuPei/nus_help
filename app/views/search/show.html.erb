@@ -8,9 +8,9 @@
       <div  class="well sidebar-nav sidebar-nav-fixed">
         <ul class="nav nav-list ">
           <li class="nav-header">Searching Results</li>
-          <% if @users and !@users.empty? %><li><a href="#Users">Users(<%= @usersc %>)</a></li> <% end %>
-          <% if @modules and !@modules.empty? %><li><a href="#Modules">Modules(<%= @modulesc %>)</a></li> <% end %>
-          <% if @microposts and !@microposts.empty? %> <li><a href="#Microposts">Help Requests(<%= @micropostsc %>)</a></li> <% end %>
+          <% if @users and !@users.empty? %><li><a href="<%= "/search/user?search=%s" % @query %>">Users(<%= @usersc %>)</a></li> <% end %>
+          <% if @modules and !@modules.empty? %><li><a href="<%= "/search/module?search=%s" % @query %>">Modules(<%= @modulesc %>)</a></li> <% end %>
+          <% if @microposts and !@microposts.empty? %> <li><a href="<%= "/search/post?search=%s" % @query %>">Help Requests(<%= @micropostsc %>)</a></li> <% end %>
         </ul>
       </div><!--/.well -->
     </div><!--/span-->
