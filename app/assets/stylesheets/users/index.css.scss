@@ -14,13 +14,13 @@ div#user-popular{
   div.name{
     font-size:13px;
     display:inline-block;
+    width:140px; 
+    overflow:hidden;
   }
   div.follow{
     display:inline-block;
     position:relative;
     float:right;
   }
-
-
 }
 
