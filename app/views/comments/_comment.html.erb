@@ -3,7 +3,7 @@
   <ol class="comments" >
     <% @comments.each do |comment| %>
       <li>
-        <%= render 'shared/user_photo',:size => :small %>
+        <%= render "users/user_photo", {user:user,size:105,need_div:false} %>
         <%= comment.content %>
         <span class="timestamp">
           <%= time_ago_in_words(comment.created_at) %>
