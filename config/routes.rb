@@ -50,5 +50,6 @@ NusHelp::Application.routes.draw do
   get '/about',   to: 'static_pages#about'
   get '/contact', to: 'static_pages#contact'
 
-  get '/search(/:term)',  to: 'search#show'
+  get '/search',  to: 'search#show'
+  get '/search/:term',  to: 'search#show_term'
 end
