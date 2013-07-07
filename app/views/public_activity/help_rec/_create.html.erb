@@ -1,7 +1,12 @@
 signed up as helper for 
-<strong><%= link_to activity.owner.name,activity.owner , {:style=>"color:black"} if activity.trackable %>
+<% if activity.trackable.post.user==current_user %>
+your
+<% else %>
+<strong><%= link_to activity.trackable.post.user.name, activity.trackable.post.user , {:style=>"color:black"} if activity.trackable %>
 </strong>
-'s Help : 
+'s
+<% end %>
+Help Request: 
 <strong>
 <%= link_to activity.trackable.post.title, activity.trackable.post, {:style=>"color:black"} if activity.trackable %>
 </strong>

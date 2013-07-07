@@ -19,9 +19,9 @@ class NusModulesController < ApplicationController
   end
 
   def show
-    @nus_module = NusModule.find(params[:id])
-    @feed_items = @nus_module.feed.paginate(page: params[:page])
-    #@microposts = @nusModules.microposts.paginate(page: params[:page])
+      @nus_module = NusModule.find(params[:id])
+      @feed_items = @nus_module.feed.paginate(page: params[:page])
+      #@microposts = @nusModules.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -39,4 +39,8 @@ class NusModulesController < ApplicationController
     end
   end
 
+  def module_all   
+    @nus_modules= NusModule.all.sort{|u,v| v.follower_count <=> u.follower_count } 
+    @nus_modules = @nus_modules.paginate(page: params[:page]) 
+  end 
 end

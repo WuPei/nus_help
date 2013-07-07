@@ -5,5 +5,5 @@
   	<%= render 'popular_mod', :mod => m %>
   <%end%>
 
-  <%= "See more popular modules..." %>
+    <%= link_to 'Show more popular modules', url_for(:controller => :nus_modules, :action => :module_all) %>
 </div>

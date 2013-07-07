@@ -4,7 +4,7 @@ class LikeshipsController < ApplicationController
   def create
     @likeship = Likeship.new(params[:likeship])
     if @likeship.save
-      @likeship.create_activity :create, owner: current_user
+      @likeship.create_activity :create, owner: current_user, recipient: @likeship.liked_micropost.user
       redirect_to :back
     end
   end

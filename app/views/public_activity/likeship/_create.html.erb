@@ -5,12 +5,14 @@ liked
 	<% else #female %>
 		her
 	<%end %>
-	own help:
+	own help request:
+<% elsif activity.trackable.liked_micropost.user==current_user%>
+your help request:
 <% else %>
 <strong>
 <%= link_to activity.trackable.liked_micropost.user.name, activity.trackable.liked_micropost.user, {:style=>"color:black"} if activity.trackable %>
 </strong>
-'s help:
+'s help request:
 <% end %>
 <strong>
 <%= link_to activity.trackable.liked_micropost.title, activity.trackable.liked_micropost, {:style=>"color:black"} if activity.trackable %>

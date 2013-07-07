@@ -49,10 +49,12 @@
 {
     margin-bottom:20px;
     margin-top:-20px;
+    float:right;
+    margin-right:8px;
 }
 
 
-#user_table{
+.user_table{
  background-color: white;
  border: 1px solid;
  border-color: #1d9bbf;
@@ -64,20 +66,22 @@
  border-radius: 5px;
  box-shadow: 8px 8px 8px #888888;
    
-   #user_photo{
+   .user_photo{
    display:table-cell;
    float: left;
    } 
-   #user_info{
+   .user_info{
    margin-left: 10px;
    display:table-cell;
    float:left;
     #user_name
     {
-    font-size:18px;
+    font-size:15px;
     color:blue;
     font-weight:bold;
     display:table-cell;
+    width:210px;
+    overflow:hidden;
      #user_indexfollow
      {
        margin-top: 3px;

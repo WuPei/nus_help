@@ -1,9 +1,11 @@
 <div id="user-popular">
+<div class="photo">
   <%= render 'users/user_photo',{user:user,size:30} %>
-  <div class="user_name">
+</div>
+  <div class="name">
     <%= link_to user.name, user %>
   </div>
   <div class="follow">
-    <%= render 'follow_form' if signed_in? %>
+    <%= render 'follow_form', :user => user %>
   </div>
 </div>

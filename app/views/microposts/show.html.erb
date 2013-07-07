@@ -31,6 +31,9 @@
               <span class="post-status">Ending</span>
             <% end %>
           </div>
+          <div class="create_at">
+            Create Time: <span style="color:grey"><%= @micropost.created_at %></span>
+          </div>
           <div id='like_form'>
             <% unless @micropost.like?(current_user) %>
               <% #if the micropost is not liked, otherwise we don't show it %>
@@ -78,15 +81,7 @@
   <div class="post-right-bar">
     <div id="user" class="user">
       <p>
-        <% if @user.photo.to_s == "/uploads/user/photo/1/0".to_s %>
-          <% if @user.gender == 0 %>
-            <%= image_tag "man.jpeg" , :size => "150x150", :crop => :fill%>
-          <% else %>
-            <%= image_tag "women.jpeg" , :size => "150x150", :crop => :fill%>
-          <% end %>
-        <% else %>
-          <%= image_tag @user.photo, :size => "150x150", :crop => :fill%>
-        <% end %>
+        <%= render "users/user_photo", {user:@user,size:150,need_div:false} %>
       </p>
       <p><%= link_to @user.name, @user %></p>
     </div>
@@ -98,15 +93,7 @@
       <% @micropost.helpers.each do |h| %>
         <oi>
           <div class="helper">
-            <% if h.photo.to_s == "/uploads/user/photo/#{h.id}/0".to_s %>
-              <% if h.gender == 0 %>
-                <%= image_tag "man.jpeg" , :size => "50x50", :crop => :fill%>
-              <% else %>
-                <%= image_tag "women.jpeg" , :size => "50x50", :crop => :fill%>
-              <% end %>
-            <% else %>
-              <%= image_tag h.photo, :size => "50x50", :crop => :fill%>
-            <% end %>
+            <%= render "users/user_photo", {user:h,size:70,need_div:false} %>
             <%= link_to h.name, h%>
           </div>
         </oi>

@@ -1,7 +1,9 @@
 require 'test_helper'
 
 class NusModulesControllerTest < ActionController::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should get module_all" do
+    get :module_all
+    assert_response :success
+  end
+
 end
