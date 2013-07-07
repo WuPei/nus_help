@@ -1,10 +1,10 @@
 <div class="notification">
-  <div id="notificationTitle">
+  <div class="notificationTitle">
     <h5>Notifications</h5>
     <strong><%= link_to "See All",activities_path, {:style => 'color: gray'} %>
     </strong>
   </div>
-  <div id="notificationBody" >
+  <div id="notificationBodyList" >
     <% count = 0 %>
     <% @activities.each do |activity| %>
       <% if activity.status && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
@@ -26,6 +26,8 @@
       <% if count == @activities.count %>
       <div class="noactivity">
         <strong>WoW! All the notifications have been read through.</strong>
+        <hr>Have a look on the 
+        <p><%= link_to "Past Notifications", activities_path %></p>
       </div>
       <% end %>
     <% end %>
