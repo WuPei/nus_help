@@ -1,0 +1,12 @@
+<% provide(:title, 'Modules') %>
+<% content_for :content do %>
+<h1>
+    All Modules </h1>   
+<div>
+  <%= render @nus_modules %>
+</div>
+  <%= will_paginate @nus_modules %>
+<% end %>
+<% content_for :firstsidebar do %>
+  <%= render 'layouts/sidebar' %>
+<%end%>
