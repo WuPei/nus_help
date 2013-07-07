@@ -13,6 +13,14 @@
 
 .smallNode{
 	font-size: 0.8em;
+    .gift{
+        display: block;
+        i{
+            display: inline-block;  
+            vertical-align: text-bottom;
+        }
+        color: #6cb4e6;
+    }
 }
 
 .itemTitle{

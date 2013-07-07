@@ -15,15 +15,8 @@ class SearchController < ApplicationController
 
     @users = User.where('name LIKE ?', "%#{@query}%").limit(SearchLimit)
     @usersc = User.where('name LIKE ?', "%#{@query}%").count
-    if @query =~ /\w{2,3}\d{0,4}/
-      @modules = NusModule.where('code LIKE ?', "%#{@query}%").limit(SearchLimit)
-      @modulesc = NusModule.where('code LIKE ?', "%#{@query}%").count
-    else
-      @modules = NusModule.where('code LIKE ? OR name LIKE ? ',
-                                 "%#{@query}%","%#{@query}%").limit(SearchLimit)
-      @modulesc = NusModule.where('code LIKE ? OR name LIKE ? ',
-                                "%#{@query}%","%#{@query}%").count
-    end
+    @modules = NusModule.where('code LIKE ? OR name LIKE ? ',"%#{@query}%","%#{@query}%").limit(SearchLimit)
+    @modulesc = NusModule.where('code LIKE ? OR name LIKE ? ',"%#{@query}%","%#{@query}%").count
     @microposts = Micropost.where('title LIKE ? OR content LIKE ? ', 
                                   "%#{@query}%","%#{@query}%").limit(SearchLimit)
     @micropostsc = Micropost.where('title LIKE ? OR content LIKE ? ', 

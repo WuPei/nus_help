@@ -3,10 +3,9 @@
     <% micropost.help_recs.each do |h| %>
       <li>
         <div class="help-self">
-          <div class="photo">
-            <%= gravatar_for (User.find_by_id(h.helper_id)), {size: 70} %>
-          </div>
+          <%= render "users/user_photo", {user:h.helper,size:70,need_div:true} %>
           <div class="help-content">
+<<<<<<< HEAD
             <span class="comment">
               <%=link_to User.find_by(:id => h.helper_id ).name,  User.find_by(:id => h.helper_id )%>
               :
@@ -26,6 +25,35 @@
            <div id="thanks">
               <a class="btn-small btn-primary" type="button" href="#test_modal" data-toggle="modal" data-id=<%= h.id%> title="add this item" class="open_add_thanks">Thanks </a> 
              <%= h.owner_comment %> 
+=======
+            <div class="help1">
+              <span class="comment">
+                <%=link_to User.find_by(:id => h.helper_id ).name,  User.find_by(:id => h.helper_id )%>
+                :
+                <%= h.helper_comment %> 
+              </span>
+              <span class="timestamp">
+                <%= time_ago_in_words(h.created_at) %>
+                ago
+              </span>
+            </div>
+            <div class="help2">
+              <span class="thanks">
+                <a href="#test_modal" data-toggle="modal" data-id=<%= h.id%> title="add this item" class="open_add_thanks">Thanks: </a> 
+                <%= h.owner_comment %> 
+              </span>
+            </div>
+            <div class="help3">
+              <span class="feedback">
+                Feedback: <%= h.feedback_comment %>
+              </span>
+            </div>
+            <div class="help4">
+              <span class="contact_info">
+                Contact: <%= h.contact_info %>
+              </span>
+            </div>
+>>>>>>> f8573fe9ed41d7d96e489a5cc41b390a3d908d2c
           </div> 
         </div>
       </li>
