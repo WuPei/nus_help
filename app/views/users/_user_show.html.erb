@@ -1,6 +1,9 @@
 <div id="user-table-show">
  	<div id="info">
-    	<div id="user_name"><%= link_to user.name, user %></div>
+      <div id="user_photo">
+        <%= render "users/user_photo", {user:user,size:105,need_div:false} %>
+    	</div>
+      <div id="user_name"><%= link_to user.name, user %></div>
     	<div class="user_stats">
     		<span>
       			<strong id="user_help" class="stat">

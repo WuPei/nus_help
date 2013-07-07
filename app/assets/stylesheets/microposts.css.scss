@@ -2,6 +2,26 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.post_info{
+	margin-top:30px;
+	border: 2px solod;
+	border-color: black;
+	padding: 20px;
+
+	div.post-title{
+		span{
+			font-size: 2em;
+			font-family: Impact;
+		}
+	}
+	div.post-time{
+		span{
+			margin-left: 5px;
+		}
+	}
+
+}
+
 .helpcontent{
 	#comment-record{
 		margin-right: 20px;
