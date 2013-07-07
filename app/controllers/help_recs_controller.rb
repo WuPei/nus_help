@@ -16,12 +16,14 @@ class HelpRecsController < ApplicationController
   end
 
   def update
+    #choose helper
     @helpRec = HelpRec.find(params[:rec_id])
     if @helpRec.update_attributes(params)
       flash[:success] = "Help updated"
       post_id = @helpRec.post_id
       @micropost = Micropost.find_by(:id=>post_id)
-      if @micropost.update_attributes(:status => 1)
+      if @micropost.update_attributes(:status => 1, :helper_id => @helpRec.helper_id)              
+        @micropost.create_activity :update, owner: current_user, recipient: @helpRec.helper
         redirect_to @micropost
         flash[:success] = "Help updated"
       else
@@ -30,6 +32,11 @@ class HelpRecsController < ApplicationController
     else
       redirect_to :back
     end
+  end
+
+  def feedback
+    #feedback happy or not
+    @helpRec = HelpRec.find(params[:rec_id])
   end
 
 end

@@ -46,8 +46,6 @@ class MicropostsController < ApplicationController
     respond_to do |format|
         Micropost.where(:id=>params[:post_id]).update_all("click_count = click_count + 1")
         format.html { 
-          
-          print 2222222
 
         }
         format.json{
@@ -56,7 +54,6 @@ class MicropostsController < ApplicationController
           location: @micropost
         }
     end
-    print 11111111
     
   end
 
