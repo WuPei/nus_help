@@ -12,18 +12,15 @@ class UsersController < ApplicationController
 
 
     @users = User.all - @popular_users
+    @users=@users.sort_by { rand }
     @users = @users.paginate(page: params[:page])
     
     if params[:mode] == "popular"
-      @users = User.all - @popular_users
+      @users = User.all - @popular_users    
       @users = @users.sort{|u,v| v.followers.count <=> u.followers.count}
       @users = @users.paginate(page: params[:page])
-    end
-    
-
-
+    end    
   end
-
 
 
   def show
