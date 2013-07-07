@@ -3,7 +3,7 @@
   <span> <%= micropost.help_recs.find_by(helper_id: current_user).helper_comment %> </span>
   </br>
 
-  <% if micropost.status == 1 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
+  <% if micropost.status > 0 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
     <div class="thanks-from">
       <span>Thanks from <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> : </span>
       <span> <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %> </span>  
@@ -28,11 +28,16 @@
       <h3>Feedback</h3>
     </div>
     <div class="modal-body">
-      <%= form_tag update_helpRec_url do %>
+      <%= form_tag feedback_helpRec_url do %>
         <%= hidden_field_tag :rec_id %>
         <%= label_tag :feedback_comment %>
         <%= text_field_tag :feedback_comment %>
-          <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
+        <%= label_tag :is_happy %>
+        <div class="field">
+          <%= radio_button_tag :is_happy, true %> Yes
+          <%= radio_button_tag :is_happy, false %> No
+        </div>
+        <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
       <% end %>
     </div>
   </div>
