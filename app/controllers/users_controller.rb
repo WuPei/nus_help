@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   #show some users in lists
   def index
     @popular_users = User.all
-    @popular_users = @popular_users - current_user.followed_users
+    @popular_users = @popular_users - current_user.followed_users - [current_user]
     @popular_users = @popular_users.sort{ |u,v| v.followers.count <=> u.followers.count }.first 10
 
 

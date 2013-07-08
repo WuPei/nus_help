@@ -11,7 +11,11 @@
     <% end %>
     </div>
     <div class="helpcontent">
-      <%= render "users/user_photo",{user:feed_item.user,need_div: true, size:50} %>
+      <% if feed_item.is_anonymous == true %>
+        <%= render "users/anonymous_photo",{user:feed_item.user,need_div: true, size:50} %>
+      <% else %>
+        <%= render "users/user_photo",{user:feed_item.user,need_div: true, size:50} %>
+      <% end %>
       <div class="help-feeds">
         <div class="record" id="comment-record">
           <div class='countNumber'>
@@ -40,7 +44,11 @@
             <% @module = NusModule.find_by(id: feed_item.module_id) %>
             <%= link_to @module.code,@module, {:style => 'background-color:#CCC'} %>
             <%= " | " %>
-            <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
+            <% if feed_item.is_anonymous == true %>
+              <%= link_to 'Anonymous','#',{:style => 'color:gray'} %>
+            <% else %>
+              <%= link_to feed_item.user.name, feed_item.user, {:style => 'color:gray'} %>
+            <% end %>
             <%= " | " %>
             <% case feed_item.status %>
             <% when 0 %>
