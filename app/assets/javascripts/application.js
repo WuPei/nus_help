@@ -1,3 +1,11 @@
+//= require jquery
+//= require jquery_ujs
+//= require jquery.ui.datepicker
+//= require jquery-fileupload/basic
+//= require jquery.ui.tooltip
+//= require bootstrap
+//= require jquery.ui.all
+//= require_tree .
 
 function updateUI(){
   $(".needToolTip").tooltip();
@@ -30,6 +38,11 @@ $(function(){
   updateUI();
 });
 
+$(function() {
+  $('#new_micropost').submit(function(e){
+    $('#post_submit').attr('disabled', 'disabled');
+  });
+});
 
 $(function() {
     // Date Picker setup
@@ -172,8 +185,6 @@ $(function(){
   $('.click_notification').click(function(){
     var url="notification_click"
     var notification_id =$(this).data('id');
-    console.log(url);
-    console.log(notification_id);
     $.ajax({
       type : "POST",
       url : url,
@@ -184,6 +195,7 @@ $(function(){
       contentType: 'application/json',
       success : function(response) {
         console.log("success");
+        window.location.assign(location.href);
       },
       error : function(response) {
         console.log("fail");

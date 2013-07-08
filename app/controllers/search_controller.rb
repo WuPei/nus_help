@@ -3,7 +3,7 @@ class SearchController < ApplicationController
   SearchLimit = 18
 
   def show
-    @query = params[:search]
+    @query = params[:search].strip
     
     if @query.nil? or @query == "" then
       @query = nil
@@ -24,7 +24,7 @@ class SearchController < ApplicationController
   end
 
   def show_term
-    @term = params[:term]; @query = params[:search]
+    @term = params[:term]; @query = params[:search].strip
     return if @query.nil? or @query == "" 
     if @term == "module"
       if @query =~ /\w{2,3}\d{0,4}/

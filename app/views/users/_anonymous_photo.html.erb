@@ -1,0 +1,4 @@
+<% size = 100 if size.nil?; need_div = true if need_div.nil?; %>
+<% if need_div %> <% end %>
+  <%= image_tag "man.jpeg" , :size => "%dx%d" % [size,size], :crop => :fill%>
+<% if need_div %>  <% end %>
