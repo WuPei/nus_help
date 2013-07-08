@@ -51,6 +51,9 @@ NusHelp::Application.routes.draw do
   
   match '/notification_click', to: 'activities#updateStatus', via: 'POST'
 
+
+
+
   match '/feedback_helpRec', to: 'help_recs#feedback', via: 'POST'
 
   get '/help',    to: 'static_pages#help'

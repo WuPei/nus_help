@@ -183,7 +183,7 @@ $(function(){
 
 $(function(){
   $('.click_notification').click(function(){
-    var url="notification_click"
+    var url="/notification_click"
     var notification_id =$(this).data('id');
     $.ajax({
       type : "POST",
