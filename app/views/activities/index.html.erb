@@ -4,14 +4,13 @@
       <h4>Notifications</h4>
     </div>
     <% if @activities.empty? %>
-    <div class="noactivity">
-      <strong>
-        You don't have any notifications yet, try to help someone :)
-      </strong>  
+      <div class="noactivity">
+        <strong>You don't have any notifications yet, try to help someone :)</strong>
+        <hr>Have a look on the</hr>
         <p><%= link_to "Popular Topics", :root %></p>
       </div>
-    <div id="notificationBody">
-      <% else %>
+      <div id="notificationBody">
+    <% else %>
       <% @activities.each do |activity| %>
         <% if activity.trackable && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
           <div class="activity">
@@ -22,14 +21,14 @@
               <strong><%= link_to activity.owner.name, activity.owner, {:style=>"color:black"} %></strong>
               <%= render_activity activity %>
               <span class="timestamp">
-                <%= time_ago_in_words(activity.created_at ) %>
-                ago.
+              <%= time_ago_in_words(activity.created_at ) %>
+                  ago.
               </span>
             </div>
           </div>
         <% end %>
-        <% end %>
       <% end %>
+    <% end %>
     </div>
   </div>
 <% end %>

@@ -23,7 +23,7 @@ class HelpRecsController < ApplicationController
       post_id = @helpRec.post_id
       @micropost = Micropost.find_by(:id=>post_id)
       if @micropost.update_attributes(:status => 1, :helper_id => @helpRec.helper_id)              
-        @micropost.create_activity :update, owner: current_user, recipient: @helpRec.helper
+        @helpRec.create_activity :update, owner: current_user, recipient: @helpRec.helper
         redirect_to @micropost
         flash[:success] = "Help updated"
       else
@@ -41,7 +41,8 @@ class HelpRecsController < ApplicationController
       flash[:success] = "Help updated"
       post_id = @helpRec.post_id
       @micropost = Micropost.find_by(:id=>post_id)
-      if @micropost.update_attributes(:status => 2, :is_happy => true)             
+      if @micropost.update_attributes(:status => 2, :is_happy => true) 
+        @helpRec.create_activity :feedback, owner: current_user, recipient: @micropost.user            
         redirect_to @micropost
         flash[:success] = "Help updated"
       else

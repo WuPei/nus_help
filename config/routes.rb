@@ -27,8 +27,6 @@ NusHelp::Application.routes.draw do
   resources :likeships
   resources :module_followings, only: [:new, :create, :destroy, :insertModules]
 
-  resources :help_recs
-
   root to: 'static_pages#home'
   match '/module_list', to: 'nus_modules#autoCompJson', via: 'get'
 
