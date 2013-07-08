@@ -26,7 +26,6 @@ NusHelp::Application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :likeships
   resources :module_followings, only: [:new, :create, :destroy, :insertModules]
-
   resources :help_recs
 
   root to: 'static_pages#home'

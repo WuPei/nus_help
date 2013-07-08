@@ -16,8 +16,16 @@
   .bookmark{
 		float:right;
 		top: -10px;
-		right: 5px;
+		right: 25px;	
 		position: relative;
+		width: 0px;
+		overflow: visible;
+
+		img{
+			width: 15px;
+			height: 30px;
+			max-width: 15px;
+		}
 	}
 }
 
@@ -34,7 +42,7 @@
 
 	
 	#comment-record{
-		margin-right: 20px;
+		margin-right: 0px;
 	}
 	#helper-strong{
 		color: #870a0a;
@@ -51,8 +59,8 @@
 		.record{
 			text-align: center;
 			float: right;
-			margin-right: 10px;
-			margin-top:10px;	
+			margin-right: 5px;
+			margin-top:15px;	
 			width: 60px;
 			.countNumber{
 				line-height: 12px;
