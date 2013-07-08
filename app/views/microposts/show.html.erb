@@ -81,9 +81,17 @@
   <div class="post-right-bar">
     <div id="user" class="user">
       <p>
-        <%= render "users/user_photo", {user:@user,size:150,need_div:false} %>
+        <% if @micropost.is_anonymous == true %>
+          <%= render "users/anonymous_photo", {user:@user,size:150,need_div:false} %>
+        <% else %>
+          <%= render "users/user_photo", {user:@user,size:150,need_div:false} %>
+        <% end %>
       </p>
-      <p><%= link_to @user.name, @user %></p>
+      <% if @micropost.is_anonymous == true %>
+        <p><%= link_to 'Anonymous', '#'%></p>
+      <% else %>
+        <p><%= link_to @user.name, @user %></p>
+      <% end %>
     </div>
   </div>
 <%end%>

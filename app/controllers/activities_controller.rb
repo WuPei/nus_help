@@ -10,7 +10,7 @@ class ActivitiesController < ApplicationController
   	@activity = PublicActivity::Activity.find_by(:id => params[:activity_id])
  	
   	respond_to do |format|
-      PublicActivity::Activity.where(:id=>params[:activity_id]).update_all("status = false")
+      @activity.update_all("status = false")
       format.html{
         redirect_to :back
       }
