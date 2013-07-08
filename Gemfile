@@ -72,11 +72,6 @@ group :development do
 	gem 'htmlbeautifier'
 end
 
-group :production do
-  #used for heruku,product deployment
-  gem 'pg', '0.15.1'
-end
-
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -98,7 +93,7 @@ gem 'validates_timeliness'
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
