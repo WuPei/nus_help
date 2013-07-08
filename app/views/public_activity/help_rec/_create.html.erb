@@ -1,13 +1,17 @@
 signed up as helper for 
-<% if activity.trackable.post.user==current_user %>
-your
+<% if activity.trackable %>
+	<% if activity.trackable.post.user == current_user %>
+	your
+	<% else %>
+	<strong><%= link_to activity.trackable.post.user.name, activity.trackable.post.user , {:style=>"color:black"}  %>
+	</strong>
+	's
+	<% end %>
+	Help Request: 
+	<strong>
+	<%= link_to activity.trackable.post.title, activity.trackable.post, {:style=>"color:black"}  %>
+	</strong>
 <% else %>
-<strong><%= link_to activity.trackable.post.user.name, activity.trackable.post.user , {:style=>"color:black"} if activity.trackable %>
-</strong>
-'s
+<% activity.inspect %>
 <% end %>
-Help Request: 
-<strong>
-<%= link_to activity.trackable.post.title, activity.trackable.post, {:style=>"color:black"} if activity.trackable %>
-</strong>
 

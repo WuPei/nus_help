@@ -117,7 +117,7 @@ $(function(){
   var width = $sidebar.css("width");
   $sidebar.css("width","0px");
   $sidebar.attr("isO",0);// default to close
-  $sidebarctrl.html("<");
+  $sidebarctrl.html("<i class='icon-chevron-left'></i>");
 
   var bumpout = function(){
     console.log($sidebar);
@@ -128,14 +128,14 @@ $(function(){
         width:"0px"
       },100);
       $sidebar.attr("isO","0");
-      $sidebarctrl.html("<");
+      $sidebarctrl.html("<i class='icon-chevron-left'></i>");
     } else{
       // Do Sidebar open
       $sidebar.animate({
         width: width
       },100);
       $sidebar.attr("isO","1");
-      $sidebarctrl.html(">");
+      $sidebarctrl.html("<i class='icon-chevron-right'></i>");
 
     }
   }
