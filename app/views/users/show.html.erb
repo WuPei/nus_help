@@ -18,7 +18,7 @@
 		<div class="tab-pane active" id="tab1">
 			<% if @user.microposts.any? %>
 				<div class="microposts">
-				<%= render :partial => 'microposts/micropost', :collection => @microposts%>
+				<%= render 'shared/feed', :feed_items => @microposts%>
 			    </div>  
 			    <%= will_paginate @microposts %>
 		    <% else %>
@@ -28,7 +28,7 @@
 		<div class="tab-pane" id="tab2">
 			<% if @microposts_help.any? %>
 				<div class="microposts">
-					<%= render :partial => 'microposts/micropost', :collection => 
+					<%= render 'shared/feed', :feed_items => 
 					@microposts_help%>
 			    </div>  
 				<%= will_paginate @microposts_help %>
