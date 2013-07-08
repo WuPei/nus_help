@@ -10,7 +10,7 @@
 		  <%= f.text_field :email, :value=>@user.email%>
 		  <%= f.label :gender %>
 		  <div class="field">
-			  <%= f.radio_button :gender, 0 %> Male
+			  <%= f.radio_button :gender, 0 , :checked => true %> Male
 			  <%= f.radio_button :gender, 1 %> Female
 		  </div>
 		</br>

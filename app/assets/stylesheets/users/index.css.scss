@@ -4,9 +4,10 @@ div#user-popular{
   margin-bottom:10px;
   padding-right:10px;
   border-bottom: solid 1px #999; 
-     vertical-align:middle;
+  vertical-align:middle;
   div{
     vertical-align:middle;
+    text-align: justify;
   }
   div.photo{
     display:inline-block;
@@ -18,8 +19,6 @@ div#user-popular{
     overflow:hidden;
   }
   div.follow{
-    display:inline-block;
-    position:relative;
     float:right;
   }
 }
