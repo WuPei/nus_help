@@ -3,11 +3,6 @@
   <h1>
     Users
   </h1>
-  <div class="row-fluid">
-    <div id="user_switch" >
-      <input type="button" value="Show other users" onClick="history.go(0)", class="btn btn-primary">
-    </div>
-  </div>
   <div>
     <ul class="nav nav-tabs">
       <li class="active">
@@ -38,7 +33,6 @@
       <% @random_users.each do |u| %>
         <%= render 'user', :user => u %>
       <% end %>
-      <%= will_paginate @random_users %>
     </div>
   </div>
   
