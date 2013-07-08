@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
   def home
+    @hostname = request.host_with_port
     if signed_in?
       feed_user_items = current_user.feed
       feed_mod_items = current_user.mod_feed
