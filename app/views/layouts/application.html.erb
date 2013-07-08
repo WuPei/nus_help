@@ -8,6 +8,7 @@
   </head>
   <body>
     <%= render 'layouts/header' %>
+    <%= render 'layouts/messages' %>
     <div class="row-fluid">
       <div class ="span7 offset1 content">
         <%= yield :content%>
@@ -24,7 +25,6 @@
         </div>
       </div>
       <%= yield :bumpingsidebar %>
-      <%= render 'layouts/messages' %>
       <div class ="span7 offset1">
         <%= render 'layouts/footer' %>
       </div>

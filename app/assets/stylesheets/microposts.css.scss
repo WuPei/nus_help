@@ -74,26 +74,20 @@ div.post_info{
 div.help-self{
 	padiing: 10px;
 	
-	div{
-		display: inline;
-	}
-	
-	div.user_photo{
-		display: inline-block;
+	.helprec_photo
+	{
+	float:left;
+	margin-right:10px;
 	}
 
-	
 	div.help-content{
-		display:inline-block;
-
+		float: left;
 		div{
 			display: block;
 		}
-		div.help1{
-			width:150%;
-		}
 	}
-	#contact-info
+
+	#contact_info
 	{
 	   display:inline-block;
 	}	
@@ -110,6 +104,12 @@ div.post-right-bar{
 	padding-top:10px;
 	padding-bottom:5px;
 	margin-right: auto;
+	#helpers_words
+	{
+      font-size:22px;
+      font-weight:bold;
+      color: #515454;
+	}
 	div.user{
 		.user-photo{
 			height: 100%;
