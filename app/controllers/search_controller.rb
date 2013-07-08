@@ -41,7 +41,10 @@ class SearchController < ApplicationController
     else
       @result = nil
     end
-
+    @usersc = User.where('name LIKE ?', "%#{@query}%").count
+    @modulesc = NusModule.where('code LIKE ? OR name LIKE ? ',"%#{@query}%","%#{@query}%").count
+    @micropostsc = Micropost.where('title LIKE ? OR content LIKE ? ', 
+                                  "%#{@query}%","%#{@query}%").count
     @result = @result.paginate(page:params[:page], per_page: SearchLimit) unless @result.nil?
   end
 

@@ -8,8 +8,6 @@ class StaticPagesController < ApplicationController
       @feed_items = feed_items_join.paginate(page: params[:page],:per_page=>15)
       @microposts = Micropost.all.sort{|u,v| v.comments.count <=> u.comments.count}.first 10
 
-      @send_gift = current_user.microposts.select{|x| x.is_happy == true and x.status == 2}.count
-      @recieve_gift = Micropost.all.select{|x| x.is_happy == true and x.helper_id == current_user.id and x.status == 2}.count
     end
   end
 

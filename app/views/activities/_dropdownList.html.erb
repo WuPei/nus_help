@@ -20,6 +20,9 @@
             <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
           </div>
           <div class="activity_body">
+            <% if activity.trackable.respond_to?(:helper) && activity.trackable.helper == current_user %>
+            Congradulations! 
+            <% end %>
             <strong><%= link_to activity.owner.name, activity.owner, {:style=>"color:black"} %></strong>
             <%= render_activity activity %>
             <span class="timestamp">
