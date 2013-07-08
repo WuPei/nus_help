@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @followed_users = current_user.followed_users.paginate(page: params[:page])
     @users_followers = current_user.followers.paginate(page: params[:page])
 
-    @random_users = User.all - @popular_users
+    @random_users = User.all - @popular_users - current_user.followed_users - current_user.followers - [current_user]
     @random_users = @random_users.sort_by { rand }
     @random_users = @random_users.paginate(page: params[:page])
  
