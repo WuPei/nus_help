@@ -7,19 +7,17 @@ class UsersController < ApplicationController
   #show some users in lists
   def index
     @popular_users = User.all
-    @popular_users = @popular_users - current_user.followed_users - [current_user]
+    @popular_users = @popular_users - current_user.followed_users - current_user.followers - [current_user]
     @popular_users = @popular_users.sort{ |u,v| v.followers.count <=> u.followers.count }.first 10
-
-
-    @users = User.all - @popular_users
-    @users=@users.sort_by { rand }
-    @users = @users.paginate(page: params[:page])
     
-    if params[:mode] == "popular"
-      @users = User.all - @popular_users    
-      @users = @users.sort{|u,v| v.followers.count <=> u.followers.count}
-      @users = @users.paginate(page: params[:page])
-    end    
+    
+    @followed_users = current_user.followed_users.paginate(page: params[:page])
+    @users_followers = current_user.followers.paginate(page: params[:page])
+
+    @random_users = User.all - @popular_users
+    @random_users = @random_users.sort_by { rand }
+    @random_users = @random_users.paginate(page: params[:page])
+ 
   end
 
 

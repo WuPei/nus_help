@@ -1,16 +1,47 @@
 <% provide(:title, 'All users') %>
 <% content_for :content do %>
   <h1>
-    All Users</h1>
-    <div class="row-fluid">
+    Users
+  </h1>
+  <div class="row-fluid">
     <div id="user_switch" >
       <input type="button" value="Show other users" onClick="history.go(0)", class="btn btn-primary">
+    </div>
   </div>
-</div>
   <div>
-    <%= render @users %>
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#tab1" data-toggle="tab">Followed Users</a>
+      </li>
+      <li>
+        <a href="#tab2" data-toggle="tab">My Follower</a>
+      </li>
+      <li>
+        <a href="#tab3" data-toggle="tab">Random Users</a>
+      </li>
+    </ul>
   </div>
-  <%= will_paginate @users %>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <% @followed_users.each do |u| %>
+        <%= render 'user', :user => u %>
+      <% end %>
+      <%= will_paginate @followed_users %>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <% @users_followers.each do |u| %>
+        <%= render 'user', :user => u %>
+      <% end %>
+      <%= will_paginate @users_followers %>
+    </div>
+    <div class="tab-pane" id="tab3">
+      <% @random_users.each do |u| %>
+        <%= render 'user', :user => u %>
+      <% end %>
+      <%= will_paginate @random_users %>
+    </div>
+  </div>
+  
 <% end %>
 <% content_for :firstsidebar do %>
   <%= render 'layouts/sidebar' %>
@@ -18,4 +49,5 @@
 <% content_for :secondsidebar do %>
   <%= render 'popularusers' %>
 <% end %>
+
 
