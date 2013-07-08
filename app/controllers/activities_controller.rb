@@ -8,16 +8,13 @@ class ActivitiesController < ApplicationController
 
   def updateStatus
   	@activity = PublicActivity::Activity.find_by(:id => params[:activity_id])
- 	
+ 	  PublicActivity::Activity.where(:id=>params[:activity_id]).update_all("status = false")
   	respond_to do |format|
-      @activity.update_all("status = false")
       format.html{
         redirect_to :back
       }
       format.json{
-        render json: @activity,
-        status: :updated,
-        location: @activity
+        head :no_content
       }	
     end
   end
