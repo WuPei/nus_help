@@ -84,23 +84,28 @@ $(function(){
         minSize: [180/rW,180/rH]
       });
     });
+    // and make sure this crop section is displaable
+    $cropSection.show();
   }
 
   // set image source
   var $cropSection = $("#cropbox-section"),
+      user_id = $cropSection.attr("user_id"),
       imgSrc = $cropSection.attr("src");
-  if(imgSrc != ""){
+      
+  if(imgSrc && imgSrc != ""){
     setImgSrc(imgSrc);
   }
 
   var userImgUpload = $('#image_file_ajax_uploader');
   userImgUpload.fileupload({
-    url: "json_upload",
+    url: "/users/" + user_id + "/json_upload",
     dataType: "json",
     add: function(e,data){ data.submit(); },
     done: function(e,data){
       console.log(data.result);
       var src = data.result.src;
+      console.log("Got Src:" + src);
       setImgSrc(src);
     },
   });
