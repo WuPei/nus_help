@@ -45,7 +45,7 @@
     </div>
     <div class="span4">
       <a href="<%= following_user_path(@user) %>">
-        <h5><%= @send_gift %></h5>
+        <h5><%= current_user.microposts.select{|x| x.is_happy == true and x.status == 2}.count %></h5>
         <strong>
           SEND OUT
         </strong>
@@ -53,7 +53,7 @@
     </div>
     <div class="span4">
       <a href="#<%# %>">
-        <h5><%= @recieve_gift %></h5>
+        <h5><%= @recieve_gift = Micropost.all.select{|x| x.is_happy == true and x.helper_id == current_user.id and x.status == 2}.count %></h5>
         <strong>
           RECEIVED
         </strong>
