@@ -195,7 +195,7 @@ $(function(){
       contentType: 'application/json',
       success : function(response) {
         console.log("success");
-        console.log(location.href);
+        window.location.assign(location.href);
       },
       error : function(response) {
         console.log("fail");
