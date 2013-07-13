@@ -12,6 +12,6 @@
         </button>
       <% end %>
     </div>
-    <%= render 'shared/feed' %>
+    <%= render 'shared/feed', :feed_items => @nus_module.feed.paginate(page: params[:page]) %>
   <% end %>
 <% end %>

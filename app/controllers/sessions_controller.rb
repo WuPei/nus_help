@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       if(user)
        #if old user, go to user page directly
        sign_in user
-       redirect_back_or user
+       redirect_back_or root_url
       else
         #if new user, go to signup page to fill in information
         #get nus account, name, module
