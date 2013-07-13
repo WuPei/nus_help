@@ -1,24 +1,49 @@
 <% if @comments.any? %>
-  <%= link_to "Comments( #{@comments.count} )", '#' %>
-  <ol class="comments" >
+ <div class="comment_status">
+  <span id="comment_no">
+    Online Help(<%= @comments.count %>) &nbsp;
+  </span>  
+  <strong class="snow">|</strong>
+  <span id="comment_curtime">
+     &nbsp;
+    Until <%= Time.now %>
+  </span>
+  </div>
+  <div class="comments">
     <% @comments.each do |comment| %>
-      <li>
-        <%= render "users/user_photo", {user:User.find_by(:id=>comment.user_id),size:30,need_div:false} %>
-        <%= comment.content %>
-        <span class="timestamp">
+     <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="48" valign="top" align="center">
+              <%= render "users/user_photo", {user:User.find_by(:id=>comment.user_id),size:30,need_div:false} %>
+            </td>
+            <td width="10" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+        
+        <div class="comment_name">
+              <%= User.find_by(:id=>comment.user_id).name%>
+         </div>
+        <div class="timestamp" id="comment_timestamp">
           <%= time_ago_in_words(comment.created_at) %>
           ago
-        </span>
+        </div>    
+      <div class="comment_content">
+        <%= h(comment.content).gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe %>
+       </div> 
         <% if current_user.id == comment.user_id %>
-          <span class="comment_delete">
+          <div class="comment_delete">
             <%= link_to "delete", [micropost,comment] , method: :delete,
                                      title: comment.content %>
-          </span>
+          </div>  
         <% end %>
-      </li>
+            </td>
+        </tr>
+    </tbody>
+  </table>
+  </div>
     <% end %>
   </ol>
   <%= will_paginate @comments %>
+
   </br>
   
 <% end %>
