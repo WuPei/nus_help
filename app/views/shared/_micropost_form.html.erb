@@ -26,6 +26,10 @@
       <h6>Thank-you Gift:</h6>
       <%= f.text_field :gift, placeholder: "Gift to the helper" %>
     </div>
+    <div class="field">
+        <%= f.radio_button :is_online, true , :checked => true %> Online
+        <%= f.radio_button :is_online, false %> Offline
+    </div>
     <div>
       <h6>
       <%= f.check_box :is_anonymous %> Anonymous
