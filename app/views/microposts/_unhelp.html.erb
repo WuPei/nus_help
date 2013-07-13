@@ -1,26 +1,77 @@
 <div class="help-other">
-  Help: 
-  <span> <%= micropost.help_recs.find_by(helper_id: current_user).helper_comment %> </span>
-  </br>
-
-  <% if micropost.status > 0 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
-    <div class="thanks-from">
-      <span>Thanks from <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> : </span>
-      <span> <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %> </span>  
-    </div>
-    <div class="feedback">
-      <a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="open_add_thanks">Feedback</a> 
-      <%= micropost.help_recs.find_by(helper_id: current_user).feedback_comment %>
-    </div>
-  <% end %>
-
-  <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
+  <h5>
+  Help
+</h5>
+  <div class="helper-info">
+     <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="48" valign="top" align="center">
+              <%= render "users/user_photo", {user:current_user,size:30,need_div:false} %>
+            </td>
+            <td width="10" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+        <div class="helper-name">
+              <%= current_user.name%>
+        </div>
+      <div class="helper-content">
+       <%= h(micropost.help_recs.find_by(helper_id: current_user).helper_comment).gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe %> 
+      </div> 
+    <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
     <%= f.hidden_field :helper_id %>
     <%= f.hidden_field :post_id %>
     <div class= "like_button">
       <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
     </div>
+ </div>
+  <% if micropost.status > 0 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
+    <div class="thanks-from">
+        <h6>Thanks from
+        </h6>
+        <table cellpadding= "0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="30" valign="top" align="center">
+              <%= render "users/user_photo", {user:User.find_by(:id => micropost.user_id),size:25,need_div:false} %>
+            </td>
+            <td width="5" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+                <div class="helpee-name">
+                  <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> 
+                </div>
+                <div class="helpee-content">
+                   <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %>  
+                </div>
+                <a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="btn btn-mini btn-primary">Feedback</a> 
+            </td>
+       </table>
+    </div>
+   <% end %>
+ </div>
+ </td>
+</table>  
+<div class="feedback">
+     <% if micropost.help_recs.find_by(helper_id: current_user).feedback_comment? %>
+      <div class="feedback message">
+      <h5> Feedback </h5>
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="48" valign="top" align="center">
+              <%= render "users/user_photo", {user:current_user,size:30,need_div:false} %>
+            </td>
+            <td width="10" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+        <div class="helper-name">
+            <%= current_user.name%> 
+        </div>
+      <div class="helper-content">   
+      <%= micropost.help_recs.find_by(helper_id: current_user).feedback_comment %>
+    </div>
+  </div>
+<% end %>
+  </td>
+  </table>
   <% end %>
+ </div>
+</div>
 
   <div class="modal fade" id="feedback_modal">
     <div class="modal-header">
@@ -40,6 +91,7 @@
         <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
       <% end %>
     </div>
-  </div>
+</div>
+</div>
 </div>
 
