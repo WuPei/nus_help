@@ -1,27 +1,73 @@
 <div class="help-other">
-  Help: 
-  <span> <%= micropost.help_recs.find_by(helper_id: current_user).helper_comment %> </span>
-  </br>
+  <h5>
+  Help Message
+</h5>
+  <div class="helper-info">
+     <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="48" valign="top" align="center">
+              <%= render "users/user_photo", {user:current_user,size:30,need_div:false} %>
+            </td>
+            <td width="10" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+        <div class="helper-name">
+              <%= current_user.name%>
+        </div>
+      <div class="helper-content">
+       <%= h(micropost.help_recs.find_by(helper_id: current_user).helper_comment).gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe %> 
+      </div> 
+
+    <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
+    <%= f.hidden_field :helper_id %>
+    <%= f.hidden_field :post_id %>
+     <div class= "like_button">
+        <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
+     </div>
+     <% end %>
 
   <% if micropost.status > 0 && micropost.help_recs.find_by(helper_id: current_user).owner_comment != nil %>
     <div class="thanks-from">
-      <span>Thanks from <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> : </span>
-      <span> <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %> </span>  
+        <h6>Thanks from </h6>
+        <table cellpadding= "0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="30" valign="top" align="center">
+              <%= render "users/user_photo", {user:User.find_by(:id => micropost.user_id),size:25,need_div:false} %>
+            </td>
+            <td width="5" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+                <div class="helpee-name">
+                  <%= link_to User.find_by(:id => micropost.user_id).name, User.find_by(:id => micropost.user_id) %> 
+                </div>
+                   <%= micropost.help_recs.find_by(helper_id: current_user).owner_comment %>  
+            </td>
+       </table>
     </div>
     <div class="feedback">
-      <a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="open_add_thanks">Feedback</a> 
-      <%= micropost.help_recs.find_by(helper_id: current_user).feedback_comment %>
-    </div>
-  <% end %>
-
-  <%= form_for(micropost.help_recs.find_by(helper_id: current_user), html: { method: :delete } ) do |f|  %>
-    <%= f.hidden_field :helper_id %>
-    <%= f.hidden_field :post_id %>
-    <div class= "like_button">
-      <%= f.submit "Unhelp" ,class: "btn btn-small btn-primary" %>
-    </div>
-  <% end %>
-
+    <h6> Feedback </h6>
+     <% if micropost.help_recs.find_by(helper_id: current_user).feedback_comment? %>
+     <div class="feedback message">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="30" valign="top" align="center">
+              <%= render "users/user_photo", {user:current_user,size:30,need_div:false} %>
+            </td>
+            <td width="5" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+            <div class="helpee-name">
+               <%= current_user.name%> 
+            </div> 
+           <%= micropost.help_recs.find_by(helper_id: current_user).feedback_comment %>
+          </td>
+        </table>
+      </div>
+     <% end %>
+      <div>
+         <a href="#feedback_modal" data-toggle="modal" data-id=<%= micropost.help_recs.find_by(helper_id: current_user).id%> title="add this item" class="open_add_thanks"> New Feedback to <%= User.find_by(:id => micropost.user_id).name%></a> 
+      </div>
+  <% end %> 
+   </td>
+  </table> 
+ </div>
   <div class="modal fade" id="feedback_modal">
     <div class="modal-header">
       <a class="close" data-dismiss="modal">&times;</a>
@@ -37,6 +83,7 @@
           <%= radio_button_tag :is_happy, true %> Yes
           <%= radio_button_tag :is_happy, false %> No
         </div>
+       </br>
         <%= submit_tag "Submit" ,class: "btn btn-small btn-primary" %>
       <% end %>
     </div>
