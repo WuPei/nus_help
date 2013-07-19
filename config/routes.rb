@@ -30,7 +30,8 @@ NusHelp::Application.routes.draw do
 
   root to: 'static_pages#home'
   match '/module_list', to: 'nus_modules#autoCompJson', via: 'get'
-
+  match '/gift_sent', to: 'users#show_gift_sent', via:'get'
+  match '/gift_recieved', to: 'users#show_gift_recieved', via:'get'
   
   match '/createmod', to: 'nus_modules#new', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'

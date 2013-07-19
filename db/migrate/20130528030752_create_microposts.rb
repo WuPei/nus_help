@@ -11,7 +11,7 @@ class CreateMicroposts < ActiveRecord::Migration
 			t.integer :status  , :default=>0
 			t.integer :user_id
 			t.integer :helper_id
-			t.boolean :is_happy, :default=>true
+			t.boolean :is_happy, :default=>false
 			t.integer :click_count, :default => 0
 			t.integer :comments_count
 			t.timestamps
