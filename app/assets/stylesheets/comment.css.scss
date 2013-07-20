@@ -1,3 +1,57 @@
 // Place all the styles related to the comment controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment_status
+{
+	padding: 10px;
+	font-size:12px;
+    line-height: 120%;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    color: grey;
+    .snow
+    {
+       color: #e2e2e2;
+       font-weight:bold;
+    }
+}
+
+.comments
+{
+	dipslay:block;
+	padding: 10px;
+    line-height: 150%;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+   
+	.comment_photo
+	{
+      margin-right:10px;
+      display:inline-block;
+      float: left;
+	}
+    
+	.comment_name
+	{
+	  font-size:13px;
+	  font-weight:bold;
+      color: grey;
+      display:inline-block;
+	}
+	 #comment_timestamp{
+	  font-size:11px;
+	  float:right;
+	  display:inline-block;
+	}
+	.comment_content
+	{
+	  font-size:16px;
+
+	} 
+      .comment_delete
+	{
+	  font-size:10px;
+      float:right;
+	}
+}
