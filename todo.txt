@@ -4,4 +4,4 @@
 4. Search by person, show category
 5. The workflow of image-cropping needs improvement, currently upload and crop are 2 steps
 6. `People You May Know` -- list beased on the most common modules
-7. 
+

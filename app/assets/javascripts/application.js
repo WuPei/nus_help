@@ -53,7 +53,7 @@ $(function() {
 
  // Auto Complete for the date
   var autoOpts = {
-    minLength: 3,
+    minLength: 3, 
     autoFocus: true,
     source: $('#micropost_module_code').data('autocomplete-source')		
   };
@@ -74,7 +74,7 @@ $(function() {
 
   $(function() {
     var autoOpts = {
-      minLength: 3,
+      // minLength: 3, // NO need the minLength
       autoFocus: true,
       source: $('#searchm').data('autocomplete-source'),
       select: function(evt,ui){
@@ -91,13 +91,12 @@ $(function() {
                flag = false;
         }
         if (flag) {
-          $mTag = $("<span></span>"); $mTag.addClass("module-tag needToolTip");
+          $mTag = $("<span></span>"); $mTag.addClass("module-tag");
           $mTag.attr("title","Module Title Stub");
           $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
           $mTag.appendTo($tags);
         }
         
-        // TODO: callback to update DB that module has been followed
         $.ajax({
           type : "POST",
           url : "module_followings",
