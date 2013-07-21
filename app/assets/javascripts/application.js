@@ -92,7 +92,6 @@ $(function() {
         }
         if (flag) {
           $mTag = $("<span></span>"); $mTag.addClass("module-tag");
-          $mTag.attr("title","Module Title Stub");
           $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
           $mTag.appendTo($tags);
         }
@@ -104,9 +103,12 @@ $(function() {
             mod_id: $mInfo.html(),
             mode : "module",
           }),
+          dataType:"json",
           contentType: 'application/json',
-          success : function(response) {
-            console.log("success");
+          success : function(minfo) {
+            // Create Node upon success
+            $mInfo.attr("title",minfo.name);
+            $mInfo.prop("href","/nus_modules/" + minfo.id);
           },
           error : function(response) {
             console.log("not");

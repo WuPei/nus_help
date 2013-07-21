@@ -6,11 +6,13 @@ class ModuleFollowingsController < ApplicationController
   end
 
   def create
+    currentModule = nil
     if(params[:mode] == "module")
       params[:mode] == ""
       params[:module_following][:mod_follower_id] = current_user.id
       mod_code = params[:module_following][:mod_id]
-      params[:module_following][:mod_id] = NusModule.find_by(:code => mod_code).id
+      currentModule = NusModule.find_by(:code => mod_code)
+      params[:module_following][:mod_id] = currentModule.id
     end
 
     if ModuleFollowing.find_by(params[:module_following]).nil?
@@ -27,7 +29,7 @@ class ModuleFollowingsController < ApplicationController
           redirect_to root_url 
         }
         format.json{
-          render json: @module_following,
+          render json: currentModule ? currentModule : @module_following,
           status: :created,
           location: @module_following
         }
@@ -53,7 +55,6 @@ class ModuleFollowingsController < ApplicationController
         status: :deleted,
         location: @module_following
       }
-
     end
   end
 
@@ -69,6 +70,7 @@ class ModuleFollowingsController < ApplicationController
       @mod.push({"code"=>m['ModuleCode'], "name"=>m['ModuleTitle']})
     end
     @uid = params['uid']
+
     if @mod
       for m in @mod
         mod = NusModule.find_by(code: m['code'])
@@ -80,6 +82,7 @@ class ModuleFollowingsController < ApplicationController
         end
       end
     end
+
     user = User.find_by(id: params[:uid])
     if(user)
       render :new
@@ -99,5 +102,4 @@ class ModuleFollowingsController < ApplicationController
     res = http_request(url)
     return ActiveSupport::JSON.decode(res.body)
   end
-
 end
