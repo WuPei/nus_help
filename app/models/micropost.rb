@@ -18,12 +18,15 @@ class Micropost < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 25}
   validates :user_id, presence: true
   #validates_associated :nus_module
-  validates :deadline, presence: true
-  validates_date :deadline
+  #validates_date :deadline
   #validates :nus_module, :presence => {:message => 'The module no exists in NUS!'}
-  validates :gift, presence: true
+  
   validates :content, presence: true, length: { maximum: 200 }
-
+  before_save { 
+    if self.gift == "" or nil
+      self.gift = "A Big Thanks"
+    end
+  }
   # Returns microposts from the users being followed by the given user.
   def self.from_users_followed_by(user)
     followed_user_ids = "SELECT followed_id FROM relationships

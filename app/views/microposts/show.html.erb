@@ -9,13 +9,16 @@
         <div class="post content">
           <textarea readonly><%= @micropost.content %></textarea>
         </div>
-        <div class="post-time">
-          <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %>
-            &nbsp Remains &nbsp
-            <%= @elapsed_seconds %>
-            <%=@elapsed_unit%>
-          </span>
-        </div>
+
+        <% if @micropost.deadline != ""%>
+          <div class="post-time">
+            <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %>
+              &nbsp Remains &nbsp
+              <%= @elapsed_seconds %>
+              <%=@elapsed_unit%>
+            </span>
+          </div>
+        <% end %>
         <div class="post-row">
           <div class="post-gift">
             <i class="icon-heart"></i>
