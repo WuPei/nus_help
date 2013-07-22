@@ -1,0 +1,25 @@
+<ul id="tabs" class="nav nav-tabs">
+  <li class="active"><a href="#comment" data-toggle="tab">Helps</a></li>
+</ul>
+<div id="my-tab-content" class="tab-content">
+  <div class="tab-pane active" id="comment">
+    <!--show the comments -->
+    <section>
+      <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
+    </section>
+  </div>
+</div>
+<% content_for :newcomments do %>
+  <!-- Add new comment -->
+  <div class="newcomment">
+    <div class="onlinehelphints">
+      <h5>
+        Sign up as a Helper
+      </h5>
+      <p>This is an online help, replying the user implies you are signing up as a helper.</p>
+    </div>
+    <div class="sep10">
+    </div>
+    <%= render 'comments/comment_form', :micropost => @micropost %>
+  </div>
+<% end %>

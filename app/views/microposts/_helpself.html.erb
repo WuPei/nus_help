@@ -1,34 +1,79 @@
 <ol class="comments">
   <% if micropost.help_recs.any? %>
+    <h5>
+      Help Message:
+  </h5>
     <% micropost.help_recs.each do |h| %>
-      <li>
-        <div class="help-self">
-          <div class="helprec_photo">
-          <%= render "users/user_photo", {user:h.helper,size:70,need_div:true} %>
-          </div>
-           <span class="comment">
-              <%=link_to User.find_by(:id => h.helper_id ).name,  User.find_by(:id => h.helper_id )%>
-              :
-              <%= h.helper_comment %> 
-            </span>
-            <span class="timestamp">
-              <%= time_ago_in_words(h.created_at) %>
-              ago
-            </span>     
-            <div class="feedback">
-              Feedback: <%= h.feedback_comment %>
-            </div> 
-            <div id="contact_info">
-              Contact: <%= h.contact_info %>
-            </div>
-           <div id="thanks">
+        <div class="helper-info">
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="48" valign="top" align="center">            
+          <%= render "users/user_photo", {user:h.helper,size:30,need_div:true} %>
+            </td>
+            <td width="10" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+        <div class="helper-name">
+             <%=link_to User.find_by(:id => h.helper_id ).name,  User.find_by(:id => h.helper_id )%>
+        </div>
+        <div class="timestamp" id="comment_timestamp">
+          <%= time_ago_in_words(h.created_at) %>
+          ago
+        </div> 
+      <div class="helper-content">
+              <%= h.helper_comment %>   
+       </div>
+     <div id="thanks">
               <a class="btn-small btn-primary open_add_thanks" type="button" href="#test_modal" data-toggle="modal" data-id=<%= h.id%> title="add this item">Thanks </a> 
-             <%= h.owner_comment %> 
-          </div> 
-      </li>
+            
+     </div> 
+
+    <% if h.owner_comment? %>  
+    <div class="thanks-message">
+      <h6> Thanks Message</h6>
+       <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tbody><tr>
+            <td width="30" valign="top" align="center">     
+              <%= render "users/user_photo", {user:current_user,size:25,need_div:true} %>
+                </td>
+               <td width="5" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+            <div class="helpee-name" >
+              <%= current_user.name%>
+            </div>
+            <%= h.owner_comment %> 
+       <% if not h.feedback_comment.nil? %>      
+           <div class="feedback">
+            <h6>
+                Feedback </h6>
+           <table cellpadding="0" cellspacing="0" border="0" width="100%">
+             <tbody><tr>
+            <td width="20" valign="top" align="center">     
+              <%= render "users/user_photo", {user:h.helper,size:20,need_div:true} %>
+            </td>
+               <td width="5" valign="top"></td>
+            <td width="auto" valign="top" align="left">
+            <div class="helpee-name" >
+              <%= User.find_by(:id => h.helper_id ).name %>             
+            </div>
+              <%= h.feedback_comment %>
+            <% end %>
+          </td>
+        </table>    
+            <% if not h.contact_info.nil? %> 
+              <div id="contact_info">
+                Contact: <%= h.contact_info %>
+              </div>
+            <% end %>    
+    <%end%>
+     </td>
+   </table>
+  </div>
+     </td>
+    </table>
+
     <% end %>
   <% else %>
-    These is no guys helping you
+    <h5>These is no guys helping you</h5>
   <% end %>
 </ol>
 

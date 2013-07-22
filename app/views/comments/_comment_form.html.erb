@@ -1,9 +1,11 @@
 <%= form_for ([micropost, micropost.comments.build(user_id: current_user.id)]) do |comment_builder| %>
   <div class="field">
-  	<%= comment_builder.hidden_field :user_id %>
-    <%= comment_builder.text_field :content, placeholder: "Compose new commnet..."%>
+    <%= comment_builder.hidden_field :user_id %>
+    <%= comment_builder.text_area :content, :id=> "comment_form", placeholder: "Compose new help..."%>
   </div>
-  <div class ="reply">
-    <%= comment_builder.submit "reply", class: "btn btn-small btn-primary" %>
+  <div class ="helpbutton">
+    <%= comment_builder.submit "Help it!", class: "btn btn-small btn-primary" %>
+  </div>
+  <div class ="sep10">
   </div>
 <% end %>

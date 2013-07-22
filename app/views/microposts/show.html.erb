@@ -1,97 +1,84 @@
 <% provide(:title, @micropost.title) %>
 <% content_for :content do %>
-  <div class="row">
-    <div class="span10 offset1">
-      <div id="post_info" class="post_info">
-        <div class="post-title">
-          <span><%= @micropost.title %></span>
-        </div>
-        <div class="post content">
-          <textarea readonly><%= @micropost.content %></textarea>
-        </div>
-        <div class="post-time">
-          <i class="icon-time"></i><span class="post-time"><%=  @micropost.deadline  %>
-            &nbsp Remains &nbsp
-            <%= @elapsed_seconds %>
-            <%=@elapsed_unit%>
-          </span>
-        </div>
-        <div class="post-row">
-          <div class="post-gift">
-            <i class="icon-heart"></i>
-            <span class="post-gift"><%= @micropost.gift %></span>
-          </div>
-          <div class="status">
-            <i class="icon-question-sign"></i>
-            <% if @micropost.status == 0 %>
-              <span class="post-status">Ongoing</span>
-            <% elsif @micropost.status == 1 %>
-              <span class="post-status">Processing</span>
-            <% elsif @micropost.status == 2 %>
-              <span class="post-status">Ending</span>
-            <% end %>
-          </div>
-          <div class="create_at">
-            Create Time: <span style="color:grey"><%= @micropost.created_at %></span>
-          </div>
-          <div id='like_form'>
-            <% unless @micropost.like?(current_user) %>
-              <% #if the micropost is not liked, otherwise we don't show it %>
-              <%= render 'microposts/like', :micropost => @micropost %>
-            <% else %>
-              <%= render 'microposts/unlike', :micropost => @micropost %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-      <ul id="tabs" class="nav nav-tabs">
-        <li class="active"><a href="#commit" data-toggle="tab">Commit</a></li>
-        <% if @micropost.status == 2 %>
-          <li class="disabled"><a href="#help" data-toggle="tab">Help</a></li>
-        <% else %>
-          <li><a href="#help" data-toggle="tab">Help</a></li>
-        <% end %>
-      </ul>
-      <div id="my-tab-content" class="tab-content">
-        <div class="tab-pane active" id="commit">
-          <!--show the comments -->
-          <section>
-            <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
-          </section>
-          <!-- Add new comment -->
-          <%= render 'comments/comment_form', :micropost => @micropost %>
-        </div>
-        <div class="tab-pane" id="help">
-          <div id='help_form'>
-            <% if @micropost.user_id == current_user.id %>
-              <%= render 'microposts/helpself', :micropost => @micropost %>
-            <% elsif @micropost.help?(current_user) %>
-              <% #if the micropost is not liked, otherwise we don't show it %>
-              <%= render 'microposts/unhelp', :micropost => @micropost %>
-            <% else %>
-              <%= render 'microposts/help', :micropost => @micropost %>
-            <% end %>
-          </div>
-        </div>
-      </div>
+  <div id="post_header" class="post_header">
+    <div id="user" class="user">
+      <% if @micropost.is_anonymous == true %>
+        <%= render "users/anonymous_photo", {user:@user,size:80,need_div:false} %>
+      <% else %>
+        <%= render "users/user_photo", {user:@user,size:80,need_div:false} %>
+      <% end %>
+    </div>
+    <div class="post-title">
+      <span><%= @micropost.title %></span>
+    </div>
+    <div class="post-info">
+      By
+      <% if @micropost.is_anonymous %>
+        Anonymous
+      <% else %>
+        <%= link_to @user.name,@user %>
+      <% end %>
+      |
+      <span class='mytimestamp'>
+        <%= time_ago_in_words(@micropost.created_at) +" ago"%>
+      </span>
+      |
+      <%= link_to @micropost.click_count,@micropost,{:style=>'color:gray'} %>
+      Clicks
+    </div>
+  </div>
+  <hr></hr>
+  <div class="post-content">
+    <%= @micropost.content %>
+  </div>
+  <div class="post-footer">
+    <div id='like_form'>
+      <% unless @micropost.like?(current_user) %>
+        <% #if the micropost is not liked, otherwise we don't show it %>
+        <%= render 'microposts/like', :micropost => @micropost %>
+      <% else %>
+        <%= render 'microposts/unlike', :micropost => @micropost %>
+      <% end %>
     </div>
   </div>
 <% end %>
+<% content_for :comments do %>
+  <% if @micropost.is_online == true %>
+    <%= render 'microposts/online' %>
+  <% else %>
+    <%= render 'microposts/offline' %>
+  <% end %>
+<% end %>
 <% content_for :firstsidebar do %>
   <div class="post-right-bar">
-    <div id="user" class="user">
-      <p>
-        <% if @micropost.is_anonymous == true %>
-          <%= render "users/anonymous_photo", {user:@user,size:150,need_div:false} %>
-        <% else %>
-          <%= render "users/user_photo", {user:@user,size:150,need_div:false} %>
+    <div class="post-time">
+      <i class="icon-time"></i> Deadline:
+      <span class="post-time">
+        <strong><%=  @micropost.deadline  %></strong>
+        <br><i class="icon-time"></i> Remains:
+          <strong><%= @elapsed_seconds %>
+          <%= @elapsed_unit%></strong>
+        </br>
+      </span>
+    </div>
+    <div class="post-row">
+      <div class="post-gift">
+        <i class="icon-heart"></i> Rewards:
+        <span class="post-gift">
+          <strong><%= @micropost.gift %></strong></span>
+      </div>
+      <div class="status">
+        <i class="icon-question-sign"></i> Help Status:
+        <strong>
+        <% if @micropost.status == 0 %>
+          <span class="post-status">Ongoing</span>
+        <% elsif @micropost.status == 1 %>
+          <span class="post-status">Processing</span>
+        <% elsif @micropost.status == 2 %>
+          <span class="post-status">Ending</span>
         <% end %>
-      </p>
-      <% if @micropost.is_anonymous == true %>
-        <p><%= link_to 'Anonymous', '#'%></p>
-      <% else %>
-        <p><%= link_to @user.name, @user %></p>
-      <% end %>
+      </strong>
+      </div>
     </div>
   </div>
 <%end%>

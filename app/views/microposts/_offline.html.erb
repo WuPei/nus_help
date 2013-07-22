@@ -1,0 +1,30 @@
+<ul id="tabs" class="nav nav-tabs">
+  <li class="active"><a href="#commit" data-toggle="tab">Comment</a></li>
+  <% if @micropost.status == 2 %>
+    <li class="disabled"><a href="#help" data-toggle="tab">Help</a></li>
+  <% else %>
+    <li><a href="#help" data-toggle="tab">Help</a></li>
+  <% end %>
+</ul> 
+<div id="my-tab-content" class="tab-content">
+  <div class="tab-pane active" id="commit">
+    <!--show the comments -->
+    <section>
+      <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
+    </section>
+    <!-- Add new comment -->
+    <%= render 'comments/comment_form', :micropost => @micropost %>
+  </div>
+  <div class="tab-pane" id="help">
+    <div id='help_form'>
+      <% if @micropost.user_id == current_user.id %>
+        <%= render 'microposts/helpself', :micropost => @micropost %>
+      <% elsif @micropost.help?(current_user) %>
+        <% #if the micropost is not liked, otherwise we don't show it %>
+        <%= render 'microposts/unhelp', :micropost => @micropost %>
+      <% else %>
+        <%= render 'microposts/help', :micropost => @micropost %>
+      <% end %>
+    </div>
+  </div>
+</div>

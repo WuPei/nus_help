@@ -24,7 +24,7 @@ class ModuleFollowingsController < ApplicationController
         NusModule.where(:id=>params[:module_following][:mod_id]).update_all("follower_count = follower_count + 1")
         format.html { 
           @module_following.create_activity :create, owner: current_user
-          redirect_to :back 
+          redirect_to root_url 
         }
         format.json{
           render json: @module_following,

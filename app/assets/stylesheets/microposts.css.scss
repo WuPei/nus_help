@@ -2,15 +2,31 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-div.post_info{
-	margin-top:30px;
-	border: 2px solod;
-	border-color: black;
-	padding: 20px;
+div.commentsarea{
+  background-color: white;
+  display:block;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  margin-bottom: 20px;	
+}
 
+
+div.user{
+		margin-top: 10px;
+		margin-right: 10px;
+		float: right;
+	}
+
+div.post_header{
 	div.post-title{
+		padding-left: 10px;
+		padding-top: 30px;
 		span{
-			font-size: 2em;
+			font-size: 2.5em;
 			font-family: Impact;
 		}
 	}
@@ -19,7 +35,34 @@ div.post_info{
 			margin-left: 5px;
 		}
 	}
+	div.post-info{
+		padding-left:10px;
+		padding-top: 5px;
+		font-size: 12px;
+	}
+}
 
+div.post-content{
+	font-size: 15px;
+	margin-left: 10px;
+}
+
+div.post-footer{
+	background-color: white;
+	margin: 0px 0px 20px 0px;
+	padding: 0px 0px 5px 0px;
+	-webkit-border-radius: 2px 6px 6px 6px;
+	-moz-border-radius: 2px 6px 6px 6px;
+	border-radius: 2px 6px 6px 6px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	height: 20px;
+	/*like_button */
+	.like_button{
+	  float: left;
+	  margin-left: 10px;
+	}
 }
 
 .helpcontent{
@@ -101,6 +144,7 @@ div.help-self{
 
 
 div.post-right-bar{
+	padding-left: 10px;
 	padding-top:10px;
 	padding-bottom:5px;
 	margin-right: auto;
@@ -110,14 +154,7 @@ div.post-right-bar{
       font-weight:bold;
       color: #515454;
 	}
-	div.user{
-		.user-photo{
-			height: 100%;
-	    	width: 150px;
-	    	float:left;
-		}
-		text-align:center;
-	}
+
 	div.helper{
 		border: 1px solid;
 		border-color: pink;

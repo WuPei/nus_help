@@ -10,8 +10,16 @@
     <%= render 'layouts/header' %>
     <%= render 'layouts/messages' %>
     <div class="row-fluid">
-      <div class ="span7 offset1 content">
-        <%= yield :content%>
+      <div class ="span7 offset1">
+        <div class="content">
+          <%= yield :content%>
+        </div>     
+        <div class="commentsarea">
+          <%= yield :comments %>
+        </div>
+        <div class="commentsarea" id="newcomments">
+          <%= yield :newcomments %>
+        </div>
       </div>
       <div class ="span3">
         <div class="rightsidebar" id="firstsidebar">

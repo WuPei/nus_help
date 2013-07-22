@@ -1,3 +1,92 @@
 // Place all the styles related to the comment controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+textarea#comment_form{
+	width: 96%;
+	height: 100px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.comment_status
+{
+	padding: 10px;
+	font-size:12px;
+    line-height: 120%;
+    text-align: left;
+    border-bottom: 1px solid #e2e2e2;
+    color: gray;
+    .snow
+    {
+       color: #e2e2e2;
+       font-weight:bold;
+    }
+}
+
+div.newcomment{
+	.helpbutton{
+		padding-left: 10px;
+	}
+	.sep10{
+		height:10px;
+	}
+	.onlinehelphints{
+		border-bottom: 1px solid #BBB;
+	}
+	p{
+		color: gray;
+		padding-left: 10px;
+	}
+	h5{
+		padding-top: 10px;
+		padding-left: 10px;
+	}
+}
+
+.comments
+{
+	display:block;
+    line-height: 150%;
+    text-align: left;
+   	div.comment{
+		padding: 10px 10px 10px 10px;
+		border-bottom: 1px solid #e2e2e2;
+		div.user_photo{
+			display:inline-block;
+			vertical-align:top;
+		}
+		div.comment_region{
+			display: inline-block;
+			width:90%;
+		}
+		.comment_photo{
+		  margin-right:5px;
+		  display:inline-block;
+		  float: left;
+		}
+
+		.comment_name{
+  		  padding-left: 10px;
+		  font-size:13px;
+		  font-weight:bold;
+		  color: gray;
+		  display:inline-block;
+		}
+		#comment_timestamp{
+		  font-size:11px;
+		  float:right;
+		  display:inline-block;
+		}
+		.comment_content{
+		  padding-left: 10px;
+		  font-size:16px;
+
+		} 
+		.comment_delete{
+		  margin-top: -10px;
+		  font-size:10px;
+		  float:right;
+		}
+	}	
+}

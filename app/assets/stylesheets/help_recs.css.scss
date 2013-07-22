@@ -1,3 +1,87 @@
 // Place all the styles related to the HelpRecs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.helper-info
+{
+	dipslay:block;
+    line-height: 150%;
+    text-align: left;
+
+    table, td{
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: 10px;
+    padding-top:10px;
+    }
+
+    .helper-name
+    {
+      font-size:13px;
+	  font-weight:bold;
+      color: grey;
+      display:inline-block;
+    }
+
+    .helper-content
+    {
+      font-size:16px;
+    }   
+
+    #thanks
+    {
+     font-size:12px;
+    float:right;
+    display:inline-block;
+    }
+
+    .thanks-message
+    {
+      padding-top:10px;    
+      table, td{
+       border-bottom: 0px solid #e2e2e2;
+       padding-bottom: 5px;
+       padding-top:5px;
+     }
+      .helpee-name
+      {
+      color:grey;
+      font-size:12px;
+      display:inline-block;
+      font-weight:bold;
+      }
+    }
+}
+
+.thanks-from
+{
+	padding-top:5px;
+  table, td{
+       border-bottom: 0px solid #e2e2e2;
+       padding-bottom: 5px;
+       padding-top:5px;
+  }
+  .helpee-name
+      {
+      font-size:11px;
+      display:inline-block;
+      font-weight:bold;
+      color:grey;
+     }
+   .helpee-content
+   {
+     font-size:12px;
+   }  
+}
+
+.feedback
+{
+  .helpee-name
+  {
+  font-size:11px;
+      display:inline-block;
+      font-weight:bold;
+      color:grey;
+  }
+}
+

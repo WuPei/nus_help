@@ -17,7 +17,6 @@
 .content {
   background-color: #eee;
   display:block;
-  margin: auto;
   -webkit-border-radius: 6px 6px 6px 6px;
   -moz-border-radius: 6px 6px 6px 6px;
   border-radius: 6px 6px 6px 6px;
