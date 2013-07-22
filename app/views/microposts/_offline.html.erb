@@ -1,19 +1,25 @@
 <ul id="tabs" class="nav nav-tabs">
-  <li class="active"><a href="#commit" data-toggle="tab">Comment</a></li>
+  <li class="active"><a href="#comment" data-toggle="tab">Comments</a></li>
   <% if @micropost.status == 2 %>
-    <li class="disabled"><a href="#help" data-toggle="tab">Help</a></li>
+    <li class="disabled"><a href="#help" data-toggle="tab">Helps</a></li>
   <% else %>
-    <li><a href="#help" data-toggle="tab">Help</a></li>
+    <li><a href="#help" data-toggle="tab">Helps</a></li>
   <% end %>
-</ul> 
+</ul>
 <div id="my-tab-content" class="tab-content">
-  <div class="tab-pane active" id="commit">
+  <div class="tab-pane active" id="comment">
     <!--show the comments -->
     <section>
       <%= render 'comments/comment', :micropost => @micropost, :comment => @comments %>
     </section>
-    <!-- Add new comment -->
-    <%= render 'comments/comment_form', :micropost => @micropost %>
+    <div class="newcomment">
+      <div class="offlinehelphints">
+        <h5>Add a new comment</h5>
+        <p>You could comment an offline help as many as you want</p>
+        <!-- Add new comment -->
+        <%= render 'comments/comment_form', :micropost => @micropost %>
+      </div>
+    </div>
   </div>
   <div class="tab-pane" id="help">
     <div id='help_form'>

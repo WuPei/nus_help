@@ -32,9 +32,9 @@
               <%= link_to "delete", [micropost,comment] , method: :delete,
                                      title: comment.content %>
             </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
   <%= will_paginate @comments %>

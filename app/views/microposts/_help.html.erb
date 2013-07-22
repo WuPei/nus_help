@@ -1,25 +1,29 @@
 <% if micropost.is_online == true %>
-	<div>
+	<div class="helpproposal">
 		<%= form_for (micropost.help_recs.build(post_id: micropost.id, helper_id: current_user.id, online: false) ) do |f|  %>
 		  <%= f.hidden_field :post_id %>
 		  <%= f.hidden_field :helper_id %>
-		  <%= f.label :helper_comment %>
+		  <h5>Helper's Proposal</h5>
 		  <%= f.text_area :helper_comment, placeholder:"Type your idea ..." %>
-
 		  <div class= "like_button">
 		    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
 		  </div>
 		<% end %>
 	</div>
 <% else %>
-	<div>
+	<div class="helpproposal">
 		<%= form_for (micropost.help_recs.build(post_id: micropost.id, helper_id: current_user.id, online: true) ) do |f|  %>
 		  <%= f.hidden_field :post_id %>
 		  <%= f.hidden_field :helper_id %>
 		  <%= f.hidden_field :online %>
-		  <%= f.label :helper_comment %>
+		  <h5>Helper's Proposal</h5>
+		  <p>Please explain your plan in details, to impress the help requester</p>
+
 		  <%= f.text_area :helper_comment, placeholder:"Type your idea ..." %>
-		  <%= f.label :contact_info %>
+  		  <div class="sep5">
+		  </div>
+		  <h5>Contact Info</h5>
+		  <p>Please leave your email address or phone number, it is important for offline help</p>
 		  <%= f.text_field :contact_info %>
 		  <div class= "like_button">
 		    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
