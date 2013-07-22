@@ -1,4 +1,4 @@
-rake db:drop
-rake db:create
-rake db:migrate
-rake db:setup
+rake db:drop  RAILS_ENV=production
+rake db:create  RAILS_ENV=production
+rake db:migrate RAILS_ENV=production
+rake db:setup RAILS_ENV=production

@@ -52,32 +52,36 @@
 <% content_for :firstsidebar do %>
   <div class="post-right-bar">
     <div class="post-time">
-      <i class="icon-time"></i> Deadline:
+      <i class="icon-time"></i>
+      Deadline:
       <span class="post-time">
         <strong><%=  @micropost.deadline  %></strong>
-        <br><i class="icon-time"></i> Remains:
+        <br><i class="icon-time"></i>
+          Remains:
           <strong><%= @elapsed_seconds %>
-          <%= @elapsed_unit%></strong>
+            <%= @elapsed_unit%></strong>
         </br>
       </span>
     </div>
     <div class="post-row">
       <div class="post-gift">
-        <i class="icon-heart"></i> Rewards:
+        <i class="icon-heart"></i>
+        Rewards:
         <span class="post-gift">
           <strong><%= @micropost.gift %></strong></span>
       </div>
       <div class="status">
-        <i class="icon-question-sign"></i> Help Status:
+        <i class="icon-question-sign"></i>
+        Help Status:
         <strong>
-        <% if @micropost.status == 0 %>
-          <span class="post-status">Ongoing</span>
-        <% elsif @micropost.status == 1 %>
-          <span class="post-status">Processing</span>
-        <% elsif @micropost.status == 2 %>
-          <span class="post-status">Ending</span>
-        <% end %>
-      </strong>
+          <% if @micropost.status == 0 %>
+            <span class="post-status">Ongoing</span>
+          <% elsif @micropost.status == 1 %>
+            <span class="post-status">Processing</span>
+          <% elsif @micropost.status == 2 %>
+            <span class="post-status">Ending</span>
+          <% end %>
+        </strong>
       </div>
     </div>
   </div>

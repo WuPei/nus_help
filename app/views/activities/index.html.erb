@@ -14,9 +14,7 @@
       <% @activities.each do |activity| %>
         <% if activity.trackable && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
           <div class="activity">
-            <div class = "user_image">
-              <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
-            </div>
+            <% render "user/user_photo" %>
             <div class="activity_body">
               <strong><%= link_to activity.owner.name, activity.owner, {:style=>"color:black"} %></strong>
               <%= render_activity activity %>

@@ -4,7 +4,7 @@
 		  <%= f.hidden_field :post_id %>
 		  <%= f.hidden_field :helper_id %>
 		  <%= f.label :helper_comment %>
-		  <%= f.text_field :helper_comment %>
+		  <%= f.text_area :helper_comment, placeholder:"Type your idea ..." %>
 
 		  <div class= "like_button">
 		    <%= f.submit "help" ,class: "btn btn-small btn-primary" %>
@@ -18,7 +18,7 @@
 		  <%= f.hidden_field :helper_id %>
 		  <%= f.hidden_field :online %>
 		  <%= f.label :helper_comment %>
-		  <%= f.text_field :helper_comment %>
+		  <%= f.text_area :helper_comment, placeholder:"Type your idea ..." %>
 		  <%= f.label :contact_info %>
 		  <%= f.text_field :contact_info %>
 		  <div class= "like_button">

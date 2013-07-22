@@ -53,7 +53,7 @@ $(function() {
 
  // Auto Complete for the date
   var autoOpts = {
-    minLength: 3,
+    minLength: 3, 
     autoFocus: true,
     source: $('#micropost_module_code').data('autocomplete-source')		
   };
@@ -74,7 +74,7 @@ $(function() {
 
   $(function() {
     var autoOpts = {
-      minLength: 3,
+      // minLength: 3, // NO need the minLength
       autoFocus: true,
       source: $('#searchm').data('autocomplete-source'),
       select: function(evt,ui){
@@ -91,13 +91,11 @@ $(function() {
                flag = false;
         }
         if (flag) {
-          $mTag = $("<span></span>"); $mTag.addClass("module-tag needToolTip");
-          $mTag.attr("title","Module Title Stub");
+          $mTag = $("<span></span>"); $mTag.addClass("module-tag");
           $mInfo.appendTo($mTag); $closeTag.appendTo($mTag);
           $mTag.appendTo($tags);
         }
         
-        // TODO: callback to update DB that module has been followed
         $.ajax({
           type : "POST",
           url : "module_followings",
@@ -105,9 +103,12 @@ $(function() {
             mod_id: $mInfo.html(),
             mode : "module",
           }),
+          dataType:"json",
           contentType: 'application/json',
-          success : function(response) {
-            console.log("success");
+          success : function(minfo) {
+            // Create Node upon success
+            $mInfo.attr("title",minfo.name);
+            $mInfo.prop("href","/nus_modules/" + minfo.id);
           },
           error : function(response) {
             console.log("not");
