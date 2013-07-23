@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130706063223) do
+ActiveRecord::Schema.define(version: 20130723145323) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -31,6 +31,14 @@ ActiveRecord::Schema.define(version: 20130706063223) do
     t.integer  "micropost_id"
     t.integer  "user_id"
     t.string   "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feedbacks", force: true do |t|
+    t.integer  "uid"
+    t.string   "content"
+    t.string   "from"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
