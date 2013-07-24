@@ -1,0 +1,40 @@
+<% if h.owner_comment? %>
+  <div class="thanks-message">
+    <h5>
+      Thanks Message:</h5>
+    <div class="helper_photo">
+      <%= render "users/user_photo", {user:current_user,size:50,need_div:false} %>
+    </div>
+    <div class="helpee-region">
+      <div class="helpee-name">
+        <%= current_user.name%>
+      </div>
+      <div class="helpee-content">
+        <%= h.owner_comment %>
+      </div>
+    </div>
+  </div>
+  <div class="feedback">
+    <h5>
+      Feedback Message
+    </h5>
+    <% if h.feedback_comment? %>
+      <div class="feedback_message">
+        <div class="helper_photo">
+          <%= render "users/user_photo", {user:h.helper,size:50,need_div:false} %>
+        </div>
+        <div class="helpee-region">
+          <div class="helpee-name">
+            <%= link_to h.helper.name, h.helper %>
+          </div>
+          <div class="helpee-content">
+            <%= h.feedback_comment %>
+          </div>
+        </div>
+      </div>
+    <% else %>
+      Waiting for
+      <%= link_to h.helper.name, h.helper%>'s feedback
+    <% end %>
+  </div>
+<% end %>

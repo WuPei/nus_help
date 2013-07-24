@@ -54,44 +54,49 @@ div.newcomment{
 	display:block;
     line-height: 150%;
     text-align: left;
-   	div.comment{
-		padding: 10px 10px 10px 10px;
-		border-bottom: 1px solid #e2e2e2;
-		div.user_photo{
-			display:inline-block;
-			vertical-align:top;
-		}
-		div.comment_region{
-			display: inline-block;
-			width:90%;
-		}
-		.comment_photo{
-		  margin-right:5px;
-		  display:inline-block;
-		  float: left;
-		}
-
-		.comment_name{
-  		  padding-left: 10px;
-		  font-size:13px;
-		  font-weight:bold;
-		  color: gray;
-		  display:inline-block;
-		}
-		#comment_timestamp{
-		  font-size:11px;
-		  float:right;
-		  display:inline-block;
-		}
-		.comment_content{
-		  padding-left: 10px;
-		  font-size:16px;
-
-		} 
-		.comment_delete{
-		  margin-top: -10px;
-		  font-size:10px;
-		  float:right;
-		}
-	}	
 }
+
+div.comment{
+	padding: 10px 10px 10px 10px;
+	border-bottom: 1px solid #e2e2e2;
+	div.user_photo{
+		display:inline-block;
+		vertical-align:top;
+	}
+	div.comment_region{
+		display: inline-block;
+		width:90%;
+	}
+	.comment_photo{
+	  margin-right:5px;
+	  display:inline-block;
+	  float: left;
+	}
+
+	.comment_name{
+	  padding-left: 10px;
+	  font-size:13px;
+	  font-weight:bold;
+	  color: gray;
+	  display:inline-block;
+	}
+	#comment_timestamp{
+	  font-size:11px;
+	  float:right;
+	  display:inline-block;
+	}
+	.comment_content{
+	  padding-left: 10px;
+	  font-size:16px;
+
+	} 
+	.comment_delete{
+	  margin-top: -10px;
+	  font-size:10px;
+	  float:right;
+	}
+	.comment_unhelp{
+		margin-top: 10px;
+		float:right;
+	}
+}	

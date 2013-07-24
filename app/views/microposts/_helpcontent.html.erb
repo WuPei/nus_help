@@ -1,0 +1,33 @@
+<div class='comment'>
+  <div class='user_photo'>
+    <%= render "users/user_photo", {user:h.helper,size:50,need_div:false} %>
+  </div>
+  <div class='comment_region'>
+    <div class="comment_name">
+      <%= link_to User.find_by(:id=>h.helper.id).name, User.find_by(:id=>h.helper.id), {:style => 'color: gray'} %>
+    </div>
+    <div class="timestamp" id="comment_timestamp">
+      <%= time_ago_in_words(h.created_at) %>
+      ago
+    </div>
+    <div class="comment_content">
+      <%= h(h.helper_comment).gsub(/(?:\n\r?|\r\n?)/, '<br/>').html_safe %>
+    </div>
+  </div>
+  <div id="thanks">
+    <a class="btn-small btn-primary open_add_thanks" type="button" href="#test_modal" data-toggle="modal" data-id=<%= h.id%> title="add this item">
+      <% if h.owner_comment? && current_user.id=h.helper_id %>
+        Update Thanks Message
+      <% elsif !h.owner_comment? %>
+        Choose him/her as helper
+      <% end %>
+    </a>
+  </div>
+</div>
+<% if not h.contact_info.nil? %>
+  <div id="contact_info">
+    Helper's Contacts:
+    <strong><%= h.contact_info %></strong>
+  </div>
+<% end %>
+<%= render 'help_recs/helpmessages', :h=> h%>

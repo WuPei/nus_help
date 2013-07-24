@@ -14,54 +14,52 @@ textarea#help_rec_helper_comment{
   margin-left: 10px;
 }
 
-.helper-info
-{
-	display:block;
-    line-height: 150%;
-    text-align: left;
+#thanks
+  {
+   font-size:12px;
+  float:right;
+  display:inline-block;
+  margin-top: -10px;
+  }
 
-    table, td{
-    border-bottom: 1px solid #e2e2e2;
-    padding-bottom: 10px;
-    padding-top:10px;
-    }
+#contact_info{
+   display:inline-block;
+   padding-left: 10px;
+   width: 98%;
+   background-color: #EEE;
+ } 
 
-    .helper-name
-    {
-      font-size:13px;
-	  font-weight:bold;
-      color: gray;
-      display:inline-block;
-    }
+.thanks-message{
+  padding-top: 5px;
+  padding-left: 10px;    
+  padding-bottom: 20px;
+  background-color: #29e497;
+  border-bottom: 1px solid #AAA;
 
-    .helper-content
-    {
-      font-size:16px;
-    }   
-
-    #thanks
-    {
-     font-size:12px;
-    float:right;
+  .helper_photo{
+    margin-right:5px;
     display:inline-block;
-    }
+    float: left;
+    vertical-align:top;
 
-    .thanks-message
-    {
-      padding-top:10px;    
-      table, td{
-       border-bottom: 0px solid #e2e2e2;
-       padding-bottom: 5px;
-       padding-top:5px;
-     }
-      .helpee-name
-      {
-      color:gray;
-      font-size:12px;
-      display:inline-block;
-      font-weight:bold;
-      }
-    }
+  }
+  div.helpee-region{
+    display: inline-block;
+    width: 90%
+  }
+
+  .helpee-name{
+  padding-left: 10px;
+  color:gray;
+  font-size:12px;
+  display:inline-block;
+  font-weight:bold;
+  }
+
+  div.helpee-content{
+    font-size:16px;
+    padding-left: 10px;
+  } 
 }
 
 .thanks-from
@@ -86,13 +84,43 @@ textarea#help_rec_helper_comment{
 }
 
 .feedback
-{
-  .helpee-name
-  {
-  font-size:11px;
-      display:inline-block;
-      font-weight:bold;
-      color:gray;
+{ 
+  padding-top: 10px;
+  background-color: #98efee;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  -webkit-border-radius: 6px 6px 6px 6px;
+  -moz-border-radius: 6px 6px 6px 6px;
+  border-radius: 6px 6px 6px 6px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  box-shadow: 0 1px 2px rgba(0,0,0,.15);
+  .feedback_message{
+    padding-bottom: 10px;
+    .helper_photo{
+    margin-right:5px;
+    display:inline-block;
+    float: left;
+    vertical-align:top;
+
+    }
+    div.helpee-region{
+      display: inline-block;
+      width: 90%
+    }
+
+    .helpee-name{
+    padding-left: 10px;
+    color:gray;
+    font-size:12px;
+    display:inline-block;
+    font-weight:bold;
+    }
+
+    div.helpee-content{
+      font-size:16px;
+      padding-left: 10px;
+    } 
   }
 }
 
