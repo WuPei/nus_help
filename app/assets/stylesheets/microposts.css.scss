@@ -135,7 +135,6 @@ div.helpproposal{
 }
 
 div.post-right-bar{
-	padding-left: 10px;
 	padding-top:10px;
 	padding-bottom:5px;
 	margin-right: auto;
@@ -146,11 +145,24 @@ div.post-right-bar{
       color: #515454;
 	}
 
-	div.helper{
-		border: 1px solid;
-		border-color: pink;
-		text-align:center;
-		margin-top: 20px;
+	div.helpers{
+		#helper1{
+			margin-top: 10px;
+			border-top: 2px solid gray;
+		}		
+		strong{
+			padding-left: 10px;
+		}
+		div.helper{
+
+			padding-bottom: 5px;
+
+			.helper_photo{
+				padding-left: 10px;
+				display: inline-block;
+			}
+			border-bottom: 2px solid gray;
+		}
 	}
 
 }

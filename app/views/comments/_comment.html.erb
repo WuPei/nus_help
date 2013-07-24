@@ -11,7 +11,9 @@
     </span>
   </div>
   <div class="comments">
+    <% @commentcount=1%>
     <% @comments.each do |comment| %>
+      <strong>#<%= @commentcount%></strong>
       <div class='comment'>
         <div class='user_photo'>
           <%= render "users/user_photo", {user:User.find_by(:id=>comment.user_id),size:50,need_div:false} %>
@@ -35,6 +37,7 @@
           <% end %>
         </div>
       </div>
+      <% @commentcount+=1 %>
     <% end %>
   </div>
   <%= will_paginate @comments %>

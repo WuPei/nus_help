@@ -68,7 +68,15 @@
           <div class="gift">
             <i class='icon-gift'></i>
             <%= feed_item.gift %>
+                      |
+          <% if feed_item.is_online %>
+          Online Help
+          <% else %>
+          Offline Help
+          <% end %>
           </div>
+
+
         </span>
       </td>
     </div>

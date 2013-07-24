@@ -54,6 +54,12 @@ div.newcomment{
 	display:block;
     line-height: 150%;
     text-align: left;
+    strong{
+    	padding-left: 10px;
+    }
+    .border{
+    	border-bottom: 2px solid gray;
+    }
 }
 
 div.comment{
