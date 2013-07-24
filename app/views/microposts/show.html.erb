@@ -83,6 +83,13 @@
           <% end %>
         </strong>
       </div>
+      <div class="post-module">
+        <i class="icon-book"></i>
+        Related Module:
+        <strong>
+          <%= NusModule.find_by(id:@micropost.module_id).code  %>
+        </strong>
+      </div>
     </div>
   </div>
 <%end%>
