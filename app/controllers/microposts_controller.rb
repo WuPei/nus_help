@@ -44,18 +44,8 @@ class MicropostsController < ApplicationController
 
   def addClickCount
     @micropost = Micropost.find_by(:id => params[:post_id])
-    respond_to do |format|
-        Micropost.where(:id=>params[:post_id]).update_all("click_count = click_count + 1")
-        format.html { 
-
-        }
-        format.json{
-          render json: @micropost,
-          status: :updated,
-          location: @micropost
-        }
-    end
-    
+    Micropost.where(:id=>params[:post_id]).update_all("click_count = click_count + 1")
+    return render json: @micropost
   end
 
   def destroy
