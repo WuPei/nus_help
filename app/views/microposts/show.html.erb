@@ -90,13 +90,18 @@
   <div class="post-right-bar">
     <div id="helpers_words", class="center">All Helpers</div>
     <div class="helpers">
-      <% @micropost.helpers.each do |h| %>
-        <oi>
-          <div class="helper">
-            <%= render "users/user_photo", {user:h,size:70,need_div:false} %>
-            <%= link_to h.name, h%>
-          </div>
-        </oi>
+      <% if @micropost.helpers.any? %>
+        <% @micropost.helpers.each do |h| %>
+          <oi>
+            <div class="helper">
+              <%= render "users/user_photo", {user:h,size:70,need_div:false} %>
+              <%= link_to h.name, h%>
+            </div>
+          </oi>
+        <% end %>
+      <% else %>
+        </br>
+        <div class="center"><h4>Looking for Helpers</h4></div>
       <% end %>
     </div>
   </div>

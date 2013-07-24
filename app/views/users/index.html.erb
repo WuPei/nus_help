@@ -18,16 +18,24 @@
   </div>
   <div class="tab-content">
     <div class="tab-pane active" id="tab1">
-      <% @followed_users.each do |u| %>
-        <%= render 'user', :user => u %>
+      <% if @followed_users.any? %>
+        <% @followed_users.each do |u| %>
+          <%= render 'user', :user => u %>
+        <% end %>
+        <%= will_paginate @followed_users %>
+      <% else %>
+        <h4>You do not have followed users yet</h4>
       <% end %>
-      <%= will_paginate @followed_users %>
     </div>
     <div class="tab-pane" id="tab2">
-      <% @users_followers.each do |u| %>
-        <%= render 'user', :user => u %>
+      <% if @users_followers.any? %>
+        <% @users_followers.each do |u| %>
+          <%= render 'user', :user => u %>
+        <% end %>
+        <%= will_paginate @users_followers %>
+      <% else %>
+        <h4>You do not have following users yet</h4>
       <% end %>
-      <%= will_paginate @users_followers %>
     </div>
     <div class="tab-pane" id="tab3">
       <% @random_users.each do |u| %>

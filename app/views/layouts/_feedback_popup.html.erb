@@ -1,0 +1,9 @@
+<div id="feedback-popup">
+  <div id="feedback-popup-ctrl">Feedback</div>
+  <div id="feedback-popup-content">
+    <%=form_tag("/feedback",{method:"POST",target:"_blank"}) do %>
+      <textarea name="content" placeholder="Your Feedback Here..." rows=6 required="1"></textarea>
+      <button class="btn btn-primary">Submit</button>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<% provide(:title, 'Feedback') %>
+<% content_for :content do %>
+<div>
+  <p>Your Feedback Message:</p>
+  <table>
+    <tr> <td>From Page: </td> <td><%= @feedback.from %></td></tr>
+    <tr> <td>Message: </td> <td><%= @feedback.content %></td></tr>
+  </table>
+</div>
+<% end %>

@@ -1,0 +1,33 @@
+
+#feedback-popup{
+  position:fixed;
+  bottom:0px;
+  right: 20px;
+  width: 250px;
+}
+
+#feedback-popup-ctrl{
+  background-color: #FBB;
+  width: 100%;
+  height: 25px;
+  text-align: center;
+  &:hover{
+    cursor:pointer;
+  }
+}
+
+#feedback-popup-content{
+  background-color: #FDD;
+
+  form{
+    padding: 10px;
+    margin-bottom: 0px;
+    textarea {
+      resize: none;
+      margin-bottom: 5px;
+    }
+    button{
+      width: 100%;
+    }
+  }
+}

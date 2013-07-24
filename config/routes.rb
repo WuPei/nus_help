@@ -64,4 +64,6 @@ NusHelp::Application.routes.draw do
 
   get '/search',  to: 'search#show'
   get '/search/:term',  to: 'search#show_term'
+
+  match '/feedback', to: 'feedback#create', via: 'POST'
 end
