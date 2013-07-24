@@ -32,11 +32,10 @@ class MicropostsController < ApplicationController
     if @micropost.save
       flash[:success] = "Micropost created!"
       @micropost.create_activity :create, owner: current_user
-      redirect_to root_url
     else
       flash[:error] = "Post unsuccessful."
-      render 'static_pages/home'
     end
+    redirect_to root_url
   end
 
   def update
