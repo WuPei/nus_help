@@ -36,16 +36,18 @@
 			// border-top: 1px solid #EEE;
 		}
 		.activity {
-			display: block;
-			height: 50px;
-			padding-left:10px;
-			padding-bottom:5px;
-			margin-bottom:8px;
-			padding-right:10px;
+			padding: 10px 10px 5px 10px;
 			border-bottom: solid 1px #EEE;
 			font-size: 12px; 
 			.user_image {
-				display:inline;
+				display:inline-block;
+			}
+			.activity_body{
+				display: inline-block;
+			}
+			#activitytimestamp{
+				float:right;
+				display:inline-block;
 			}
 		}
 		.noactivity{
@@ -67,19 +69,21 @@
 	#notificationBody{
 		.activity:first-child{
 			padding-top: 8px;
-			// border-top: 1px solid #EEE;
 		}
 		.activity {
-			display: block;
-			height: 50px;
-			padding-left:10px;
-			padding-bottom:5px;
-			margin-bottom:8px;
-			padding-right:10px;
-			border-bottom: solid 1px #CCC;
+			padding: 10px 10px 5px 10px;
+			border-bottom: solid 1px gray;
 			font-size: 12px; 
 			.user_image {
-				display:inline;
+				display:inline-block;
+
+			}
+			.activity_body{
+				display: inline-block;
+			}
+			#activitytimestamp{
+				float:right;
+				display:inline-block;
 			}
 		}
 	}

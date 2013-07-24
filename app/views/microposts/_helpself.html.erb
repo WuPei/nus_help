@@ -5,8 +5,13 @@
         Helper's Proposals:
       </h5>
     </div>
+    <% @helpcount=1 %>
     <% micropost.help_recs.each do |h| %>
+      <div class="border">
+      </div>
+      <strong>#<%=@helpcount%></strong>
       <%= render 'microposts/helpcontent', :h=>h %>
+      <% @helpcount+=1 %>
     <% end %>
   <% else %>
     <div class='helpproposal'>

@@ -17,17 +17,17 @@
       <% if activity.trackable && activity.status && activity.owner && (activity.trackable_type=="Help_Rec" || activity.recipient==current_user) %>
         <div class="activity click_notification" id="<%= activity.id %>" data-id= <%= activity.id %> >
           <div class = "user_image">
-            <%= link_to gravatar_for(activity.owner, {:size =>40 }), activity.owner %>
+            <%= render "users/user_photo",{user:activity.owner,size:40,need_div:false} %>
+          </div>
+          <div class="timestamp", id="activitytimestamp">
+              <%= time_ago_in_words(activity.created_at ) %>
           </div>
           <div class="activity_body">
             <% if activity.trackable.respond_to?(:helper) && activity.trackable.helper == current_user %>
             Congradulations! 
-            <% end %>
+            <% end %> 
             <strong><%= link_to activity.owner.name, activity.owner, {:style=>"color:black"} %></strong>
             <%= render_activity activity %>
-            <span class="timestamp">
-              <%= time_ago_in_words(activity.created_at ) %>
-            </span>
           </div>
         </div>
       <% else %>

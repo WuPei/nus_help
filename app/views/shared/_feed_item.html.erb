@@ -35,7 +35,7 @@
           </div>
           <strong id="click-strong">Clicks</strong>
         </div>
-        <td>
+
           <span class='itemTitle click_count' data-id=<%=feed_item.id%> >
             <%= link_to feed_item.title, feed_item %>
           </span>
@@ -68,9 +68,14 @@
           <div class="gift">
             <i class='icon-gift'></i>
             <%= feed_item.gift %>
+                      |
+          <% if feed_item.is_online %>
+          Online Help
+          <% else %>
+          Offline Help
+          <% end %>
           </div>
         </span>
-      </td>
     </div>
   </div>
 </div>

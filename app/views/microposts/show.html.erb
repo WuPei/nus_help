@@ -83,6 +83,13 @@
           <% end %>
         </strong>
       </div>
+      <div class="post-module">
+        <i class="icon-book"></i>
+        Related Module:
+        <strong>
+          <%= NusModule.find_by(id:@micropost.module_id).code  %>
+        </strong>
+      </div>
     </div>
   </div>
 <%end%>
@@ -91,13 +98,18 @@
     <div id="helpers_words", class="center">All Helpers</div>
     <div class="helpers">
       <% if @micropost.helpers.any? %>
+        <% @count=1 %>
         <% @micropost.helpers.each do |h| %>
-          <oi>
-            <div class="helper">
-              <%= render "users/user_photo", {user:h,size:70,need_div:false} %>
+            <div id="helper<%=@count%>">
+            </div>
+            <strong>#<%= @count %></strong>
+            <div class="helper" >
+              <div class="helper_photo">
+              <%= render "users/user_photo", {user:h,size:50,need_div:false} %>
+              </div>
               <%= link_to h.name, h%>
             </div>
-          </oi>
+            <% @count+=1 %>
         <% end %>
       <% else %>
         </br>
