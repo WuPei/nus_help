@@ -24,19 +24,18 @@ class MicropostsController < ApplicationController
     # TODO: add check for the Deadline -- if it's according to the correct date format
     params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
     rescue Exception => exc
-     logger.error("Message for the log file #{exc.message}")
-     flash[:error] = "Invalid Module Code. Please use the auto-complete to select a correct one.!"
-     redirect_to root_url
-    else
-    @micropost = Micropost.new(micropost_params)
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      @micropost.create_activity :create, owner: current_user
+      logger.error("Message for the log file #{exc.message}")
+      flash[:error] = "Invalid Module Code. Please use the auto-complete to select a correct one.!"
       redirect_to root_url
     else
-      flash[:error] = "Post unsuccessful."
-      render 'static_pages/home'
-    end
+      @micropost = Micropost.new(micropost_params)
+      if @micropost.save
+        flash[:success] = "Micropost created!"
+        @micropost.create_activity :create, owner: current_user
+      else
+        flash[:error] = "Post unsuccessful." + @micropost.errors.full_messages().join(", ")
+      end
+      redirect_to root_url
   end
 
   def update
@@ -45,18 +44,8 @@ class MicropostsController < ApplicationController
 
   def addClickCount
     @micropost = Micropost.find_by(:id => params[:post_id])
-    respond_to do |format|
-        Micropost.where(:id=>params[:post_id]).update_all("click_count = click_count + 1")
-        format.html { 
-
-        }
-        format.json{
-          render json: @micropost,
-          status: :updated,
-          location: @micropost
-        }
-    end
-    
+    Micropost.where(:id=>params[:post_id]).update_all("click_count = click_count + 1")
+    return render json: @micropost
   end
 
   def destroy
