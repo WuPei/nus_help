@@ -2,7 +2,7 @@ class FeedbackController < ApplicationController
   def create
     @feedback = Feedback.new
     @feedback.uid = current_user.id
-    @feedback.from = request.env["HTTP_ORIGIN"]
+    @feedback.from = request.env["HTTP_REFERER"]
     @feedback.content = params['content']
     if @feedback.save 
       flash[:success] = "Feedback Created!"
