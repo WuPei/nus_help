@@ -90,6 +90,10 @@
           <%= NusModule.find_by(id:@micropost.module_id).code  %>
         </strong>
       </div>
+      <% if current_user.admin? %>
+          <%= link_to "delete", @micropost, method: :delete,
+                              data: { confirm: "You sure?" } %>
+      <% end %>
     </div>
   </div>
 <%end%>
