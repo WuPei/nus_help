@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723145323) do
+ActiveRecord::Schema.define(version: 20130726143858) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -157,5 +157,15 @@ ActiveRecord::Schema.define(version: 20130723145323) do
 
   add_index "users", ["account"], name: "index_users_on_account", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "visitor_infos", force: true do |t|
+    t.string   "ip"
+    t.integer  "uid"
+    t.string   "method"
+    t.text     "path"
+    t.text     "user_agent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

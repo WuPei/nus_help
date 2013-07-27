@@ -14,7 +14,7 @@ module UsersHelper
     count=0
     activities.each do |f|
       #the newly created activity's status is true
-      if f.status && f.recipient == current_user
+      if f.trackable && f.status && f.recipient == current_user
         count+=1
       end
     end 

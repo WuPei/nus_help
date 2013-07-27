@@ -25,18 +25,18 @@ class MicropostsController < ApplicationController
     # TODO: add check for the Deadline -- if it's according to the correct date format
     params[:micropost][:module_id] = NusModule.find_by(code: params[:micropost][:module_code]).id
     rescue Exception => exc
-     logger.error("Message for the log file #{exc.message}")
-     flash[:error] = "Invalid Module Code. Please use the auto-complete to select a correct one.!"
-     redirect_to root_url
+      logger.error("Message for the log file #{exc.message}")
+      flash[:error] = "Invalid Module Code. Please use the auto-complete to select a correct one.!"
+      redirect_to root_url
     else
-    @micropost = Micropost.new(micropost_params)
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      @micropost.create_activity :create, owner: current_user
-    else
-      flash[:error] = "Post unsuccessful."
-    end
-    redirect_to root_url
+      @micropost = Micropost.new(micropost_params)
+      if @micropost.save
+        flash[:success] = "Micropost created!"
+        @micropost.create_activity :create, owner: current_user
+      else
+        flash[:error] = "Post unsuccessful." + @micropost.errors.full_messages().join(", ")
+      end
+      redirect_to root_url
   end
 
   def update
