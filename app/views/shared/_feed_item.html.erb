@@ -75,6 +75,12 @@
           Offline Help
           <% end %>
           </div>
+          <div>
+            <% if current_user.admin? %>
+                <%= link_to "delete", feed_item, method: :delete,
+                                    data: { confirm: "You sure?" } %>
+            <% end %>
+          </div>
         </span>
     </div>
   </div>
