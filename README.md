@@ -25,4 +25,4 @@ Note: the setup for Server has been Verified on Mac and Ubuntu machine. Most lik
 ### 1. Is this a Mobile App?
 Answer: yes this website can be run on Mobile
 ### 2. Where can I see a demo of this app?
-Answer: we're in testing phase, thus haven't buy a domain yet. For browsing, you may simply visit: <http://192.241.208.238:3000/>.
+Answer: we're in testing phase, thus haven't buy a domain yet. For browsing, you may simply visit: <http://192.241.208.238/>.
