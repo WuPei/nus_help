@@ -117,12 +117,14 @@ class UsersController < ApplicationController
   end
 
   def show_gift_sent
-    @microposts = Micropost.where(is_happy: true, user_id: current_user.id, status: 2).all
-   
-  end 
+    @user = User.find(params[:id]) 
+    @microposts = Micropost.where(is_happy: true, user_id: @user.id, status: 2).all
+  end  
 
-  def show_gift_recieved 
-    @microposts = Micropost.where(is_happy: true, helper_id: current_user.id, status: 2).all
+  def show_gift_received 
+    @user = User.find(params[:id]) 
+    @microposts = Micropost.where(is_happy: true, helper_id: @user.id, status: 2).all
+
   end 
 
   private

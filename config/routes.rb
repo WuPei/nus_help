@@ -4,7 +4,7 @@ NusHelp::Application.routes.draw do
   get "activities/index"
   resources :users do
     member do
-      get :followings, :followers , :mods, :liked_microposts, :posts
+      get :followings, :followers , :mods, :liked_microposts, :posts, :show_gift_sent, :show_gift_received
       patch :json_upload
     end
   end
@@ -30,8 +30,7 @@ NusHelp::Application.routes.draw do
 
   root to: 'static_pages#home'
   match '/module_list', to: 'nus_modules#autoCompJson', via: 'get'
-  match '/gift_sent', to: 'users#show_gift_sent', via:'get'
-  match '/gift_recieved', to: 'users#show_gift_recieved', via:'get'
+ 
 
   match '/createmod', to: 'nus_modules#new', via: 'get'
   match '/signup',  to: 'users#new',            via: 'get'

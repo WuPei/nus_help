@@ -1,42 +1,43 @@
 <% provide(:title, @user.name) %>
 <% content_for :content do %>
-  	<div class="user-show">
-		<%= render 'user_show', :user=>@user if signed_in? %>
-  	</div>
-  	
-  	<div class="user-follow">
-  		<ul class="nav nav-tabs">
-  			<li class="active">
-  				<a href="#tab1" data-toggle="tab">Micropost (<%=@user.microposts.count%>)</a>
-  			</li>
-  			<li>
-  				<a href="#tab2" data-toggle="tab">Helps (<%=@microposts_help.count %>) </a>
-  			</li>
-  		</ul>
-	</div>
-	<div class="tab-content">
-		<div class="tab-pane active" id="tab1">
-			<% if @user.microposts.any? %>
-				<div class="microposts">
-				<%= render 'shared/feed', :feed_items => @microposts%>
-			    </div>  
-			    <%= will_paginate @microposts %>
-		    <% else %>
-		    	<span class="no-post">There is no post from this user.</span>
-		    <% end %>
-		</div>
-		<div class="tab-pane" id="tab2">
-			<% if @microposts_help.any? %>
-				<div class="microposts">
-					<%= render 'shared/feed', :feed_items => 
+  <div class="user-show">
+    <%= render 'user_show', :user=>@user if signed_in? %>
+  </div>
+  <div class="user-follow">
+    <ul class="nav nav-tabs">
+      <li class="active">
+        <a href="#tab1" data-toggle="tab">Micropost (<%=@user.microposts.count%>)</a>
+      </li>
+      <li>
+        <a href="#tab2" data-toggle="tab">Helps (<%=@microposts_help.count %>)
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane active" id="tab1">
+      <% if @user.microposts.any? %>
+        <div class="microposts">
+          <%= render 'shared/feed', :feed_items => @microposts%>
+        </div>
+        <%= will_paginate @microposts %>
+      <% else %>
+        <span class="no-post">There is no post from this user.</span>
+      <% end %>
+    </div>
+    <div class="tab-pane" id="tab2">
+      <% if @microposts_help.any? %>
+        <div class="microposts">
+          <%= render 'shared/feed', :feed_items => 
 					@microposts_help%>
-			    </div>  
-				<%= will_paginate @microposts_help %>
-			<% else %>
-				<span class="no-post">There is no help record from this user.</span>
-			<% end %>
-		</div>
-	</div>
+        </div>
+        <%= will_paginate @microposts_help %>
+      <% else %>
+        <span class="no-post">There is no help record from this user.</span>
+      <% end %>
+    </div>
+  </div>
 <% end %>
-
-
+<% content_for :firstsidebar do %>
+  <%= render 'layouts/sidebar' %>
+<% end %>

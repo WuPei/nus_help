@@ -1,5 +1,10 @@
 <% content_for :content do %>
+ <h4 id="homehead">Gifts sent by <%=@user.name%></h4>
+<% unless @microposts.empty? %>
   <ul class="nav nav-list" id="homehelpFeeds">
     <%= render @microposts %>
   </ul>
+<% else %>
+  <strong>Currently <%= link_to @user.name,@user %> doesn't have any gifts sent out </strong>
+<% end %>
 <% end %>
