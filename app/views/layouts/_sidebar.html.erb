@@ -18,7 +18,7 @@
       </p>
     </div>
     <div class="span4">
-      <a href="<%= following_user_path(@user) %>">
+      <a href="<%= followings_user_path(@user) %>">
         <h5><%= @user.followed_users.count %></h5>
         <strong>
           USERS
@@ -26,7 +26,7 @@
       </a>
     </div>
     <div class="span4">
-      <a href="#<%# %>">
+      <a href="<%= mods_user_path(@user)%>">
         <h5><%= @user.mods.count %></h5>
         <strong>
           MODULES

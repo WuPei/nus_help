@@ -7,7 +7,7 @@ has choosed
 <% end %>
 as helper! 
 <% if activity.trackable.helper == current_user %>
-	You could go to <%= link_to "comment", activity.trackable.post%> the user if you recived the reward.
+	You could go to <%= link_to "comment", activity.trackable.post.title%> the user if you recived the reward.
 <% else %>
-	Go to have a look on it<%= link_to activity.trackable.post %>
+	Go to have a look on it <%= link_to activity.trackable.post.title %>
 <% end %>

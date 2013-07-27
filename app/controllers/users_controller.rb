@@ -96,7 +96,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def following
+  def followings
     @title = "Following"
     @user = User.find(params[:id])
     @users = @user.followed_users.paginate(page: params[:page])
@@ -110,20 +110,19 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  def mods
+    @title = 'mod_followng'
+    @user = User.find(params[:id])
+    @modules = @user.mods
+  end
+
   def show_gift_sent
     @microposts = Micropost.where(is_happy: true, user_id: current_user.id, status: 2).all
-    @gifts = []
-    @microposts.each do |f|
-      @gifts.push(f.gift)
-    end
+   
   end 
 
   def show_gift_recieved 
-    @gifts = []
     @microposts = Micropost.where(is_happy: true, helper_id: current_user.id, status: 2).all
-    @microposts.each do |f|
-      @gifts.push(f.gift)
-    end
   end 
 
   private

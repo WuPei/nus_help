@@ -1,5 +1,5 @@
 <% content_for :content do %>
-<% @gifts.each do |f|%>
-	<%= f %>
-<% end %>
+  <ul class="nav nav-list" id="homehelpFeeds">
+    <%= render @microposts %>
+  </ul>
 <% end %>
