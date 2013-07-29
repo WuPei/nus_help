@@ -1,5 +1,9 @@
 <div class="popular-topic">
-	<%= render "users/user_photo",{user:micropost.user,need_div: true, size:30} %>
+	<% if micropost.is_anonymous == true %>
+        <%= render "users/anonymous_photo",{user:micropost.user,need_div: true, size:30} %>
+      <% else %>
+        <%= render "users/user_photo",{user:micropost.user,need_div: true, size:30} %>
+      <% end %>
 	<div class="title click_count" data-id=<%=micropost.id%> >
 		<%=link_to micropost.title[0..30]+"...", micropost %>
 	</div>
